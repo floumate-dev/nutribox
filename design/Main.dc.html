@@ -20,14 +20,27 @@ a{color:#123c32}a:hover{color:#30563f}
 .btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(18,60,50,.18)}
 .pick{transition:box-shadow .15s ease, border-color .15s ease}
 .slider{scrollbar-width:thin}
+#nbx-hero-food{position:relative;width:100%;aspect-ratio:590/516}
+#nbx-hero-food img{position:absolute;height:auto;max-width:none;filter:drop-shadow(8px 16px 18px rgba(18,60,50,.22));animation:nbxFadeInRight 1s ease both}
+#nbx-hero-food .k{left:52.85%;top:0;width:47.15%;z-index:1;transform:rotate(3deg);animation-delay:.3s}
+#nbx-hero-food .r{left:0;top:45.29%;width:64.63%;z-index:4;transform:rotate(-3deg);animation-delay:.8s}
+#nbx-hero-food .v{left:47.15%;top:45.29%;width:38.01%;z-index:5;transform:rotate(-5deg);animation-delay:1.3s}
+#nbx-hero-food .u{left:58.54%;top:71.65%;width:41.06%;z-index:6;transform:rotate(-4deg);animation-delay:1.8s}
+#nbx-hero-food .d{left:5.69%;top:6.88%;width:50.2%;z-index:3;transform:rotate(4deg);animation-delay:2.3s}
+@keyframes nbxFadeInRight{from{opacity:0;translate:100% 0}to{opacity:1;translate:0 0}}
+@media (max-width:900px){
+.hero-txt,.hero-vis{flex:1 1 100% !important}
+#nbx-hero-food{max-width:520px;margin:0 auto}
+}
+@media (prefers-reduced-motion:reduce){#nbx-hero-food img{animation:none}}
 .spr{background-size:600% 300%;background-repeat:no-repeat;background-color:#e4efdc}
-.sp0{background-image:url(/_blob/5268c4efc91305d89927836ba6d7a1ca)}
-.sp1{background-image:url(/_blob/a6755f9077c34c78ac20363be64911e2)}
-.sp2{background-image:url(/_blob/ac0b5ff04f67981eb24a6ec096d56872)}
-.sp3{background-image:url(/_blob/962f6318639b2c60209dcd8d2dda2b52)}
-.sp4{background-image:url(/_blob/1a20fbb6c5bc534a6d209d1149c3acec)}
-.sp5{background-image:url(/_blob/be0e8408087d67f0aff97b2423547726)}
-.sp6{background-image:url(/_blob/201adcf31c849c484cf36d35fa1995f8)}
+.sp0{background-image:url(/_blob/a9f0e7deec5e93814f97583049c7c972)}
+.sp1{background-image:url(/_blob/2a0bdef1051029e9166ebedc5cef9204)}
+.sp2{background-image:url(/_blob/9846de36f935d670bbb87cac8e7b9393)}
+.sp3{background-image:url(/_blob/4779392895cda411846a54140e475dd9)}
+.sp4{background-image:url(/_blob/b2297d49528eb60bc073c731cce9099a)}
+.sp5{background-image:url(/_blob/747cf1ecba145ba77986fb27a97f1197)}
+.sp6{background-image:url(/_blob/89eb04ff20ca5ecf25f589f343254b82)}
 .mctrl{width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 24px}
 .mdays{width:100%;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
 .mgrid{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
@@ -36,11 +49,12 @@ a{color:#123c32}a:hover{color:#30563f}
 .mslider{width:100%;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
 .mslider .mcard{flex:0 0 250px;scroll-snap-align:start}
 @media (max-width:960px){.mgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.wall{columns:3 260px;column-gap:16px}
+.wall{display:flex;gap:16px;align-items:flex-start}
+.w-hide{display:none !important}
 .recap{width:100%;max-width:880px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .recap-i{flex:0 0 calc((100% - 30px) / 4)}
 @media (max-width:960px){.recap-i{flex-basis:calc((100% - 10px) / 2)}}
-@media (max-width:640px){.wall{columns:auto;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;align-items:flex-start;padding-bottom:10px}.wall img{flex:0 0 270px;width:270px !important;margin:0 !important;scroll-snap-align:start}}
+@media (max-width:640px){.wall{gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}.wall-col{display:contents !important}.wall img{flex:0 0 270px;width:270px !important;margin:0 !important;scroll-snap-align:start}.wall .w-hide{display:block !important}.wall-more{display:none !important}}
 .m-cta{display:none !important}
 .m-pad{display:none}
 @media (max-width:640px){
@@ -90,9 +104,9 @@ a{color:#123c32}a:hover{color:#30563f}
 
 <sc-if value="{{ sec.s1 }}" hint-placeholder-val="{{ true }}">
 <!-- S1 Hero -->
-<section style="padding: clamp(40px, 6vw, 72px) 20px clamp(56px, 7vw, 88px); background: #ffffff">
+<section style="position: relative; overflow: hidden; padding: clamp(40px, 6vw, 72px) 20px clamp(56px, 7vw, 88px); background: #ffffff">
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
-<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 24px">
+<div class="hero-txt" style="position: relative; z-index: 2; flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 24px">
 <div style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 99px; background: #f0f6ec; font-size: 15px; font-weight: 600; color: #123c32">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5e8f3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
 <span>Beograd i Novi&nbsp;Sad</span>
@@ -121,11 +135,13 @@ a{color:#123c32}a:hover{color:#30563f}
 </div>
 </div>
 </div>
-<div style="flex: 1 1 500px; min-width: 0; position: relative; padding: 10px 0 28px">
-<div role="img" aria-label="Mesto za hero vizual" style="width: 100%; aspect-ratio: 959 / 532; box-sizing: border-box; border-radius: 24px; border: 2px dashed #accb7d; background: #f0f6ec; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 24px; text-align: center">
-<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#5e8f3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"></rect><circle cx="9" cy="10" r="2"></circle><path d="M21 16l-5-5-8 9"></path></svg>
-<span style="font-size: 18px; font-weight: 700; color: #123c32">Mesto za hero&nbsp;vizual</span>
-<span style="max-width: 320px; font-size: 14px; line-height: 1.45; color: #3d4a41; text-wrap: balance">Fotografija ili video, čeka se Vuksanov&nbsp;izbor</span>
+<div class="hero-vis" style="flex: 1 1 0; min-width: 0">
+<div id="nbx-hero-food" aria-hidden="true">
+<img class="k" src="/_blob/a966c1a16313282d9fbf501d3514d85c" alt="" width="587" height="1000">
+<img class="d" src="/_blob/b83e4c5fab90f169e70a6f77a0b79fd2" alt="" width="1000" height="670">
+<img class="r" src="/_blob/4edc28c3f13c6b48c6d4b24c7fdcccfa" alt="" width="1000" height="642">
+<img class="v" src="/_blob/2095fa56e72e757ae00a4c44640bc543" alt="" width="1000" height="986">
+<img class="u" src="/_blob/cfb56e985708ad92197336802ebe1a79" alt="" width="1000" height="603">
 </div>
 </div>
 </div>
@@ -261,6 +277,7 @@ a{color:#123c32}a:hover{color:#30563f}
 </div>
 <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #4d7a31">{{ m.tag }}</span>
 <h3 style="margin: -4px 0 0; font-size: 18px; line-height: 1.25; font-weight: 700; color: #123c32">{{ m.name }}</h3>
+<sc-if value="{{ m.sejk }}" hint-placeholder-val="{{ false }}"><span style="margin-top: -4px; font-size: 13px; font-weight: 600; color: #5e8f3d">{{ m.sejkTxt }}</span></sc-if>
 <span style="font-size: 13px; font-weight: 500; color: #4d7a31">{{ m.macros }}</span>
 </article>
 </sc-for>
@@ -444,16 +461,17 @@ a{color:#123c32}a:hover{color:#30563f}
 <span style="font-size: 15px; font-weight: 500; color: #4d7a31">Nutribox korisnica,&nbsp;Beograd</span>
 </div>
 <div class="wall" style="width: 100%">
-<img src="/_blob/b1b4e6e1cd0ef54976785d35770e1c7d" alt="Poruka zadovoljnog korisnika 1" width="469" height="563" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
-<img src="/_blob/2d84f2d819ced9430341e6ef3f4045b1" alt="Poruka zadovoljnog korisnika 2" width="468" height="167" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
-<img src="/_blob/943985ac3e62784b716c1bba1122bd8e" alt="Poruka zadovoljnog korisnika 3" width="469" height="464" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
-<img src="/_blob/6939c0e1fb3abccbe8d2cffeb41f3bcf" alt="Poruka zadovoljnog korisnika 4" width="469" height="133" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
-<img src="/_blob/4d884f145ff01de41a1995ad53e8d315" alt="Poruka zadovoljnog korisnika 5" width="468" height="368" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
-<img src="/_blob/5e4e66659da7f24ab802fa2ded5ba6f8" alt="Poruka zadovoljnog korisnika 6" width="469" height="277" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
-<img src="/_blob/28f4114881093ab6bc0b621bb3d365b8" alt="Poruka zadovoljnog korisnika 7" width="469" height="179" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
-<img src="/_blob/0581996be5ea55f522657e0e8d859593" alt="Poruka zadovoljnog korisnika 8" width="468" height="284" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
-<img src="/_blob/fcb7ef5c674e13aa0c03b0d790bc548c" alt="Poruka zadovoljnog korisnika 9" width="469" height="117" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
+<sc-for list="{{ wallCols }}" as="col" hint-placeholder-count="3">
+<div class="wall-col" style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<sc-for list="{{ col.items }}" as="w" hint-placeholder-count="4">
+<img class="{{ w.cls }}" src="{{ w.src }}" alt="{{ w.alt }}" width="{{ w.w }}" height="{{ w.h }}" loading="lazy" style="display: block; width: 100%; height: auto; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff">
+</sc-for>
 </div>
+</sc-for>
+</div>
+<sc-if value="{{ wallMore }}" hint-placeholder-val="{{ true }}">
+<button type="button" class="btn wall-more" onClick="{{ showWall }}" style="min-height: 52px; padding: 14px 24px; border-radius: 14px; border: 2px solid #123c32; background: #ffffff; color: #123c32; font-family: inherit; font-size: 17px; font-weight: 700; cursor: pointer">{{ wallMoreLabel }}</button>
+</sc-if>
 </div>
 </section>
 </sc-if>
@@ -888,7 +906,10 @@ class Component extends DCLogic {
       name: nb(c[0]),
       posno: /posn/i.test(c[0]),
       kcal: fmt(c[3]) + ' kcal',
-      macros: c[4] + 'g proteina · ' + c[5] + 'g UH · ' + c[6] + 'g masti'
+      macros: c[4] + 'g proteina · ' + c[5] + 'g UH · ' + c[6] + 'g masti',
+      // uz užinu ide proteinski šejk (paket 2.000 kcal: Fish, Vegetarijanski i Vegan); makroi ga već uključuju
+      sejk: c[2] === 1 && [0, 1, 1, 1.5, 0][c[1]] > 0,
+      sejkTxt: c[1] === 3 ? '+ biljni proteinski šejk' : '+ proteinski šejk'
     }));
 
     const planDefs = [
@@ -965,7 +986,58 @@ class Component extends DCLogic {
     const dayAcc = ['nedelju', 'ponedeljak', 'utorak', 'sredu', 'četvrtak', 'petak', 'subotu'][wd];
     const dayGen = ['nedelje', 'ponedeljka', 'utorka', 'srede', 'četvrtka', 'petka', 'subote'][wd];
 
-    return { sec, filters, meals, plans, selLabel, faqs, dayAcc, dayGen };
+    // Zid sa porukama korisnika: 33 screenshota u 3 kolone (svaka slika ide u trenutno najnižu kolonu, isti raspored i kad se prikaže sve); na desktopu prvo 9, ostalo na dugme
+    const WALL = [
+      ["75b6d4bafa74232849bf3a26077e81ba", 600, 357, "Poruka korisnika: odličan si u spremanju hrane"],
+      ["f5b9d2b32fd752a5c435eb1b2fbf009f", 600, 557, "Poruka korisnice: ovo što stvaraš je čista umetnost"],
+      ["4b10b7ef757c098b305193ebd4d6237f", 600, 323, "Poruka korisnice: svaki obrok je blaženstvo ukusa"],
+      ["0480a8ad3128a11d4079342c64faaeae", 600, 467, "Poruka korisnice: obroci su sada stvarno izvrsni"],
+      ["9ffaa60ef65f1254f41e54af26999f34", 600, 275, "Poruka korisnice: klopa je fantazija"],
+      ["f2e04407235ecc08b70f4b1e1e47bb93", 600, 356, "Poruka korisnice: hrana je preukusna, ne znam koji obrok je bolji"],
+      ["943985ac3e62784b716c1bba1122bd8e", 469, 464, "Poruka zadovoljnog korisnika"],
+      ["124a06d6741f52a3e5e993d98606fe5a", 600, 250, "Poruka korisnice: losos burger na mediteranskoj salati je savršenstvo"],
+      ["4d884f145ff01de41a1995ad53e8d315", 468, 368, "Poruka zadovoljnog korisnika"],
+      ["878da8b0404b8bc5922b2c8d8fa0618d", 600, 764, "Poruka korisnice: utisak je kao da jedem u dobrom restoranu"],
+      ["fd853823cbe331aaddec381474f78bb2", 600, 644, "Poruka korisnice: osećaj da imam obroke u lux restoranu"],
+      ["2bdfe54ce589181697d56b06a93406d7", 600, 338, "Poruka korisnice: ova pita je divna"],
+      ["48e197bbabf1994e62dca2c20e3bb8ef", 600, 451, "Poruka korisnika na engleskom: losos je bio savršen, užine divne"],
+      ["b1b4e6e1cd0ef54976785d35770e1c7d", 469, 563, "Poruka zadovoljnog korisnika"],
+      ["1a51dd099b3d79bab0e51f328f54999a", 600, 633, "Poruka korisnice: sve je bilo divno, užina je strava"],
+      ["91f69bdfc39db5c0e9bd383f857b2398", 600, 422, "Poruka korisnika: oduševljeni smo, sve je zaista odlično"],
+      ["a2a2b53527f88d220559b084062c135b", 600, 352, "Poruka korisnika: doručak je bio top, obroci nutritivno bogati"],
+      ["665bab034c6c59c3fb7745bb6c1a6629", 600, 568, "Poruka korisnice: čizkejk je savršen"],
+      ["cd548ad4ad26ac8e83b09c4744081a33", 600, 302, "Poruka korisnice: sve je toliko ukusno, baš kvalitetni sastojci"],
+      ["0ae5e1b281c4c11423df8e6da103105f", 600, 740, "Poruka korisnice: jučerašnji obroci su bili izvrsni"],
+      ["d4e8a9ddf26316f87738462d19aff1db", 600, 238, "Poruka korisnice: do sad nisam jela dobru slanu palentu"],
+      ["95339833000aa2de703600f805736dcb", 600, 513, "Poruka korisnice: tvoje umeće je davno isprobano"],
+      ["9ea3a9f9bde7806a1a770fd801d569fa", 600, 561, "Poruka korisnika: sve je u najboljem redu, posebno granola i potaže"],
+      ["7714d9c4eeab69daf6f9b5c44695d0c8", 600, 372, "Poruka korisnika: ručak je bio odličan"],
+      ["e32a9d8b5d80a1cfbcfe9b6175354bd6", 600, 212, "Poruka korisnice: najbolja investicija koju sam mogla napraviti"],
+      ["646a71e7c6d8011373aebdf6de732393", 600, 231, "Poruka korisnika: jaja su odlična, da mi je znati kako ih pravite"],
+      ["df96e8d6730f1ca842b83ea1f89b1a6a", 600, 373, "Poruka korisnice: današnja hrana još bolja nego juče"],
+      ["2d84f2d819ced9430341e6ef3f4045b1", 468, 167, "Poruka zadovoljnog korisnika"],
+      ["6939c0e1fb3abccbe8d2cffeb41f3bcf", 469, 133, "Poruka zadovoljnog korisnika"],
+      ["5e4e66659da7f24ab802fa2ded5ba6f8", 469, 277, "Poruka zadovoljnog korisnika"],
+      ["28f4114881093ab6bc0b621bb3d365b8", 469, 179, "Poruka zadovoljnog korisnika"],
+      ["0581996be5ea55f522657e0e8d859593", 468, 284, "Poruka zadovoljnog korisnika"],
+      ["fcb7ef5c674e13aa0c03b0d790bc548c", 469, 117, "Poruka zadovoljnog korisnika"]
+    ];
+    const WALL_FIRST = 9;
+    const wallAll = !!st.wallAll;
+    const cols = [{ items: [], h: 0 }, { items: [], h: 0 }, { items: [], h: 0 }];
+    WALL.forEach((x, i) => {
+      const c = cols.reduce((m, k) => (k.h < m.h ? k : m), cols[0]);
+      c.items.push({ src: '/_blob/' + x[0], w: x[1], h: x[2], alt: x[3], cls: i >= WALL_FIRST && !wallAll ? 'w-hide' : '' });
+      c.h += x[2] / x[1];
+    });
+    const wallCols = cols.map(c => ({ items: c.items }));
+    const nMore = WALL.length - WALL_FIRST;
+    const utis = n => (n % 10 === 1 && n % 100 !== 11 ? 'utisak' : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'utiska' : 'utisaka');
+    const wallMore = !wallAll;
+    const wallMoreLabel = 'Prikaži još ' + nMore + '\u00a0' + utis(nMore);
+    const showWall = () => this.setState({ wallAll: true });
+
+    return { sec, filters, meals, plans, selLabel, faqs, dayAcc, dayGen, wallCols, wallMore, wallMoreLabel, showWall };
   }
 }
 </script>

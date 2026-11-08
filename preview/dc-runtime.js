@@ -101,7 +101,11 @@
         if (typeof fn === 'function') el.addEventListener(a.name.slice(2).toLowerCase(), fn);
         continue;
       }
-      const v = a.value.indexOf('{{') < 0 ? a.value : interp(a.value, scope);
+      let v = a.value.indexOf('{{') < 0 ? a.value : interp(a.value, scope);
+      // Paths built at runtime ('/_blob/' + id) are not rewritten by the build, so map them here.
+      if (v.indexOf('/_blob/') >= 0 && window.DC_BLOBS) {
+        v = v.replace(/\/_blob\/([0-9a-f]{32})/g, (m, id) => window.DC_BLOBS[id] ? '../assets/' + window.DC_BLOBS[id] : m);
+      }
       if (a.namespaceURI) el.setAttributeNS(a.namespaceURI, a.name, v); else el.setAttribute(a.name, v);
     }
     const kids = renderChildren(node.localName === 'template' ? node.content : node, scope, ctx, []);

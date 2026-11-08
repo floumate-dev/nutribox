@@ -3,6 +3,7 @@
 Run from the repo root:  python3 tools/build_preview.py
 The pages render the canvas components with preview/dc-runtime.js and load images from ../assets/.
 """
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -10,6 +11,7 @@ from pathlib import Path
 repo = Path(__file__).resolve().parent.parent
 out = repo / 'preview'
 index = json.loads((repo / 'assets/index.json').read_text())
+rt_ver = hashlib.sha1((out / 'dc-runtime.js').read_bytes()).hexdigest()[:8]
 
 
 def blob(m):
@@ -37,7 +39,8 @@ def page(fname, title, root, comps, props):
 </head>
 <body style="margin:0">
 <div id="app"></div>
-{''.join(src(c) for c in comps)}<script src="dc-runtime.js"></script>
+{''.join(src(c) for c in comps)}<script>window.DC_BLOBS = {json.dumps({k: v['file'] for k, v in index.items()})};</script>
+<script src="dc-runtime.js?v={rt_ver}"></script>
 <script>DCMount(document.getElementById('app'), {json.dumps(root)}, {json.dumps(props)});</script>
 </body>
 </html>

@@ -4,7 +4,7 @@
   "boards": {
     "Desktop2.dc.html": {
       "expand": "fill",
-      "h": 7260,
+      "h": 7450,
       "is_interactive": true,
       "title": "Desktop 2/2",
       "w": 1440,
@@ -22,7 +22,7 @@
     },
     "Mobile.dc.html": {
       "expand": "fill",
-      "h": 5180,
+      "h": 5250,
       "is_interactive": true,
       "title": "Mobilni 1/3",
       "w": 390,
@@ -31,7 +31,7 @@
     },
     "Mobile2.dc.html": {
       "expand": "fill",
-      "h": 6620,
+      "h": 6650,
       "is_interactive": true,
       "title": "Mobilni 2/3",
       "w": 390,
@@ -85,7 +85,7 @@
   "notes": {
     "asseti": {
       "fill": "orange",
-      "text": "Asseti\n\nUbačeno: portreti Vuksana, Miloša i Amera; 5 slika ljudi u hero sekciji; sa live sajta 8 video utisaka i 9 screenshotova poruka; u hero sekciji privremeno placeholder umesto vizuala.\n\nJelovnik 9.11. do 29.11.: 5 menija × 21 dan × 4 obroka (420 jela, 304 fotke), makroi za svih 5 veličina. Posno = jela koja u nazivu imaju Posni/Posna (18).",
+      "text": "Asseti\n\nUbačeno: portreti Vuksana, Miloša i Amera; 5 slika ljudi u hero sekciji; 8 video utisaka sa live sajta; 33 screenshota poruka (9 sa live sajta i 24 nova od Vuksana, na desktopu prvih 9 pa dugme Prikaži još); u hero sekciji animacija: kesa, ručak, večera, užina i doručak uleću sa desne strane (fajlovi od dizajnera, opcija I).\n\nJelovnik 9.11. do 29.11. (druga isporuka, 8.11.): 5 menija × 21 dan × 4 obroka (420 jela, 263 nove fotke), makroi za svih 5 veličina, Vegan do 2.600 kcal. Užine uključuju proteinski šejk po pravilima iz Excela, pa na kartici piše \"+ proteinski šejk\". Posno = jela koja u nazivu imaju Posni/Posna (18).",
       "w": 380,
       "x": 4530,
       "y": 0
@@ -114,7 +114,7 @@
     },
     "vuksan": {
       "fill": "teal",
-      "text": "Za Vuksana / tim\n\n1. URL stranice sa jelovnikom na Webflow-u (npr. nutribox.rs/jelovnik), za dugme Pogledaj meni za narednu nedelju. Na canvasu dugme već vodi na artboard Jelovnik.\n2. Šta ide u hero vizual (fotografija, video ili kolaž). Do tada stoji placeholder.\n\nLinkovi: sva dugmad Izaberi plan i Nastavi na porudžbinu vode na nutribox.rs/order-form; FAQ 11 na besplatan poziv za porodice, FAQ 15 na besplatan poziv za firme (iClosed); powered by Floumate na floumate.com.",
+      "text": "Za Vuksana / tim\n\n1. URL stranice sa jelovnikom na Webflow-u (npr. nutribox.rs/jelovnik), za dugme Pogledaj meni za narednu nedelju. Na canvasu dugme već vodi na artboard Jelovnik.\n\nLinkovi: sva dugmad Izaberi plan i Nastavi na porudžbinu vode na nutribox.rs/order-form; FAQ 11 na besplatan poziv za porodice, FAQ 15 na besplatan poziv za firme (iClosed); powered by Floumate na floumate.com.",
       "w": 380,
       "x": 4530,
       "y": 600
