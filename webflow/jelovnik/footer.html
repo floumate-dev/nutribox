@@ -1,0 +1,9 @@
+<script>
+(function () {
+  var l = (document.documentElement.lang || 'sr').slice(0, 2).toLowerCase();
+  if (!/^(en|ru)$/.test(l)) l = 'sr';
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@a9260ae8a88de777bd6aa1ac9b6af7766e8a8ac8/webflow/jelovnik/jelovnik.' + l + '.js';
+  document.body.appendChild(s);
+})();
+</script>
