@@ -340,7 +340,8 @@ class Component extends DCLogic {
 
     const mi = st.mi === undefined ? 0 : st.mi;
     const isPosno = mi === 5;
-    const maxSz = mi === 3 ? 3 : 4;
+    // Vegetarijanski i Vegan meni su dostupni do 2.000 kcal (Vuksan, 8.11.)
+    const maxSz = mi === 2 || mi === 3 ? 2 : 4;
     const sz = Math.min(st.sz === undefined ? 2 : st.sz, maxSz);
     const wk = st.wk === undefined ? nextWk : st.wk;
     const on = 'background: #123c32; color: #ffffff; border: 1.5px solid #123c32';
@@ -348,7 +349,7 @@ class Component extends DCLogic {
 
     const menuTabs = MENUS.map((label, i) => ({ label, on: i === mi ? 'true' : 'false', style: i === mi ? on : off, pick: () => this.setState({ mi: i }) }));
     const sizeOpts = KCAL.slice(0, maxSz + 1).map((k, i) => ({ label: fmt(k) + NB + 'kcal', on: i === sz ? 'true' : 'false', style: i === sz ? on : off, pick: () => this.setState({ sz: i }) }));
-    const sizeNote = nb(fmt(KCAL[sz]) + ' kcal dnevno: ' + PACK[sz] + '.' + (mi === 3 ? ' Vegan meni je dostupan do 2.600 kcal.' : ''));
+    const sizeNote = nb(fmt(KCAL[sz]) + ' kcal dnevno: ' + PACK[sz] + '.' + (mi === 2 || mi === 3 ? ' ' + MENUS[mi] + ' meni je dostupan do 2.000 kcal.' : ''));
     const dayNum = i => J.days[i][1].split('.')[0];
     const weekTabs = [0, 1, 2].map(w => ({
       label: dayNum(w * 7) + '.–' + dayNum(w * 7 + 6) + '. nov' + (w === nextWk ? ' · naredna' : ''),
@@ -1330,7 +1331,7 @@ class Component extends DCLogic {
 
     // FAQ od Vuksana (7. 11. 2026); treca kolona je opcioni link ispod odgovora
     const faqDefs = [
-      ['Koji paket da izaberem?', 'Paket biraš prema svom cilju. NutriSlim (1300 kcal za žene, 1600 kcal za muškarce) je za mršavljenje, NutriBalance (1600/2000 kcal) za održavanje težine, a NutriPump (2000/2600 kcal) za aktivne i izgradnju mišića. NutriMax (3000 kcal) je samo za veoma aktivne muškarce. Kalorije su tačne, dok makronutrijenti mogu blago da variraju u zavisnosti od obroka. Ako nisi siguran, pozovi korisničku podršku na 0800 001 007 i pomoći ćemo ti da izabereš.'],
+      ['Koji paket da izaberem?', 'Paket biraš prema svom cilju. NutriSlim (1300 kcal za žene, 1600 kcal za muškarce) je za mršavljenje, NutriBalance (1600/2000 kcal) za održavanje težine, a NutriPump (2000/2600 kcal) za aktivne i izgradnju mišića. NutriMax (3000 kcal) je samo za veoma aktivne muškarce. Vegetarijanski i Vegan meni su dostupni do 2000 kcal. Kalorije su tačne, dok makronutrijenti mogu blago da variraju u zavisnosti od obroka. Ako nisi siguran, pozovi korisničku podršku na 0800 001 007 i pomoći ćemo ti da izabereš.'],
       ['Gde dostavljate?', 'Dostavljamo u Beogradu i Novom Sadu. U Beogradu zasad ne dostavljamo u Železnik, Borču, Kaluđericu i prigradske opštine. Za proveru tvoje adrese pozovi korisničku podršku na 0800 001 007.'],
       ['Kada stiže prva dostava?', 'Prva dostava stiže najranije prekosutra od dana porudžbine. Svi obroci za taj dan stižu u jednoj isporuci na tvoju adresu.'],
       ['Mogu li prvo da probam?', 'Možeš. Kreni sa planom od 5 dana, koji je samo za radne dane, ili sa planom od 7 dana. Cena za XS–M veličine je 17.400 RSD za 5 dana i 22.400 RSD za 7 dana. Ako ti se dopadne, doplatom razlike prelaziš na plan od 20, odnosno 28 dana i dobijaš bonus dane gratis.'],

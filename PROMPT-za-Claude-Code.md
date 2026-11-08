@@ -81,7 +81,7 @@ Landing je podeljen na više artboarda samo zato što canvas prikazuje najviše 
 - Otvara se na **narednoj nedelji**: to je nedelja koja počinje prvog ponedeljka posle današnjeg dana. Jelovnik pokriva 9. do 29. novembra 2026 (tri nedelje).
 - Prikazuje svih 7 dana nedelje. Za svaki dan su tu 4 obroka sa slikom, nazivom, kcal i makroima, plus ukupno za dan. Današnji dan dobija oznaku "DANAS".
 - **Izbor menija:** Balance, Fish, Vegetarijanski, Vegan, Bez glutena i Posno. Posno prikazuje svih 18 posnih jela iz celog jelovnika.
-- **Izbor paketa:** 1.300, 1.600, 2.000, 2.600 i 3.000 kcal. Ispod piše kom paketu ta veličina odgovara. Vegan ide do 2.600 kcal (XL se veganima ne nudi).
+- **Izbor paketa:** 1.300, 1.600, 2.000, 2.600 i 3.000 kcal. Ispod piše kom paketu ta veličina odgovara. Vegetarijanski i Vegan idu do 2.000 kcal (L i XL se za njih ne nude).
 - **Šejk:** na užini piše "+ proteinski šejk" (za Vegan "+ biljni proteinski šejk") kad izabrana veličina uključuje šejk.
 - **Izbor nedelje:** tri dugmeta, a naredna nedelja je označena.
 - **Ostalo:** gore je link "Nazad na početnu". Na dnu su isti završni CTA i footer kao na landingu.

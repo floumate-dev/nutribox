@@ -328,7 +328,8 @@ class Component extends DCLogic {
 
     const mi = st.mi === undefined ? 0 : st.mi;
     const isPosno = mi === 5;
-    const maxSz = mi === 3 ? 3 : 4;
+    // Vegetarijanski i Vegan meni su dostupni do 2.000 kcal (Vuksan, 8.11.)
+    const maxSz = mi === 2 || mi === 3 ? 2 : 4;
     const sz = Math.min(st.sz === undefined ? 2 : st.sz, maxSz);
     const wk = st.wk === undefined ? nextWk : st.wk;
     const on = 'background: #123c32; color: #ffffff; border: 1.5px solid #123c32';
@@ -336,7 +337,7 @@ class Component extends DCLogic {
 
     const menuTabs = MENUS.map((label, i) => ({ label, on: i === mi ? 'true' : 'false', style: i === mi ? on : off, pick: () => this.setState({ mi: i }) }));
     const sizeOpts = KCAL.slice(0, maxSz + 1).map((k, i) => ({ label: fmt(k) + NB + 'kcal', on: i === sz ? 'true' : 'false', style: i === sz ? on : off, pick: () => this.setState({ sz: i }) }));
-    const sizeNote = nb(fmt(KCAL[sz]) + ' kcal dnevno: ' + PACK[sz] + '.' + (mi === 3 ? ' Vegan meni je dostupan do 2.600 kcal.' : ''));
+    const sizeNote = nb(fmt(KCAL[sz]) + ' kcal dnevno: ' + PACK[sz] + '.' + (mi === 2 || mi === 3 ? ' ' + MENUS[mi] + ' meni je dostupan do 2.000 kcal.' : ''));
     const dayNum = i => J.days[i][1].split('.')[0];
     const weekTabs = [0, 1, 2].map(w => ({
       label: dayNum(w * 7) + '.–' + dayNum(w * 7 + 6) + '. nov' + (w === nextWk ? ' · naredna' : ''),
