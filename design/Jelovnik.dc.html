@@ -21,22 +21,22 @@ body{margin:0}
 .jl-card{display:flex;flex-direction:column;gap:14px;min-width:0}
 .jl-img{position:relative;width:100%;aspect-ratio:1/1;border-radius:20px;overflow:hidden;background-color:#e4efdc;background-repeat:no-repeat}
 .jl-wk{background-size:400% 700%}
-.jl-po{background-size:600% 300%;background-image:url(/_blob/be0e8408087d67f0aff97b2423547726)}
-.jl-s0{background-image:url(/_blob/9bfd7de5b881a454c2b131ae78690cdb)}
-.jl-s1{background-image:url(/_blob/a492183b2f9351927719b61662517a44)}
-.jl-s2{background-image:url(/_blob/a82ec9ff0b8748f8bed0bb31e876da7f)}
-.jl-s3{background-image:url(/_blob/d22c9b9bdbb0f27ab324fa5ba9e4274d)}
-.jl-s4{background-image:url(/_blob/666d33ff00ea8aedf028b27382dcd344)}
-.jl-s5{background-image:url(/_blob/86a1892f0d404c8e88b581667d6d4846)}
-.jl-s6{background-image:url(/_blob/832c9b607fccb2308f8cb0bd95fb47dd)}
-.jl-s7{background-image:url(/_blob/64cc2fa15a96f07b8f7d7be80c97fe2f)}
-.jl-s8{background-image:url(/_blob/2734c42493f0d9d0298c522bba681836)}
-.jl-s9{background-image:url(/_blob/862388e8ea635615ba806695de7007b4)}
-.jl-s10{background-image:url(/_blob/ad4802db6ef64d93944957edaf55ac6f)}
-.jl-s11{background-image:url(/_blob/c256211f25a17362dd0037b04db8726a)}
-.jl-s12{background-image:url(/_blob/5959b1fe3e4698ee4011aefdbb9b277d)}
-.jl-s13{background-image:url(/_blob/4b98bf81c79d7d13fca603c77ee7a1a5)}
-.jl-s14{background-image:url(/_blob/c812ac9c10786518c107a2c1707a677b)}
+.jl-po{background-size:600% 300%;background-image:url(/_blob/747cf1ecba145ba77986fb27a97f1197)}
+.jl-s0{background-image:url(/_blob/496ee21909031c91ff9ec95b139e349e)}
+.jl-s1{background-image:url(/_blob/26db6cff449df6efd4051302048b9a8f)}
+.jl-s2{background-image:url(/_blob/814e09c22e2ab58e81bf3751cba376f7)}
+.jl-s3{background-image:url(/_blob/30a8f978af36f10bf82475e1f214b8e3)}
+.jl-s4{background-image:url(/_blob/68b8178e0a7ec9aff2d5d35771c78bf7)}
+.jl-s5{background-image:url(/_blob/e2a59e451d156055e7b0841e072c35d9)}
+.jl-s6{background-image:url(/_blob/64c0c49da0eddfbcd890e5b8303de45a)}
+.jl-s7{background-image:url(/_blob/3c57ed546daf1ca0d8b9489b3db052a5)}
+.jl-s8{background-image:url(/_blob/708972e727b3224710988f6982a91e77)}
+.jl-s9{background-image:url(/_blob/9fbae622b08c316a8bb6a8ffb1c55a40)}
+.jl-s10{background-image:url(/_blob/7046ec6d0d32da48fe6822c099017b13)}
+.jl-s11{background-image:url(/_blob/f46b0d11035b17955223efc22972b9ed)}
+.jl-s12{background-image:url(/_blob/3ec7a2381cbd7ec2ee19eed37048bfd7)}
+.jl-s13{background-image:url(/_blob/913142711eccd4e64ae1535536a08d08)}
+.jl-s14{background-image:url(/_blob/aadee0538682044aabcf8913ef53f249)}
 @media (max-width:960px){.jl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){
 .jl-row{grid-template-columns:1fr;gap:10px}
@@ -118,6 +118,7 @@ body{margin:0}
 <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
 <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: #4d7a31">{{ c.tag }}</span>
 <h3 class="jl-name" style="margin: 0; font-size: 17px; line-height: 1.3; font-weight: 700; color: #123c32; text-wrap: pretty">{{ c.name }}</h3>
+<sc-if value="{{ c.sejk }}" hint-placeholder-val="{{ false }}"><span style="margin-top: -2px; font-size: 14px; font-weight: 600; color: #5e8f3d">{{ c.sejkTxt }}</span></sc-if>
 <span style="font-size: 15px; font-weight: 700; color: #123c32">{{ c.kcal }}</span>
 <span style="font-size: 13px; line-height: 1.4; font-weight: 500; color: #4d7a31">{{ c.macros }}</span>
 </div>
@@ -146,6 +147,7 @@ body{margin:0}
 <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
 <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: #4d7a31">{{ c.tag }}</span>
 <h3 class="jl-name" style="margin: 0; font-size: 17px; line-height: 1.3; font-weight: 700; color: #123c32; text-wrap: pretty">{{ c.name }}</h3>
+<sc-if value="{{ c.sejk }}" hint-placeholder-val="{{ false }}"><span style="margin-top: -2px; font-size: 14px; font-weight: 600; color: #5e8f3d">{{ c.sejkTxt }}</span></sc-if>
 <span style="font-size: 15px; font-weight: 700; color: #123c32">{{ c.kcal }}</span>
 <span style="font-size: 13px; line-height: 1.4; font-weight: 500; color: #4d7a31">{{ c.macros }}</span>
 </div>
@@ -162,7 +164,7 @@ body{margin:0}
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5430}}'>
 class Component extends DCLogic {
   jelovnik() {
-    // Nutribox jelovnik 9.11. do 29.11.2026: m[meni][dan][obrok] = [jelo, kcal/P/UH/M za XS, S, M, L, XL]
+    // Nutribox jelovnik 9.11. do 29.11.2026 (druga isporuka): m[meni][dan][obrok] = [jelo, kcal/P/UH/M za XS, S, M, L, XL; Vegan do L]
     return {
       days: [["Pon","9.11.","Ponedeljak, 9. novembar"],["Uto","10.11.","Utorak, 10. novembar"],["Sre","11.11.","Sreda, 11. novembar"],["Čet","12.11.","Četvrtak, 12. novembar"],["Pet","13.11.","Petak, 13. novembar"],["Sub","14.11.","Subota, 14. novembar"],["Ned","15.11.","Nedelja, 15. novembar"],["Pon","16.11.","Ponedeljak, 16. novembar"],["Uto","17.11.","Utorak, 17. novembar"],["Sre","18.11.","Sreda, 18. novembar"],["Čet","19.11.","Četvrtak, 19. novembar"],["Pet","20.11.","Petak, 20. novembar"],["Sub","21.11.","Subota, 21. novembar"],["Ned","22.11.","Nedelja, 22. novembar"],["Pon","23.11.","Ponedeljak, 23. novembar"],["Uto","24.11.","Utorak, 24. novembar"],["Sre","25.11.","Sreda, 25. novembar"],["Čet","26.11.","Četvrtak, 26. novembar"],["Pet","27.11.","Petak, 27. novembar"],["Sub","28.11.","Subota, 28. novembar"],["Ned","29.11.","Nedelja, 29. novembar"]],
       m: [
@@ -236,27 +238,27 @@ class Component extends DCLogic {
           [["Tramezzino sa salatom od jaja",[214,15,23,7,220,13,32,5,414,24,58,9,489,28,71,10,633,35,94,13]],["Mafin od banane i borovnice sa vanila kremom",[394,29,46,10,665,56,72,17,665,56,72,17,828,81,81,20,828,81,81,20]],["Kuglice od belog pasulja u sosu od paradajza sa pireom od krompira",[303,13,40,10,355,14,49,11,374,16,50,12,514,20,72,16,756,30,106,24]],["Tortilja sa pečenim tofuom i povrćem",[390,23,38,16,367,21,38,15,552,26,69,19,772,34,100,26,744,44,74,30]]]
         ],
         [
-          [["Posna pita od leblebijinog brašna sa šargarepom i blitvom",[323,11,33,16,349,12,37,17,366,12,37,19]],["Posni kolač od bundeve sa kremom od urmi",[408,28,52,10,686,55,81,16,849,80,90,19]],["Sojini medaljoni u sosu od jabuke i timijana",[288,21,33,8,285,17,38,7,410,20,61,10]],["Činija sa leblebijama u teriyaki sosu",[284,20,33,8,282,17,38,7,365,20,55,7]]],
-          [["Kajgana od tofua sa pečenim krompirom",[319,26,21,14,265,21,20,11,283,20,28,10]],["Posni banana bread sa kakao kremom",[386,29,48,8,654,56,76,14,817,81,85,17]],["Kuglice od sočiva u sosu od karamelizovanog povrća",[373,16,49,12,424,17,58,14,552,20,79,17]],["Wok sa edamameom i pirinčanim nudlama",[218,12,30,5,260,13,39,6,334,15,55,6]]],
-          [["Ovsena kaša sa bananom i kakaom na biljnom mleku",[223,13,28,7,221,11,30,6,219,10,31,6]],["Chia puding sa vanilom i šumskim voćem",[379,30,36,13,644,58,58,20,807,83,67,23]],["Falafel na pireu od šargarepe sa kinoom",[317,13,39,12,391,16,51,14,444,17,59,15]],["Tortilja sa pečenim leblebijama i biljnim cacikijem",[404,17,58,11,355,14,52,10,534,19,82,14]]],
-          [["Doručak burito sa kajganom od tofua i avokadom",[306,12,35,13,278,10,34,11,456,15,64,15]],["Posni mafin od borovnice sa kokosovim kremom",[400,29,44,12,675,56,70,19,838,81,79,22]],["Sojini medaljoni u sosu od pečene paprike",[309,23,31,10,304,18,34,10,325,19,37,11]],["Kuglice od sočiva sa bulgurom i tahini dipom",[286,16,35,9,333,17,46,9,362,18,53,9]]],
-          [["Sendvič na kiselom testu sa salatom od tofua i krastavcem",[312,22,32,11,240,15,29,7,239,14,31,6]],["Posni kolač od jabuke i cimeta",[385,28,46,10,652,54,73,16,815,79,82,19]],["Pečeni tofu sa sosom od paradajza i bosiljka",[369,20,37,16,404,19,45,16,527,22,65,20]],["Pirinčane nudle sa sojinim ljuspicama",[231,16,30,5,295,17,42,6,411,20,67,7]]],
-          [["Pečeni batat sa začinjenim leblebijama, avokadom i spanaćem",[276,6,41,10,352,8,52,12,423,9,63,15]],["Kakao puding sa višnjom",[346,30,42,6,595,58,66,11,758,83,75,14]],["Sojini medaljoni u kremastom sosu od pečuraka",[342,22,38,12,353,20,41,12,423,22,52,14]],["Činija sa pečenim tofuom na meksički način",[323,22,26,14,306,17,33,12,394,19,53,12]]],
-          [["Tramezzino sa dimljenim tofuom i avokadom",[206,12,17,10,215,10,26,8,203,9,26,7]],["Posni kolač od maka i limuna",[401,29,43,13,676,56,68,20,839,81,77,23]],["Kuglice od belog pasulja sa limunom i ruzmarinom",[296,15,39,9,274,11,40,8,330,12,51,9]],["Tortilja sa falafelom i pečenim povrćem",[435,18,58,14,452,18,60,15,637,24,92,20]]],
-          [["Engleski mafin sa kajganom od tofua i avokadom",[310,16,38,11,308,13,44,9,361,15,53,10]],["Raw kolač sa kakaom i višnjom",[396,28,36,15,668,55,58,24,831,80,67,27]],["Kuglice od leblebija sa sosom od pečenog paradajza",[264,12,32,10,295,13,36,11,368,15,46,14]],["Edamame u slatko-kiselom sosu sa jasmin pirinčem",[340,22,42,10,325,16,50,7,440,18,78,7]]],
-          [["Posna kukuruzna pita sa tikvicom i krem od avokada",[213,6,20,12,264,8,27,14,257,8,26,13]],["Ovsena kaša sa jabukom i cimetom",[361,30,43,8,617,57,68,13,780,82,77,16]],["Sojini medaljoni sa demiglas sosom, pire od batata i kinoa",[333,26,36,9,328,19,44,8,390,20,56,10]],["Tortilja sa kuglicama od sočiva i posnim cezar dresingom",[404,18,53,14,387,17,51,13,566,22,81,17]]],
-          [["Bajgla sa začinjenim leblebijama i avokadom",[272,10,40,8,336,12,49,10,357,12,50,12]],["Chia puding sa kakaom i bananom",[385,30,38,13,652,58,60,20,815,83,69,23]],["Pečeni tofu sa sosom od mirođije, pire od celera i pirinač",[338,22,28,15,328,17,38,12,490,21,69,14]],["Činija sa kuglicama od belog pasulja i kus kusom",[305,17,42,8,283,14,42,6,334,16,53,6]]],
-          [["Doručak burito sa avokadom, semenkama i posnim majonezom",[282,5,33,14,282,5,33,14,459,10,63,19]],["Posni kolač od šargarepe sa kremom od urmi",[391,28,44,11,662,55,70,18,825,80,79,21]],["Kuglice od sočiva sa biljnim kremastim sosom od senfa",[310,16,35,12,335,17,38,13,337,15,40,13]],["Pečeni karfiol i edamame sa bulgurom i čimičuri salsom",[315,23,30,11,317,18,39,10,367,18,52,10]]],
-          [["Pečeni krompir sa kajganom od tofua i paprikom",[164,8,17,7,247,9,34,8,260,8,38,8]],["Čokoladni puding sa malinom",[347,30,40,7,596,58,64,12,759,83,73,15]],["Falafel sa sosom od paradajza i maslina",[421,18,52,16,415,16,54,15,457,17,61,16]],["Činija sa sojinim ljuspicama i kinoom",[378,24,45,11,350,20,43,11,534,25,74,15]]],
-          [["Ovsena kaša sa borovnicama na biljnom mleku",[262,14,35,8,319,16,44,9,400,19,57,11]],["Posni mafin od jabuke i cimeta",[394,29,44,11,666,56,70,18,829,81,79,21]],["Kuglice od belog pasulja sa velute sosom od estragona",[338,16,44,11,356,16,48,11,460,17,65,15]],["Edamame sa povrćem i pirinčanim nudlama",[309,22,32,10,270,16,36,7,312,14,50,6]]],
-          [["Burger lepinja sa dimljenim tofuom i avokadom",[197,9,23,8,247,11,33,8,248,11,31,9]],["Raw kolač sa kokosom i limetom",[400,28,35,17,674,54,56,26,837,79,65,29]],["Sojini medaljoni sa sosom od šljiva",[290,24,27,9,241,17,25,8,273,18,29,10]],["Tortilja sa falafelom i pečenom paprikom",[427,17,58,14,444,18,60,15,634,23,91,19]]],
-          [["Posna ovsena pita sa spanaćem i krem od avokada",[324,13,38,14,291,12,34,12,308,11,34,14]],["Posni brownie sa kremom od maline",[392,28,43,12,663,55,68,19,826,80,77,22]],["Paprikaš sa sojinim medaljonima i pireom od krompira",[338,25,36,10,301,17,37,9,365,19,47,11]],["Činija sa tofuom na tajlandski način",[234,15,25,8,336,17,45,9,488,21,78,10]]],
-          [["Hleb od kiselog testa sa začinjenim leblebijama i avokadom",[203,8,27,7,278,11,40,8,280,11,41,8]],["Chia puding sa vanilom i malinama",[379,30,36,13,644,58,58,20,807,83,67,23]],["Kuglice od sočiva sa biljnim velute sosom od kopra, pire od batata i bulgur",[359,20,44,12,326,14,46,9,384,15,57,10]],["Tortilja sa kuglicama od belog pasulja i salsom od avokada",[381,16,54,11,369,15,52,11,539,20,82,15]]],
-          [["Ovsena kaša sa kruškom i cimetom na biljnom mleku",[363,18,50,10,358,17,51,10,364,17,52,10]],["Raw kuglice od urmi i kakaa sa kokosom",[388,28,40,13,657,54,63,21,820,79,72,24]],["Sojini medaljoni sa sosom od limuna, pire od celera i pirinač",[256,16,32,7,331,18,46,8,513,22,80,12]],["Činija sa edamameom i kus kusom",[305,22,30,11,258,16,32,8,298,17,39,8]]],
-          [["Bajgla sa salatom od tofua i avokadom",[270,17,19,14,292,15,26,14,357,16,36,17]],["Posni kolač od šljiva",[387,28,46,10,656,55,73,16,819,80,82,19]],["Kuglice od sočiva u biljnom kremastom sosu od pečuraka, pire od batata i kinoa",[397,21,48,13,373,17,49,12,468,18,68,14]],["Wok sa hrskavim leblebijama i pirinčanim nudlama",[259,12,39,6,284,12,46,6,360,13,64,6]]],
-          [["Engleski mafin sa avokadom, semenkama i krastavcem",[219,5,26,10,274,7,38,10,366,10,54,12]],["Posni čokoladni kolač sa kremom od višnje",[391,28,44,11,662,55,70,18,825,80,79,21]],["Kuglice od belog pasulja sa sosom od pečene paprike",[357,16,47,11,379,16,51,12,438,16,63,14]],["Činija sa sojinim ljuspicama i bulgurom",[330,30,31,10,293,22,33,8,367,23,49,9]]],
-          [["Pečeni krompir sa kajganom od tofua i spanaćem",[211,15,16,10,250,13,27,10,354,13,47,13]],["Posni banana bread sa kakao kremom",[386,29,48,8,654,56,76,14,817,81,85,17]],["Kuglice od sočiva sa povrtnim demiglas sosom, pire od batata i heljda",[362,19,47,11,327,14,47,9,407,16,63,10]],["Falafel sa basmati pirinčem i pečenim povrćem",[345,16,43,12,379,17,48,13,422,18,58,13]]],
-          [["Tramezzino sa avokadom i krastavcem",[170,4,18,9,224,6,30,9,262,7,37,9]],["Posni mafin od banane i borovnice",[394,29,46,10,665,56,72,17,828,81,81,20]],["Kuglice od belog pasulja u sosu od paradajza sa pireom od krompira",[285,13,37,9,336,14,45,11,379,14,53,12]],["Tortilja sa sojinim ljuspicama i pečenim povrćem",[467,35,52,14,384,25,46,11,541,27,75,15]]]
+          [["Posna pita od leblebijinog brašna sa šargarepom i blitvom",[323,11,33,16,349,12,37,17,366,12,37,19,638,24,73,28]],["Posni kolač od bundeve sa kremom od urmi",[408,28,52,10,686,55,81,16,849,80,90,19,849,80,90,19]],["Sojini medaljoni u sosu od jabuke i timijana",[288,21,33,8,285,17,38,7,410,20,61,10,564,29,82,13]],["Činija sa leblebijama u teriyaki sosu",[284,20,33,8,282,17,38,7,365,20,55,7,552,30,82,11]]],
+          [["Kajgana od tofua sa pečenim krompirom",[319,26,21,14,265,21,20,11,283,20,28,10,580,43,52,22]],["Posni banana bread sa kakao kremom",[386,29,48,8,654,56,76,14,817,81,85,17,817,81,85,17]],["Kuglice od sočiva u sosu od karamelizovanog povrća",[373,16,49,12,424,17,58,14,552,20,79,17,653,26,91,21]],["Wok sa edamameom i pirinčanim nudlama",[218,12,30,5,260,13,39,6,334,15,55,6,545,21,97,8]]],
+          [["Ovsena kaša sa bananom i kakaom na biljnom mleku",[223,13,28,7,221,11,30,6,219,10,31,6,420,20,59,11]],["Chia puding sa vanilom i šumskim voćem",[379,30,36,13,644,58,58,20,807,83,67,23,807,83,67,23]],["Falafel na pireu od šargarepe sa kinoom",[317,13,39,12,391,16,51,14,444,17,59,15,568,22,79,18]],["Tortilja sa pečenim leblebijama i biljnim cacikijem",[404,17,58,11,355,14,52,10,534,19,82,14,821,30,126,22]]],
+          [["Doručak burito sa kajganom od tofua i avokadom",[306,12,35,13,278,10,34,11,456,15,64,15,682,24,96,23]],["Posni mafin od borovnice sa kokosovim kremom",[400,29,44,12,675,56,70,19,838,81,79,22,838,81,79,22]],["Sojini medaljoni u sosu od pečene paprike",[309,23,31,10,304,18,34,10,325,19,37,11,452,29,50,15]],["Kuglice od sočiva sa bulgurom i tahini dipom",[286,16,35,9,333,17,46,9,362,18,53,9,620,28,95,14]]],
+          [["Sendvič na kiselom testu sa salatom od tofua i krastavcem",[312,22,32,11,240,15,29,7,239,14,31,6,567,37,65,18]],["Posni kolač od jabuke i cimeta",[385,28,46,10,652,54,73,16,815,79,82,19,815,79,82,19]],["Pečeni tofu sa sosom od paradajza i bosiljka",[369,20,37,16,404,19,45,16,527,22,65,20,623,30,69,25]],["Pirinčane nudle sa sojinim ljuspicama",[231,16,30,5,295,17,42,6,411,20,67,7,591,23,107,8]]],
+          [["Pečeni batat sa začinjenim leblebijama, avokadom i spanaćem",[276,6,41,10,352,8,52,12,423,9,63,15,689,18,112,19]],["Kakao puding sa višnjom",[346,30,42,6,595,58,66,11,758,83,75,14,758,83,75,14]],["Sojini medaljoni u kremastom sosu od pečuraka",[342,22,38,12,353,20,41,12,423,22,52,14,545,30,66,18]],["Činija sa pečenim tofuom na meksički način",[323,22,26,14,306,17,33,12,394,19,53,12,613,33,74,20]]],
+          [["Tramezzino sa dimljenim tofuom i avokadom",[206,12,17,10,215,10,26,8,203,9,26,7,498,25,68,14]],["Posni kolač od maka i limuna",[401,29,43,13,676,56,68,20,839,81,77,23,839,81,77,23]],["Kuglice od belog pasulja sa limunom i ruzmarinom",[296,15,39,9,274,11,40,8,330,12,51,9,570,22,88,14]],["Tortilja sa falafelom i pečenim povrćem",[435,18,58,14,452,18,60,15,637,24,92,20,692,26,97,22]]],
+          [["Engleski mafin sa kajganom od tofua i avokadom",[310,16,38,11,308,13,44,9,361,15,53,10,589,29,80,17]],["Raw kolač sa kakaom i višnjom",[396,28,36,15,668,55,58,24,831,80,67,27,831,80,67,27]],["Kuglice od leblebija sa sosom od pečenog paradajza",[264,12,32,10,295,13,36,11,368,15,46,14,508,21,64,19]],["Edamame u slatko-kiselom sosu sa jasmin pirinčem",[340,22,42,10,325,16,50,7,440,18,78,7,677,29,115,11]]],
+          [["Posna kukuruzna pita sa tikvicom i krem od avokada",[213,6,20,12,264,8,27,14,257,8,26,13,359,12,40,17]],["Ovsena kaša sa jabukom i cimetom",[361,30,43,8,617,57,68,13,780,82,77,16,780,82,77,16]],["Sojini medaljoni sa demiglas sosom, pire od batata i kinoa",[333,26,36,9,328,19,44,8,390,20,56,10,628,35,87,15]],["Tortilja sa kuglicama od sočiva i posnim cezar dresingom",[404,18,53,14,387,17,51,13,566,22,81,17,832,32,120,25]]],
+          [["Bajgla sa začinjenim leblebijama i avokadom",[272,10,40,8,336,12,49,10,357,12,50,12,559,20,84,16]],["Chia puding sa kakaom i bananom",[385,30,38,13,652,58,60,20,815,83,69,23,815,83,69,23]],["Pečeni tofu sa sosom od mirođije, pire od celera i pirinač",[338,22,28,15,328,17,38,12,490,21,69,14,649,33,79,22]],["Činija sa kuglicama od belog pasulja i kus kusom",[305,17,42,8,283,14,42,6,334,16,53,6,580,27,94,10]]],
+          [["Doručak burito sa avokadom, semenkama i posnim majonezom",[282,5,33,14,282,5,33,14,459,10,63,19,664,15,93,26]],["Posni kolač od šargarepe sa kremom od urmi",[391,28,44,11,662,55,70,18,825,80,79,21,825,80,79,21]],["Kuglice od sočiva sa biljnim kremastim sosom od senfa",[310,16,35,12,335,17,38,13,337,15,40,13,480,24,57,18]],["Pečeni karfiol i edamame sa bulgurom i čimičuri salsom",[315,23,30,11,317,18,39,10,367,18,52,10,624,32,88,16]]],
+          [["Pečeni krompir sa kajganom od tofua i paprikom",[164,8,17,7,247,9,34,8,260,8,38,8,494,20,76,12]],["Čokoladni puding sa malinom",[347,30,40,7,596,58,64,12,759,83,73,15,759,83,73,15]],["Falafel sa sosom od paradajza i maslina",[421,18,52,16,415,16,54,15,457,17,61,16,577,22,75,21]],["Činija sa sojinim ljuspicama i kinoom",[378,24,45,11,350,20,43,11,534,25,74,15,781,37,109,22]]],
+          [["Ovsena kaša sa borovnicama na biljnom mleku",[262,14,35,8,319,16,44,9,400,19,57,11,646,30,93,17]],["Posni mafin od jabuke i cimeta",[394,29,44,11,666,56,70,18,829,81,79,21,829,81,79,21]],["Kuglice od belog pasulja sa velute sosom od estragona",[338,16,44,11,356,16,48,11,460,17,65,15,670,28,94,20]],["Edamame sa povrćem i pirinčanim nudlama",[309,22,32,10,270,16,36,7,312,14,50,6,468,26,67,11]]],
+          [["Burger lepinja sa dimljenim tofuom i avokadom",[197,9,23,8,247,11,33,8,248,11,31,9,542,22,89,11]],["Raw kolač sa kokosom i limetom",[400,28,35,17,674,54,56,26,837,79,65,29,837,79,65,29]],["Sojini medaljoni sa sosom od šljiva",[290,24,27,9,241,17,25,8,273,18,29,10,386,28,39,13]],["Tortilja sa falafelom i pečenom paprikom",[427,17,58,14,444,18,60,15,634,23,91,19,836,30,124,25]]],
+          [["Posna ovsena pita sa spanaćem i krem od avokada",[324,13,38,14,291,12,34,12,308,11,34,14,596,24,71,24]],["Posni brownie sa kremom od maline",[392,28,43,12,663,55,68,19,826,80,77,22,826,80,77,22]],["Paprikaš sa sojinim medaljonima i pireom od krompira",[338,25,36,10,301,17,37,9,365,19,47,11,526,32,64,16]],["Činija sa tofuom na tajlandski način",[234,15,25,8,336,17,45,9,488,21,78,10,653,27,109,12]]],
+          [["Hleb od kiselog testa sa začinjenim leblebijama i avokadom",[203,8,27,7,278,11,40,8,280,11,41,8,431,17,65,11]],["Chia puding sa vanilom i malinama",[379,30,36,13,644,58,58,20,807,83,67,23,807,83,67,23]],["Kuglice od sočiva sa biljnim velute sosom od kopra, pire od batata i bulgur",[359,20,44,12,326,14,46,9,384,15,57,10,560,25,79,16]],["Tortilja sa kuglicama od belog pasulja i salsom od avokada",[381,16,54,11,369,15,52,11,539,20,82,15,822,30,124,23]]],
+          [["Ovsena kaša sa kruškom i cimetom na biljnom mleku",[363,18,50,10,358,17,51,10,364,17,52,10,664,30,96,18]],["Raw kuglice od urmi i kakaa sa kokosom",[388,28,40,13,657,54,63,21,820,79,72,24,820,79,72,24]],["Sojini medaljoni sa sosom od limuna, pire od celera i pirinač",[256,16,32,7,331,18,46,8,513,22,80,12,593,27,90,14]],["Činija sa edamameom i kus kusom",[305,22,30,11,258,16,32,8,298,17,39,8,516,30,70,13]]],
+          [["Bajgla sa salatom od tofua i avokadom",[270,17,19,14,292,15,26,14,357,16,36,17,563,29,60,23]],["Posni kolač od šljiva",[387,28,46,10,656,55,73,16,819,80,82,19,819,80,82,19]],["Kuglice od sočiva u biljnom kremastom sosu od pečuraka, pire od batata i kinoa",[397,21,48,13,373,17,49,12,468,18,68,14,713,31,101,20]],["Wok sa hrskavim leblebijama i pirinčanim nudlama",[259,12,39,6,284,12,46,6,360,13,64,6,518,20,88,9]]],
+          [["Engleski mafin sa avokadom, semenkama i krastavcem",[219,5,26,10,274,7,38,10,366,10,54,12,466,13,71,14]],["Posni čokoladni kolač sa kremom od višnje",[391,28,44,11,662,55,70,18,825,80,79,21,825,80,79,21]],["Kuglice od belog pasulja sa sosom od pečene paprike",[357,16,47,11,379,16,51,12,438,16,63,14,664,26,93,21]],["Činija sa sojinim ljuspicama i bulgurom",[330,30,31,10,293,22,33,8,367,23,49,9,648,43,85,15]]],
+          [["Pečeni krompir sa kajganom od tofua i spanaćem",[211,15,16,10,250,13,27,10,354,13,47,13,388,18,45,15]],["Posni banana bread sa kakao kremom",[386,29,48,8,654,56,76,14,817,81,85,17,817,81,85,17]],["Kuglice od sočiva sa povrtnim demiglas sosom, pire od batata i heljda",[362,19,47,11,327,14,47,9,407,16,63,10,690,30,103,17]],["Falafel sa basmati pirinčem i pečenim povrćem",[345,16,43,12,379,17,48,13,422,18,58,13,709,30,99,21]]],
+          [["Tramezzino sa avokadom i krastavcem",[170,4,18,9,224,6,30,9,262,7,37,9,370,11,58,11]],["Posni mafin od banane i borovnice",[394,29,46,10,665,56,72,17,828,81,81,20,828,81,81,20]],["Kuglice od belog pasulja u sosu od paradajza sa pireom od krompira",[285,13,37,9,336,14,45,11,379,14,53,12,542,22,75,17]],["Tortilja sa sojinim ljuspicama i pečenim povrćem",[467,35,52,14,384,25,46,11,541,27,75,15,863,47,115,24]]]
         ],
         [
           [["Ovsena pita (bezglutenski ovas) sa šargarepom i blitvom, mus od sira i ćureća šunka",[302,26,21,13,377,29,30,16,500,37,42,20,643,44,57,27,709,55,59,28]],["Posni kolač od bundeve sa kremom od urmi",[245,3,42,7,361,5,63,10,361,5,63,10,361,5,63,10,687,55,81,16]],["Svinjski file u sosu od jabuke i timijana",[359,41,26,10,415,42,36,11,579,48,64,14,714,59,81,17,728,67,74,18]],["Ćuretina u teriyaki sosu sa jasmin pirinčem",[386,47,30,9,434,48,41,9,576,54,67,10,825,69,107,14,808,77,92,14]]],
@@ -283,24 +285,24 @@ class Component extends DCLogic {
         ]
       ],
       posno: [
-        ["Posna pita od leblebijinog brašna sa šargarepom i blitvom",3,0,[323,11,33,16,349,12,37,17,366,12,37,19]],
+        ["Posna pita od leblebijinog brašna sa šargarepom i blitvom",3,0,[323,11,33,16,349,12,37,17,366,12,37,19,638,24,73,28]],
         ["Posni kolač od bundeve sa kremom od urmi",0,1,[245,3,42,7,361,5,63,10,361,5,63,10,361,5,63,10,687,55,81,16]],
-        ["Posni banana bread sa kakao kremom",3,1,[386,29,48,8,654,56,76,14,817,81,85,17]],
-        ["Posni mafin od borovnice sa kokosovim kremom",3,1,[400,29,44,12,675,56,70,19,838,81,79,22]],
-        ["Posni kolač od jabuke i cimeta",3,1,[385,28,46,10,652,54,73,16,815,79,82,19]],
-        ["Posni kolač od maka i limuna",3,1,[401,29,43,13,676,56,68,20,839,81,77,23]],
-        ["Posna kukuruzna pita sa tikvicom i krem od avokada",3,0,[213,6,20,12,264,8,27,14,257,8,26,13]],
-        ["Tortilja sa kuglicama od sočiva i posnim cezar dresingom",3,3,[404,18,53,14,387,17,51,13,566,22,81,17]],
-        ["Doručak burito sa avokadom, semenkama i posnim majonezom",3,0,[282,5,33,14,282,5,33,14,459,10,63,19]],
-        ["Posni kolač od šargarepe sa kremom od urmi",3,1,[391,28,44,11,662,55,70,18,825,80,79,21]],
-        ["Posni mafin od jabuke i cimeta",3,1,[394,29,44,11,666,56,70,18,829,81,79,21]],
-        ["Posna ovsena pita sa spanaćem i krem od avokada",3,0,[324,13,38,14,291,12,34,12,308,11,34,14]],
+        ["Posni banana bread sa kakao kremom",3,1,[386,29,48,8,654,56,76,14,817,81,85,17,817,81,85,17]],
+        ["Posni mafin od borovnice sa kokosovim kremom",3,1,[400,29,44,12,675,56,70,19,838,81,79,22,838,81,79,22]],
+        ["Posni kolač od jabuke i cimeta",3,1,[385,28,46,10,652,54,73,16,815,79,82,19,815,79,82,19]],
+        ["Posni kolač od maka i limuna",3,1,[401,29,43,13,676,56,68,20,839,81,77,23,839,81,77,23]],
+        ["Posna kukuruzna pita sa tikvicom i krem od avokada",3,0,[213,6,20,12,264,8,27,14,257,8,26,13,359,12,40,17]],
+        ["Tortilja sa kuglicama od sočiva i posnim cezar dresingom",3,3,[404,18,53,14,387,17,51,13,566,22,81,17,832,32,120,25]],
+        ["Doručak burito sa avokadom, semenkama i posnim majonezom",3,0,[282,5,33,14,282,5,33,14,459,10,63,19,664,15,93,26]],
+        ["Posni kolač od šargarepe sa kremom od urmi",3,1,[391,28,44,11,662,55,70,18,825,80,79,21,825,80,79,21]],
+        ["Posni mafin od jabuke i cimeta",3,1,[394,29,44,11,666,56,70,18,829,81,79,21,829,81,79,21]],
+        ["Posna ovsena pita sa spanaćem i krem od avokada",3,0,[324,13,38,14,291,12,34,12,308,11,34,14,596,24,71,24]],
         ["Posni brownie sa kremom od maline",0,1,[229,3,34,9,337,5,50,13,337,5,50,13,337,5,50,13,663,55,68,19]],
         ["Posni brownie od bezglutenskog brašna sa kremom od maline",4,1,[229,3,34,9,337,5,50,13,337,5,50,13,337,5,50,13,663,55,68,19]],
-        ["Posni kolač od šljiva",3,1,[387,28,46,10,656,55,73,16,819,80,82,19]],
+        ["Posni kolač od šljiva",3,1,[387,28,46,10,656,55,73,16,819,80,82,19,819,80,82,19]],
         ["Posni čokoladni kolač sa kremom od višnje",0,1,[228,3,35,8,336,5,52,12,336,5,52,12,336,5,52,12,662,55,70,18]],
         ["Posni čokoladni kolač od bezglutenskog brašna",4,1,[228,3,35,8,336,5,52,12,336,5,52,12,336,5,52,12,662,55,70,18]],
-        ["Posni mafin od banane i borovnice",3,1,[394,29,46,10,665,56,72,17,828,81,81,20]]
+        ["Posni mafin od banane i borovnice",3,1,[394,29,46,10,665,56,72,17,828,81,81,20,828,81,81,20]]
       ]
     };
   }
@@ -326,7 +328,7 @@ class Component extends DCLogic {
 
     const mi = st.mi === undefined ? 0 : st.mi;
     const isPosno = mi === 5;
-    const maxSz = mi === 3 ? 2 : 4;
+    const maxSz = mi === 3 ? 3 : 4;
     const sz = Math.min(st.sz === undefined ? 2 : st.sz, maxSz);
     const wk = st.wk === undefined ? nextWk : st.wk;
     const on = 'background: #123c32; color: #ffffff; border: 1.5px solid #123c32';
@@ -334,7 +336,7 @@ class Component extends DCLogic {
 
     const menuTabs = MENUS.map((label, i) => ({ label, on: i === mi ? 'true' : 'false', style: i === mi ? on : off, pick: () => this.setState({ mi: i }) }));
     const sizeOpts = KCAL.slice(0, maxSz + 1).map((k, i) => ({ label: fmt(k) + NB + 'kcal', on: i === sz ? 'true' : 'false', style: i === sz ? on : off, pick: () => this.setState({ sz: i }) }));
-    const sizeNote = nb(fmt(KCAL[sz]) + ' kcal dnevno: ' + PACK[sz] + '.' + (mi === 3 ? ' Vegan meni je dostupan do 2.000 kcal.' : ''));
+    const sizeNote = nb(fmt(KCAL[sz]) + ' kcal dnevno: ' + PACK[sz] + '.' + (mi === 3 ? ' Vegan meni je dostupan do 2.600 kcal.' : ''));
     const dayNum = i => J.days[i][1].split('.')[0];
     const weekTabs = [0, 1, 2].map(w => ({
       label: dayNum(w * 7) + '.–' + dayNum(w * 7 + 6) + '. nov' + (w === nextWk ? ' · naredna' : ''),
@@ -342,19 +344,25 @@ class Component extends DCLogic {
     }));
 
     const macFor = (mac, s) => { const k = Math.min(s, mac.length / 4 - 1) * 4; return { kcal: mac[k], p: mac[k + 1], uh: mac[k + 2], m: mac[k + 3] }; };
-    const card = (name, mac, tag, cls, pos) => {
+    // Proteinski šejk uz užinu: porcije po meniju (Balance, Fish, Vegetarijanski, Vegan, Bez glutena) i veličini (XS do XL); makroi užine ga već uključuju
+    const SHK = [[0, 0, 0, 0, 1], [1, 1.5, 1, 1, 2], [0.5, 1, 1, 1.5, 1.5], [0.5, 1, 1.5, 1.5, 0], [0, 0, 0, 0, 1]];
+    const card = (name, mac, tag, cls, pos, menu, meal) => {
       const m = macFor(mac, sz);
-      return { cls, pos, alt: name, tag, name: nb(name), posno: /posn/i.test(name), kcal: fmt(m.kcal) + ' kcal', macros: m.p + 'g proteina · ' + m.uh + 'g UH · ' + m.m + 'g masti' };
+      const s = Math.min(sz, mac.length / 4 - 1);
+      return {
+        cls, pos, alt: name, tag, name: nb(name), posno: /posn/i.test(name), kcal: fmt(m.kcal) + ' kcal', macros: m.p + 'g proteina · ' + m.uh + 'g UH · ' + m.m + 'g masti',
+        sejk: meal === 1 && SHK[menu][s] > 0, sejkTxt: menu === 3 ? '+ biljni proteinski' + NB + 'šejk' : '+ proteinski' + NB + 'šejk'
+      };
     };
 
     let days = [], posnoCards = [];
     if (isPosno) {
-      posnoCards = J.posno.map((r, i) => card(r[0], r[3], MENUS[r[1]].toUpperCase() + ' · ' + MEALS[r[2]], 'jl-po', (i % 6) * 20 + '% ' + Math.floor(i / 6) * 50 + '%'));
+      posnoCards = J.posno.map((r, i) => card(r[0], r[3], MENUS[r[1]].toUpperCase() + ' · ' + MEALS[r[2]], 'jl-po', (i % 6) * 20 + '% ' + Math.floor(i / 6) * 50 + '%', r[1], r[2]));
     } else {
       const cls = 'jl-wk jl-s' + (mi * 3 + wk);
       for (let dy = 0; dy < 7; dy++) {
         const di = wk * 7 + dy;
-        const meals = J.m[mi][di].map((r, ml) => card(r[0], r[1], MEALS[ml], cls, (ml * 100 / 3).toFixed(4) + '% ' + (dy * 100 / 6).toFixed(4) + '%'));
+        const meals = J.m[mi][di].map((r, ml) => card(r[0], r[1], MEALS[ml], cls, (ml * 100 / 3).toFixed(4) + '% ' + (dy * 100 / 6).toFixed(4) + '%', mi, ml));
         const t = J.m[mi][di].reduce((a, r) => { const m = macFor(r[1], sz); return [a[0] + m.kcal, a[1] + m.p]; }, [0, 0]);
         days.push({ title: J.days[di][2], today: di === since, total: 'Ukupno ' + fmt(t[0]) + ' kcal · ' + t[1] + 'g proteina', meals });
       }
