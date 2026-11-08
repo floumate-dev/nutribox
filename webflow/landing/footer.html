@@ -1,1 +1,9 @@
-<script src="https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@daf0166008c604fc2a273cef3a83b2440adda925/webflow/landing/landing.js" defer></script>
+<script>
+(function () {
+  var l = (document.documentElement.lang || 'sr').slice(0, 2).toLowerCase();
+  if (!/^(en|ru)$/.test(l)) l = 'sr';
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@815d629d4040670320be8321ef643ea37d223716/webflow/landing/landing.' + l + '.js';
+  document.body.appendChild(s);
+})();
+</script>
