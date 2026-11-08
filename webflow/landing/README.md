@@ -37,12 +37,11 @@ U Designer-u se stranica vidi delimično stilizovana, jer Webflow ne pokreće cu
 ## Izmena stranice
 
 1. Izmeni `design/Main.dc.html` i istu izmenu prenesi u `Main.en.dc.html` i `Main.ru.dc.html`. Posle prevoda pokreni `python3 tools/check_translation.py design/Main.en.dc.html` (i za `ru`), koji proverava da se prevod razlikuje samo u tekstu.
-2. `python3 tools/build_webflow.py build`, pa commit i push.
-3. `python3 tools/build_webflow.py snippets <sha tog commita>`, pa commit i push.
+2. `python3 tools/build_webflow.py build landing`, pa commit i push.
+3. `python3 tools/build_webflow.py snippets <sha tog commita> landing`, pa commit i push.
 4. U Webflow-u zameni sadržaj Embed-a i oba polja za custom code novim fajlovima, pa Publish. Ako se promenio broj `embed-*.html` fajlova, dodaj ili ukloni Embed elemente.
 
 ## Otvoreno
 
-- Dugme "Pogledaj meni za narednu nedelju" vodi na `/jelovnik` (`/en/jelovnik`, `/ru/jelovnik`). Kad bude poznat pravi URL, promeni `LOCALES` u `tools/build_webflow.py` i uradi build.
-- Dugmad za puštanje video utisaka za sada nemaju akciju, jer u dizajnu nema linkova do videa.
-- Stranica sa jelovnikom (`design/Jelovnik.dc.html`) još nije prevedena ni pripremljena za Webflow.
+- Dugme "Pogledaj meni za narednu nedelju" vodi na `/jelovnik` (`/en/jelovnik`, `/ru/jelovnik`). Kad bude poznat pravi URL, promeni `JELOVNIK_URL` u `tools/build_webflow.py` i uradi build.
+- Stranica sa jelovnikom je u `webflow/jelovnik/` (svoje uputstvo).

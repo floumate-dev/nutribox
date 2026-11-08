@@ -171,10 +171,22 @@
   const ctx = { instances: {} };
   let pending = false;
 
+  // A slice mount shows only children a..b of the component's root element, inside a
+  // shallow copy of the root (same tag and attributes).
+  function sliceOf(nodes, [a, b]) {
+    const root = nodes.find(n => n.nodeType === 1);
+    const shell = root.cloneNode(false);
+    Array.from(root.children).slice(a, b + 1).forEach(c => shell.appendChild(c));
+    return [shell];
+  }
+
   function render() {
     pending = false;
     const y = window.scrollY;
-    for (const m of mounts) morphChildren(m.el, renderComponent(m.name, m.props, ctx, [], m.shareKey));
+    for (const m of mounts) {
+      const nodes = renderComponent(m.name, m.props, ctx, [], m.shareKey);
+      morphChildren(m.el, m.slice ? sliceOf(nodes, m.slice) : nodes);
+    }
     if (Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y);
   }
   // Batch setState calls from one event into one render. A microtask (not
@@ -194,6 +206,16 @@
     document.querySelectorAll(selector || '[data-dc-part]').forEach(el => {
       const [from, to] = el.getAttribute('data-dc-part').split('-').map(Number);
       mounts.push({ el, name, props: { partFrom: from, partTo: to == null || isNaN(to) ? from : to }, shareKey: name + ':page' });
+    });
+    render();
+  };
+
+  // Same for a component without parts: each element with data-dc-slice="N-M" shows
+  // children N..M of the component's root element; all share one instance.
+  window.DCMountSlices = function (name, selector) {
+    document.querySelectorAll(selector || '[data-dc-slice]').forEach(el => {
+      const [a, b] = el.getAttribute('data-dc-slice').split('-').map(Number);
+      mounts.push({ el, name, props: {}, shareKey: name + ':page', slice: [a, b == null || isNaN(b) ? a : b] });
     });
     render();
   };

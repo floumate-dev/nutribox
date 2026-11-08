@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nutribox menu</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+.jl-pick{transition:box-shadow .15s ease, border-color .15s ease}
+.jl-pick:hover{box-shadow:0 0 0 3px #dfeccf}
+.jl-pick:focus-visible,.jl-back:focus-visible{outline:3px solid #5e8f3d;outline-offset:2px}
+.jl-back:hover{color:#123c32 !important}
+.jl-row{display:grid;grid-template-columns:132px minmax(0,1fr);align-items:center;gap:12px 20px}
+.jl-opts{display:flex;flex-wrap:wrap;gap:8px}
+.jl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.jl-card{display:flex;flex-direction:column;gap:14px;min-width:0}
+.jl-img{position:relative;width:100%;aspect-ratio:1/1;border-radius:20px;overflow:hidden;background-color:#e4efdc;background-repeat:no-repeat}
+.jl-wk{background-size:400% 700%}
+.jl-po{background-size:600% 300%;background-image:url(/_blob/747cf1ecba145ba77986fb27a97f1197)}
+.jl-s0{background-image:url(/_blob/496ee21909031c91ff9ec95b139e349e)}
+.jl-s1{background-image:url(/_blob/26db6cff449df6efd4051302048b9a8f)}
+.jl-s2{background-image:url(/_blob/814e09c22e2ab58e81bf3751cba376f7)}
+.jl-s3{background-image:url(/_blob/30a8f978af36f10bf82475e1f214b8e3)}
+.jl-s4{background-image:url(/_blob/68b8178e0a7ec9aff2d5d35771c78bf7)}
+.jl-s5{background-image:url(/_blob/e2a59e451d156055e7b0841e072c35d9)}
+.jl-s6{background-image:url(/_blob/64c0c49da0eddfbcd890e5b8303de45a)}
+.jl-s7{background-image:url(/_blob/3c57ed546daf1ca0d8b9489b3db052a5)}
+.jl-s8{background-image:url(/_blob/708972e727b3224710988f6982a91e77)}
+.jl-s9{background-image:url(/_blob/9fbae622b08c316a8bb6a8ffb1c55a40)}
+.jl-s10{background-image:url(/_blob/7046ec6d0d32da48fe6822c099017b13)}
+.jl-s11{background-image:url(/_blob/f46b0d11035b17955223efc22972b9ed)}
+.jl-s12{background-image:url(/_blob/3ec7a2381cbd7ec2ee19eed37048bfd7)}
+.jl-s13{background-image:url(/_blob/913142711eccd4e64ae1535536a08d08)}
+.jl-s14{background-image:url(/_blob/aadee0538682044aabcf8913ef53f249)}
+@media (max-width:960px){.jl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+.jl-row{grid-template-columns:1fr;gap:10px}
+.jl-h1b{display:block}
+.jl-grid{grid-template-columns:1fr;gap:14px}
+.jl-card{flex-direction:row;align-items:center;gap:14px}
+.jl-img{width:112px;flex:none;border-radius:16px}
+.jl-name{font-size:16px !important}
+.jl-panel{padding:16px !important;border-radius:18px !important}
+}
+</style>
+</helmet>
+<div style="width: 100%; background: #ffffff; color: #123c32; font-family: 'Outfit', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased">
+<dc-import name="Main" part-from="0" part-to="0" hint-size="100%,127px"></dc-import>
+
+<!-- Uvod i izbor -->
+<section style="background: #f0f6ec; padding: clamp(28px, 4vw, 48px) 20px clamp(32px, 4vw, 48px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px">
+<a class="jl-back" href="Main.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 15px; font-weight: 600; color: #4d7a31; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="M11 6l-6 6 6 6"></path></svg>Back to homepage</a>
+<div style="display: flex; flex-direction: column; gap: 14px; margin-top: -8px">
+<h1 style="margin: 0; font-size: clamp(28px, 4.4vw, 52px); line-height: 1.1; letter-spacing: -0.03em; font-weight: 700; color: #123c32">{{ titleA }} <span class="jl-h1b" style="color: #5e8f3d">{{ titleB }}</span></h1>
+<p style="margin: 0; max-width: 760px; font-size: 18px; line-height: 1.55; color: #3d4a41; text-wrap: pretty">Choose your menu and package size. Four meals arrive at your door every&nbsp;day.</p>
+</div>
+<div class="jl-panel" style="display: flex; flex-direction: column; gap: 18px; box-sizing: border-box; padding: 24px 28px; border-radius: 22px; background: #ffffff; border: 1px solid #dfeccf">
+<div class="jl-row">
+<span style="font-size: 14px; font-weight: 700; letter-spacing: 0.06em; color: #3d4a41">MENU</span>
+<div class="jl-opts" role="group" aria-label="Menu">
+<sc-for list="{{ menuTabs }}" as="f" hint-placeholder-count="6">
+<button type="button" class="jl-pick" aria-pressed="{{ f.on }}" onClick="{{ f.pick }}" style="min-height: 44px; padding: 9px 18px; border-radius: 12px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap; {{ f.style }}">{{ f.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="height: 1px; background: #e3e8e2"></div>
+<div class="jl-row">
+<span style="font-size: 14px; font-weight: 700; letter-spacing: 0.06em; color: #3d4a41">PACKAGE</span>
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 0">
+<div class="jl-opts" role="group" aria-label="Package size">
+<sc-for list="{{ sizeOpts }}" as="o" hint-placeholder-count="5">
+<button type="button" class="jl-pick" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}" style="min-height: 44px; padding: 9px 16px; border-radius: 12px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap; {{ o.style }}">{{ o.label }}</button>
+</sc-for>
+</div>
+<span style="font-size: 14px; line-height: 1.45; color: #3d4a41; text-wrap: pretty">{{ sizeNote }}</span>
+</div>
+</div>
+<sc-if value="{{ notPosno }}" hint-placeholder-val="{{ true }}">
+<div style="height: 1px; background: #e3e8e2"></div>
+<div class="jl-row">
+<span style="font-size: 14px; font-weight: 700; letter-spacing: 0.06em; color: #3d4a41">WEEK</span>
+<div class="jl-opts" role="group" aria-label="Week">
+<sc-for list="{{ weekTabs }}" as="w" hint-placeholder-count="3">
+<button type="button" class="jl-pick" aria-pressed="{{ w.on }}" onClick="{{ w.pick }}" style="min-height: 44px; padding: 9px 16px; border-radius: 12px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap; {{ w.style }}">{{ w.label }}</button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</section>
+
+<!-- Nedelja po danima -->
+<sc-if value="{{ notPosno }}" hint-placeholder-val="{{ true }}">
+<section style="background: #ffffff; padding: clamp(36px, 5vw, 56px) 20px 8px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(40px, 5vw, 56px)">
+<sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 20px; padding-bottom: 14px; border-bottom: 1px solid #e3e8e2">
+<div style="display: flex; align-items: center; gap: 10px">
+<h2 style="margin: 0; font-size: clamp(20px, 2vw, 24px); line-height: 1.2; letter-spacing: -0.015em; font-weight: 700; color: #123c32">{{ d.title }}</h2>
+<sc-if value="{{ d.today }}" hint-placeholder-val="{{ false }}"><span style="padding: 3px 9px; border-radius: 99px; background: #accb7d; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #123c32">TODAY</span></sc-if>
+</div>
+<span style="font-size: 15px; font-weight: 600; color: #4d7a31">{{ d.total }}</span>
+</div>
+<div class="jl-grid">
+<sc-for list="{{ d.meals }}" as="c" hint-placeholder-count="4">
+<article class="jl-card">
+<div class="jl-img {{ c.cls }}" role="img" aria-label="{{ c.alt }}" style="background-position: {{ c.pos }}">
+<sc-if value="{{ c.posno }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 10px; bottom: 10px; padding: 4px 9px; border-radius: 99px; background: #123c32; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #accb7d">LENTEN</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: #4d7a31">{{ c.tag }}</span>
+<h3 class="jl-name" style="margin: 0; font-size: 17px; line-height: 1.3; font-weight: 700; color: #123c32; text-wrap: pretty">{{ c.name }}</h3>
+<sc-if value="{{ c.sejk }}" hint-placeholder-val="{{ false }}"><span style="margin-top: -2px; font-size: 14px; font-weight: 600; color: #5e8f3d">{{ c.sejkTxt }}</span></sc-if>
+<span style="font-size: 15px; font-weight: 700; color: #123c32">{{ c.kcal }}</span>
+<span style="font-size: 13px; line-height: 1.4; font-weight: 500; color: #4d7a31">{{ c.macros }}</span>
+</div>
+</article>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+<!-- Posna jela -->
+<sc-if value="{{ isPosno }}" hint-placeholder-val="{{ false }}">
+<section style="background: #ffffff; padding: clamp(36px, 5vw, 56px) 20px 8px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px">
+<div style="padding-bottom: 14px; border-bottom: 1px solid #e3e8e2">
+<h2 style="margin: 0; font-size: clamp(20px, 2vw, 24px); line-height: 1.2; letter-spacing: -0.015em; font-weight: 700; color: #123c32">{{ posnoTitle }}</h2>
+</div>
+<div class="jl-grid">
+<sc-for list="{{ posnoCards }}" as="c" hint-placeholder-count="8">
+<article class="jl-card">
+<div class="jl-img {{ c.cls }}" role="img" aria-label="{{ c.alt }}" style="background-position: {{ c.pos }}">
+<sc-if value="{{ c.posno }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 10px; bottom: 10px; padding: 4px 9px; border-radius: 99px; background: #123c32; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #accb7d">LENTEN</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: #4d7a31">{{ c.tag }}</span>
+<h3 class="jl-name" style="margin: 0; font-size: 17px; line-height: 1.3; font-weight: 700; color: #123c32; text-wrap: pretty">{{ c.name }}</h3>
+<sc-if value="{{ c.sejk }}" hint-placeholder-val="{{ false }}"><span style="margin-top: -2px; font-size: 14px; font-weight: 600; color: #5e8f3d">{{ c.sejkTxt }}</span></sc-if>
+<span style="font-size: 15px; font-weight: 700; color: #123c32">{{ c.kcal }}</span>
+<span style="font-size: 13px; line-height: 1.4; font-weight: 500; color: #4d7a31">{{ c.macros }}</span>
+</div>
+</article>
+</sc-for>
+</div>
+</div>
+</section>
+</sc-if>
+
+<dc-import name="Main" part-from="15" part-to="16" hint-size="100%,1020px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5430}}'>
+class Component extends DCLogic {
+  jelovnik() {
+    // Nutribox jelovnik 9.11. do 29.11.2026 (druga isporuka): m[meni][dan][obrok] = [jelo, kcal/P/UH/M za XS, S, M, L, XL; Vegan do L]
+    return {
+      days: [["Mon","9.11.","Monday, November 9"],["Tue","10.11.","Tuesday, November 10"],["Wed","11.11.","Wednesday, November 11"],["Thu","12.11.","Thursday, November 12"],["Fri","13.11.","Friday, November 13"],["Sat","14.11.","Saturday, November 14"],["Sun","15.11.","Sunday, November 15"],["Mon","16.11.","Monday, November 16"],["Tue","17.11.","Tuesday, November 17"],["Wed","18.11.","Wednesday, November 18"],["Thu","19.11.","Thursday, November 19"],["Fri","20.11.","Friday, November 20"],["Sat","21.11.","Saturday, November 21"],["Sun","22.11.","Sunday, November 22"],["Mon","23.11.","Monday, November 23"],["Tue","24.11.","Tuesday, November 24"],["Wed","25.11.","Wednesday, November 25"],["Thu","26.11.","Thursday, November 26"],["Fri","27.11.","Friday, November 27"],["Sat","28.11.","Saturday, November 28"],["Sun","29.11.","Sunday, November 29"]],
+      m: [
+        [
+          [["Oat pie with carrot and chard, cheese mousse and turkey ham",[302,26,21,13,377,29,30,16,500,37,42,20,643,44,57,27,709,55,59,28]],["Lenten pumpkin cake with date cream",[245,3,42,7,361,5,63,10,361,5,63,10,361,5,63,10,687,55,81,16]],["Pork fillet in apple and thyme sauce",[359,41,26,10,415,42,36,11,579,48,64,14,714,59,81,17,728,67,74,18]],["Turkey in teriyaki sauce with jasmine rice",[386,47,30,9,434,48,41,9,576,54,67,10,825,69,107,14,808,77,92,14]]],
+          [["Scrambled eggs with chicken ham and chia bread",[351,31,21,16,397,33,26,18,545,41,40,25,822,61,59,38,773,65,50,34]],["Banana bread with cocoa cream",[223,4,39,5,328,6,58,8,328,6,58,8,328,6,58,8,654,56,76,14]],["Beef round with caramelized vegetable sauce",[425,44,28,15,462,44,34,16,553,44,52,19,700,56,65,24,774,70,63,27]],["Chicken wok with rice noodles",[294,37,25,5,403,46,40,6,573,48,80,7,681,50,104,7,800,72,106,10]]],
+          [["Oat porridge with banana, cocoa and Greek yogurt",[332,24,40,9,442,28,57,12,543,31,74,14,690,39,93,18,830,57,101,22]],["Chia pudding with vanilla and mixed berries",[216,5,27,10,318,8,40,14,318,8,40,14,318,8,40,14,644,58,58,20]],["Sea bass on carrot purée with quinoa",[352,39,19,13,406,40,29,14,529,41,53,17,781,56,84,24,823,64,84,26]],["Tortilla with tuna and tzatziki dip",[393,46,33,9,429,53,34,9,612,58,64,14,791,62,95,18,688,73,65,15]]],
+          [["Breakfast burrito with egg salad and turkey ham",[328,27,33,10,330,26,33,10,537,35,64,16,813,51,96,25,868,63,97,25]],["Blueberry muffin with vanilla cream",[237,4,35,9,349,6,52,13,349,6,52,13,349,6,52,13,675,56,70,19]],["Chicken fillet in roasted pepper sauce",[359,43,23,11,464,55,30,14,536,53,44,17,598,57,50,19,649,71,47,20]],["Beef meatballs with bulgur and tahini dip",[368,40,21,14,454,43,36,15,567,45,60,16,752,59,79,22,805,67,81,24]]],
+          [["Sourdough sandwich with salmon mousse and boiled egg",[397,33,29,17,461,35,42,17,571,38,67,17,811,54,96,23,991,78,84,38]],["Apple and cinnamon cake with vanilla cream",[222,3,37,7,326,4,55,10,326,4,55,10,326,4,55,10,652,54,73,16]],["Sea bream with tomato and basil sauce",[388,38,27,14,436,41,32,16,587,47,54,21,671,51,65,23,667,57,56,24]],["Rice noodles with tuna and sesame",[280,40,20,5,380,50,32,6,504,50,62,6,704,60,98,8,691,68,86,8]]],
+          [["Frittata with sweet potato and spinach, with cheese mousse",[397,27,34,17,470,32,42,20,599,41,53,25,898,55,99,31,930,58,100,33]],["Cocoa pudding with sour cherry",[183,5,33,3,269,8,48,5,269,8,48,5,269,8,48,5,595,58,66,11]],["Turkey medallions in creamy mushroom sauce",[356,38,28,10,420,44,35,12,533,45,54,15,608,50,63,17,716,71,64,20]],["Mexican-style pork bowl",[363,45,22,10,433,47,37,11,591,45,78,11,792,58,108,14,751,68,85,16]]],
+          [["Tramezzino with egg mousse and chicken ham",[246,19,24,8,331,24,39,9,429,30,55,10,723,47,94,18,756,58,85,20]],["Poppy seed and lemon cake with lemon cream",[238,4,34,10,350,6,50,14,350,6,50,14,350,6,50,14,676,56,68,20]],["Lemon and rosemary chicken with spinach rice",[331,43,22,8,430,50,35,10,553,50,62,12,757,51,105,15,761,71,83,16]],["Tortilla with beef and roasted vegetables",[485,49,35,17,493,50,35,17,664,52,67,21,749,65,68,24,808,74,68,27]]],
+          [["English muffin with scrambled eggs and chicken ham",[381,34,35,12,428,34,48,11,594,45,71,14,796,61,94,20,836,70,92,21]],["Raw cocoa and sour cherry cake",[233,3,27,12,342,5,40,18,342,5,40,18,342,5,40,18,668,55,58,24]],["Turkey fillet with roasted tomato sauce",[330,38,25,9,386,46,28,10,463,44,42,13,535,48,50,16,642,69,52,18]],["Sweet and sour pork with jasmine rice",[349,42,28,8,438,46,44,9,600,47,82,9,814,62,115,12,840,71,110,13]]],
+          [["Cornmeal pie with zucchini, cheese mousse and turkey ham",[305,26,22,13,388,29,32,16,441,32,39,18,654,44,61,26,721,55,62,28]],["Oat porridge with apple and cinnamon",[198,5,34,5,291,7,50,7,291,7,50,7,291,7,50,7,617,57,68,13]],["Beef rump steak with demi-glace, sweet potato mash and quinoa",[386,41,27,13,466,44,41,14,646,47,75,17,832,55,106,21,911,74,96,25]],["Tortilla with chicken and Caesar dressing",[411,42,34,12,452,50,34,13,622,52,64,17,816,59,95,22,749,74,66,21]]],
+          [["Bagel with salmon mousse and cucumber",[340,25,36,11,384,26,46,10,484,30,66,11,702,44,95,16,788,56,89,23]],["Chia pudding with cocoa and banana",[222,5,29,10,326,8,42,14,326,8,42,14,326,8,42,14,652,58,60,20]],["Salmon with dill sauce, celeriac purée and lemon rice",[430,36,28,19,495,38,39,21,708,46,74,25,884,54,99,30,863,60,82,33]],["Tuna bowl with couscous",[310,48,19,5,385,54,30,5,480,54,53,6,673,58,96,6,686,75,79,8]]],
+          [["Breakfast burrito with scrambled eggs, chicken ham and spiced mayonnaise",[389,28,32,17,384,27,32,16,561,32,62,21,882,51,93,34,922,60,93,34]],["Carrot cake with vanilla cream",[228,3,35,8,336,5,52,12,336,5,52,12,336,5,52,12,662,55,70,18]],["Pork fillet with creamy mustard sauce",[389,40,27,13,458,43,36,16,543,44,51,18,686,57,63,23,713,68,56,24]],["Turkey with bulgur and chimichurri",[301,44,16,7,408,54,30,8,548,57,56,11,641,57,74,13,699,73,71,13]]],
+          [["Frittata with potato and pepper, with cheese mousse",[310,21,26,14,430,29,38,18,551,38,49,22,860,52,98,29,974,71,100,32]],["Chocolate pudding with raspberry",[184,5,31,4,270,8,46,6,270,8,46,6,270,8,46,6,596,58,64,12]],["Sea bass with tomato and olive sauce",[394,40,25,15,452,40,37,16,559,38,59,19,641,46,65,22,726,58,66,26]],["Tortilla with tuna and avocado cream",[412,48,34,9,447,54,35,10,612,56,65,14,800,60,96,20,700,72,66,16]]],
+          [["Oat porridge with blueberries and Greek yogurt",[374,25,46,10,414,26,53,11,573,32,78,15,690,39,93,18,771,50,98,20]],["Apple and cinnamon muffin with vanilla cream",[231,4,35,8,340,6,52,12,340,6,52,12,340,6,52,12,666,56,70,18]],["Chicken fillet with tarragon velouté, carrot purée and quinoa",[313,39,20,9,397,47,28,11,537,50,52,14,753,61,84,19,809,76,79,21]],["Beef with vegetables and rice noodles",[380,48,21,12,452,52,33,13,546,51,58,12,788,61,104,14,739,68,80,16]]],
+          [["Burger bun with scrambled eggs, turkey ham and cheese mousse",[303,25,30,9,414,29,55,9,557,36,78,11,772,54,95,20,873,69,96,24]],["Raw coconut and lime cake",[237,3,26,14,348,4,38,20,348,4,38,20,348,4,38,20,674,54,56,26]],["Pork fillet with plum sauce",[346,39,21,12,382,41,25,13,465,42,38,16,613,56,50,21,688,67,52,24]],["Tortilla with turkey and roasted pepper",[409,46,35,9,454,56,35,10,623,56,66,15,798,58,98,20,722,74,68,17]]],
+          [["Oat pie with spinach, cheese mousse and chicken ham",[350,28,26,15,385,30,32,15,531,36,49,21,742,51,64,31,764,58,64,30]],["Lenten brownie with raspberry cream",[229,3,34,9,337,5,50,13,337,5,50,13,337,5,50,13,663,55,68,19]],["Beef paprikash with potato mash",[400,41,27,14,438,43,31,16,525,44,47,18,690,59,60,24,751,68,61,26]],["Thai-style chicken bowl",[313,42,24,6,442,53,42,7,603,53,80,8,739,59,106,9,811,73,106,10]]],
+          [["Scrambled eggs with turkey ham and sourdough bread",[347,33,28,11,429,35,46,12,526,41,61,13,752,55,94,17,804,68,88,20]],["Chia pudding with vanilla and raspberries",[216,5,27,10,318,8,40,14,318,8,40,14,318,8,40,14,644,58,58,20]],["Turkey fillet with dill velouté, sweet potato mash and bulgur",[304,36,26,6,389,41,40,7,551,45,70,10,712,51,98,13,785,71,93,14]],["Tortilla with pork and avocado salsa",[426,42,34,13,457,47,35,14,609,46,66,18,814,54,97,24,757,70,67,23]]],
+          [["Oat porridge with pear, cinnamon and Greek yogurt",[399,27,49,10,433,28,55,11,592,33,80,15,690,39,93,18,876,63,104,23]],["Raw date and cocoa bites with coconut",[225,3,31,10,331,4,45,15,331,4,45,15,331,4,45,15,657,54,63,21]],["Sea bream with lemon sauce, celeriac purée and herb rice",[365,39,24,13,435,43,35,14,605,46,67,17,812,53,103,21,760,58,83,22]],["Tuna with couscous and roasted vegetables",[310,47,18,6,385,55,27,6,476,54,49,7,748,68,100,9,696,76,76,10]]],
+          [["Bagel with scrambled eggs, chicken ham and cheese mousse",[332,28,28,12,379,31,38,12,498,38,54,15,710,51,82,20,769,65,74,24]],["Plum cake with vanilla cream",[224,3,37,7,330,5,55,10,330,5,55,10,330,5,55,10,656,55,73,16]],["Chicken fillet in creamy mushroom sauce with sweet potato mash and quinoa",[354,39,29,9,428,44,38,11,636,49,76,15,799,56,102,18,843,76,89,20]],["Beef wok with rice noodles",[382,47,24,11,463,52,35,13,533,48,59,12,750,56,102,13,728,68,77,16]]],
+          [["English muffin with salmon mousse and boiled egg",[370,28,33,14,446,31,48,14,589,36,78,15,772,50,95,21,890,62,96,29]],["Lenten chocolate cake with sour cherry cream",[228,3,35,8,336,5,52,12,336,5,52,12,336,5,52,12,662,55,70,18]],["Salmon with roasted pepper sauce",[384,31,23,19,433,35,27,21,556,37,47,24,770,52,65,33,756,58,52,35]],["Tuna bowl with bulgur",[319,49,17,6,384,54,26,7,522,59,50,10,653,62,75,12,692,75,71,12]]],
+          [["Frittata with potato and spinach, with cheese mousse and turkey ham",[436,34,34,18,489,37,40,20,622,46,54,25,699,52,59,29,797,65,61,33]],["Banana bread with cocoa cream",[223,4,39,5,328,6,58,8,328,6,58,8,328,6,58,8,654,56,76,14]],["Pork fillet with demi-glace, sweet potato mash and buckwheat",[365,42,26,10,438,47,37,11,577,44,72,13,830,59,110,17,814,69,92,19]],["Turkey with basmati rice and roasted vegetables",[277,37,20,5,343,42,31,6,476,45,59,7,722,53,108,8,728,72,88,10]]],
+          [["Tramezzino with egg salad and turkey ham",[211,20,20,6,304,23,38,7,458,32,63,9,663,44,94,12,776,62,94,17]],["Banana and blueberry muffin with vanilla cream",[231,4,37,7,339,6,54,11,339,6,54,11,339,6,54,11,665,56,72,17]],["Beef meatballs in tomato sauce with potato mash",[425,41,27,17,475,43,35,18,552,42,50,20,743,54,72,27,797,62,72,29]],["Tortilla with chicken and roasted vegetables",[440,49,35,12,487,57,35,13,653,58,67,17,834,62,98,22,755,76,68,20]]]
+        ],
+        [
+          [["Oat pie with carrot and chard, with cheese mousse",[153,9,11,8,198,12,16,10,244,14,21,12,402,22,36,19,350,20,29,17]],["Lenten pumpkin cake with date cream",[571,53,61,13,849,80,90,19,686,55,81,16,686,55,81,16,1012,105,99,22]],["Lemon salmon with sweet potato mash and bulgur",[350,31,19,17,319,23,26,13,553,38,53,21,728,47,76,26,866,77,50,40]],["Chickpea bowl in teriyaki sauce",[240,17,29,7,251,16,33,6,523,27,81,10,785,36,131,13,771,40,120,15]]],
+          [["Scrambled eggs with salmon mousse and chia bread",[334,26,20,17,294,21,21,14,488,33,35,24,725,46,57,35,655,44,48,32]],["Banana bread with cocoa cream",[549,54,57,11,817,81,85,17,654,56,76,14,654,56,76,14,980,106,94,20]],["Tuna on potato mash with green beans",[248,28,20,6,287,30,25,8,419,33,46,11,540,37,65,15,767,93,58,18]],["Edamame wok with rice noodles",[179,11,22,5,216,13,29,6,441,18,76,7,658,26,117,10,606,30,94,12]]],
+          [["Oat porridge with banana, cocoa and Greek yogurt",[164,12,19,4,200,14,24,5,321,20,41,8,617,35,83,16,468,32,57,12]],["Chia pudding with vanilla and mixed berries",[542,55,45,16,807,83,67,23,644,58,58,20,644,58,58,20,970,108,76,26]],["Sea bream on carrot purée with quinoa",[220,22,15,8,231,23,15,9,453,31,53,13,564,35,70,16,831,80,67,27]],["Tortilla with halloumi and tzatziki dip",[376,23,34,16,373,23,34,16,560,28,65,21,746,34,96,26,691,41,67,29]]],
+          [["Breakfast burrito with egg mousse and tuna",[331,25,32,11,277,21,31,8,510,32,62,15,721,41,92,21,757,48,93,21]],["Blueberry muffin with vanilla cream",[563,54,53,15,838,81,79,22,675,56,70,19,675,56,70,19,1001,106,88,25]],["Tuna in roasted pepper sauce",[219,27,14,6,261,29,19,7,375,32,36,11,480,36,50,15,690,92,42,17]],["Lentil balls with bulgur and tahini dip",[212,13,24,7,243,14,29,8,440,22,63,11,704,34,104,17,565,32,71,17]]],
+          [["Sourdough sandwich with salmon mousse and boiled egg",[226,19,15,10,219,17,18,9,474,29,61,13,665,42,80,20,574,40,60,19]],["Apple and cinnamon cake with vanilla cream",[548,53,55,13,815,79,82,19,652,54,73,16,652,54,73,16,978,104,91,22]],["Salmon with tomato and basil sauce",[318,28,15,16,310,25,19,15,440,36,26,21,600,44,45,27,805,76,32,41]],["Rice noodles with crispy chickpeas",[217,9,32,6,261,11,40,6,433,15,75,8,689,22,126,11,652,25,109,13]]],
+          [["Frittata with sweet potato and spinach, with cheese mousse",[258,18,20,12,211,15,16,10,406,28,35,17,802,48,92,27,757,46,87,25]],["Cocoa pudding with sour cherry",[509,55,51,9,758,83,75,14,595,58,66,11,595,58,66,11,921,108,84,17]],["Sea bass on potato mash",[320,31,20,13,357,26,32,14,454,32,43,17,552,34,58,20,702,75,38,28]],["Mexican-style white bean ball bowl",[217,10,29,7,276,12,39,8,538,21,90,11,659,25,111,13,635,27,99,14]]],
+          [["Tramezzino with egg salad",[120,8,14,4,145,10,17,4,257,15,37,6,546,32,77,12,389,23,53,9]],["Poppy seed and lemon cake with lemon cream",[564,54,52,16,839,81,77,23,676,56,68,20,676,56,68,20,1002,106,86,26]],["Lemon and rosemary sea bream with spinach rice",[247,28,13,9,234,22,18,8,446,40,41,14,652,47,77,17,674,72,46,22]],["Tortilla with falafel and roasted vegetables",[431,17,58,14,444,18,60,15,641,24,92,20,736,29,102,24,955,39,127,32]]],
+          [["English muffin with scrambled eggs and salmon mousse",[246,21,20,9,200,17,17,7,534,35,68,13,684,45,87,17,517,35,64,14]],["Raw cocoa and sour cherry cake",[559,53,45,18,831,80,67,27,668,55,58,24,668,55,58,24,994,105,76,30]],["Salmon with roasted tomato sauce",[267,23,13,14,299,25,16,15,331,25,21,16,481,35,33,23,782,75,27,41]],["Sweet and sour chickpeas with jasmine rice",[244,10,39,5,281,12,46,6,472,16,87,7,768,25,145,10,717,28,123,13]]],
+          [["Cornmeal pie with zucchini, with cheese mousse",[153,9,11,8,191,11,15,9,244,14,21,12,440,23,43,19,380,21,33,18]],["Oat porridge with apple and cinnamon",[524,55,52,11,780,82,77,16,617,57,68,13,617,57,68,13,943,107,86,19]],["Tuna on sweet potato mash with quinoa",[229,27,20,5,247,28,21,5,552,39,74,11,753,50,106,14,936,98,97,17]],["Tortilla with halloumi and Caesar dressing",[397,23,35,18,384,23,34,17,577,28,65,23,771,34,96,28,719,41,68,32]]],
+          [["Bagel with salmon mousse and cucumber",[254,23,16,11,195,15,20,6,384,26,46,10,599,42,70,17,572,42,61,18]],["Chia pudding with cocoa and banana",[548,55,47,16,815,83,69,23,652,58,60,20,652,58,60,20,978,108,78,26]],["Sea bream with dill sauce, celeriac purée and rice",[250,22,22,8,324,25,34,10,484,29,64,13,657,33,95,16,797,75,69,25]],["Lentil ball bowl with couscous",[255,15,32,7,264,15,35,7,476,26,68,11,692,36,103,15,666,36,97,15]]],
+          [["Breakfast burrito with scrambled eggs, tuna and spiced mayonnaise",[346,26,31,13,344,25,31,14,569,40,61,18,819,54,91,27,835,55,91,28]],["Carrot cake with vanilla cream",[554,53,53,14,825,80,79,21,662,55,70,18,662,55,70,18,988,105,88,24]],["Sea bass on potato mash with carrot",[238,23,14,10,271,25,18,11,346,26,29,14,473,30,48,18,657,74,30,27]],["Roasted cauliflower and chickpeas with bulgur and chimichurri",[196,9,26,6,235,11,31,7,410,16,64,10,622,24,99,14,532,24,74,15]]],
+          [["Frittata with potato and pepper, with cheese mousse",[134,9,11,6,160,11,14,7,295,20,27,12,636,37,79,19,544,31,67,17]],["Chocolate pudding with raspberry",[510,55,49,10,759,83,73,15,596,58,64,12,596,58,64,12,922,108,82,18]],["Sea bream with tomato and olive sauce",[263,25,18,10,284,24,23,11,512,32,58,17,574,35,65,19,801,76,58,29]],["Halloumi bowl with quinoa",[387,23,35,17,389,23,35,17,562,28,65,21,757,33,97,27,695,40,67,30]]],
+          [["Oat porridge with blueberries and Greek yogurt",[206,14,25,5,271,17,35,7,520,28,72,13,680,38,93,18,725,44,95,19]],["Apple and cinnamon muffin with vanilla cream",[557,54,53,14,829,81,79,21,666,56,70,18,666,56,70,18,992,106,88,24]],["Tuna on carrot purée with quinoa",[228,27,17,6,285,30,25,8,430,34,48,11,620,42,79,15,811,96,66,18]],["Edamame with vegetables and rice noodles",[322,24,32,11,229,14,30,6,390,23,52,10,633,32,96,13,481,28,65,12]]],
+          [["Burger bun with scrambled eggs and salmon mousse",[164,14,14,6,184,15,16,7,451,26,67,9,614,35,92,12,628,38,88,14]],["Raw coconut and lime cake",[563,53,44,20,837,79,65,29,674,54,56,26,674,54,56,26,1000,104,74,32]],["Sea bream on celeriac and potato mash",[251,27,13,10,249,24,16,10,327,32,21,13,448,40,33,17,620,73,27,25]],["Tortilla with white bean balls and roasted pepper",[350,15,50,10,362,16,52,10,551,21,83,15,843,32,126,23,757,33,107,22]]],
+          [["Oat pie with spinach, with cheese mousse",[296,19,18,16,251,15,19,13,395,22,36,18,643,35,59,30,643,37,53,32]],["Lenten brownie with raspberry cream",[555,53,52,15,826,80,77,22,663,55,68,19,663,55,68,19,989,105,86,25]],["Tuna in pepper and tomato sauce with potato mash",[246,32,16,6,272,29,24,7,414,43,38,10,531,49,54,13,667,90,44,15]],["Thai-style chickpea bowl",[209,9,32,5,261,10,42,6,520,18,92,9,762,25,141,11,710,26,122,13]]],
+          [["Scrambled eggs with salmon mousse and sourdough bread",[178,15,15,6,203,17,18,7,411,26,56,9,612,36,89,13,607,38,82,14]],["Chia pudding with vanilla and raspberries",[542,55,45,16,807,83,67,23,644,58,58,20,644,58,58,20,970,108,76,26]],["Sea bream with dill velouté, sweet potato mash and bulgur",[221,21,17,8,240,23,18,8,375,26,44,11,578,35,77,15,719,74,53,23]],["Tortilla with halloumi and avocado salsa",[376,23,34,17,378,23,35,17,562,28,65,21,757,33,97,27,695,40,67,30]]],
+          [["Oat porridge with pear, cinnamon and Greek yogurt",[184,14,21,5,200,14,24,5,385,24,50,10,669,37,92,17,553,45,60,15]],["Raw date and cocoa bites with coconut",[551,53,49,16,820,79,72,24,657,54,63,21,657,54,63,21,983,104,81,27]],["Sea bass with lemon sauce, celeriac purée and rice",[298,31,19,11,300,24,30,9,502,37,57,14,629,41,79,17,790,75,67,25]],["Lentil balls with couscous and roasted vegetables",[276,16,33,9,286,16,37,8,461,24,66,11,652,34,96,15,683,36,96,17]]],
+          [["Bagel with scrambled eggs and tuna",[199,24,13,5,181,22,15,4,333,33,33,7,448,44,46,10,469,49,51,8]],["Plum cake with vanilla cream",[550,53,55,13,819,80,82,19,656,55,73,16,656,55,73,16,982,105,91,22]],["Salmon in creamy mushroom sauce with sweet potato mash and quinoa",[357,29,22,17,371,26,30,16,620,36,69,22,869,50,99,30,951,80,59,44]],["Edamame wok with rice noodles",[201,12,26,5,233,13,33,6,388,18,62,8,626,25,110,10,601,30,93,12]]],
+          [["English muffin with salmon mousse and boiled egg",[247,21,15,12,222,17,20,9,466,28,60,12,665,41,84,19,690,45,82,20]],["Lenten chocolate cake with sour cherry cream",[554,53,53,14,825,80,79,21,662,55,70,18,662,55,70,18,988,105,88,24]],["Sea bream with roasted pepper sauce",[277,28,17,11,293,25,24,11,428,35,37,15,560,38,59,19,661,73,35,25]],["Roasted chickpea bowl with bulgur",[231,11,31,7,273,13,38,8,443,19,66,11,702,30,109,16,671,30,99,17]]],
+          [["Frittata with potato and spinach, with cheese mousse",[334,24,21,17,265,19,17,14,486,34,38,22,708,49,58,31,641,45,45,32]],["Banana bread with cocoa cream",[549,54,57,11,817,81,85,17,654,56,76,14,654,56,76,14,980,106,94,20]],["Tuna with vegetable demi-glace, sweet potato mash and buckwheat",[212,26,17,4,266,29,26,5,435,33,59,8,581,37,85,10,777,93,72,13]],["White bean balls with basmati rice and roasted vegetables",[220,11,28,7,261,13,35,8,434,20,65,10,650,26,107,13,612,29,90,15]]],
+          [["Tramezzino with egg salad",[120,8,14,4,138,9,16,4,394,20,64,6,589,30,93,10,582,30,93,10]],["Banana and blueberry muffin with vanilla cream",[557,54,55,13,828,81,81,20,665,56,72,17,665,56,72,17,991,106,90,23]],["Sea bream in tomato sauce with potato mash",[245,25,15,9,261,24,19,10,345,31,26,13,551,41,54,19,683,74,39,26]],["Tortilla with halloumi and roasted vegetables",[395,24,36,17,395,24,36,17,592,30,68,23,781,35,98,27,732,42,70,31]]]
+        ],
+        [
+          [["Oat pie with carrot and chard, with cheese mousse",[326,19,25,17,266,15,23,13,372,21,32,18,552,31,48,26,508,27,48,23]],["Lenten pumpkin cake with date cream",[408,28,52,10,686,55,81,16,686,55,81,16,849,80,90,19,849,80,90,19]],["Soy medallions in apple and thyme sauce",[274,16,36,7,321,17,45,8,477,24,70,11,568,25,88,13,744,42,104,18]],["Tofu bowl in teriyaki sauce",[294,20,33,9,324,20,39,10,460,25,64,11,624,31,96,13,878,49,119,23]]],
+          [["Scrambled eggs with cheese mousse and chia bread",[299,20,18,16,318,19,24,16,360,24,23,19,536,34,38,28,632,40,45,32]],["Banana bread with cocoa cream",[386,29,48,8,654,56,76,14,654,56,76,14,817,81,85,17,817,81,85,17]],["Lentil balls in caramelized vegetable sauce",[360,17,46,12,365,15,49,12,493,22,65,16,594,25,81,19,790,34,106,26]],["Edamame wok with rice noodles",[248,15,33,6,276,14,43,6,488,21,82,8,640,24,116,9,737,32,124,13]]],
+          [["Oat porridge with banana, cocoa and Greek yogurt",[200,14,24,5,200,14,24,5,252,17,31,7,392,23,52,10,466,31,58,12]],["Chia pudding with vanilla and mixed berries",[379,30,36,13,644,58,58,20,644,58,58,20,807,83,67,23,807,83,67,23]],["Falafel on carrot purée with quinoa",[337,14,43,12,356,15,46,13,530,21,76,16,632,24,91,19,977,40,134,31]],["Tortilla with halloumi and tzatziki dip",[376,23,34,16,373,23,34,16,556,28,65,21,746,34,96,26,687,40,66,29]]],
+          [["Breakfast burrito with egg mousse and avocado",[298,12,34,13,272,9,34,11,457,15,64,16,676,23,95,23,712,26,96,25]],["Blueberry muffin with vanilla cream",[400,29,44,12,675,56,70,19,675,56,70,19,838,81,79,22,838,81,79,22]],["Soy medallions in roasted pepper sauce",[313,24,31,10,304,18,34,10,415,31,42,14,456,30,50,15,642,41,71,21]],["Lentil balls with bulgur and tahini dip",[286,16,35,9,342,18,47,9,438,21,65,10,620,28,95,14,778,38,112,19]]],
+          [["Sourdough sandwich with cheese mousse and cucumber",[350,20,36,14,271,15,32,9,461,24,61,14,632,34,74,22,684,35,91,20]],["Apple and cinnamon cake with vanilla cream",[385,28,46,10,652,54,73,16,652,54,73,16,815,79,82,19,815,79,82,19]],["Baked tofu with tomato and basil sauce",[322,17,32,14,372,19,39,16,440,23,46,19,559,27,62,23,732,40,72,32]],["Rice noodles with soy chunks",[245,17,31,6,290,17,42,6,457,26,70,8,590,25,105,8,749,41,118,12]]],
+          [["Frittata with sweet potato and spinach, with cheese mousse",[235,16,20,10,160,11,14,7,312,21,26,14,575,33,70,18,629,37,76,20]],["Cocoa pudding with sour cherry",[346,30,42,6,595,58,66,11,595,58,66,11,758,83,75,14,758,83,75,14]],["Soy medallions in creamy mushroom sauce",[353,19,42,12,412,21,51,14,487,23,62,16,555,25,72,18,720,43,84,24]],["Mexican-style halloumi bowl",[346,21,33,15,410,22,46,15,590,26,86,16,707,30,104,19,839,41,111,26]]],
+          [["Tramezzino with egg salad",[240,20,17,10,189,13,22,6,365,25,42,11,503,32,63,14,540,35,68,14]],["Poppy seed and lemon cake with lemon cream",[401,29,43,13,676,56,68,20,676,56,68,20,839,81,77,23,839,81,77,23]],["White bean balls with lemon and rosemary",[237,10,33,7,286,11,42,8,338,13,52,9,569,20,90,14,665,27,102,17]],["Tortilla with falafel and roasted vegetables",[435,18,58,14,456,19,61,15,641,24,92,20,696,27,97,22,962,40,128,32]]],
+          [["English muffin with scrambled eggs and cheese mousse",[315,20,38,9,294,16,40,8,528,30,74,13,593,34,78,16,651,34,95,15]],["Raw cocoa and sour cherry cake",[396,28,36,15,668,55,58,24,668,55,58,24,831,80,67,27,831,80,67,27]],["Chickpea balls with roasted tomato sauce",[322,14,39,12,288,13,35,11,320,14,39,12,484,19,61,18,649,29,80,24]],["Sweet and sour tofu with jasmine rice",[262,16,30,9,349,18,48,9,477,21,75,10,694,29,117,13,856,43,123,21]]],
+          [["Cornmeal pie with zucchini, with cheese mousse",[229,13,20,11,191,11,15,9,237,13,20,11,342,19,32,16,516,27,50,23]],["Oat porridge with apple and cinnamon",[361,30,43,8,617,57,68,13,617,57,68,13,780,82,77,16,780,82,77,16]],["Soy medallions with demi-glace, sweet potato mash and quinoa",[302,17,41,8,369,19,52,9,560,26,85,13,695,30,109,15,922,49,134,21]],["Tortilla with halloumi and Caesar dressing",[397,23,35,18,399,23,35,18,570,28,65,22,763,33,96,27,705,40,67,31]]],
+          [["Bagel with cheese mousse and cucumber",[297,16,35,10,294,15,39,9,391,19,55,10,560,29,70,18,651,33,86,19]],["Chia pudding with cocoa and banana",[385,30,38,13,652,58,60,20,652,58,60,20,815,83,69,23,815,83,69,23]],["Baked tofu with dill sauce, celeriac purée and rice",[294,17,29,12,361,18,44,13,514,25,65,17,652,28,90,20,794,41,97,27]],["White bean ball bowl with couscous",[327,18,45,8,288,14,44,6,456,22,71,9,569,26,94,10,725,35,116,13]]],
+          [["Breakfast burrito with scrambled eggs, avocado and spiced mayonnaise",[346,13,33,18,325,10,33,17,523,18,63,22,744,24,94,30,781,28,94,32]],["Carrot cake with vanilla cream",[391,28,44,11,662,55,70,18,662,55,70,18,825,80,79,21,825,80,79,21]],["Lentil balls with creamy mustard sauce",[282,14,32,11,312,15,36,12,355,17,42,13,435,20,52,16,687,33,84,24]],["Roasted cauliflower and edamame with bulgur and chimichurri",[269,18,28,9,291,15,38,9,453,24,62,12,580,28,85,14,673,36,92,18]]],
+          [["Frittata with potato and pepper, with cheese mousse",[186,13,16,8,160,11,14,7,268,18,24,11,490,27,65,13,657,39,78,21]],["Chocolate pudding with raspberry",[347,30,40,7,596,58,64,12,596,58,64,12,759,83,73,15,759,83,73,15]],["Baked tofu with tomato and olive sauce",[355,18,38,15,418,20,47,17,527,22,65,20,554,23,68,21,732,40,72,32]],["Halloumi bowl with quinoa",[387,23,35,17,383,23,35,17,562,28,65,21,757,33,97,27,700,40,68,30]]],
+          [["Oat porridge with blueberries and Greek yogurt",[271,17,35,7,337,20,45,9,433,26,57,11,652,34,91,17,753,47,97,20]],["Apple and cinnamon muffin with vanilla cream",[394,29,44,11,666,56,70,18,666,56,70,18,829,81,79,21,829,81,79,21]],["White bean balls with tarragon velouté",[350,17,46,11,353,15,48,11,523,22,73,16,659,27,93,20,808,34,116,23]],["Edamame with vegetables and rice noodles",[296,21,32,9,251,14,35,6,389,22,54,9,466,24,69,10,612,30,95,12]]],
+          [["Burger bun with scrambled eggs and cheese mousse",[289,15,42,7,264,14,37,7,464,23,72,9,577,28,92,11,628,32,94,14]],["Raw coconut and lime cake",[400,28,35,17,674,54,56,26,674,54,56,26,837,79,65,29,837,79,65,29]],["Soy medallions with plum sauce",[213,16,21,7,241,17,25,8,273,18,29,10,367,22,41,13,646,41,72,22]],["Tortilla with halloumi and roasted pepper",[391,24,36,17,395,24,36,17,584,29,67,22,773,35,98,27,736,43,70,32]]],
+          [["Oat pie with spinach, with cheese mousse",[289,16,26,14,236,13,21,11,335,18,32,15,560,29,56,24,621,32,62,27]],["Lenten brownie with raspberry cream",[392,28,43,12,663,55,68,19,663,55,68,19,826,80,77,22,826,80,77,22]],["Soy medallion paprikash with potato mash",[357,23,42,11,332,18,42,10,468,30,55,14,573,31,73,17,665,40,81,20]],["Thai-style tofu bowl",[259,15,31,8,361,18,51,9,532,22,88,10,630,24,108,11,804,41,112,21]]],
+          [["Scrambled eggs with cheese mousse and sourdough bread",[221,13,28,6,196,13,21,7,360,19,51,9,486,25,72,11,625,32,93,14]],["Chia pudding with vanilla and raspberries",[379,30,36,13,644,58,58,20,644,58,58,20,807,83,67,23,807,83,67,23]],["Falafel with dill velouté, sweet potato mash and bulgur",[331,13,45,11,360,14,49,12,431,16,62,13,560,19,85,16,859,34,120,27]],["Tortilla with halloumi and avocado salsa",[376,23,34,17,378,23,35,17,562,28,65,21,746,33,96,26,695,40,67,30]]],
+          [["Oat porridge with pear, cinnamon and Greek yogurt",[258,19,30,7,289,18,38,8,379,25,47,10,597,33,82,15,746,46,96,19]],["Raw date and cocoa bites with coconut",[388,28,40,13,657,54,63,21,657,54,63,21,820,79,72,24,820,79,72,24]],["White bean balls with lemon sauce, celeriac purée and rice",[316,14,43,9,343,13,51,9,498,19,76,13,636,24,99,16,757,29,117,19]],["Lentil balls with couscous and roasted vegetables",[340,20,40,11,306,17,41,9,475,26,66,12,548,29,76,14,676,36,94,17]]],
+          [["Bagel with scrambled eggs and cheese mousse",[366,25,30,16,287,19,24,13,455,30,43,18,578,39,50,25,645,41,61,26]],["Plum cake with vanilla cream",[387,28,46,10,656,55,73,16,656,55,73,16,819,80,82,19,819,80,82,19]],["Soy medallions in creamy mushroom sauce with sweet potato mash and quinoa",[305,18,39,9,369,20,49,10,505,24,73,13,656,28,99,16,829,46,113,21]],["Edamame wok with rice noodles",[247,14,34,6,282,14,44,6,394,19,62,8,535,22,93,8,693,31,114,12]]],
+          [["English muffin with cheese mousse and boiled egg",[321,17,43,9,334,18,45,9,508,23,83,9,609,29,94,13,663,33,95,17]],["Lenten chocolate cake with sour cherry cream",[391,28,44,11,662,55,70,18,662,55,70,18,825,80,79,21,825,80,79,21]],["Baked tofu with roasted pepper sauce",[287,16,27,13,268,16,22,13,351,18,35,15,536,23,64,21,714,40,69,31]],["Halloumi bowl with bulgur",[291,21,20,14,316,22,25,14,463,27,50,17,601,32,75,19,718,43,76,27]]],
+          [["Frittata with potato and spinach, with cheese mousse",[302,21,22,14,235,16,16,12,402,28,33,18,464,32,37,21,496,34,38,23]],["Banana bread with cocoa cream",[386,29,48,8,654,56,76,14,654,56,76,14,817,81,85,17,817,81,85,17]],["Lentil balls with vegetable demi-glace, sweet potato mash and buckwheat",[313,15,42,9,339,14,50,9,513,22,78,13,622,24,98,15,768,34,115,19]],["Falafel with basmati rice and roasted vegetables",[312,14,40,11,371,16,50,12,453,18,67,12,699,27,107,18,918,37,136,25]]],
+          [["Tramezzino with egg salad",[214,15,23,7,220,13,32,5,414,24,58,9,489,28,71,10,633,35,94,13]],["Banana and blueberry muffin with vanilla cream",[394,29,46,10,665,56,72,17,665,56,72,17,828,81,81,20,828,81,81,20]],["White bean balls in tomato sauce with potato mash",[303,13,40,10,355,14,49,11,374,16,50,12,514,20,72,16,756,30,106,24]],["Tortilla with baked tofu and vegetables",[390,23,38,16,367,21,38,15,552,26,69,19,772,34,100,26,744,44,74,30]]]
+        ],
+        [
+          [["Lenten chickpea flour pie with carrot and chard",[323,11,33,16,349,12,37,17,366,12,37,19,638,24,73,28]],["Lenten pumpkin cake with date cream",[408,28,52,10,686,55,81,16,849,80,90,19,849,80,90,19]],["Soy medallions in apple and thyme sauce",[288,21,33,8,285,17,38,7,410,20,61,10,564,29,82,13]],["Chickpea bowl in teriyaki sauce",[284,20,33,8,282,17,38,7,365,20,55,7,552,30,82,11]]],
+          [["Tofu scramble with roasted potatoes",[319,26,21,14,265,21,20,11,283,20,28,10,580,43,52,22]],["Lenten banana bread with cocoa cream",[386,29,48,8,654,56,76,14,817,81,85,17,817,81,85,17]],["Lentil balls in caramelized vegetable sauce",[373,16,49,12,424,17,58,14,552,20,79,17,653,26,91,21]],["Edamame wok with rice noodles",[218,12,30,5,260,13,39,6,334,15,55,6,545,21,97,8]]],
+          [["Oat porridge with banana and cocoa, made with plant milk",[223,13,28,7,221,11,30,6,219,10,31,6,420,20,59,11]],["Chia pudding with vanilla and mixed berries",[379,30,36,13,644,58,58,20,807,83,67,23,807,83,67,23]],["Falafel on carrot purée with quinoa",[317,13,39,12,391,16,51,14,444,17,59,15,568,22,79,18]],["Tortilla with roasted chickpeas and plant-based tzatziki",[404,17,58,11,355,14,52,10,534,19,82,14,821,30,126,22]]],
+          [["Breakfast burrito with tofu scramble and avocado",[306,12,35,13,278,10,34,11,456,15,64,15,682,24,96,23]],["Lenten blueberry muffin with coconut cream",[400,29,44,12,675,56,70,19,838,81,79,22,838,81,79,22]],["Soy medallions in roasted pepper sauce",[309,23,31,10,304,18,34,10,325,19,37,11,452,29,50,15]],["Lentil balls with bulgur and tahini dip",[286,16,35,9,333,17,46,9,362,18,53,9,620,28,95,14]]],
+          [["Sourdough sandwich with tofu salad and cucumber",[312,22,32,11,240,15,29,7,239,14,31,6,567,37,65,18]],["Lenten apple and cinnamon cake",[385,28,46,10,652,54,73,16,815,79,82,19,815,79,82,19]],["Baked tofu with tomato and basil sauce",[369,20,37,16,404,19,45,16,527,22,65,20,623,30,69,25]],["Rice noodles with soy chunks",[231,16,30,5,295,17,42,6,411,20,67,7,591,23,107,8]]],
+          [["Roasted sweet potato with spiced chickpeas, avocado and spinach",[276,6,41,10,352,8,52,12,423,9,63,15,689,18,112,19]],["Cocoa pudding with sour cherry",[346,30,42,6,595,58,66,11,758,83,75,14,758,83,75,14]],["Soy medallions in creamy mushroom sauce",[342,22,38,12,353,20,41,12,423,22,52,14,545,30,66,18]],["Mexican-style baked tofu bowl",[323,22,26,14,306,17,33,12,394,19,53,12,613,33,74,20]]],
+          [["Tramezzino with smoked tofu and avocado",[206,12,17,10,215,10,26,8,203,9,26,7,498,25,68,14]],["Lenten poppy seed and lemon cake",[401,29,43,13,676,56,68,20,839,81,77,23,839,81,77,23]],["White bean balls with lemon and rosemary",[296,15,39,9,274,11,40,8,330,12,51,9,570,22,88,14]],["Tortilla with falafel and roasted vegetables",[435,18,58,14,452,18,60,15,637,24,92,20,692,26,97,22]]],
+          [["English muffin with tofu scramble and avocado",[310,16,38,11,308,13,44,9,361,15,53,10,589,29,80,17]],["Raw cocoa and sour cherry cake",[396,28,36,15,668,55,58,24,831,80,67,27,831,80,67,27]],["Chickpea balls with roasted tomato sauce",[264,12,32,10,295,13,36,11,368,15,46,14,508,21,64,19]],["Sweet and sour edamame with jasmine rice",[340,22,42,10,325,16,50,7,440,18,78,7,677,29,115,11]]],
+          [["Lenten cornmeal pie with zucchini and avocado cream",[213,6,20,12,264,8,27,14,257,8,26,13,359,12,40,17]],["Oat porridge with apple and cinnamon",[361,30,43,8,617,57,68,13,780,82,77,16,780,82,77,16]],["Soy medallions with demi-glace, sweet potato mash and quinoa",[333,26,36,9,328,19,44,8,390,20,56,10,628,35,87,15]],["Tortilla with lentil balls and Lenten Caesar dressing",[404,18,53,14,387,17,51,13,566,22,81,17,832,32,120,25]]],
+          [["Bagel with spiced chickpeas and avocado",[272,10,40,8,336,12,49,10,357,12,50,12,559,20,84,16]],["Chia pudding with cocoa and banana",[385,30,38,13,652,58,60,20,815,83,69,23,815,83,69,23]],["Baked tofu with dill sauce, celeriac purée and rice",[338,22,28,15,328,17,38,12,490,21,69,14,649,33,79,22]],["White bean ball bowl with couscous",[305,17,42,8,283,14,42,6,334,16,53,6,580,27,94,10]]],
+          [["Breakfast burrito with avocado, seeds and Lenten mayonnaise",[282,5,33,14,282,5,33,14,459,10,63,19,664,15,93,26]],["Lenten carrot cake with date cream",[391,28,44,11,662,55,70,18,825,80,79,21,825,80,79,21]],["Lentil balls with plant-based creamy mustard sauce",[310,16,35,12,335,17,38,13,337,15,40,13,480,24,57,18]],["Roasted cauliflower and edamame with bulgur and chimichurri",[315,23,30,11,317,18,39,10,367,18,52,10,624,32,88,16]]],
+          [["Roasted potatoes with tofu scramble and pepper",[164,8,17,7,247,9,34,8,260,8,38,8,494,20,76,12]],["Chocolate pudding with raspberry",[347,30,40,7,596,58,64,12,759,83,73,15,759,83,73,15]],["Falafel with tomato and olive sauce",[421,18,52,16,415,16,54,15,457,17,61,16,577,22,75,21]],["Soy chunk bowl with quinoa",[378,24,45,11,350,20,43,11,534,25,74,15,781,37,109,22]]],
+          [["Oat porridge with blueberries, made with plant milk",[262,14,35,8,319,16,44,9,400,19,57,11,646,30,93,17]],["Lenten apple and cinnamon muffin",[394,29,44,11,666,56,70,18,829,81,79,21,829,81,79,21]],["White bean balls with tarragon velouté",[338,16,44,11,356,16,48,11,460,17,65,15,670,28,94,20]],["Edamame with vegetables and rice noodles",[309,22,32,10,270,16,36,7,312,14,50,6,468,26,67,11]]],
+          [["Burger bun with smoked tofu and avocado",[197,9,23,8,247,11,33,8,248,11,31,9,542,22,89,11]],["Raw coconut and lime cake",[400,28,35,17,674,54,56,26,837,79,65,29,837,79,65,29]],["Soy medallions with plum sauce",[290,24,27,9,241,17,25,8,273,18,29,10,386,28,39,13]],["Tortilla with falafel and roasted pepper",[427,17,58,14,444,18,60,15,634,23,91,19,836,30,124,25]]],
+          [["Lenten oat pie with spinach and avocado cream",[324,13,38,14,291,12,34,12,308,11,34,14,596,24,71,24]],["Lenten brownie with raspberry cream",[392,28,43,12,663,55,68,19,826,80,77,22,826,80,77,22]],["Soy medallion paprikash with potato mash",[338,25,36,10,301,17,37,9,365,19,47,11,526,32,64,16]],["Thai-style tofu bowl",[234,15,25,8,336,17,45,9,488,21,78,10,653,27,109,12]]],
+          [["Sourdough bread with spiced chickpeas and avocado",[203,8,27,7,278,11,40,8,280,11,41,8,431,17,65,11]],["Chia pudding with vanilla and raspberries",[379,30,36,13,644,58,58,20,807,83,67,23,807,83,67,23]],["Lentil balls with plant-based dill velouté, sweet potato mash and bulgur",[359,20,44,12,326,14,46,9,384,15,57,10,560,25,79,16]],["Tortilla with white bean balls and avocado salsa",[381,16,54,11,369,15,52,11,539,20,82,15,822,30,124,23]]],
+          [["Oat porridge with pear and cinnamon, made with plant milk",[363,18,50,10,358,17,51,10,364,17,52,10,664,30,96,18]],["Raw date and cocoa bites with coconut",[388,28,40,13,657,54,63,21,820,79,72,24,820,79,72,24]],["Soy medallions with lemon sauce, celeriac purée and rice",[256,16,32,7,331,18,46,8,513,22,80,12,593,27,90,14]],["Edamame bowl with couscous",[305,22,30,11,258,16,32,8,298,17,39,8,516,30,70,13]]],
+          [["Bagel with tofu salad and avocado",[270,17,19,14,292,15,26,14,357,16,36,17,563,29,60,23]],["Lenten plum cake",[387,28,46,10,656,55,73,16,819,80,82,19,819,80,82,19]],["Lentil balls in plant-based creamy mushroom sauce with sweet potato mash and quinoa",[397,21,48,13,373,17,49,12,468,18,68,14,713,31,101,20]],["Crispy chickpea wok with rice noodles",[259,12,39,6,284,12,46,6,360,13,64,6,518,20,88,9]]],
+          [["English muffin with avocado, seeds and cucumber",[219,5,26,10,274,7,38,10,366,10,54,12,466,13,71,14]],["Lenten chocolate cake with sour cherry cream",[391,28,44,11,662,55,70,18,825,80,79,21,825,80,79,21]],["White bean balls with roasted pepper sauce",[357,16,47,11,379,16,51,12,438,16,63,14,664,26,93,21]],["Soy chunk bowl with bulgur",[330,30,31,10,293,22,33,8,367,23,49,9,648,43,85,15]]],
+          [["Roasted potatoes with tofu scramble and spinach",[211,15,16,10,250,13,27,10,354,13,47,13,388,18,45,15]],["Lenten banana bread with cocoa cream",[386,29,48,8,654,56,76,14,817,81,85,17,817,81,85,17]],["Lentil balls with vegetable demi-glace, sweet potato mash and buckwheat",[362,19,47,11,327,14,47,9,407,16,63,10,690,30,103,17]],["Falafel with basmati rice and roasted vegetables",[345,16,43,12,379,17,48,13,422,18,58,13,709,30,99,21]]],
+          [["Tramezzino with avocado and cucumber",[170,4,18,9,224,6,30,9,262,7,37,9,370,11,58,11]],["Lenten banana and blueberry muffin",[394,29,46,10,665,56,72,17,828,81,81,20,828,81,81,20]],["White bean balls in tomato sauce with potato mash",[285,13,37,9,336,14,45,11,379,14,53,12,542,22,75,17]],["Tortilla with soy chunks and roasted vegetables",[467,35,52,14,384,25,46,11,541,27,75,15,863,47,115,24]]]
+        ],
+        [
+          [["Oat pie (gluten-free oats) with carrot and chard, cheese mousse and turkey ham",[302,26,21,13,377,29,30,16,500,37,42,20,643,44,57,27,709,55,59,28]],["Lenten pumpkin cake with date cream",[245,3,42,7,361,5,63,10,361,5,63,10,361,5,63,10,687,55,81,16]],["Pork fillet in apple and thyme sauce",[359,41,26,10,415,42,36,11,579,48,64,14,714,59,81,17,728,67,74,18]],["Turkey in teriyaki sauce with jasmine rice",[386,47,30,9,434,48,41,9,576,54,67,10,825,69,107,14,808,77,92,14]]],
+          [["Scrambled eggs with chicken ham and gluten-free chia bread",[351,31,21,16,397,33,26,18,545,41,40,25,822,61,59,38,773,65,50,34]],["Gluten-free banana bread with cocoa cream",[223,4,39,5,328,6,58,8,328,6,58,8,328,6,58,8,654,56,76,14]],["Beef round with caramelized vegetable sauce",[425,44,28,15,462,44,34,16,553,44,52,19,700,56,65,24,774,70,63,27]],["Chicken wok with rice noodles",[294,37,25,5,403,46,40,6,573,48,80,7,681,50,104,7,800,72,106,10]]],
+          [["Gluten-free oat porridge with banana, cocoa and Greek yogurt",[332,24,40,9,442,28,57,12,543,31,74,14,690,39,93,18,830,57,101,22]],["Chia pudding with vanilla and mixed berries",[216,5,27,10,318,8,40,14,318,8,40,14,318,8,40,14,644,58,58,20]],["Sea bass on carrot purée with quinoa",[352,39,19,13,406,40,29,14,529,41,53,17,781,56,84,24,823,64,84,26]],["Tortilla with tuna and tzatziki dip",[393,46,33,9,429,53,34,9,612,58,64,14,791,62,95,18,688,73,65,15]]],
+          [["Breakfast burrito in a corn tortilla with egg salad and turkey ham",[328,27,33,10,330,26,33,10,537,35,64,16,813,51,96,25,868,63,97,25]],["Gluten-free blueberry muffin with vanilla cream",[237,4,35,9,349,6,52,13,349,6,52,13,349,6,52,13,675,56,70,19]],["Chicken fillet in roasted pepper sauce",[359,43,23,11,464,55,30,14,536,53,44,17,598,57,50,19,649,71,47,20]],["Beef meatballs with quinoa and tahini dip",[368,40,21,14,454,43,36,15,567,45,60,16,752,59,79,22,805,67,81,24]]],
+          [["Gluten-free sandwich with salmon mousse and boiled egg",[397,33,29,17,461,35,42,17,571,38,67,17,811,54,96,23,991,78,84,38]],["Gluten-free apple and cinnamon cake",[222,3,37,7,326,4,55,10,326,4,55,10,326,4,55,10,652,54,73,16]],["Sea bream with tomato and basil sauce",[388,38,27,14,436,41,32,16,587,47,54,21,671,51,65,23,667,57,56,24]],["Rice noodles with tuna and sesame",[280,40,20,5,380,50,32,6,504,50,62,6,704,60,98,8,691,68,86,8]]],
+          [["Frittata with sweet potato and spinach, with cheese mousse",[397,27,34,17,470,32,42,20,599,41,53,25,898,55,99,31,930,58,100,33]],["Cocoa pudding with sour cherry",[183,5,33,3,269,8,48,5,269,8,48,5,269,8,48,5,595,58,66,11]],["Turkey medallions in creamy mushroom sauce",[356,38,28,10,420,44,35,12,533,45,54,15,608,50,63,17,716,71,64,20]],["Mexican-style pork bowl",[363,45,22,10,433,47,37,11,591,45,78,11,792,58,108,14,751,68,85,16]]],
+          [["Gluten-free sandwich with egg mousse and chicken ham",[246,19,24,8,331,24,39,9,429,30,55,10,723,47,94,18,756,58,85,20]],["Gluten-free poppy seed and lemon cake",[238,4,34,10,350,6,50,14,350,6,50,14,350,6,50,14,676,56,68,20]],["Lemon and rosemary chicken with spinach rice",[331,43,22,8,430,50,35,10,553,50,62,12,757,51,105,15,761,71,83,16]],["Tortilla with beef and roasted vegetables",[485,49,35,17,493,50,35,17,664,52,67,21,749,65,68,24,808,74,68,27]]],
+          [["Gluten-free muffin with scrambled eggs and chicken ham",[381,34,35,12,428,34,48,11,594,45,71,14,796,61,94,20,836,70,92,21]],["Raw cocoa and sour cherry cake",[233,3,27,12,342,5,40,18,342,5,40,18,342,5,40,18,668,55,58,24]],["Turkey fillet with roasted tomato sauce",[330,38,25,9,386,46,28,10,463,44,42,13,535,48,50,16,642,69,52,18]],["Sweet and sour pork with jasmine rice",[349,42,28,8,438,46,44,9,600,47,82,9,814,62,115,12,840,71,110,13]]],
+          [["Cornmeal pie with zucchini, cheese mousse and turkey ham",[305,26,22,13,388,29,32,16,441,32,39,18,654,44,61,26,721,55,62,28]],["Gluten-free oat porridge with apple and cinnamon",[198,5,34,5,291,7,50,7,291,7,50,7,291,7,50,7,617,57,68,13]],["Beef rump steak with demi-glace, sweet potato mash and quinoa",[386,41,27,13,466,44,41,14,646,47,75,17,832,55,106,21,911,74,96,25]],["Tortilla with chicken and Caesar dressing",[411,42,34,12,452,50,34,13,622,52,64,17,816,59,95,22,749,74,66,21]]],
+          [["Gluten-free bagel with salmon mousse and cucumber",[340,25,36,11,384,26,46,10,484,30,66,11,702,44,95,16,788,56,89,23]],["Chia pudding with cocoa and banana",[222,5,29,10,326,8,42,14,326,8,42,14,326,8,42,14,652,58,60,20]],["Salmon with dill sauce, celeriac purée and lemon rice",[430,36,28,19,495,38,39,21,708,46,74,25,884,54,99,30,863,60,82,33]],["Tuna bowl with quinoa",[310,48,19,5,385,54,30,5,480,54,53,6,673,58,96,6,686,75,79,8]]],
+          [["Breakfast burrito in a corn tortilla with scrambled eggs and chicken ham",[389,28,32,17,384,27,32,16,561,32,62,21,882,51,93,34,922,60,93,34]],["Gluten-free carrot cake with vanilla cream",[228,3,35,8,336,5,52,12,336,5,52,12,336,5,52,12,662,55,70,18]],["Pork fillet with creamy mustard sauce",[389,40,27,13,458,43,36,16,543,44,51,18,686,57,63,23,713,68,56,24]],["Turkey with quinoa and chimichurri",[301,44,16,7,408,54,30,8,548,57,56,11,641,57,74,13,699,73,71,13]]],
+          [["Frittata with potato and pepper, with cheese mousse",[310,21,26,14,430,29,38,18,551,38,49,22,860,52,98,29,974,71,100,32]],["Chocolate pudding with raspberry",[184,5,31,4,270,8,46,6,270,8,46,6,270,8,46,6,596,58,64,12]],["Sea bass with tomato and olive sauce",[394,40,25,15,452,40,37,16,559,38,59,19,641,46,65,22,726,58,66,26]],["Tortilla with tuna and avocado cream",[412,48,34,9,447,54,35,10,612,56,65,14,800,60,96,20,700,72,66,16]]],
+          [["Gluten-free oat porridge with blueberries and Greek yogurt",[374,25,46,10,414,26,53,11,573,32,78,15,690,39,93,18,771,50,98,20]],["Gluten-free apple muffin with vanilla cream",[231,4,35,8,340,6,52,12,340,6,52,12,340,6,52,12,666,56,70,18]],["Chicken fillet with tarragon velouté, carrot purée and quinoa",[313,39,20,9,397,47,28,11,537,50,52,14,753,61,84,19,809,76,79,21]],["Beef with vegetables and rice noodles",[380,48,21,12,452,52,33,13,546,51,58,12,788,61,104,14,739,68,80,16]]],
+          [["Gluten-free bun with scrambled eggs, turkey ham and cheese mousse",[303,25,30,9,414,29,55,9,557,36,78,11,772,54,95,20,873,69,96,24]],["Raw coconut and lime cake",[237,3,26,14,348,4,38,20,348,4,38,20,348,4,38,20,674,54,56,26]],["Pork fillet with plum sauce",[346,39,21,12,382,41,25,13,465,42,38,16,613,56,50,21,688,67,52,24]],["Tortilla with turkey and roasted pepper",[409,46,35,9,454,56,35,10,623,56,66,15,798,58,98,20,722,74,68,17]]],
+          [["Oat pie (gluten-free oats) with spinach, cheese mousse and chicken ham",[350,28,26,15,385,30,32,15,531,36,49,21,742,51,64,31,764,58,64,30]],["Lenten gluten-free brownie with raspberry cream",[229,3,34,9,337,5,50,13,337,5,50,13,337,5,50,13,663,55,68,19]],["Beef paprikash with potato mash",[400,41,27,14,438,43,31,16,525,44,47,18,690,59,60,24,751,68,61,26]],["Thai-style chicken bowl",[313,42,24,6,442,53,42,7,603,53,80,8,739,59,106,9,811,73,106,10]]],
+          [["Scrambled eggs with turkey ham and gluten-free bread",[347,33,28,11,429,35,46,12,526,41,61,13,752,55,94,17,804,68,88,20]],["Chia pudding with vanilla and raspberries",[216,5,27,10,318,8,40,14,318,8,40,14,318,8,40,14,644,58,58,20]],["Turkey fillet with dill velouté, sweet potato mash and quinoa",[304,36,26,6,389,41,40,7,551,45,70,10,712,51,98,13,785,71,93,14]],["Tortilla with pork and avocado salsa",[426,42,34,13,457,47,35,14,609,46,66,18,814,54,97,24,757,70,67,23]]],
+          [["Gluten-free oat porridge with pear, cinnamon and Greek yogurt",[399,27,49,10,433,28,55,11,592,33,80,15,690,39,93,18,876,63,104,23]],["Raw date and cocoa bites with coconut",[225,3,31,10,331,4,45,15,331,4,45,15,331,4,45,15,657,54,63,21]],["Sea bream with lemon sauce, celeriac purée and herb rice",[365,39,24,13,435,43,35,14,605,46,67,17,812,53,103,21,760,58,83,22]],["Tuna with quinoa and roasted vegetables",[310,47,18,6,385,55,27,6,476,54,49,7,748,68,100,9,696,76,76,10]]],
+          [["Gluten-free bagel with scrambled eggs, chicken ham and cheese mousse",[332,28,28,12,379,31,38,12,498,38,54,15,710,51,82,20,769,65,74,24]],["Gluten-free plum cake",[224,3,37,7,330,5,55,10,330,5,55,10,330,5,55,10,656,55,73,16]],["Chicken fillet in creamy mushroom sauce with sweet potato mash and quinoa",[354,39,29,9,428,44,38,11,636,49,76,15,799,56,102,18,843,76,89,20]],["Beef wok with rice noodles",[382,47,24,11,463,52,35,13,533,48,59,12,750,56,102,13,728,68,77,16]]],
+          [["Gluten-free muffin with salmon mousse and boiled egg",[370,28,33,14,446,31,48,14,589,36,78,15,772,50,95,21,890,62,96,29]],["Lenten gluten-free chocolate cake",[228,3,35,8,336,5,52,12,336,5,52,12,336,5,52,12,662,55,70,18]],["Salmon with roasted pepper sauce",[384,31,23,19,433,35,27,21,556,37,47,24,770,52,65,33,756,58,52,35]],["Tuna bowl with quinoa",[319,49,17,6,384,54,26,7,522,59,50,10,653,62,75,12,692,75,71,12]]],
+          [["Frittata with potato and spinach, with cheese mousse and turkey ham",[436,34,34,18,489,37,40,20,622,46,54,25,699,52,59,29,797,65,61,33]],["Gluten-free banana bread",[223,4,39,5,328,6,58,8,328,6,58,8,328,6,58,8,654,56,76,14]],["Pork fillet with demi-glace, sweet potato mash and buckwheat",[365,42,26,10,438,47,37,11,577,44,72,13,830,59,110,17,814,69,92,19]],["Turkey with basmati rice and roasted vegetables",[277,37,20,5,343,42,31,6,476,45,59,7,722,53,108,8,728,72,88,10]]],
+          [["Gluten-free sandwich with egg salad and turkey ham",[211,20,20,6,304,23,38,7,458,32,63,9,663,44,94,12,776,62,94,17]],["Gluten-free banana and blueberry muffin",[231,4,37,7,339,6,54,11,339,6,54,11,339,6,54,11,665,56,72,17]],["Beef meatballs in tomato sauce with potato mash",[425,41,27,17,475,43,35,18,552,42,50,20,743,54,72,27,797,62,72,29]],["Tortilla with chicken and roasted vegetables",[440,49,35,12,487,57,35,13,653,58,67,17,834,62,98,22,755,76,68,20]]]
+        ]
+      ],
+      posno: [
+        ["Lenten chickpea flour pie with carrot and chard",3,0,[323,11,33,16,349,12,37,17,366,12,37,19,638,24,73,28]],
+        ["Lenten pumpkin cake with date cream",0,1,[245,3,42,7,361,5,63,10,361,5,63,10,361,5,63,10,687,55,81,16]],
+        ["Lenten banana bread with cocoa cream",3,1,[386,29,48,8,654,56,76,14,817,81,85,17,817,81,85,17]],
+        ["Lenten blueberry muffin with coconut cream",3,1,[400,29,44,12,675,56,70,19,838,81,79,22,838,81,79,22]],
+        ["Lenten apple and cinnamon cake",3,1,[385,28,46,10,652,54,73,16,815,79,82,19,815,79,82,19]],
+        ["Lenten poppy seed and lemon cake",3,1,[401,29,43,13,676,56,68,20,839,81,77,23,839,81,77,23]],
+        ["Lenten cornmeal pie with zucchini and avocado cream",3,0,[213,6,20,12,264,8,27,14,257,8,26,13,359,12,40,17]],
+        ["Tortilla with lentil balls and Lenten Caesar dressing",3,3,[404,18,53,14,387,17,51,13,566,22,81,17,832,32,120,25]],
+        ["Breakfast burrito with avocado, seeds and Lenten mayonnaise",3,0,[282,5,33,14,282,5,33,14,459,10,63,19,664,15,93,26]],
+        ["Lenten carrot cake with date cream",3,1,[391,28,44,11,662,55,70,18,825,80,79,21,825,80,79,21]],
+        ["Lenten apple and cinnamon muffin",3,1,[394,29,44,11,666,56,70,18,829,81,79,21,829,81,79,21]],
+        ["Lenten oat pie with spinach and avocado cream",3,0,[324,13,38,14,291,12,34,12,308,11,34,14,596,24,71,24]],
+        ["Lenten brownie with raspberry cream",0,1,[229,3,34,9,337,5,50,13,337,5,50,13,337,5,50,13,663,55,68,19]],
+        ["Lenten gluten-free brownie with raspberry cream",4,1,[229,3,34,9,337,5,50,13,337,5,50,13,337,5,50,13,663,55,68,19]],
+        ["Lenten plum cake",3,1,[387,28,46,10,656,55,73,16,819,80,82,19,819,80,82,19]],
+        ["Lenten chocolate cake with sour cherry cream",0,1,[228,3,35,8,336,5,52,12,336,5,52,12,336,5,52,12,662,55,70,18]],
+        ["Lenten gluten-free chocolate cake",4,1,[228,3,35,8,336,5,52,12,336,5,52,12,336,5,52,12,662,55,70,18]],
+        ["Lenten banana and blueberry muffin",3,1,[394,29,46,10,665,56,72,17,828,81,81,20,828,81,81,20]]
+      ]
+    };
+  }
+  renderVals() {
+    const st = this.state || {};
+    if (!this._jel) this._jel = this.jelovnik();
+    const J = this._jel;
+    const NB = ' ';
+    // Bez usamljene reci u poslednjem redu: poslednje dve reci uvek zajedno
+    const nb = s => String(s).replace(/ (\S+)$/, NB + '$1');
+    const fmt = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    const MENUS = ['Balance', 'Fish', 'Vegetarian', 'Vegan', 'Gluten-free', 'Lenten'];
+    const MEALS = ['BREAKFAST', 'SNACK', 'LUNCH', 'DINNER'];
+    const KCAL = [1300, 1600, 2000, 2600, 3000];
+    const PACK = ['NutriSlim for women', 'NutriSlim for men and NutriBalance for women', 'NutriBalance for men and NutriPump for women', 'NutriPump for men', 'NutriMax for men'];
+
+    // Naredna nedelja: nedelja koja počinje prvog ponedeljka posle danas (jelovnik kreće u ponedeljak 9.11.2026)
+    const start = new Date(2026, 10, 9);
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const since = Math.round((today - start) / 86400000);
+    const nextWk = Math.max(0, Math.min(2, since < 0 ? 0 : Math.floor(since / 7) + 1));
+
+    const mi = st.mi === undefined ? 0 : st.mi;
+    const isPosno = mi === 5;
+    // Vegetarijanski i Vegan meni su dostupni do 2.000 kcal (Vuksan, 8.11.)
+    const maxSz = mi === 2 || mi === 3 ? 2 : 4;
+    const sz = Math.min(st.sz === undefined ? 2 : st.sz, maxSz);
+    const wk = st.wk === undefined ? nextWk : st.wk;
+    const on = 'background: #123c32; color: #ffffff; border: 1.5px solid #123c32';
+    const off = 'background: #ffffff; color: #123c32; border: 1.5px solid #accb7d';
+
+    const menuTabs = MENUS.map((label, i) => ({ label, on: i === mi ? 'true' : 'false', style: i === mi ? on : off, pick: () => this.setState({ mi: i }) }));
+    const sizeOpts = KCAL.slice(0, maxSz + 1).map((k, i) => ({ label: fmt(k) + NB + 'kcal', on: i === sz ? 'true' : 'false', style: i === sz ? on : off, pick: () => this.setState({ sz: i }) }));
+    const sizeNote = nb(fmt(KCAL[sz]) + ' kcal per day: ' + PACK[sz] + '.' + (mi === 2 || mi === 3 ? ' The ' + MENUS[mi] + ' menu is available up to 2,000 kcal.' : ''));
+    const dayNum = i => J.days[i][1].split('.')[0];
+    const weekTabs = [0, 1, 2].map(w => ({
+      label: 'Nov ' + dayNum(w * 7) + '–' + dayNum(w * 7 + 6) + (w === nextWk ? ' · next week' : ''),
+      on: w === wk ? 'true' : 'false', style: w === wk ? on : off, pick: () => this.setState({ wk: w })
+    }));
+
+    const macFor = (mac, s) => { const k = Math.min(s, mac.length / 4 - 1) * 4; return { kcal: mac[k], p: mac[k + 1], uh: mac[k + 2], m: mac[k + 3] }; };
+    // Proteinski šejk uz užinu: porcije po meniju (Balance, Fish, Vegetarijanski, Vegan, Bez glutena) i veličini (XS do XL); makroi užine ga već uključuju
+    const SHK = [[0, 0, 0, 0, 1], [1, 1.5, 1, 1, 2], [0.5, 1, 1, 1.5, 1.5], [0.5, 1, 1.5, 1.5, 0], [0, 0, 0, 0, 1]];
+    const card = (name, mac, tag, cls, pos, menu, meal) => {
+      const m = macFor(mac, sz);
+      const s = Math.min(sz, mac.length / 4 - 1);
+      return {
+        cls, pos, alt: name, tag, name: nb(name), posno: /lenten/i.test(name), kcal: fmt(m.kcal) + ' kcal', macros: m.p + 'g protein · ' + m.uh + 'g carbs · ' + m.m + 'g fat',
+        sejk: meal === 1 && SHK[menu][s] > 0, sejkTxt: menu === 3 ? '+ plant-based protein' + NB + 'shake' : '+ protein' + NB + 'shake'
+      };
+    };
+
+    let days = [], posnoCards = [];
+    if (isPosno) {
+      posnoCards = J.posno.map((r, i) => card(r[0], r[3], MENUS[r[1]].toUpperCase() + ' · ' + MEALS[r[2]], 'jl-po', (i % 6) * 20 + '% ' + Math.floor(i / 6) * 50 + '%', r[1], r[2]));
+    } else {
+      const cls = 'jl-wk jl-s' + (mi * 3 + wk);
+      for (let dy = 0; dy < 7; dy++) {
+        const di = wk * 7 + dy;
+        const meals = J.m[mi][di].map((r, ml) => card(r[0], r[1], MEALS[ml], cls, (ml * 100 / 3).toFixed(4) + '% ' + (dy * 100 / 6).toFixed(4) + '%', mi, ml));
+        const t = J.m[mi][di].reduce((a, r) => { const m = macFor(r[1], sz); return [a[0] + m.kcal, a[1] + m.p]; }, [0, 0]);
+        days.push({ title: J.days[di][2], today: di === since, total: 'Total ' + fmt(t[0]) + ' kcal · ' + t[1] + 'g protein', meals });
+      }
+    }
+
+    const titleA = isPosno ? 'Lenten dishes' : (wk === nextWk && since < 21 ? 'Next week’s menu' : 'Menu for the week');
+    const titleB = isPosno ? 'from November 9 to 29' : 'from November ' + dayNum(wk * 7) + ' to ' + dayNum(wk * 7 + 6);
+    return {
+      titleA, titleB: nb(titleB), menuTabs, sizeOpts, sizeNote, weekTabs, days, posnoCards,
+      posnoTitle: nb(J.posno.length + ' Lenten dishes from all menus'),
+      isPosno, notPosno: !isPosno
+    };
+  }
+}
+</script>
+</body>
+</html>

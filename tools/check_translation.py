@@ -1,8 +1,9 @@
 """Check that a translated copy of design/Main.dc.html only differs in human-visible text.
 
     python3 tools/check_translation.py design/Main.en.dc.html
+    python3 tools/check_translation.py design/Jelovnik.ru.dc.html
 
-Compares against design/Main.dc.html:
+Compares design/X.<lang>.dc.html against design/X.dc.html:
   - the markup skeleton: every tag and every attribute except alt/aria-label/title/href/lang
     (text nodes are ignored), so classes, styles, {{ }} bindings and handlers must match;
   - the set of {{ }} expressions;
@@ -44,7 +45,8 @@ def skeleton(markup):
 
 
 def main(path):
-    src = (repo / 'design' / 'Main.dc.html').read_text()
+    orig = re.sub(r'\.[a-z]{2}\.dc\.html$', '.dc.html', Path(path).name)
+    src = (repo / 'design' / orig).read_text()
     dst = Path(path).read_text()
     problems = []
     (ms, ss), (md, sd) = split(src), split(dst)
