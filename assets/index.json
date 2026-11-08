@@ -6,13 +6,6 @@
       284
     ]
   },
-  "0a4fee7dafd76b0cccf8bf05276d4464": {
-    "file": "0a4fee7dafd76b0cccf8bf05276d4464.jpg",
-    "size": [
-      864,
-      1080
-    ]
-  },
   "28e71372c3bd82dedd72b8abb368df78": {
     "file": "28e71372c3bd82dedd72b8abb368df78.jpg",
     "size": [
@@ -95,20 +88,6 @@
     "size": [
       469,
       133
-    ]
-  },
-  "6a4729cf7c57ff0e350bc94a00ecf095": {
-    "file": "6a4729cf7c57ff0e350bc94a00ecf095.jpg",
-    "size": [
-      800,
-      1200
-    ]
-  },
-  "7dfdeaeb68b1f16eed6a786daa5dbd41": {
-    "file": "7dfdeaeb68b1f16eed6a786daa5dbd41.jpg",
-    "size": [
-      800,
-      1200
     ]
   },
   "8855b50abc3b108d818a6261241132cf": {
@@ -585,6 +564,13 @@
     "size": [
       1760,
       3080
+    ]
+  },
+  "74c9d50fac376876d1d52ab6c78c0e11": {
+    "file": "74c9d50fac376876d1d52ab6c78c0e11.jpg",
+    "size": [
+      1608,
+      1060
     ]
   }
 }
