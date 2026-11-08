@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nutribox: prodajna stranica (preview)</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body style="margin:0">
+<div id="app"></div>
+<script type="text/plain" id="dc-src-Main"><!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<title>Nutribox prodajna stranica</title>
+<script src="./support.js"><\/script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+html{scroll-behavior:smooth}
+p,li,span,a,h3,td,th,button{text-wrap:pretty}
+h1,h2{text-wrap:balance}
+section{scroll-margin-top:48px}
+a{color:#123c32}a:hover{color:#30563f}
+.btn{transition:transform .15s ease, box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(18,60,50,.18)}
+.pick{transition:box-shadow .15s ease, border-color .15s ease}
+.slider{scrollbar-width:thin}
+.spr{background-size:600% 300%;background-repeat:no-repeat;background-color:#e4efdc}
+.sp0{background-image:url(../assets/5268c4efc91305d89927836ba6d7a1ca.webp)}
+.sp1{background-image:url(../assets/a6755f9077c34c78ac20363be64911e2.webp)}
+.sp2{background-image:url(../assets/ac0b5ff04f67981eb24a6ec096d56872.webp)}
+.sp3{background-image:url(../assets/962f6318639b2c60209dcd8d2dda2b52.webp)}
+.sp4{background-image:url(../assets/1a20fbb6c5bc534a6d209d1149c3acec.webp)}
+.sp5{background-image:url(../assets/be0e8408087d67f0aff97b2423547726.webp)}
+.sp6{background-image:url(../assets/201adcf31c849c484cf36d35fa1995f8.webp)}
+.mctrl{width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 24px}
+.mdays{width:100%;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.mgrid{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.mcard{display:flex;flex-direction:column;gap:12px;min-width:0}
+.mimg{position:relative;width:100%;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#e4efdc}
+.mslider{width:100%;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+.mslider .mcard{flex:0 0 250px;scroll-snap-align:start}
+@media (max-width:960px){.mgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.wall{columns:3 260px;column-gap:16px}
+.recap{width:100%;max-width:880px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.recap-i{flex:0 0 calc((100% - 30px) / 4)}
+@media (max-width:960px){.recap-i{flex-basis:calc((100% - 10px) / 2)}}
+@media (max-width:640px){.wall{columns:auto;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;align-items:flex-start;padding-bottom:10px}.wall img{flex:0 0 270px;width:270px !important;margin:0 !important;scroll-snap-align:start}}
+.m-cta{display:none !important}
+.m-pad{display:none}
+@media (max-width:640px){
+.hide-sm{display:none !important}
+.m-cta{display:flex !important}
+.faq-a{padding-left:22px !important}
+.mdays{gap:5px}
+.mday-dt{font-size:13px !important}
+.msz-label{flex:0 0 100%}
+.mgrid{grid-template-columns:1fr;gap:12px}
+.mgrid .mcard{flex-direction:row;align-items:center;gap:14px}
+.mgrid .mimg{width:112px;flex:none;border-radius:14px}
+.mslider .mcard{flex-basis:220px}
+.recap{flex-direction:column;align-items:center}
+.recap-i{flex:0 0 auto !important;width:230px;justify-content:flex-start !important}
+.m-pad{display:block}
+.cta-menu{font-size:16px !important;padding:16px 18px !important}
+}
+</style>
+</helmet>
+<div style="width: 100%; background: #ffffff; color: #123c32; font-family: 'Outfit', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased">
+
+<sc-if value="{{ sec.s0 }}" hint-placeholder-val="{{ true }}">
+<!-- S0 Top bar -->
+<div style="position: sticky; top: 0; z-index: 30; background: #123c32; color: #ffffff; padding: 11px 20px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; line-height: 1.35; text-align: center">
+<span class="hide-sm" style="width: 8px; height: 8px; border-radius: 99px; background: #accb7d; flex: none"></span>
+<span>Dostava u <span style="color: #accb7d">Beogradu i Novom&nbsp;Sadu</span> · Poruči danas → prva&nbsp;dostava <span style="color: #accb7d">već u&nbsp;{{ dayAcc }} do&nbsp;9:30</span></span>
+</div>
+
+<!-- Header -->
+<header style="border-bottom: 1px solid #e3e8e2; padding: 16px 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<a href="https://www.nutribox.rs" aria-label="Nutribox početna" style="display: flex; align-items: center; min-height: 44px">
+<img src="../assets/475ef8a3ec63fcd311666293648aab3b.png" alt="Nutribox" width="494" height="133" style="height: 38px; width: auto; display: block">
+</a>
+<div style="display: flex; align-items: center; gap: 20px">
+<a class="hide-sm" href="tel:0800001007" style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; text-decoration: none; color: #123c32">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>
+0800 001&nbsp;007
+</a>
+<a class="btn" href="https://www.nutribox.rs/order-form" style="display: inline-flex; align-items: center; justify-content: center; min-height: 52px; box-sizing: border-box; padding: 14px 26px; border-radius: 14px; background: #accb7d; color: #123c32; font-size: 17px; font-weight: 700; text-decoration: none">Izaberi plan</a>
+</div>
+</div>
+</header>
+</sc-if>
+
+<sc-if value="{{ sec.s1 }}" hint-placeholder-val="{{ true }}">
+<!-- S1 Hero -->
+<section style="padding: clamp(40px, 6vw, 72px) 20px clamp(56px, 7vw, 88px); background: #ffffff">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 24px">
+<div style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 99px; background: #f0f6ec; font-size: 15px; font-weight: 600; color: #123c32">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5e8f3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+<span>Beograd i Novi&nbsp;Sad</span>
+</div>
+<h1 style="margin: 0; font-size: clamp(36px, 4.6vw, 56px); line-height: 1.06; letter-spacing: -0.03em; font-weight: 700; color: #123c32">Doručak, ručak, užina i&nbsp;večera <span style="color: #5e8f3d">napravljeni po tvom cilju i na vratima do 9:30 svakog&nbsp;dana.</span></h1>
+<p style="margin: 0; max-width: 600px; font-size: 19px; line-height: 1.55; color: #3d4a41">Bez nabavke namirnica, kuvanja i pranja sudova. Izabereš cilj, a naši kuvari svako jutro spremaju doručak, ručak, večeru i užinu od svežih namirnica i dostavljaju ih na kućnu ili poslovnu adresu. Ti samo otvoriš i&nbsp;jedeš.</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px">
+<a class="btn" href="https://www.nutribox.rs/order-form" style="display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 30px; border-radius: 14px; background: #123c32; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none">Izaberi svoj&nbsp;plan
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+<div style="display: flex; flex-direction: column; gap: 4px; font-size: 14px; line-height: 1.35; color: #3d4a41">
+<span>Prijava traje 2&nbsp;minuta</span>
+<span>Prva dostava već&nbsp;prekosutra</span>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="display: flex; align-items: center" aria-hidden="true">
+<img src="../assets/5066c74cc7f05ef9561e0a9bca4597db.jpg" alt="" width="132" height="132" style="width: 38px; height: 38px; border-radius: 99px; border: 2px solid #ffffff; object-fit: cover; display: block; background: #ffffff">
+<img src="../assets/8e6e0aaa197e83e1f2ad3f5267279274.jpg" alt="" width="132" height="132" style="width: 38px; height: 38px; margin-left: -10px; border-radius: 99px; border: 2px solid #ffffff; object-fit: cover; display: block; background: #ffffff">
+<img src="../assets/8855b50abc3b108d818a6261241132cf.jpg" alt="" width="132" height="132" style="width: 38px; height: 38px; margin-left: -10px; border-radius: 99px; border: 2px solid #ffffff; object-fit: cover; display: block; background: #ffffff">
+<img src="../assets/90f65000f4a5ada4525e1208fbf762e2.jpg" alt="" width="132" height="132" style="width: 38px; height: 38px; margin-left: -10px; border-radius: 99px; border: 2px solid #ffffff; object-fit: cover; display: block; background: #ffffff">
+<img src="../assets/28e71372c3bd82dedd72b8abb368df78.jpg" alt="" width="132" height="132" style="width: 38px; height: 38px; margin-left: -10px; border-radius: 99px; border: 2px solid #ffffff; object-fit: cover; display: block; background: #ffffff">
+</div>
+<span style="font-size: 15px; font-weight: 600; color: #123c32">2.500+ korisnika</span>
+</div>
+</div>
+</div>
+<div style="flex: 1 1 500px; min-width: 0; position: relative; padding: 10px 0 28px">
+<div role="img" aria-label="Mesto za hero vizual" style="width: 100%; aspect-ratio: 959 / 532; box-sizing: border-box; border-radius: 24px; border: 2px dashed #accb7d; background: #f0f6ec; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 24px; text-align: center">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#5e8f3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"></rect><circle cx="9" cy="10" r="2"></circle><path d="M21 16l-5-5-8 9"></path></svg>
+<span style="font-size: 18px; font-weight: 700; color: #123c32">Mesto za hero&nbsp;vizual</span>
+<span style="max-width: 320px; font-size: 14px; line-height: 1.45; color: #3d4a41; text-wrap: balance">Fotografija ili video, čeka se Vuksanov&nbsp;izbor</span>
+</div>
+<div style="position: absolute; left: 2%; bottom: 0; width: 124px; height: 124px; border-radius: 999px; background: #accb7d; color: #123c32; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-align: center; transform: rotate(-10deg); box-shadow: 0 12px 28px rgba(18, 60, 50, 0.22)">
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em">SVAKO JUTRO</span>
+<span style="font-size: 27px; line-height: 1.05; font-weight: 800; letter-spacing: -0.02em">do&nbsp;9:30</span>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s2 }}" hint-placeholder-val="{{ true }}">
+<!-- S2 Prepoznaješ li svoj dan -->
+<section style="background: #f6f8f3; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px">
+<h2 style="margin: 0; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Prepoznaješ li <span style="color: #5e8f3d">svoj dan?</span></h2>
+<div style="width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 20px">
+<div style="background: #ffffff; border: 1px solid #e3e8e2; border-radius: 20px; padding: 22px 24px; display: flex; align-items: center; gap: 18px">
+<span style="width: 52px; height: 52px; flex: none; border-radius: 14px; background: #f0f6ec; color: #123c32; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
+<span style="font-size: 18px; line-height: 1.4; font-weight: 500; color: #123c32">Svakog dana u 13:00 otvaraš Wolt i tek tada smišljaš šta ćeš&nbsp;jesti.</span>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e8e2; border-radius: 20px; padding: 22px 24px; display: flex; align-items: center; gap: 18px">
+<span style="width: 52px; height: 52px; flex: none; border-radius: 14px; background: #f0f6ec; color: #123c32; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"></rect><path d="M3 10h18"></path><path d="M15.5 14.5h2.5"></path></svg></span>
+<span style="font-size: 18px; line-height: 1.4; font-weight: 500; color: #123c32">Ručak sa dostavom izađe 3.000–3.500 RSD, a posle njega te uhvati pad&nbsp;energije.</span>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e8e2; border-radius: 20px; padding: 22px 24px; display: flex; align-items: center; gap: 18px">
+<span style="width: 52px; height: 52px; flex: none; border-radius: 14px; background: #f0f6ec; color: #123c32; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16l-1.4 10.2a1.5 1.5 0 0 1-1.5 1.3H6.9a1.5 1.5 0 0 1-1.5-1.3L4 9z"></path><path d="M8.5 9V7a3.5 3.5 0 0 1 7 0v2"></path></svg></span>
+<span style="font-size: 18px; line-height: 1.4; font-weight: 500; color: #123c32">Meal prep nedeljom ti pojede pola dana, a do srede hrana nema&nbsp;ukus.</span>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e8e2; border-radius: 20px; padding: 22px 24px; display: flex; align-items: center; gap: 18px">
+<span style="width: 52px; height: 52px; flex: none; border-radius: 14px; background: #f0f6ec; color: #123c32; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.2"></circle></svg></span>
+<span style="font-size: 18px; line-height: 1.4; font-weight: 500; color: #123c32">Znaš koliko kalorija ti treba, ali nemaš kad da planiraš, kupuješ i&nbsp;kuvaš.</span>
+</div>
+</div>
+<p style="margin: 0; max-width: 960px; text-align: center; font-size: clamp(20px, 2vw, 24px); line-height: 1.4; font-weight: 600; color: #4d7a31; text-wrap: balance"><span style="display: block; color: #123c32">Nije problem u&nbsp;disciplini.</span>Svaka opcija koju si probao traži tvoje vreme ili nije pravljena za tvoj&nbsp;cilj.</p>
+<a href="#poredjenje" style="display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #123c32">Pogledaj po čemu je Nutribox&nbsp;drugačiji
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M6 13l6 6 6-6"></path></svg>
+</a>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s3 }}" hint-placeholder-val="{{ true }}">
+<!-- S3 Poređenje -->
+<section id="poredjenje" style="background: #ffffff; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px">
+<h2 style="margin: 0; max-width: 880px; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Isti problem, četiri&nbsp;rešenja. <span style="color: #5e8f3d">Samo jedno ti ne uzima&nbsp;vreme.</span></h2>
+<div style="width: 100%; overflow-x: auto; border: 1px solid #e3e8e2; border-radius: 24px">
+<table style="width: 100%; min-width: 980px; border-collapse: collapse; font-size: 15px; line-height: 1.4; text-align: left">
+<thead>
+<tr>
+<th scope="col" style="width: 18%; padding: 20px 22px; background: #ffffff"></th>
+<th scope="col" style="width: 19%; padding: 20px 22px; background: #ffffff; font-size: 17px; font-weight: 700; color: #123c32">Wolt i&nbsp;Glovo</th>
+<th scope="col" style="width: 19%; padding: 20px 22px; background: #ffffff; font-size: 17px; font-weight: 700; color: #123c32">Sam spremaš</th>
+<th scope="col" style="width: 21%; padding: 20px 22px; background: #ffffff; font-size: 17px; font-weight: 700; color: #123c32">Tipični meal-prep&nbsp;servisi</th>
+<th scope="col" style="width: 23%; padding: 20px 22px; background: #123c32; font-size: 17px; font-weight: 700; color: #accb7d">Nutribox</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #f6f8f3">
+<th scope="row" style="padding: 17px 22px; font-weight: 700; color: #123c32">Cena</th>
+<td style="padding: 17px 22px; color: #3d4a41">~3.300 RSD po&nbsp;obroku</td>
+<td style="padding: 17px 22px; color: #3d4a41">jeftino, ali 15–20h&nbsp;nedeljno</td>
+<td style="padding: 17px 22px; color: #3d4a41">~2.100–2.500 RSD/dan</td>
+<td style="padding: 17px 22px; background: #30563f; color: #ffffff; font-weight: 600"><span style="display: inline-flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>od 2.800&nbsp;RSD/dan</span></td>
+</tr>
+<tr style="background: #ffffff">
+<th scope="row" style="padding: 17px 22px; font-weight: 700; color: #123c32">Tvoje vreme</th>
+<td style="padding: 17px 22px; color: #3d4a41">30+ min&nbsp;dnevno</td>
+<td style="padding: 17px 22px; color: #3d4a41">2–3h dnevno</td>
+<td style="padding: 17px 22px; color: #3d4a41">0</td>
+<td style="padding: 17px 22px; background: #30563f; color: #ffffff; font-weight: 600"><span style="display: inline-flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>0</span></td>
+</tr>
+<tr style="background: #f6f8f3">
+<th scope="row" style="padding: 17px 22px; font-weight: 700; color: #123c32">Prilagođeno cilju</th>
+<td style="padding: 17px 22px; color: #3d4a41">ne</td>
+<td style="padding: 17px 22px; color: #3d4a41">samo ako znaš&nbsp;kako</td>
+<td style="padding: 17px 22px; color: #3d4a41">fiksne porcije</td>
+<td style="padding: 17px 22px; background: #30563f; color: #ffffff; font-weight: 600"><span style="display: inline-flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>4 kalorijska paketa, Ž i&nbsp;M</span></td>
+</tr>
+<tr style="background: #ffffff">
+<th scope="row" style="padding: 17px 22px; font-weight: 700; color: #123c32">Kvalitet</th>
+<td style="padding: 17px 22px; color: #3d4a41">promenljiv</td>
+<td style="padding: 17px 22px; color: #3d4a41">zavisi od&nbsp;tebe</td>
+<td style="padding: 17px 22px; color: #3d4a41">masovna proizvodnja</td>
+<td style="padding: 17px 22px; background: #30563f; color: #ffffff; font-weight: 600"><span style="display: inline-flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>restoranski kuvari, sveže svako&nbsp;jutro</span></td>
+</tr>
+<tr style="background: #f6f8f3">
+<th scope="row" style="padding: 17px 22px; font-weight: 700; color: #123c32">Raznovrsnost</th>
+<td style="padding: 17px 22px; color: #3d4a41">neograničena, ali&nbsp;nezdrava</td>
+<td style="padding: 17px 22px; color: #3d4a41">uvek isto</td>
+<td style="padding: 17px 22px; color: #3d4a41">ograničen meni</td>
+<td style="padding: 17px 22px; background: #30563f; color: #ffffff; font-weight: 600"><span style="display: inline-flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>112+ novih jela&nbsp;nedeljno</span></td>
+</tr>
+<tr style="background: #ffffff">
+<th scope="row" style="padding: 17px 22px; font-weight: 700; color: #123c32">Fleksibilnost</th>
+<td style="padding: 17px 22px; color: #3d4a41">–</td>
+<td style="padding: 17px 22px; color: #3d4a41">–</td>
+<td style="padding: 17px 22px; color: #3d4a41">uglavnom fiksno</td>
+<td style="padding: 17px 22px; background: #30563f; color: #ffffff; font-weight: 600"><span style="display: inline-flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>pauza, promena adrese,&nbsp;aplikacija</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="margin: -16px 0 0; font-size: 12px; color: #6b766f">* Cene konkurencije su okvirne, prema javno dostupnim&nbsp;cenovnicima.</p>
+<a class="btn" href="https://www.nutribox.rs/order-form" style="display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 30px; border-radius: 14px; background: #123c32; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none">Izaberi svoj&nbsp;plan
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s4 }}" hint-placeholder-val="{{ true }}">
+<!-- S6 Meni -->
+
+</sc-if>
+
+<sc-if value="{{ sec.s5 }}" hint-placeholder-val="{{ true }}">
+<!-- S4 Mehanizam -->
+<section id="meni" style="background: #ffffff; padding: 0 20px clamp(64px, 8vw, 96px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 28px">
+<h2 style="margin: 0; max-width: 860px; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">112+ novih jela svake&nbsp;nedelje. <span style="color: #5e8f3d">Ovako izgleda tvoja&nbsp;nedelja.</span></h2>
+<p style="margin: -10px 0 0; text-align: center; font-size: 16px; color: #3d4a41; text-wrap: balance">Primeri jela iz jelovnika. Jelovnik se menja svake&nbsp;nedelje.</p>
+<div aria-hidden="true" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"><div class="spr sp0" style="width: 1px; height: 1px"></div><div class="spr sp1" style="width: 1px; height: 1px"></div><div class="spr sp2" style="width: 1px; height: 1px"></div><div class="spr sp3" style="width: 1px; height: 1px"></div><div class="spr sp4" style="width: 1px; height: 1px"></div><div class="spr sp5" style="width: 1px; height: 1px"></div><div class="spr sp6" style="width: 1px; height: 1px"></div></div>
+<div role="group" aria-label="Filter po tipu ishrane" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px">
+<sc-for list="{{ filters }}" as="f" hint-placeholder-count="7">
+<button type="button" class="pick" aria-pressed="{{ f.on }}" onClick="{{ f.pick }}" style="min-height: 44px; padding: 9px 18px; border-radius: 12px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; {{ f.style }}">{{ f.label }}</button>
+</sc-for>
+</div>
+<div style="width: 100%; display: flex; flex-direction: column; gap: 10px">
+<div class="slider" style="width: 100%; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 2px 12px; box-sizing: border-box">
+<sc-for list="{{ meals }}" as="m" hint-placeholder-count="5">
+<article style="flex: 0 0 250px; min-width: 250px; scroll-snap-align: start; display: flex; flex-direction: column; gap: 10px">
+<div style="position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; overflow: hidden; background: #e4efdc">
+<div class="spr {{ m.sp }}" role="img" aria-label="{{ m.alt }}" style="position: absolute; inset: 0; background-position: {{ m.pos }}"></div>
+<span style="position: absolute; top: 12px; left: 12px; padding: 5px 10px; border-radius: 99px; background: #ffffff; font-size: 13px; font-weight: 700; color: #123c32">{{ m.kcal }}</span>
+<sc-if value="{{ m.posno }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 12px; right: 12px; padding: 5px 10px; border-radius: 99px; background: #123c32; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #accb7d">POSNO</span></sc-if>
+</div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #4d7a31">{{ m.tag }}</span>
+<h3 style="margin: -4px 0 0; font-size: 18px; line-height: 1.25; font-weight: 700; color: #123c32">{{ m.name }}</h3>
+<span style="font-size: 13px; font-weight: 500; color: #4d7a31">{{ m.macros }}</span>
+</article>
+</sc-for>
+</div>
+<span style="align-self: flex-end; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #3d4a41">Prevuci za još&nbsp;jela<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 16px">
+<a class="btn" href="https://www.nutribox.rs/order-form" style="display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 30px; border-radius: 14px; background: #123c32; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none">Izaberi svoj plan
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+<a class="btn cta-menu" href="jelovnik.html" style="display: inline-flex; align-items: center; min-height: 58px; box-sizing: border-box; padding: 16px 26px; border-radius: 14px; border: 2px solid #123c32; background: #ffffff; color: #123c32; font-size: 18px; font-weight: 700; text-decoration: none">Pogledaj meni za narednu&nbsp;nedelju</a>
+</div>
+</div>
+</section><section style="background: #ffffff; padding: 0 20px clamp(64px, 8vw, 96px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px">
+<h2 style="margin: 0; max-width: 860px; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Nutribox sistem: <span style="color: #5e8f3d">tri stvari koje ostali ne rade&nbsp;zajedno.</span></h2>
+<div style="width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px">
+<div style="background: #f6f8f3; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">01</span>
+</div>
+<h3 style="margin: 4px 0 0; font-size: 21px; font-weight: 700; color: #123c32">Plan po tvom&nbsp;cilju</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">4 kalorijska paketa, posebno za žene i za muškarce. 4 tipa ishrane: Balance, Fish, Vegetarijanski, Vegan. U Balance meniju izbacuješ do dve stvari: gluten, ribu, svinjetinu ili&nbsp;laktozu.</p>
+</div>
+<div style="background: #f6f8f3; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">02</span>
+</div>
+<h3 style="margin: 4px 0 0; font-size: 21px; font-weight: 700; color: #123c32">Kuvari iz restorana, ne iz&nbsp;kantine</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Sveže namirnice, kuva se svako jutro, ništa nije zamrznuto. Ukus kao u restoranu, a ne kao u plastičnoj&nbsp;kutiji.</p>
+</div>
+<div style="background: #f6f8f3; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">03</span>
+</div>
+<h3 style="margin: 4px 0 0; font-size: 21px; font-weight: 700; color: #123c32">Logistika koja radi umesto&nbsp;tebe</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Doručak, ručak, večera i užina stižu zajedno do 9:30, na kućnu ili poslovnu adresu. Pauzu dana i promenu adrese radiš sam iz&nbsp;aplikacije.</p>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s6 }}" hint-placeholder-val="{{ true }}">
+<!-- S5 Ko kuva -->
+<section style="background: #123c32; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div style="flex: 1 1 460px; min-width: 0; height: clamp(440px, 42vw, 560px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 14px">
+<div style="grid-row: span 2; position: relative; border-radius: 22px; background: #30563f; overflow: hidden">
+<img src="../assets/6a4729cf7c57ff0e350bc94a00ecf095.jpg" alt="Vuksan Vasić, Osnivač Nutriboxa" width="800" height="1200" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 44% 0%; display: block">
+<div style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.88); display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 16px; font-weight: 700; color: #ffffff">Vuksan Vasić</span>
+<span style="font-size: 13px; color: #accb7d">Osnivač Nutriboxa</span>
+</div>
+</div>
+<div style="position: relative; border-radius: 22px; background: #30563f; overflow: hidden">
+<img src="../assets/7dfdeaeb68b1f16eed6a786daa5dbd41.jpg" alt="Miloš Simić, šef" width="800" height="1200" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block">
+<div style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.88); display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 16px; font-weight: 700; color: #ffffff">Miloš Simić</span>
+<span style="font-size: 13px; color: #accb7d">Šef</span>
+</div>
+</div>
+<div style="position: relative; border-radius: 22px; background: #30563f; overflow: hidden">
+<img src="../assets/0a4fee7dafd76b0cccf8bf05276d4464.jpg" alt="Amer Hamza, šef" width="864" height="1080" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 14%; display: block">
+<div style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.88); display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 16px; font-weight: 700; color: #ffffff">Amer Hamza</span>
+<span style="font-size: 13px; color: #accb7d">Šef</span>
+</div>
+</div>
+</div>
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; color: #accb7d">KO KUVA TVOJU&nbsp;HRANU</span>
+<h2 style="margin: 0; font-size: clamp(30px, 3.2vw, 40px); line-height: 1.14; letter-spacing: -0.02em; font-weight: 700; color: #ffffff">Iza svakog tvog obroka stoje kuvari&nbsp;sa <span style="color: #accb7d">godinama iskustva u visokoj&nbsp;gastronomiji.</span></h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.75; color: #e6eee3">Nutribox je osnovao Vuksan Vasić, sa <mark style="background: #accb7d; color: #123c32; font-weight: 600; padding: 1px 6px; border-radius: 5px; -webkit-box-decoration-break: clone; box-decoration-break: clone">više od 15 godina iskustva</mark> u gastronomiji i učešćem na <mark style="background: #accb7d; color: #123c32; font-weight: 600; padding: 1px 6px; border-radius: 5px; -webkit-box-decoration-break: clone; box-decoration-break: clone">Best Chef Awards 2018.</mark> godine u Milanu. Kuhinju vodi Miloš Simić, sa <mark style="background: #accb7d; color: #123c32; font-weight: 600; padding: 1px 6px; border-radius: 5px; -webkit-box-decoration-break: clone; box-decoration-break: clone">14 godina iskustva</mark> u restoranima visoke gastronomije, zajedno sa Amerom Hamzom, izvršnim šefom kuhinje i <mark style="background: #accb7d; color: #123c32; font-weight: 600; padding: 1px 6px; border-radius: 5px; -webkit-box-decoration-break: clone; box-decoration-break: clone">pobednikom MasterChef Srbija.</mark> Rezultat su obroci koji ti svakog jutra stižu na vrata sveži, ukusni i pripremljeni po standardima visoke&nbsp;gastronomije.</p>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s7 }}" hint-placeholder-val="{{ true }}">
+<!-- S7 Benefiti -->
+<section style="background: #f6f8f3; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px">
+<h2 style="margin: 0; max-width: 860px; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Više od dostave&nbsp;hrane. <span style="color: #5e8f3d">Sistem ishrane koji radi za&nbsp;tebe.</span></h2>
+<div style="width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px">
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">01</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">2–3 sata dnevno&nbsp;nazad</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">To je 70–90 sati mesečno. Vreme koje možeš iskoristiti za sebe, porodicu ili&nbsp;posao.</p>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">02</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Nema više „šta ćemo&nbsp;danas“</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Jedna odluka manje svaki dan. Manje mentalnog umora, više&nbsp;fokusa.</p>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">03</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Stabilna energija&nbsp;popodne</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Izbalansirani obroci tokom dana, bez pada energije posle teškog ručka i junk&nbsp;food-a.</p>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">04</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Cilj bez brojanja&nbsp;kalorija</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Kalorije su već uračunate u tvoj paket. Ti samo otvoriš kutiju i&nbsp;jedeš.</p>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">05</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Bez kupovine i bacanja&nbsp;hrane</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Prazna sudopera, frižider bez namirnica koje ti propadaju i bez gubljenja vremena u&nbsp;redu.</p>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">06</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Putuješ? Pauziraš.</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Dan pauziraš iz aplikacije do 16h dan ranije. Tako pauziran dan ti se ne računa kao&nbsp;iskorišćen.</p>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s8 }}" hint-placeholder-val="{{ true }}">
+<!-- S8 Socijalni dokaz -->
+<section style="background: #ffffff; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px">
+<h2 style="margin: 0; max-width: 860px; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Dan im je pun&nbsp;obaveza. <span style="color: #5e8f3d">Ishrana više nije jedna od&nbsp;njih.</span></h2>
+<div style="width: 100%; display: flex; flex-direction: column; gap: 14px">
+<div class="slider" style="width: 100%; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px">
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="../assets/ec1226f597c7dec757e4c995fe12450b.jpg" alt="Video utisak: Miloš Ludus" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO UTISAK</span>
+<button type="button" aria-label="Pusti video utisak: Miloš Ludus" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Miloš Ludus</span>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="../assets/48dd7e9204b80dbb912c5dc9f125a63b.jpg" alt="Video utisak: Tamara" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO UTISAK</span>
+<button type="button" aria-label="Pusti video utisak: Tamara" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Tamara</span>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="../assets/dd0cf92261036a266fe626f3dfb2d53d.jpg" alt="Video utisak: Tibor Čubrilo" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO UTISAK</span>
+<button type="button" aria-label="Pusti video utisak: Tibor Čubrilo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Tibor Čubrilo</span>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="../assets/f0dad957612601a0a103f55ea9f4ba9c.jpg" alt="Video utisak: Miloš Bubaja" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO UTISAK</span>
+<button type="button" aria-label="Pusti video utisak: Miloš Bubaja" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Miloš Bubaja</span>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="../assets/4ef02203b38c984aec205f4b38bb712a.jpg" alt="Video utisak: Dušan Kocić" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO UTISAK</span>
+<button type="button" aria-label="Pusti video utisak: Dušan Kocić" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Dušan Kocić</span>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="../assets/f7f0842e439dafcbb5430078f75d7386.jpg" alt="Video utisak: Zoran" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO UTISAK</span>
+<button type="button" aria-label="Pusti video utisak: Zoran" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Zoran</span>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="../assets/54901ea1b99eebd5263437b70dfe53c1.jpg" alt="Video utisak: korisnik" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO UTISAK</span>
+<button type="button" aria-label="Pusti video utisak: korisnik" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="../assets/f560b51e0a765f5432501a85626fb5c2.jpg" alt="Video utisak: Sava" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO UTISAK</span>
+<button type="button" aria-label="Pusti video utisak: Sava" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Sava</span>
+</div>
+</div>
+<span style="align-self: flex-end; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #3d4a41">Prevuci za još&nbsp;utisaka<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+<div style="max-width: 680px; width: 100%; box-sizing: border-box; border-radius: 24px; background: #f0f6ec; padding: 32px 36px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18v-5.5C4 8.4 6.2 6 9.5 5.5l.5 1.8C8.1 8 7.3 9.4 7.3 11.2H10V18H4zm10 0v-5.5c0-4.1 2.2-6.5 5.5-7l.5 1.8c-1.9.7-2.7 2.1-2.7 3.9H20V18h-6z" fill="#accb7d"></path></svg>
+<p style="margin: 0; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.25; font-weight: 700; color: #123c32">„Osećam se kao da imam ličnog&nbsp;kuvara.“</p>
+<span style="font-size: 15px; font-weight: 500; color: #4d7a31">Nutribox korisnica,&nbsp;Beograd</span>
+</div>
+<div class="wall" style="width: 100%">
+<img src="../assets/b1b4e6e1cd0ef54976785d35770e1c7d.png" alt="Poruka zadovoljnog korisnika 1" width="469" height="563" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
+<img src="../assets/2d84f2d819ced9430341e6ef3f4045b1.png" alt="Poruka zadovoljnog korisnika 2" width="468" height="167" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
+<img src="../assets/943985ac3e62784b716c1bba1122bd8e.png" alt="Poruka zadovoljnog korisnika 3" width="469" height="464" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
+<img src="../assets/6939c0e1fb3abccbe8d2cffeb41f3bcf.png" alt="Poruka zadovoljnog korisnika 4" width="469" height="133" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
+<img src="../assets/4d884f145ff01de41a1995ad53e8d315.png" alt="Poruka zadovoljnog korisnika 5" width="468" height="368" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
+<img src="../assets/5e4e66659da7f24ab802fa2ded5ba6f8.png" alt="Poruka zadovoljnog korisnika 6" width="469" height="277" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
+<img src="../assets/28f4114881093ab6bc0b621bb3d365b8.png" alt="Poruka zadovoljnog korisnika 7" width="469" height="179" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
+<img src="../assets/0581996be5ea55f522657e0e8d859593.png" alt="Poruka zadovoljnog korisnika 8" width="468" height="284" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
+<img src="../assets/fcb7ef5c674e13aa0c03b0d790bc548c.png" alt="Poruka zadovoljnog korisnika 9" width="469" height="117" style="display: block; width: 100%; height: auto; margin: 0 0 16px; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff; break-inside: avoid">
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s9 }}" hint-placeholder-val="{{ true }}">
+<!-- S9 Kako funkcioniše -->
+<section style="background: #f6f8f3; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 44px">
+<h2 style="margin: 0; max-width: 860px; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Kako funkcioniše? <span style="color: #5e8f3d">Četiri koraka i ishrana je&nbsp;rešena.</span></h2>
+<ol style="list-style: none; margin: 0; padding: 0; width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 24px">
+<li style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 56px; height: 56px; flex: none; border-radius: 16px; background: #123c32; color: #accb7d; font-size: 22px; font-weight: 700; display: flex; align-items: center; justify-content: center">01</span><span style="flex: 1 1 auto; height: 2px; background: #d5dfd1"></span></div>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Danas, 2&nbsp;minuta</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Popuniš formu, izabereš cilj, tip ishrane i trajanje&nbsp;paketa.</p>
+</li>
+<li style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 56px; height: 56px; flex: none; border-radius: 16px; background: #123c32; color: #accb7d; font-size: 22px; font-weight: 700; display: flex; align-items: center; justify-content: center">02</span><span style="flex: 1 1 auto; height: 2px; background: #d5dfd1"></span></div>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Naš tim te&nbsp;kontaktira</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Potvrđujemo plan i ograničenja u ishrani pre prve&nbsp;dostave.</p>
+</li>
+<li style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 56px; height: 56px; flex: none; border-radius: 16px; background: #123c32; color: #accb7d; font-size: 22px; font-weight: 700; display: flex; align-items: center; justify-content: center">03</span><span style="flex: 1 1 auto; height: 2px; background: #d5dfd1"></span></div>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Kuvari spremaju</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Tvoji obroci se kuvaju od svežih namirnica, prema tvom&nbsp;planu.</p>
+</li>
+<li style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 56px; height: 56px; flex: none; border-radius: 16px; background: #accb7d; color: #123c32; font-size: 22px; font-weight: 700; display: flex; align-items: center; justify-content: center">04</span></div>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Prekosutra do&nbsp;9:30</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Ceo dan hrane je na tvojim vratima. Ti samo otvoriš kutiju i&nbsp;jedeš.</p>
+</li>
+</ol>
+<a class="btn" href="https://www.nutribox.rs/order-form" style="display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 30px; border-radius: 14px; background: #123c32; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none">Izaberi svoj&nbsp;plan
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s10 }}" hint-placeholder-val="{{ true }}">
+<!-- S10 Ponuda -->
+<section id="ponuda" style="background: #ffffff; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 32px">
+<h2 style="margin: 0; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Izaberi svoj&nbsp;paket. <span style="color: #5e8f3d">Mi brinemo o&nbsp;ostalom.</span></h2>
+<p style="margin: -12px 0 0; max-width: 720px; text-align: center; font-size: 18px; line-height: 1.5; color: #3d4a41; text-wrap: balance">Svaki paket uključuje doručak, užinu, ručak i večeru, sa dostavom svako jutro do 9:30. Već od 700 RSD po&nbsp;obroku.</p>
+<div role="radiogroup" aria-label="Trajanje paketa" style="width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 20px">
+<sc-for list="{{ plans }}" as="p" hint-placeholder-count="4">
+<button type="button" role="radio" class="pick" aria-checked="{{ p.on }}" onClick="{{ p.pick }}" style="position: relative; text-align: left; font-family: inherit; cursor: pointer; border-radius: 22px; padding: 24px 24px 26px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; {{ p.cardStyle }}">
+<span style="position: absolute; top: 22px; right: 22px; width: 24px; height: 24px; box-sizing: border-box; border-radius: 99px; display: flex; align-items: center; justify-content: center; {{ p.radioStyle }}">
+<sc-if value="{{ p.selected }}" hint-placeholder-val="{{ false }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="{{ p.checkColor }}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>
+</span>
+<span style="min-height: 22px; display: flex; align-items: center">
+<sc-if value="{{ p.hasBadge }}" hint-placeholder-val="{{ false }}"><span style="padding: 4px 9px; border-radius: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; {{ p.badgeStyle }}">{{ p.badge }}</span></sc-if>
+</span>
+<span style="margin-top: 4px; font-size: 20px; font-weight: 700; color: {{ p.titleColor }}">{{ p.days }}</span>
+<span style="font-size: 34px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; color: {{ p.titleColor }}">{{ p.price }}</span>
+<span style="font-size: 14px; color: {{ p.subColor }}">{{ p.per }}</span>
+<span style="margin-top: 6px; font-size: 15px; font-weight: 600; color: {{ p.totalColor }}">{{ p.total }}</span>
+</button>
+</sc-for>
+</div>
+<p style="margin: 4px 0 0; text-align: center; font-size: 20px; font-weight: 600; color: #4d7a31; text-wrap: balance">Za cenu otprilike jednog Wolt ručka dobijaš ceo dan&nbsp;hrane.</p>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+<a class="btn" href="https://www.nutribox.rs/order-form" style="display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 32px; border-radius: 14px; background: #123c32; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none">Nastavi na&nbsp;porudžbinu
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+<span style="font-size: 14px; color: #3d4a41">Izabrano: {{ selLabel }}</span>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s11 }}" hint-placeholder-val="{{ true }}">
+<!-- S11 Garancija -->
+<section style="background: #ffffff; padding: 0 20px clamp(64px, 8vw, 96px)">
+<div style="max-width: 1000px; margin: 0 auto; box-sizing: border-box; border-radius: 28px; background: #f0f6ec; padding: clamp(28px, 4vw, 40px); display: flex; flex-wrap: wrap; align-items: center; gap: 32px">
+<div style="width: 132px; height: 132px; flex: none; border-radius: 999px; background: #123c32; display: flex; align-items: center; justify-content: center">
+<div style="width: 112px; height: 112px; box-sizing: border-box; border-radius: 999px; border: 2px dashed #5e8f3d; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px">
+<span style="font-size: 30px; line-height: 1; font-weight: 800; color: #accb7d">100%</span>
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: #ffffff">GARANCIJA</span>
+</div>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 26px; line-height: 1.2; font-weight: 700; color: #123c32">Garancija zadovoljstva za paket od 28&nbsp;dana</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #3d4a41">Ako ti u prvih 7 dana Nutribox iz bilo kog razloga ne odgovara, vraćamo ti novac za preostale 3 nedelje. Bez&nbsp;komplikovanja.</p>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s12 }}" hint-placeholder-val="{{ true }}">
+<!-- S12 Zamerke -->
+<section style="background: #f6f8f3; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px">
+<h2 style="margin: 0; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Ono što te&nbsp;verovatno <span style="color: #5e8f3d">još koči.</span></h2>
+<div style="width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 20px">
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; gap: 16px">
+<span style="width: 34px; height: 34px; flex: none; border-radius: 99px; background: #accb7d; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123c32" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #123c32">Biće ti&nbsp;dovoljno.</h3><p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3d4a41">4 kalorijska nivoa, NutriPump i NutriMax idu i do 3.000 kcal. Ako ti nije dovoljno, dodaješ protein ili&nbsp;šejk.</p></div>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; gap: 16px">
+<span style="width: 34px; height: 34px; flex: none; border-radius: 99px; background: #accb7d; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123c32" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #123c32">Imaš ograničenja?&nbsp;Pokriveno.</h3><p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3d4a41">Vegan, vegetarijanski ili riblji meni, plus do 2 isključenja u Balance-u: gluten, riba, svinjetina,&nbsp;laktoza.</p></div>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; gap: 16px">
+<span style="width: 34px; height: 34px; flex: none; border-radius: 99px; background: #accb7d; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123c32" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #123c32">Putuješ? Pauziraš.</h3><p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3d4a41">Dane pauziraš iz aplikacije, bez penala. Hrana nikad ne&nbsp;propada.</p></div>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; gap: 16px">
+<span style="width: 34px; height: 34px; flex: none; border-radius: 99px; background: #accb7d; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123c32" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #123c32">Nije skupo kad&nbsp;izračunaš.</h3><p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3d4a41">Od 2.800 RSD za ceo dan, manje od jednog ručka na Woltu. A možeš da kreneš sa 5&nbsp;dana.</p></div>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s13 }}" hint-placeholder-val="{{ true }}">
+<!-- S13 Zašto sada -->
+<section style="background: #123c32; padding: clamp(64px, 8vw, 88px) 20px">
+<div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center">
+<h2 style="margin: 0; font-size: clamp(28px, 3vw, 36px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; color: #ffffff">Svaka nedelja bez plana je još oko 15 sati u kuhinji ili na&nbsp;Woltu.</h2>
+<p style="margin: 0; font-size: 20px; line-height: 1.45; color: #accb7d">I još jedno „od ponedeljka krećem“. Poruči danas i jedeš po planu već od&nbsp;{{ dayGen }}.</p>
+<a class="btn" href="https://www.nutribox.rs/order-form" style="margin-top: 6px; display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 30px; border-radius: 14px; background: #accb7d; color: #123c32; font-size: 18px; font-weight: 700; text-decoration: none">Izaberi svoj&nbsp;plan
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s14 }}" hint-placeholder-val="{{ true }}">
+<!-- S15 FAQ -->
+<section id="faq" style="background: #f6f8f3; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 32px">
+<h2 style="margin: 0; text-align: center; font-size: clamp(30px, 3.4vw, 40px); line-height: 1.14; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Česta pitanja. <span style="color: #5e8f3d">Sve što treba da znaš pre prve&nbsp;dostave.</span></h2>
+<div style="width: 100%; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{ faqs }}" as="q" hint-placeholder-count="15">
+<div style="border-radius: 18px; overflow: hidden; {{ q.boxStyle }}">
+<button type="button" aria-expanded="{{ q.expanded }}" onClick="{{ q.toggle }}" style="width: 100%; min-height: 68px; box-sizing: border-box; padding: 18px 22px; border: 0; background: transparent; font-family: inherit; text-align: left; cursor: pointer; display: flex; align-items: center; gap: 18px">
+<span style="width: 26px; flex: none; font-size: 15px; font-weight: 700; color: {{ q.numColor }}">{{ q.num }}</span>
+<span style="flex: 1 1 auto; font-size: 18px; line-height: 1.35; font-weight: 700; color: {{ q.qColor }}">{{ q.q }}</span>
+<span style="width: 32px; height: 32px; flex: none; border-radius: 99px; display: flex; align-items: center; justify-content: center; {{ q.iconStyle }}">
+<sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg></sc-if>
+<sc-if value="{{ q.closed }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></sc-if>
+</span>
+</button>
+<sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+<p class="faq-a" style="margin: 0; padding: 0 22px 22px 66px; font-size: 16px; line-height: 1.6; color: #e6eee3">{{ q.a }}</p>
+<sc-if value="{{ q.hasLink }}" hint-placeholder-val="{{ false }}">
+<div class="faq-a" style="padding: 0 22px 22px 66px; margin-top: -8px">
+<a href="{{ q.linkHref }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 16px; font-weight: 700; color: #accb7d">{{ q.linkLabel }}
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</sc-if>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s15 }}" hint-placeholder-val="{{ true }}">
+<!-- S16 Završni CTA -->
+<section style="background: #ffffff; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1000px; margin: 0 auto; box-sizing: border-box; border-radius: 32px; background: #123c32; padding: clamp(36px, 5vw, 56px) clamp(22px, 4vw, 56px); display: flex; flex-direction: column; align-items: center; gap: 26px; text-align: center">
+<h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 40px); line-height: 1.14; letter-spacing: -0.025em; font-weight: 700; color: #ffffff; text-wrap: balance">Ishrana ti može biti&nbsp;rešena <span style="display: block; color: #accb7d">već od&nbsp;prekosutra.</span></h2>
+<div class="recap">
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>4 obroka&nbsp;dnevno</span>
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>od 2.800&nbsp;RSD/dan</span>
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>4 paketa po&nbsp;cilju</span>
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>dostava do&nbsp;9:30</span>
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Beograd i Novi&nbsp;Sad</span>
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>pauza iz&nbsp;aplikacije</span>
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>7 dana&nbsp;garancije</span>
+</div>
+<a class="btn" href="https://www.nutribox.rs/order-form" style="display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 30px; border-radius: 14px; background: #accb7d; color: #123c32; font-size: 18px; font-weight: 700; text-decoration: none">Izaberi svoj&nbsp;plan
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #accb7d">Imaš pitanje? Pozovi <a href="tel:0800001007" style="color: #ffffff; font-weight: 600; white-space: nowrap">0800 001 007</a>.</p>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s16 }}" hint-placeholder-val="{{ true }}">
+<!-- Footer -->
+<footer style="background: #ffffff; border-top: 1px solid #e3e8e2; padding: 56px 20px 0">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px 64px; padding-bottom: 44px">
+<div style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 26px">
+<img src="../assets/475ef8a3ec63fcd311666293648aab3b.png" alt="Nutribox" style="height: 40px; width: auto; align-self: flex-start">
+<div style="display: flex; flex-wrap: wrap; gap: 22px 40px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #3d4a41">Plaćanje karticama&nbsp;omogućila</span>
+<a href="https://www.raiffeisenbank.rs" style="display: inline-flex; align-items: center; min-height: 28px"><img src="../assets/cf80d99c77c3d97873c78b36c8afc8b6.png" alt="Raiffeisen Bank" style="height: 18px; width: auto; display: block"></a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #3d4a41">Sigurnost&nbsp;transakcije</span>
+<div style="display: flex; align-items: center; gap: 14px">
+<img src="../assets/bcaee31850f6f5e00e1613f0679eb160.png" alt="Mastercard ID Check" style="height: 18px; width: auto; display: block">
+<img src="../assets/42f4b4ffb06152d2e6296906635d67aa.png" alt="Visa Secure" style="height: 34px; width: auto; display: block">
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #3d4a41">Prihvatamo plaćanje&nbsp;putem</span>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<img src="../assets/c93b87fa607f0ab5d7079cad2397c2a8.png" alt="Visa" style="height: 18px; width: auto; display: block">
+<img src="../assets/e3d439cb8afcb7a30ca02939770f03a1.png" alt="Mastercard" style="height: 24px; width: auto; display: block">
+<img src="../assets/687da14a05637618db33c10f145c9bb9.png" alt="Maestro" style="height: 30px; width: auto; display: block">
+<img src="../assets/dbd319801dc101d1b2e6df614f132508.png" alt="DinaCard" style="height: 28px; width: auto; display: block">
+</div>
+</div>
+</div>
+<div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.5; color: #3d4a41">
+<h2 style="margin: 0 0 4px; font-size: 16px; font-weight: 600; color: #123c32">Podaci o&nbsp;firmi</h2>
+<span>NUTRIBOX KETERING&nbsp;D.O.O.</span>
+<span>CARA DUŠANA 158, 11080 BEOGRAD (ZEMUN),&nbsp;Srbija</span>
+<span>MB:&nbsp;22320378</span>
+<span>PIB:&nbsp;115841962</span>
+<a href="mailto:kancelarija@nutribox.rs" style="color: #3d4a41">kancelarija@nutribox.rs</a>
+<a href="tel:0800001007" style="color: #3d4a41">0800 001&nbsp;007</a>
+</div>
+<div style="flex: 0 1 220px; min-width: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.5">
+<h2 style="margin: 0 0 4px; font-size: 16px; font-weight: 600; color: #123c32">Ostalo</h2>
+<a href="https://www.nutribox.rs/uslovi-koriscenja" style="color: #3d4a41">Uslovi&nbsp;korišćenja</a>
+<a href="https://www.nutribox.rs/politika-privatnosti" style="color: #3d4a41">Politika&nbsp;privatnosti</a>
+<a href="https://www.nutribox.rs/politika-povracaja-sredstava" style="color: #3d4a41">Politika povraćaja&nbsp;sredstava</a>
+<a href="https://www.nutribox.rs/brisanje-naloga" style="color: #3d4a41">Brisanje&nbsp;naloga</a>
+</div>
+</div>
+<div style="max-width: 1200px; margin: 0 auto; border-top: 1px solid #e3e8e2; padding: 18px 0 22px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; font-size: 13px; color: #6b766f">
+<span>©2026 Nutribox. Sva prava&nbsp;zadržana.</span>
+<span>powered by&nbsp;<a href="https://www.floumate.com?source=nutribox" target="_blank" rel="noopener" style="color: #123c32; font-weight: 600">Floumate</a></span>
+</div>
+</footer>
+<div class="m-pad" style="height: 84px; background: #ffffff"></div>
+
+<!-- Mobilni sticky CTA -->
+<div class="m-cta" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: #ffffff; border-top: 1px solid #e3e8e2; box-shadow: 0 -8px 24px rgba(18, 60, 50, 0.08); padding: 12px 16px; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 15px; font-weight: 700; color: #123c32">od 2.800&nbsp;RSD/dan</span>
+<span style="font-size: 12px; color: #3d4a41">Prva dostava u&nbsp;{{ dayAcc }}</span>
+</div>
+<a href="https://www.nutribox.rs/order-form" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; box-sizing: border-box; padding: 12px 22px; border-radius: 14px; background: #123c32; color: #ffffff; font-size: 16px; font-weight: 700; text-decoration: none">Izaberi plan</a>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"partFrom":{"editor":"int","default":0,"min":0,"max":16,"section":"Prikaz"},"partTo":{"editor":"int","default":7,"min":0,"max":16,"section":"Prikaz"},"$preview":{"width":1440,"height":5350}}'>
+class Component extends DCLogic {
+  jelovnik() {
+    // po filteru: [jelo, meni, obrok, kcal, P, UH, M] za paket od 2.000 kcal, redom kao na slici-mapi
+    return {
+      "sve": [
+        ["Ovsena pita sa šargarepom i blitvom, mus od sira i ćureća šunka",0,0,500,37,42,20],
+        ["Posni kolač od bundeve sa kremom od urmi",0,1,361,5,63,10],
+        ["Svinjski file u sosu od jabuke i timijana",0,2,579,48,64,14],
+        ["Ćuretina u teriyaki sosu sa jasmin pirinčem",0,3,576,54,67,10],
+        ["Kajgana sa musom od lososa i chia hlebom",1,0,488,33,35,24],
+        ["Banana bread sa kakao kremom",1,1,654,56,76,14],
+        ["Tuna na pireu od krompira sa boranijom",1,2,419,33,46,11],
+        ["Wok sa edamameom i pirinčanim nudlama",1,3,441,18,76,7],
+        ["Ovsena kaša sa bananom, kakaom i grčkim jogurtom",2,0,252,17,31,7],
+        ["Chia puding sa vanilom i šumskim voćem",2,1,644,58,58,20],
+        ["Falafel na pireu od šargarepe sa kinoom",2,2,530,21,76,16],
+        ["Tortilja sa halumijem i caciki dipom",2,3,556,28,65,21],
+        ["Doručak burito sa kajganom od tofua i avokadom",3,0,456,15,64,15],
+        ["Posni mafin od borovnice sa kokosovim kremom",3,1,838,81,79,22],
+        ["Sojini medaljoni u sosu od pečene paprike",3,2,325,19,37,11],
+        ["Kuglice od sočiva sa bulgurom i tahini dipom",3,3,362,18,53,9],
+        ["Bezglutenski sendvič sa musom od lososa i kuvanim jajetom",4,0,571,38,67,17],
+        ["Kolač od jabuke i cimeta od bezglutenskog brašna",4,1,326,4,55,10]
+      ],
+      "0": [
+        ["Ovsena pita sa šargarepom i blitvom, mus od sira i ćureća šunka",0,0,500,37,42,20],
+        ["Posni kolač od bundeve sa kremom od urmi",0,1,361,5,63,10],
+        ["Svinjski file u sosu od jabuke i timijana",0,2,579,48,64,14],
+        ["Ćuretina u teriyaki sosu sa jasmin pirinčem",0,3,576,54,67,10],
+        ["Kajgana sa pilećom šunkom i chia hlebom",0,0,545,41,40,25],
+        ["Banana bread sa kakao kremom",0,1,328,6,58,8],
+        ["Juneći but sa sosom od karamelizovanog povrća",0,2,553,44,52,19],
+        ["Wok sa piletinom i pirinčanim nudlama",0,3,573,48,80,7],
+        ["Ovsena kaša sa bananom, kakaom i grčkim jogurtom",0,0,543,31,74,14],
+        ["Chia puding sa vanilom i šumskim voćem",0,1,318,8,40,14],
+        ["Brancin na pireu od šargarepe sa kinoom",0,2,529,41,53,17],
+        ["Tortilja sa tunom i caciki dipom",0,3,612,58,64,14],
+        ["Doručak burito sa salatom od jaja i ćurećom šunkom",0,0,537,35,64,16],
+        ["Mafin od borovnice sa vanila kremom",0,1,349,6,52,13],
+        ["Pileći file u sosu od pečene paprike",0,2,536,53,44,17],
+        ["Juneće ćufte sa bulgurom i tahini dipom",0,3,567,45,60,16],
+        ["Sendvič na kiselom testu sa musom od lososa i kuvanim jajetom",0,0,571,38,67,17],
+        ["Kolač od jabuke i cimeta sa vanila kremom",0,1,326,4,55,10]
+      ],
+      "1": [
+        ["Ovsena pita sa šargarepom i blitvom, uz mus od sira",1,0,244,14,21,12],
+        ["Posni kolač od bundeve sa kremom od urmi",1,1,686,55,81,16],
+        ["Losos sa limunom, pire od batata i bulgur",1,2,553,38,53,21],
+        ["Činija sa leblebijama u teriyaki sosu",1,3,523,27,81,10],
+        ["Kajgana sa musom od lososa i chia hlebom",1,0,488,33,35,24],
+        ["Banana bread sa kakao kremom",1,1,654,56,76,14],
+        ["Tuna na pireu od krompira sa boranijom",1,2,419,33,46,11],
+        ["Wok sa edamameom i pirinčanim nudlama",1,3,441,18,76,7],
+        ["Ovsena kaša sa bananom, kakaom i grčkim jogurtom",1,0,321,20,41,8],
+        ["Chia puding sa vanilom i šumskim voćem",1,1,644,58,58,20],
+        ["Orada na pireu od šargarepe sa kinoom",1,2,453,31,53,13],
+        ["Tortilja sa halumijem i caciki dipom",1,3,560,28,65,21],
+        ["Doručak burito sa musom od jaja i tunom",1,0,510,32,62,15],
+        ["Mafin od borovnice sa vanila kremom",1,1,675,56,70,19],
+        ["Tuna u sosu od pečene paprike",1,2,375,32,36,11],
+        ["Kuglice od sočiva sa bulgurom i tahini dipom",1,3,440,22,63,11],
+        ["Sendvič na kiselom testu sa musom od lososa i kuvanim jajetom",1,0,474,29,61,13],
+        ["Kolač od jabuke i cimeta sa vanila kremom",1,1,652,54,73,16]
+      ],
+      "2": [
+        ["Ovsena pita sa šargarepom i blitvom, uz mus od sira",2,0,372,21,32,18],
+        ["Posni kolač od bundeve sa kremom od urmi",2,1,686,55,81,16],
+        ["Sojini medaljoni u sosu od jabuke i timijana",2,2,477,24,70,11],
+        ["Činija sa tofuom u teriyaki sosu",2,3,460,25,64,11],
+        ["Kajgana sa musom od sira i chia hlebom",2,0,360,24,23,19],
+        ["Banana bread sa kakao kremom",2,1,654,56,76,14],
+        ["Kuglice od sočiva u sosu od karamelizovanog povrća",2,2,493,22,65,16],
+        ["Wok sa edamameom i pirinčanim nudlama",2,3,488,21,82,8],
+        ["Ovsena kaša sa bananom, kakaom i grčkim jogurtom",2,0,252,17,31,7],
+        ["Chia puding sa vanilom i šumskim voćem",2,1,644,58,58,20],
+        ["Falafel na pireu od šargarepe sa kinoom",2,2,530,21,76,16],
+        ["Tortilja sa halumijem i caciki dipom",2,3,556,28,65,21],
+        ["Doručak burito sa musom od jaja i avokadom",2,0,457,15,64,16],
+        ["Mafin od borovnice sa vanila kremom",2,1,675,56,70,19],
+        ["Sojini medaljoni u sosu od pečene paprike",2,2,415,31,42,14],
+        ["Kuglice od sočiva sa bulgurom i tahini dipom",2,3,438,21,65,10],
+        ["Sendvič na kiselom testu sa musom od sira i krastavcem",2,0,461,24,61,14],
+        ["Kolač od jabuke i cimeta sa vanila kremom",2,1,652,54,73,16]
+      ],
+      "3": [
+        ["Posna pita od leblebijinog brašna sa šargarepom i blitvom",3,0,366,12,37,19],
+        ["Posni kolač od bundeve sa kremom od urmi",3,1,849,80,90,19],
+        ["Sojini medaljoni u sosu od jabuke i timijana",3,2,410,20,61,10],
+        ["Činija sa leblebijama u teriyaki sosu",3,3,365,20,55,7],
+        ["Kajgana od tofua sa pečenim krompirom",3,0,283,20,28,10],
+        ["Posni banana bread sa kakao kremom",3,1,817,81,85,17],
+        ["Kuglice od sočiva u sosu od karamelizovanog povrća",3,2,552,20,79,17],
+        ["Wok sa edamameom i pirinčanim nudlama",3,3,334,15,55,6],
+        ["Ovsena kaša sa bananom i kakaom na biljnom mleku",3,0,219,10,31,6],
+        ["Chia puding sa vanilom i šumskim voćem",3,1,807,83,67,23],
+        ["Falafel na pireu od šargarepe sa kinoom",3,2,444,17,59,15],
+        ["Tortilja sa pečenim leblebijama i biljnim cacikijem",3,3,534,19,82,14],
+        ["Doručak burito sa kajganom od tofua i avokadom",3,0,456,15,64,15],
+        ["Posni mafin od borovnice sa kokosovim kremom",3,1,838,81,79,22],
+        ["Sojini medaljoni u sosu od pečene paprike",3,2,325,19,37,11],
+        ["Kuglice od sočiva sa bulgurom i tahini dipom",3,3,362,18,53,9],
+        ["Sendvič na kiselom testu sa salatom od tofua i krastavcem",3,0,239,14,31,6],
+        ["Posni kolač od jabuke i cimeta",3,1,815,79,82,19]
+      ],
+      "posno": [
+        ["Posna pita od leblebijinog brašna sa šargarepom i blitvom",3,0,366,12,37,19],
+        ["Posni kolač od bundeve sa kremom od urmi",0,1,361,5,63,10],
+        ["Posni banana bread sa kakao kremom",3,1,817,81,85,17],
+        ["Posni mafin od borovnice sa kokosovim kremom",3,1,838,81,79,22],
+        ["Posni kolač od jabuke i cimeta",3,1,815,79,82,19],
+        ["Posni kolač od maka i limuna",3,1,839,81,77,23],
+        ["Posna kukuruzna pita sa tikvicom i krem od avokada",3,0,257,8,26,13],
+        ["Tortilja sa kuglicama od sočiva i posnim cezar dresingom",3,3,566,22,81,17],
+        ["Doručak burito sa avokadom, semenkama i posnim majonezom",3,0,459,10,63,19],
+        ["Posni kolač od šargarepe sa kremom od urmi",3,1,825,80,79,21],
+        ["Posni mafin od jabuke i cimeta",3,1,829,81,79,21],
+        ["Posna ovsena pita sa spanaćem i krem od avokada",3,0,308,11,34,14],
+        ["Posni brownie sa kremom od maline",0,1,337,5,50,13],
+        ["Posni brownie od bezglutenskog brašna sa kremom od maline",4,1,337,5,50,13],
+        ["Posni kolač od šljiva",3,1,819,80,82,19],
+        ["Posni čokoladni kolač sa kremom od višnje",0,1,336,5,52,12],
+        ["Posni čokoladni kolač od bezglutenskog brašna",4,1,336,5,52,12],
+        ["Posni mafin od banane i borovnice",3,1,828,81,81,20]
+      ],
+      "4": [
+        ["Ovsena pita (bezglutenski ovas) sa šargarepom i blitvom, mus od sira i ćureća šunka",4,0,500,37,42,20],
+        ["Posni kolač od bundeve sa kremom od urmi",4,1,361,5,63,10],
+        ["Svinjski file u sosu od jabuke i timijana",4,2,579,48,64,14],
+        ["Ćuretina u teriyaki sosu sa jasmin pirinčem",4,3,576,54,67,10],
+        ["Kajgana sa pilećom šunkom i bezglutenskim chia hlebom",4,0,545,41,40,25],
+        ["Banana bread od bezglutenskog brašna sa kakao kremom",4,1,328,6,58,8],
+        ["Juneći but sa sosom od karamelizovanog povrća",4,2,553,44,52,19],
+        ["Wok sa piletinom i pirinčanim nudlama",4,3,573,48,80,7],
+        ["Kaša od bezglutenskog ovsa sa bananom, kakaom i grčkim jogurtom",4,0,543,31,74,14],
+        ["Chia puding sa vanilom i šumskim voćem",4,1,318,8,40,14],
+        ["Brancin na pireu od šargarepe sa kinoom",4,2,529,41,53,17],
+        ["Tortilja sa tunom i caciki dipom",4,3,612,58,64,14],
+        ["Doručak burito u kukuruznoj tortilji sa salatom od jaja i ćurećom šunkom",4,0,537,35,64,16],
+        ["Mafin od borovnice od bezglutenskog brašna sa vanila kremom",4,1,349,6,52,13],
+        ["Pileći file u sosu od pečene paprike",4,2,536,53,44,17],
+        ["Juneće ćufte sa kinoom i tahini dipom",4,3,567,45,60,16],
+        ["Bezglutenski sendvič sa musom od lososa i kuvanim jajetom",4,0,571,38,67,17],
+        ["Kolač od jabuke i cimeta od bezglutenskog brašna",4,1,326,4,55,10]
+      ]
+    };
+  }
+  renderVals() {
+    const st = this.state || {};
+    // Prikaz po delovima: canvas ima limit od 8000 px po artboardu, pa se stranica deli na delove
+    const partFrom = Number(this.props.partFrom ?? 0);
+    const partTo = Number(this.props.partTo ?? 7);
+    const sec = {};
+    for (let i = 0; i <= 16; i++) sec['s' + i] = i >= partFrom && i <= partTo;
+    const plan = st.plan || '28';
+    const openFaq = st.faq === undefined ? 0 : st.faq;
+    // Bez usamljene reci u poslednjem redu: poslednje dve reci uvek zajedno
+    const nb = s => String(s).replace(/ (\S+)$/, ' $1');
+
+    // Jelovnik (Nutribox jelovnik.json): 18 primera jela po filteru, makroi za paket od 2.000 kcal
+    if (!this._jel) this._jel = this.jelovnik();
+    const J = this._jel;
+    const MENUS = ['Balance', 'Fish', 'Vegetarijanski', 'Vegan', 'Bez glutena'];
+    const MEALS = ['DORUČAK', 'UŽINA', 'RUČAK', 'VEČERA'];
+    const fmt = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    const diet = st.diet || 'sve';
+    const dietDefs = [['sve', 'Sve'], ['0', 'Balance'], ['1', 'Fish'], ['2', 'Vegetarijanski'], ['3', 'Vegan'], ['posno', 'Posno'], ['4', 'Bez glutena']];
+    const filters = dietDefs.map(([id, label]) => {
+      const on = id === diet;
+      return {
+        label,
+        on: on ? 'true' : 'false',
+        style: on ? 'background: #123c32; color: #ffffff; border: 1.5px solid #123c32' : 'background: #ffffff; color: #123c32; border: 1.5px solid #accb7d',
+        pick: () => this.setState({ diet: id })
+      };
+    });
+    const spIdx = { sve: 0, '0': 1, '1': 2, '2': 3, '3': 4, posno: 5, '4': 6 }[diet];
+    const meals = (J[diet] || []).map((c, i) => ({
+      sp: 'sp' + spIdx,
+      pos: (i % 6) * 20 + '% ' + Math.floor(i / 6) * 50 + '%',
+      alt: c[0],
+      tag: MENUS[c[1]].toUpperCase() + ' · ' + MEALS[c[2]],
+      name: nb(c[0]),
+      posno: /posn/i.test(c[0]),
+      kcal: fmt(c[3]) + ' kcal',
+      macros: c[4] + 'g proteina · ' + c[5] + 'g UH · ' + c[6] + 'g masti'
+    }));
+
+    const planDefs = [
+      { id: '5', days: '5 dana', price: '3.200 RSD', per: 'po danu · 800 RSD po obroku', total: 'Ukupno 16.000 RSD', sum: '16.000 RSD', badge: 'KRENI POLAKO', featured: false },
+      { id: '7', days: '7 dana', price: '3.000 RSD', per: 'po danu · 750 RSD po obroku', total: 'Ukupno 21.000 RSD', sum: '21.000 RSD', badge: '', featured: false },
+      { id: '20', days: '20 dana', price: '2.950 RSD', per: 'po danu · ~740 RSD po obroku', total: 'Ukupno 59.000 RSD', sum: '59.000 RSD', badge: '', featured: false },
+      { id: '28', days: '28 dana', price: '2.800 RSD', per: 'po danu · 700 RSD po obroku', total: 'Ukupno 78.400 RSD · uštediš 5.600 RSD', sum: '78.400 RSD', badge: 'NAJISPLATIVIJE', featured: true }
+    ];
+    let selLabel = '';
+    const plans = planDefs.map(p => {
+      const selected = p.id === plan;
+      if (selected) selLabel = p.days + ' · ' + p.sum;
+      const f = p.featured;
+      const ring = selected ? (f ? '; box-shadow: 0 0 0 4px #accb7d' : '; box-shadow: 0 0 0 4px #dfeccf') : '';
+      return Object.assign({}, p, {
+        selected,
+        per: nb(p.per),
+        total: nb(p.total),
+        on: selected ? 'true' : 'false',
+        hasBadge: !!p.badge,
+        cardStyle: (f ? 'background: #123c32; border: 2px solid #123c32' : 'background: #ffffff; border: 2px solid ' + (selected ? '#123c32' : '#e3e8e2')) + ring,
+        radioStyle: selected ? (f ? 'background: #accb7d; border: 0' : 'background: #123c32; border: 0') : (f ? 'border: 2px solid #5e8f3d' : 'border: 2px solid #c9d3c6'),
+        checkColor: f ? '#123c32' : '#ffffff',
+        badgeStyle: f ? 'background: #accb7d; color: #123c32' : 'background: #f0f6ec; color: #4d7a31',
+        titleColor: f ? '#ffffff' : '#123c32',
+        subColor: f ? '#d7e4d2' : '#3d4a41',
+        totalColor: f ? '#accb7d' : '#4d7a31',
+        pick: () => this.setState({ plan: p.id })
+      });
+    });
+
+    // FAQ od Vuksana (7. 11. 2026); treca kolona je opcioni link ispod odgovora
+    const faqDefs = [
+      ['Koji paket da izaberem?', 'Paket biraš prema svom cilju. NutriSlim (1300 kcal za žene, 1600 kcal za muškarce) je za mršavljenje, NutriBalance (1600/2000 kcal) za održavanje težine, a NutriPump (2000/2600 kcal) za aktivne i izgradnju mišića. NutriMax (3000 kcal) je samo za veoma aktivne muškarce. Kalorije su tačne, dok makronutrijenti mogu blago da variraju u zavisnosti od obroka. Ako nisi siguran, pozovi korisničku podršku na 0800 001 007 i pomoći ćemo ti da izabereš.'],
+      ['Gde dostavljate?', 'Dostavljamo u Beogradu i Novom Sadu. U Beogradu zasad ne dostavljamo u Železnik, Borču, Kaluđericu i prigradske opštine. Za proveru tvoje adrese pozovi korisničku podršku na 0800 001 007.'],
+      ['Kada stiže prva dostava?', 'Prva dostava stiže najranije prekosutra od dana porudžbine. Svi obroci za taj dan stižu u jednoj isporuci na tvoju adresu, a možeš da biraš jutarnju dostavu od 6:30 do 9:30 ili večernju od 19h do 22h.'],
+      ['Mogu li prvo da probam?', 'Možeš. Kreni sa planom od 5 dana, koji je samo za radne dane, ili sa planom od 7 dana. Cena za XS–M veličine je 17.400 RSD za 5 dana i 22.400 RSD za 7 dana. Ako ti se dopadne, doplatom razlike prelaziš na plan od 20, odnosno 28 dana i dobijaš bonus dane gratis.'],
+      ['Šta ako mi Nutribox ne odgovara?', 'Uz plan od 28 dana imaš garanciju zadovoljstva. Ako ti u prvih 7 dana nešto ne odgovara, javi se korisničkoj podršci na 0800 001 007 i prvo ćemo pokušati da to ispravimo. Ako ni tada nisi zadovoljan i imaš opravdan razlog, vraćamo ti novac za preostale 3 nedelje. Sve uslove pročitaj u pravilima o povraćaju sredstava.', ['Pravila o povraćaju sredstava', 'https://www.nutribox.rs/politika-povracaja-sredstava']],
+      ['Šta mogu da izbacim iz menija?', 'To zavisi od menija koji izabereš. U Balance meniju možeš da izbaciš najviše dve stavke od sledećih: gluten, riba, svinjetina i laktoza, s tim što laktoza i gluten ne mogu zajedno. U Fish meniju možeš da izbaciš gluten ili laktozu, ali ne oba, u Vegetarijanskom samo gluten, a Vegan meni nema izmena. Umesto obroka sa onim što si izbacio, dobijaš odgovarajuću zamenu. Ostale namirnice ne možemo da izbacujemo pojedinačno.'],
+      ['Da li imate posni meni ili meni bez glutena?', 'Imamo oba. Posni meni dolazi u tri veličine, 1300, 1600 i 2200 kcal, i može da sadrži ribu. Gluten možeš da izbaciš iz Balance, Fish i Vegetarijanskog menija, a umesto obroka sa glutenom dobijaš odgovarajuću zamenu. Obroci se pripremaju u kuhinji u kojoj se koristi i gluten, pa ako imaš celijakiju, prvo pozovi korisničku podršku na 0800 001 007.'],
+      ['Da li hrana mora da se podgreje?', 'Hrana stiže hladna i odmah je čuvaj u frižideru. Većinu obroka možeš da podgreješ u mikrotalasnoj, rerni ili air fryeru, a neki se jedu hladni. Kako da pripremiš obroke, pogledaj u kratkim video lekcijama na našoj platformi.'],
+      ['Mogu li da pauziram ili promenim adresu?', 'Naravno, samo se javi korisničkoj podršci na 0800 001 007. Ako pauzu najaviš najmanje 24 sata pre dostave, taj dan ostaje sačuvan. Ako se javiš kasnije, na primer noću za sutra ujutru, obrok je već spreman, pa se dan računa kao iskorišćen.'],
+      ['Kako se plaća?', 'Možeš da platiš karticom online pri poručivanju, pouzećem, gotovinom vozaču prilikom prve dostave, ili preko fakture.'],
+      ['Da li možemo da poručimo u dvoje?', 'Možete. Poruči svoj plan, a partnera dodajemo na pozivu sa korisničkom podrškom posle porudžbine. Partnerov plan je jeftiniji: 8.400 RSD uz plan od 28 dana, 6.000 RSD uz 20 dana, 2.100 RSD uz 7 dana i 1.500 RSD uz 5 dana. Svako bira svoj meni i veličinu paketa, a oba paketa stižu na istu adresu.', ['Zakaži besplatan poziv za porodice', 'https://app.iclosed.io/e/nutribox/besplatan-poziv-za-porodice']],
+      ['Imam insulinsku rezistenciju. Da li je ovo za mene?', 'Može da bude dobar izbor. Naši obroci su zdravi, bogati proteinima, zdravim mastima i vlaknima, a za svaki paket su unapred određene kalorije i makronutrijenti. NutriSlim ima najmanje ugljenih hidrata, ali obroci nisu pravljeni posebno za insulinsku rezistenciju i ne prilagođavamo ih pojedinačno. Zato izbor paketa proveri sa svojim lekarom ili nutricionistom, a za detalje o obrocima pozovi korisničku podršku na 0800 001 007.'],
+      ['Da li postoje dodaci?', 'Postoje. Uz plan možeš da dodaš kolače, proteinske šejkove i druge dodatke za 450 RSD po komadu, kao i dodatnih 30 g proteina uz doručak, ručak ili večeru za 440 RSD. Pri poručivanju možeš da dodaš i dnevnu supu ili potaž i dodatnu užinu, a cena zavisi od dužine plana.'],
+      ['Da li postoji ponuda na nekoliko meseci?', 'Postoji. Možeš da potpišeš ugovor na 3, 6 ili 12 meseci i plaćaš mesec za mesec. Ugovor na 3 meseca ti otključava dodatne užine, a uz ugovor na 6 meseci paket traje 30 dana umesto 28. Ugovor na 12 meseci otključava sve bonuse. Ako uplatiš više meseci unapred, popust i dodatne bonuse dogovaramo na pozivu. Za više informacija pozovi korisničku podršku na 0800 001 007.'],
+      ['Hrana za firmu?', 'Imamo posebnu ponudu za firme. Zaposleni kroz Nutribox aplikaciju biraju ručak i užinu iz baze od preko 20 jela dnevno, a dostava stiže na adresu firme. Paket košta 1.700 RSD po zaposlenom dnevno. Troškove može da pokrije firma, delom firma i zaposleni, ili sami zaposleni, pa to dogovaramo ugovorom. Zakaži razgovor i pripremićemo ponudu za tvoju firmu.', ['Zakaži besplatan poziv za firme', 'https://app.iclosed.io/e/nutribox/besplatan-poziv-za-firme']]
+    ];
+    // telefon i brojevi sa jedinicom se ne lome u dva reda
+    const tidy = t => t.replace(/0800 001 007/g, '0800\u00a0001\u00a0007').replace(/(\d) (kcal|RSD|g)(?=[\s,.):])/g, '$1\u00a0$2');
+    const faqs = faqDefs.map(([q, a, link], i) => {
+      const open = i === openFaq;
+      return {
+        num: String(i + 1).padStart(2, '0'),
+        q: nb(q), a: nb(tidy(a)), open, closed: !open,
+        hasLink: open && !!link,
+        linkLabel: link ? link[0] : '',
+        linkHref: link ? link[1] : '#',
+        expanded: open ? 'true' : 'false',
+        boxStyle: open ? 'background: #123c32; border: 1px solid #123c32' : 'background: #ffffff; border: 1px solid #e3e8e2',
+        numColor: open ? '#accb7d' : '#5e8f3d',
+        qColor: open ? '#ffffff' : '#123c32',
+        iconStyle: open ? 'background: #accb7d; color: #123c32' : 'background: #f0f6ec; color: #123c32',
+        toggle: () => this.setState({ faq: open ? -1 : i })
+      };
+    });
+
+
+    // Prva dostava: uvek prekosutra od danasnjeg dana
+    const firstDelivery = new Date();
+    firstDelivery.setDate(firstDelivery.getDate() + 2);
+    const wd = firstDelivery.getDay();
+    const dayAcc = ['nedelju', 'ponedeljak', 'utorak', 'sredu', 'četvrtak', 'petak', 'subotu'][wd];
+    const dayGen = ['nedelje', 'ponedeljka', 'utorka', 'srede', 'četvrtka', 'petka', 'subote'][wd];
+
+    return { sec, filters, meals, plans, selLabel, faqs, dayAcc, dayGen };
+  }
+}
+<\/script>
+</body>
+</html>
+</script>
+<script src="dc-runtime.js"></script>
+<script>DCMount(document.getElementById('app'), "Main", {"partFrom": 0, "partTo": 16});</script>
+</body>
+</html>
