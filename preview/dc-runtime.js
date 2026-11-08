@@ -1,4 +1,12 @@
-/* Minimal runtime for Claude Design .dc.html components (preview build). */
+/* Minimal runtime for Claude Design .dc.html components (preview and Webflow builds).
+ *
+ * Options read from window before this script runs:
+ *   DC_SOURCES     {name: source}  component sources as strings (otherwise read from
+ *                  <script type="text/plain" id="dc-src-NAME">)
+ *   DC_BLOBS       {id: file}      asset map for /_blob/<id> paths built at runtime
+ *   DC_ASSET_BASE  string          URL prefix for asset files (default '../assets/')
+ *   DC_NO_HELMET   bool            do not copy <helmet> (fonts, CSS) into <head>
+ */
 (function () {
   'use strict';
 
@@ -11,14 +19,19 @@
   const sources = {};
   function load(name) {
     if (sources[name]) return sources[name];
-    const el = document.getElementById('dc-src-' + name);
-    if (!el) throw new Error('Missing component source: ' + name);
-    const raw = el.textContent.replace(/<\\\/script/g, '</script');
+    let raw = window.DC_SOURCES && window.DC_SOURCES[name];
+    if (raw == null) {
+      const el = document.getElementById('dc-src-' + name);
+      if (!el) throw new Error('Missing component source: ' + name);
+      raw = el.textContent.replace(/<\\\/script/g, '</script');
+    }
     const doc = new DOMParser().parseFromString(raw, 'text/html');
     const root = doc.querySelector('x-dc');
     const helmet = root.querySelector('helmet');
     if (helmet) {
-      for (const c of Array.from(helmet.children)) document.head.appendChild(document.importNode(c, true));
+      if (!window.DC_NO_HELMET) {
+        for (const c of Array.from(helmet.children)) document.head.appendChild(document.importNode(c, true));
+      }
       helmet.remove();
     }
     const scr = doc.querySelector('script[type="text/x-dc"]');
@@ -53,9 +66,11 @@
     return out;
   }
 
-  function renderComponent(name, props, ctx, out) {
+  // shareKey: mounts that render parts of one page pass the same key, so they share
+  // one component instance (and its state) instead of one instance per props value.
+  function renderComponent(name, props, ctx, out, shareKey) {
     const src = load(name);
-    const key = name + JSON.stringify(props);
+    const key = shareKey || name + JSON.stringify(props);
     let inst = ctx.instances[key];
     if (!inst) inst = ctx.instances[key] = new src.Cls(props);
     inst.props = props;
@@ -66,14 +81,15 @@
   function dispatch(e) { const fn = this.__dcOn && this.__dcOn[e.type]; if (fn) return fn(e); }
 
   // Patch the live DOM in place instead of replacing it, so CSS transitions
-  // (e.g. the FAQ accordion) run and images are not reloaded on every state change.
+  // (e.g. the FAQ accordion) run, images are not reloaded on every state change,
+  // and server-rendered HTML is taken over without being rebuilt.
   function sameKind(a, b) {
     if (a.nodeType !== b.nodeType) return false;
     if (a.nodeType !== 1) return true;
     return a.namespaceURI === b.namespaceURI && a.tagName === b.tagName;
   }
   function morphChildren(parent, next) {
-    const cur = Array.from(parent.childNodes);
+    const cur = Array.from(parent.childNodes).filter(n => n.nodeType === 1 || n.nodeType === 3);
     next.forEach((n, i) => {
       const o = cur[i];
       if (!o) { parent.appendChild(n); return; }
@@ -88,6 +104,12 @@
       morphChildren(o, Array.from(n.childNodes));
     });
     for (let i = next.length; i < cur.length; i++) cur[i].remove();
+  }
+
+  function assetUrl(id) {
+    const f = window.DC_BLOBS && window.DC_BLOBS[id];
+    if (!f) return null;
+    return (window.DC_ASSET_BASE != null ? window.DC_ASSET_BASE : '../assets/') + f;
   }
 
   function renderNode(node, scope, ctx, out) {
@@ -136,9 +158,7 @@
       }
       let v = a.value.indexOf('{{') < 0 ? a.value : interp(a.value, scope);
       // Paths built at runtime ('/_blob/' + id) are not rewritten by the build, so map them here.
-      if (v.indexOf('/_blob/') >= 0 && window.DC_BLOBS) {
-        v = v.replace(/\/_blob\/([0-9a-f]{32})/g, (m, id) => window.DC_BLOBS[id] ? '../assets/' + window.DC_BLOBS[id] : m);
-      }
+      if (v.indexOf('/_blob/') >= 0) v = v.replace(/\/_blob\/([0-9a-f]{32})/g, (m, id) => assetUrl(id) || m);
       if (a.namespaceURI) el.setAttributeNS(a.namespaceURI, a.name, v); else el.setAttribute(a.name, v);
     }
     const kids = renderChildren(node.localName === 'template' ? node.content : node, scope, ctx, []);
@@ -146,39 +166,34 @@
     out.push(el);
   }
 
-  // Root render with scroll/focus preservation
-  let mount = null, rootName = null, rootProps = null, pending = false;
+  const mounts = [];
   const ctx = { instances: {} };
-
-  function pathOf(el) {
-    const p = [];
-    while (el && el !== mount) { p.unshift(Array.prototype.indexOf.call(el.parentNode.children, el)); el = el.parentNode; }
-    return el === mount ? p : null;
-  }
-  function byPath(p) {
-    let el = mount;
-    for (const i of p) { if (!el || !el.children[i]) return null; el = el.children[i]; }
-    return el;
-  }
+  let pending = false;
 
   function render() {
     pending = false;
-    const scrolled = [];
-    if (mount.firstChild) {
-      mount.querySelectorAll('*').forEach(el => { if (el.scrollLeft > 0) scrolled.push([pathOf(el), el.scrollLeft]); });
-    }
-    const focusPath = document.activeElement && mount.contains(document.activeElement) ? pathOf(document.activeElement) : null;
     const y = window.scrollY;
-    const nodes = renderComponent(rootName, rootProps, ctx, []);
-    morphChildren(mount, nodes);
-    for (const [p, x] of scrolled) { const el = p && byPath(p); if (el) el.scrollLeft = x; }
-    if (focusPath) { const el = byPath(focusPath); if (el && el.focus) el.focus({ preventScroll: true }); }
+    for (const m of mounts) morphChildren(m.el, renderComponent(m.name, m.props, ctx, [], m.shareKey));
     if (Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y);
   }
-  function schedule() { if (!pending) { pending = true; requestAnimationFrame(render); } }
+  // Batch setState calls from one event into one render. A microtask (not
+  // requestAnimationFrame) so a page opened in a background tab still updates.
+  function schedule() { if (!pending) { pending = true; queueMicrotask(render); } }
 
+  // One component in one element.
   window.DCMount = function (el, name, props) {
-    mount = el; rootName = name; rootProps = props || {};
+    mounts.push({ el, name, props: props || {} });
+    render();
+  };
+
+  // One page split over several elements (e.g. Webflow Embeds): each element with
+  // data-dc-part="N" renders sections N..N (or data-dc-part="N-M" for N..M), all
+  // sharing one component instance. Existing (prerendered) markup is patched in place.
+  window.DCMountParts = function (name, selector) {
+    document.querySelectorAll(selector || '[data-dc-part]').forEach(el => {
+      const [from, to] = el.getAttribute('data-dc-part').split('-').map(Number);
+      mounts.push({ el, name, props: { partFrom: from, partTo: to == null || isNaN(to) ? from : to }, shareKey: name + ':page' });
+    });
     render();
   };
 })();

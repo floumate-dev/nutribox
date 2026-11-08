@@ -1,0 +1,90 @@
+/* Nutribox landing for Webflow. Built by tools/build_webflow.py from design/Main.dc.html. */
+/* Webflow embeds that hold the page do not create boxes, so position: sticky
+   (top bar) works against the whole page and sections stay full width. */
+.w-embed:has(> .nbx-part), .nbx-part, .nbx-part > div { display: contents; }
+.w-embed:has(> .nbx-part)::before, .w-embed:has(> .nbx-part)::after { content: none; }
+.nbx-part { font-size: 16px; line-height: normal; }
+:where(.nbx-part, .nbx-part *, .nbx-part *::before, .nbx-part *::after) { box-sizing: revert; }
+:where(.nbx-part) :is(h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, label) {
+  margin: revert; padding: revert; font-size: revert; line-height: revert; font-weight: revert;
+  text-align: revert; display: revert;
+}
+:where(.nbx-part) img { max-width: none; vertical-align: baseline; display: inline; }
+:where(.nbx-part) :is(button, input, select, textarea) { line-height: normal; }
+
+/* Design CSS (design/Main.dc.html <helmet>) */
+body{margin:0}
+html{scroll-behavior:smooth}
+p,li,span,a,h3,td,th,button{text-wrap:pretty}
+h1,h2{text-wrap:balance}
+section{scroll-margin-top:48px}
+a{color:#123c32}a:hover{color:#30563f}
+.nbx-btn{transition:transform .15s ease, box-shadow .15s ease}
+.nbx-btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(18,60,50,.18)}
+.nbx-pick{transition:box-shadow .15s ease, border-color .15s ease}
+.nbx-slider{scrollbar-width:thin}
+#nbx-hero-food{position:relative;width:100%;aspect-ratio:590/516}
+#nbx-hero-food img{position:absolute;height:auto;max-width:none;filter:drop-shadow(8px 16px 18px rgba(18,60,50,.22));animation:nbxFadeInRight 1s ease both}
+#nbx-hero-food .nbx-k{left:52.85%;top:0;width:47.15%;z-index:1;transform:rotate(3deg);animation-delay:.3s}
+#nbx-hero-food .nbx-r{left:0;top:45.29%;width:64.63%;z-index:4;transform:rotate(-3deg);animation-delay:.8s}
+#nbx-hero-food .nbx-v{left:47.15%;top:45.29%;width:38.01%;z-index:5;transform:rotate(-5deg);animation-delay:1.3s}
+#nbx-hero-food .nbx-u{left:58.54%;top:71.65%;width:41.06%;z-index:6;transform:rotate(-4deg);animation-delay:1.8s}
+#nbx-hero-food .nbx-d{left:5.69%;top:6.88%;width:50.2%;z-index:3;transform:rotate(4deg);animation-delay:2.3s}
+@keyframes nbxFadeInRight{from{opacity:0;translate:100% 0}to{opacity:1;translate:0 0}}
+@media (max-width:900px){
+.nbx-hero-txt,.nbx-hero-vis{flex:1 1 100% !important}
+#nbx-hero-food{max-width:520px;margin:0 auto}
+}
+@media (prefers-reduced-motion:reduce){#nbx-hero-food img{animation:none}}
+.nbx-spr{background-size:600% 300%;background-repeat:no-repeat;background-color:#e4efdc}
+.nbx-sp0{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@c70774eb85164e8fc7530e1de84458be5f1449be/assets/a9f0e7deec5e93814f97583049c7c972.webp)}
+.nbx-sp1{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@c70774eb85164e8fc7530e1de84458be5f1449be/assets/2a0bdef1051029e9166ebedc5cef9204.webp)}
+.nbx-sp2{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@c70774eb85164e8fc7530e1de84458be5f1449be/assets/9846de36f935d670bbb87cac8e7b9393.webp)}
+.nbx-sp3{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@c70774eb85164e8fc7530e1de84458be5f1449be/assets/4779392895cda411846a54140e475dd9.webp)}
+.nbx-sp4{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@c70774eb85164e8fc7530e1de84458be5f1449be/assets/b2297d49528eb60bc073c731cce9099a.webp)}
+.nbx-sp5{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@c70774eb85164e8fc7530e1de84458be5f1449be/assets/747cf1ecba145ba77986fb27a97f1197.webp)}
+.nbx-sp6{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@c70774eb85164e8fc7530e1de84458be5f1449be/assets/89eb04ff20ca5ecf25f589f343254b82.webp)}
+.nbx-mctrl{width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 24px}
+.nbx-mdays{width:100%;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.nbx-mgrid{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.nbx-mcard{display:flex;flex-direction:column;gap:12px;min-width:0}
+.nbx-mimg{position:relative;width:100%;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#e4efdc}
+.nbx-mslider{width:100%;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+.nbx-mslider .nbx-mcard{flex:0 0 250px;scroll-snap-align:start}
+@media (max-width:960px){.nbx-mgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.nbx-wall{display:flex;gap:16px;align-items:flex-start}
+.nbx-w-hide{display:none !important}
+.nbx-recap{width:100%;max-width:880px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.nbx-recap-i{flex:0 0 calc((100% - 30px) / 4)}
+@media (max-width:960px){.nbx-recap-i{flex-basis:calc((100% - 10px) / 2)}}
+@media (max-width:640px){.nbx-wall{gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}.nbx-wall-col{display:contents !important}.nbx-wall img{flex:0 0 270px;width:270px !important;margin:0 !important;scroll-snap-align:start}.nbx-wall .nbx-w-hide{display:block !important}.nbx-wall-more{display:none !important}}
+/* FAQ accordion: panel is always in the DOM and opens via grid rows 0fr -> 1fr */
+.nbx-faq-item{transition:background-color .35s ease,border-color .35s ease}
+.nbx-faq-t{transition:color .35s ease}
+.nbx-faq-ico{transition:background-color .35s ease,color .35s ease}
+.nbx-faq-ico-v{transform-origin:12px 12px;transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.nbx-faq-open .nbx-faq-ico-v{transform:rotate(90deg)}
+.nbx-faq-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1)}
+.nbx-faq-panel>div{min-height:0;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s ease,transform .3s ease,visibility 0s linear .4s}
+.nbx-faq-open .nbx-faq-panel{grid-template-rows:1fr}
+.nbx-faq-open .nbx-faq-panel>div{opacity:1;visibility:visible;transform:none;transition:opacity .35s ease .1s,transform .4s cubic-bezier(.4,0,.2,1) .05s,visibility 0s}
+@media (prefers-reduced-motion:reduce){.nbx-faq-item,.nbx-faq-t,.nbx-faq-ico,.nbx-faq-ico-v,.nbx-faq-panel,.nbx-faq-panel>div{transition:none !important}}
+.nbx-m-cta{display:none !important}
+.nbx-m-pad{display:none}
+@media (max-width:640px){
+.nbx-hdr-logo{height:28px !important}
+.nbx-hide-sm{display:none !important}
+.nbx-m-cta{display:flex !important}
+.nbx-faq-a{padding-left:22px !important}
+.nbx-mdays{gap:5px}
+.nbx-mday-dt{font-size:13px !important}
+.nbx-msz-label{flex:0 0 100%}
+.nbx-mgrid{grid-template-columns:1fr;gap:12px}
+.nbx-mgrid .nbx-mcard{flex-direction:row;align-items:center;gap:14px}
+.nbx-mgrid .nbx-mimg{width:112px;flex:none;border-radius:14px}
+.nbx-mslider .nbx-mcard{flex-basis:220px}
+.nbx-recap{flex-direction:column;align-items:center}
+.nbx-recap-i{flex:0 0 auto !important;width:230px;justify-content:flex-start !important}
+.nbx-m-pad{display:block}
+.nbx-cta-menu{font-size:16px !important;padding:16px 18px !important}
+}
