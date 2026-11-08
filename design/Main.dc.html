@@ -1025,10 +1025,8 @@ class Component extends DCLogic {
       c.h += x[2] / x[1];
     });
     const wallCols = cols.map(c => ({ items: c.items }));
-    const nMore = WALL.length - WALL_FIRST;
-    const utis = n => (n % 10 === 1 && n % 100 !== 11 ? 'utisak' : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'utiska' : 'utisaka');
     const wallMore = !wallAll;
-    const wallMoreLabel = 'Prikaži još ' + nMore + '\u00a0' + utis(nMore);
+    const wallMoreLabel = 'Prikaži još\u00a0utisaka';
     const showWall = () => this.setState({ wallAll: true });
 
     return { sec, filters, meals, plans, selLabel, faqs, dayAcc, dayGen, wallCols, wallMore, wallMoreLabel, showWall };
