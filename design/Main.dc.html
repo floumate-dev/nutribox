@@ -55,6 +55,17 @@ a{color:#123c32}a:hover{color:#30563f}
 .recap-i{flex:0 0 calc((100% - 30px) / 4)}
 @media (max-width:960px){.recap-i{flex-basis:calc((100% - 10px) / 2)}}
 @media (max-width:640px){.wall{gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}.wall-col{display:contents !important}.wall img{flex:0 0 270px;width:270px !important;margin:0 !important;scroll-snap-align:start}.wall .w-hide{display:block !important}.wall-more{display:none !important}}
+/* FAQ accordion: panel is always in the DOM and opens via grid rows 0fr -> 1fr */
+.faq-item{transition:background-color .35s ease,border-color .35s ease}
+.faq-t{transition:color .35s ease}
+.faq-ico{transition:background-color .35s ease,color .35s ease}
+.faq-ico-v{transform-origin:12px 12px;transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.faq-open .faq-ico-v{transform:rotate(90deg)}
+.faq-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1)}
+.faq-panel>div{min-height:0;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s ease,transform .3s ease,visibility 0s linear .4s}
+.faq-open .faq-panel{grid-template-rows:1fr}
+.faq-open .faq-panel>div{opacity:1;visibility:visible;transform:none;transition:opacity .35s ease .1s,transform .4s cubic-bezier(.4,0,.2,1) .05s,visibility 0s}
+@media (prefers-reduced-motion:reduce){.faq-item,.faq-t,.faq-ico,.faq-ico-v,.faq-panel,.faq-panel>div{transition:none !important}}
 .m-cta{display:none !important}
 .m-pad{display:none}
 @media (max-width:640px){
@@ -608,16 +619,16 @@ a{color:#123c32}a:hover{color:#30563f}
 <h2 style="margin: 0; text-align: center; font-size: clamp(30px, 3.4vw, 40px); line-height: 1.14; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Česta pitanja. <span style="color: #5e8f3d">Sve što treba da znaš pre prve&nbsp;dostave.</span></h2>
 <div style="width: 100%; display: flex; flex-direction: column; gap: 10px">
 <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="15">
-<div style="border-radius: 18px; overflow: hidden; {{ q.boxStyle }}">
+<div class="{{ q.cls }}" style="border-radius: 18px; overflow: hidden; {{ q.boxStyle }}">
 <button type="button" aria-expanded="{{ q.expanded }}" onClick="{{ q.toggle }}" style="width: 100%; min-height: 68px; box-sizing: border-box; padding: 18px 22px; border: 0; background: transparent; font-family: inherit; text-align: left; cursor: pointer; display: flex; align-items: center; gap: 18px">
-<span style="width: 26px; flex: none; font-size: 15px; font-weight: 700; color: {{ q.numColor }}">{{ q.num }}</span>
-<span style="flex: 1 1 auto; font-size: 18px; line-height: 1.35; font-weight: 700; color: {{ q.qColor }}">{{ q.q }}</span>
-<span style="width: 32px; height: 32px; flex: none; border-radius: 99px; display: flex; align-items: center; justify-content: center; {{ q.iconStyle }}">
-<sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg></sc-if>
-<sc-if value="{{ q.closed }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></sc-if>
+<span class="faq-t" style="width: 26px; flex: none; font-size: 15px; font-weight: 700; color: {{ q.numColor }}">{{ q.num }}</span>
+<span class="faq-t" style="flex: 1 1 auto; font-size: 18px; line-height: 1.35; font-weight: 700; color: {{ q.qColor }}">{{ q.q }}</span>
+<span class="faq-ico" style="width: 32px; height: 32px; flex: none; border-radius: 99px; display: flex; align-items: center; justify-content: center; {{ q.iconStyle }}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path><path class="faq-ico-v" d="M12 5v14"></path></svg>
 </span>
 </button>
-<sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+<div class="faq-panel" aria-hidden="{{ q.hidden }}">
+<div>
 <p class="faq-a" style="margin: 0; padding: 0 22px 22px 66px; font-size: 16px; line-height: 1.6; color: #e6eee3">{{ q.a }}</p>
 <sc-if value="{{ q.hasLink }}" hint-placeholder-val="{{ false }}">
 <div class="faq-a" style="padding: 0 22px 22px 66px; margin-top: -8px">
@@ -626,7 +637,8 @@ a{color:#123c32}a:hover{color:#30563f}
 </a>
 </div>
 </sc-if>
-</sc-if>
+</div>
+</div>
 </div>
 </sc-for>
 </div>
@@ -966,7 +978,9 @@ class Component extends DCLogic {
       return {
         num: String(i + 1).padStart(2, '0'),
         q: nb(q), a: nb(tidy(a)), open, closed: !open,
-        hasLink: open && !!link,
+        hasLink: !!link,
+        cls: open ? 'faq-item faq-open' : 'faq-item',
+        hidden: open ? 'false' : 'true',
         linkLabel: link ? link[0] : '',
         linkHref: link ? link[1] : '#',
         expanded: open ? 'true' : 'false',

@@ -63,6 +63,33 @@
     return renderChildren(src.root, vals, ctx, out);
   }
 
+  function dispatch(e) { const fn = this.__dcOn && this.__dcOn[e.type]; if (fn) return fn(e); }
+
+  // Patch the live DOM in place instead of replacing it, so CSS transitions
+  // (e.g. the FAQ accordion) run and images are not reloaded on every state change.
+  function sameKind(a, b) {
+    if (a.nodeType !== b.nodeType) return false;
+    if (a.nodeType !== 1) return true;
+    return a.namespaceURI === b.namespaceURI && a.tagName === b.tagName;
+  }
+  function morphChildren(parent, next) {
+    const cur = Array.from(parent.childNodes);
+    next.forEach((n, i) => {
+      const o = cur[i];
+      if (!o) { parent.appendChild(n); return; }
+      if (!sameKind(o, n)) { parent.replaceChild(n, o); return; }
+      if (o.nodeType !== 1) { if (o.nodeValue !== n.nodeValue) o.nodeValue = n.nodeValue; return; }
+      for (const a of Array.from(o.attributes)) if (!n.hasAttribute(a.name)) o.removeAttribute(a.name);
+      for (const a of Array.from(n.attributes)) if (o.getAttribute(a.name) !== a.value) o.setAttribute(a.name, a.value);
+      if (n.__dcOn) {
+        for (const type in n.__dcOn) if (!(o.__dcOn && o.__dcOn[type])) o.addEventListener(type, dispatch);
+      }
+      o.__dcOn = n.__dcOn;
+      morphChildren(o, Array.from(n.childNodes));
+    });
+    for (let i = next.length; i < cur.length; i++) cur[i].remove();
+  }
+
   function renderNode(node, scope, ctx, out) {
     if (node.nodeType === 3) {
       out.push(document.createTextNode(node.nodeValue.indexOf('{{') < 0 ? node.nodeValue : interp(node.nodeValue, scope)));
@@ -98,7 +125,13 @@
       if (a.name.indexOf('hint-') === 0) continue;
       if (/^on[a-z]+$/i.test(a.name) && a.value.indexOf('{{') >= 0) {
         const fn = value(a.value, scope);
-        if (typeof fn === 'function') el.addEventListener(a.name.slice(2).toLowerCase(), fn);
+        if (typeof fn === 'function') {
+          // Handlers live on el.__dcOn so a morph can swap them without re-binding.
+          const type = a.name.slice(2).toLowerCase();
+          el.__dcOn = el.__dcOn || {};
+          el.__dcOn[type] = fn;
+          el.addEventListener(type, dispatch);
+        }
         continue;
       }
       let v = a.value.indexOf('{{') < 0 ? a.value : interp(a.value, scope);
@@ -137,9 +170,7 @@
     const focusPath = document.activeElement && mount.contains(document.activeElement) ? pathOf(document.activeElement) : null;
     const y = window.scrollY;
     const nodes = renderComponent(rootName, rootProps, ctx, []);
-    const frag = document.createDocumentFragment();
-    nodes.forEach(n => frag.appendChild(n));
-    mount.replaceChildren(frag);
+    morphChildren(mount, nodes);
     for (const [p, x] of scrolled) { const el = p && byPath(p); if (el) el.scrollLeft = x; }
     if (focusPath) { const el = byPath(focusPath); if (el && el.focus) el.focus({ preventScroll: true }); }
     if (Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y);
