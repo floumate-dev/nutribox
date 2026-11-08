@@ -162,6 +162,12 @@ PAGES = {
 }
 
 
+# Extra code always added to a page's head snippet (requested by the client).
+HEAD_EXTRA = {
+    'landing': '<style>\n  .nb-jezik-red { display: none !important; }\n</style>\n',
+}
+
+
 def git_head():
     return subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=repo, capture_output=True, text=True, check=True).stdout.strip()
 
@@ -337,7 +343,8 @@ def snippets(code_sha, pages):
             '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
             '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
             '<link rel="preconnect" href="https://cdn.jsdelivr.net">\n'
-            f'{font_links}<link rel="stylesheet" href="{base}{page}.css">\n')
+            f'{font_links}<link rel="stylesheet" href="{base}{page}.css">\n'
+            + (HEAD_EXTRA.get(page, '')))
         langs = '|'.join(l for l in LANGS if l != 'sr')
         (out / 'footer.html').write_text(
             '<script>\n'
