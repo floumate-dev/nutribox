@@ -1,0 +1,25 @@
+NUTRIBOX – JELOVNIK 9.11.–29.11.2026. – ZA DEVELOPERE
+
+U ovom folderu:
+- slike/ – slike za sajt (WebP, 800x1000 px): 5 menija × 4 obroka × 21 dan, poređano redom (meni → obrok → datum)
+- Nutribox jelovnik 9.11-29.11 - slike i makroi.xlsx – svaki obrok: jelo, sastojci, putanja slike, makroi po veličini (XS–XL), dnevni zbir, veličine i paketi
+- jelovnik.json – isti podaci za direktan uvoz (polje "slika" je putanja relativno od ovog foldera)
+
+Ispod jelovnika na sajtu dodati: "Fotografije su ilustrativne."
+
+IZMENE U FORMI ZA PORUČIVANJE
+1. Ukinuti NutriMax za žene (2600 kcal). Ženama ostaju NutriSlim, NutriBalance i NutriPump.
+2. Za veganski jelovnik dozvoliti samo pakete do 2000 kcal (ženski Slim, Balance i Pump, muški Slim i Balance). Muški NutriPump i NutriMax ne smeju da se izaberu uz veganski jelovnik.
+3. Promeniti prikazane makroe:
+   - Muški NutriSlim i ženski NutriBalance: 1600 kcal · P 130 g · UH 160 g · M 48 g
+   - Muški NutriBalance i ženski NutriPump: 2000 kcal · P 138 g · UH 238 g · M 56 g
+4. Kad korisnik izabere vegetarijanski ili veganski jelovnik, prikazati proteine za taj jelovnik (kalorije iste):
+   1300 kcal → 81 g · 1600 → 100 g · 2000 → 125 g · 2600 → 163 g · 3000 → 188 g
+5. Dodati "Bez glutena" kao tip jelovnika ili jasno označiti kako GF korisnici poručuju.
+
+VELIČINE (dnevno)
+XS 1300 kcal – NutriSlim (žena)
+S  1600 kcal – NutriSlim (muškarac), NutriBalance (žena)
+M  2000 kcal – NutriBalance (muškarac), NutriPump (žena)
+L  2600 kcal – NutriPump (muškarac)
+XL 3000 kcal – NutriMax (muškarac)

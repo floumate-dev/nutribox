@@ -1,0 +1,141 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Desktop2.dc.html": {
+      "expand": "fill",
+      "h": 7260,
+      "is_interactive": true,
+      "title": "Desktop 2/2",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "expand": "fill",
+      "h": 5350,
+      "is_interactive": true,
+      "title": "Desktop 1/2",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Mobile.dc.html": {
+      "expand": "fill",
+      "h": 5180,
+      "is_interactive": true,
+      "title": "Mobilni 1/3",
+      "w": 390,
+      "x": 3120,
+      "y": 0
+    },
+    "Mobile2.dc.html": {
+      "expand": "fill",
+      "h": 6620,
+      "is_interactive": true,
+      "title": "Mobilni 2/3",
+      "w": 390,
+      "x": 3590,
+      "y": 0
+    },
+    "Mobile3.dc.html": {
+      "expand": "fill",
+      "h": 5790,
+      "is_interactive": true,
+      "title": "Mobilni 3/3",
+      "w": 390,
+      "x": 4060,
+      "y": 0
+    },
+    "Jelovnik.dc.html": {
+      "x": 4990,
+      "y": 0,
+      "w": 1440,
+      "h": 5430,
+      "expand": "fill",
+      "is_interactive": true,
+      "title": "Jelovnik · desktop"
+    },
+    "JelovnikMobile.dc.html": {
+      "x": 6510,
+      "y": 0,
+      "w": 390,
+      "h": 7160,
+      "expand": "fill",
+      "is_interactive": true,
+      "title": "Jelovnik · mobilni"
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-11-05T11:55:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "noteOrder": [
+    "naslov",
+    "asseti",
+    "vuksan",
+    "odluke",
+    "delovi",
+    "jelovnik"
+  ],
+  "notes": {
+    "asseti": {
+      "fill": "orange",
+      "text": "Asseti\n\nUbačeno: portreti Vuksana, Miloša i Amera; 5 slika ljudi u hero sekciji; sa live sajta 8 video utisaka i 9 screenshotova poruka; u hero sekciji privremeno placeholder umesto vizuala.\n\nJelovnik 9.11. do 29.11.: 5 menija × 21 dan × 4 obroka (420 jela, 304 fotke), makroi za svih 5 veličina. Posno = jela koja u nazivu imaju Posni/Posna (18).",
+      "w": 380,
+      "x": 4530,
+      "y": 0
+    },
+    "delovi": {
+      "fill": "gray",
+      "text": "Zašto je stranica u delovima\n\nCanvas prikazuje najviše 8000 px po artboardu, a cela stranica je 12.600 px na desktopu i 17.600 px na mobilnom. Zato je podeljena na delove koji idu jedan za drugim, s leva na desno. Sve je jedan isti kod.",
+      "w": 380,
+      "x": 4530,
+      "y": 1840
+    },
+    "naslov": {
+      "kind": "title1",
+      "maxW": 4450,
+      "text": "Nutribox · nova prodajna stranica (v2, od nule po Figmi)",
+      "w": 240,
+      "x": 0,
+      "y": -320
+    },
+    "odluke": {
+      "fill": "blue",
+      "text": "Primenjeno iz odgovora\n\n1. Osnova: frame Desktop 1440, bez nav bara, bez order bumpa, bez konfiguratora u 3 koraka\n2. Brojač i UŽIVO skinuti, umesto njih 3 avatara sa live sajta\n3. Filteri Posno i Bez glutena rade\n4. Ko kuva: Vuksanov tekst, troje ljudi\n5. Pauza do 16h dan ranije, adresa do 6h; pauza iz aplikacije svuda\n6. Garancija samo 28 dana\n7. Tabela poređenja netaknuta\n8. Ikonice u brendu umesto emoji\n9. Footer kao na live sajtu (banka, kartice, podaci o firmi)",
+      "w": 380,
+      "x": 4530,
+      "y": 1200
+    },
+    "vuksan": {
+      "fill": "teal",
+      "text": "Za Vuksana / tim\n\n1. URL stranice sa jelovnikom na Webflow-u (npr. nutribox.rs/jelovnik), za dugme Pogledaj meni za narednu nedelju. Na canvasu dugme već vodi na artboard Jelovnik.\n2. Šta ide u hero vizual (fotografija, video ili kolaž). Do tada stoji placeholder.\n\nLinkovi: sva dugmad Izaberi plan i Nastavi na porudžbinu vode na nutribox.rs/order-form; FAQ 11 na besplatan poziv za porodice, FAQ 15 na besplatan poziv za firme (iClosed); powered by Floumate na floumate.com.",
+      "w": 380,
+      "x": 4530,
+      "y": 600
+    },
+    "jelovnik": {
+      "x": 4990,
+      "y": -320,
+      "text": "Zasebna stranica: jelovnik za narednu nedelju",
+      "kind": "title1",
+      "maxW": 1910
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Desktop2.dc.html",
+    "Mobile.dc.html",
+    "Mobile2.dc.html",
+    "Mobile3.dc.html",
+    "Jelovnik.dc.html",
+    "JelovnikMobile.dc.html"
+  ],
+  "pages": [],
+  "title": "Nutribox prodajna stranica"
+}
