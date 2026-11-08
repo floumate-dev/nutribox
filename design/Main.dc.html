@@ -66,12 +66,9 @@ a{color:#123c32}a:hover{color:#30563f}
 .faq-open .faq-panel{grid-template-rows:1fr}
 .faq-open .faq-panel>div{opacity:1;visibility:visible;transform:none;transition:opacity .35s ease .1s,transform .4s cubic-bezier(.4,0,.2,1) .05s,visibility 0s}
 @media (prefers-reduced-motion:reduce){.faq-item,.faq-t,.faq-ico,.faq-ico-v,.faq-panel,.faq-panel>div{transition:none !important}}
-.m-cta{display:none !important}
-.m-pad{display:none}
 @media (max-width:640px){
 .hdr-logo{height:28px !important}
 .hide-sm{display:none !important}
-.m-cta{display:flex !important}
 .faq-a{padding-left:22px !important}
 .mdays{gap:5px}
 .mday-dt{font-size:13px !important}
@@ -82,7 +79,6 @@ a{color:#123c32}a:hover{color:#30563f}
 .mslider .mcard{flex-basis:220px}
 .recap{flex-direction:column;align-items:center}
 .recap-i{flex:0 0 auto !important;width:230px;justify-content:flex-start !important}
-.m-pad{display:block}
 .cta-menu{font-size:16px !important;padding:16px 18px !important}
 }
 </style>
@@ -713,16 +709,6 @@ a{color:#123c32}a:hover{color:#30563f}
 <span>powered by&nbsp;<a href="https://www.floumate.com?source=nutribox" target="_blank" rel="noopener" style="color: #123c32; font-weight: 600">Floumate</a></span>
 </div>
 </footer>
-<div class="m-pad" style="height: 84px; background: #ffffff"></div>
-
-<!-- Mobilni sticky CTA -->
-<div class="m-cta" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: #ffffff; border-top: 1px solid #e3e8e2; box-shadow: 0 -8px 24px rgba(18, 60, 50, 0.08); padding: 12px 16px; align-items: center; justify-content: space-between; gap: 12px">
-<div style="display: flex; flex-direction: column; gap: 2px">
-<span style="font-size: 15px; font-weight: 700; color: #123c32">od 2.800&nbsp;RSD/dan</span>
-<span style="font-size: 12px; color: #3d4a41">Prva dostava u&nbsp;{{ dayAcc }}</span>
-</div>
-<a href="https://www.nutribox.rs/order-form" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; box-sizing: border-box; padding: 12px 22px; border-radius: 14px; background: #123c32; color: #ffffff; font-size: 16px; font-weight: 700; text-decoration: none">Izaberi plan</a>
-</div>
 </sc-if>
 
 </div>

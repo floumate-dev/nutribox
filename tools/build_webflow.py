@@ -176,11 +176,11 @@ def build():
 def snippets(code_sha):
     base = CDN.format(sha=code_sha) + 'webflow/landing/'
     fonts = json.loads((out / 'fonts.json').read_text())
-    font_links = ''.join(f'<link rel="stylesheet" href="{html.escape(f)}">\n' for f in fonts)
+    font_links = ''.join(f'<link rel="stylesheet" href="{html.escape(html.unescape(f))}">\n' for f in fonts)
     (out / 'head.html').write_text(
         '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-        '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>\n'
+        '<link rel="preconnect" href="https://cdn.jsdelivr.net">\n'
         f'{font_links}<link rel="stylesheet" href="{base}landing.css">\n')
     (out / 'footer.html').write_text(f'<script src="{base}landing.js" defer></script>\n')
     print((out / 'head.html').read_text() + (out / 'footer.html').read_text())
