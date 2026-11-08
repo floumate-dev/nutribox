@@ -55,13 +55,13 @@ a{color:#123c32}a:hover{color:#30563f}
 }
 @media (prefers-reduced-motion:reduce){#nbx-hero-food img{animation:none}}
 .nbx-spr{background-size:600% 300%;background-repeat:no-repeat;background-color:#e4efdc}
-.nbx-sp0{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@153e108ac5d76fd1ccded7e99e88eead6ccdf224/assets/a9f0e7deec5e93814f97583049c7c972.webp)}
-.nbx-sp1{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@153e108ac5d76fd1ccded7e99e88eead6ccdf224/assets/2a0bdef1051029e9166ebedc5cef9204.webp)}
-.nbx-sp2{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@153e108ac5d76fd1ccded7e99e88eead6ccdf224/assets/9846de36f935d670bbb87cac8e7b9393.webp)}
-.nbx-sp3{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@153e108ac5d76fd1ccded7e99e88eead6ccdf224/assets/4779392895cda411846a54140e475dd9.webp)}
-.nbx-sp4{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@153e108ac5d76fd1ccded7e99e88eead6ccdf224/assets/b2297d49528eb60bc073c731cce9099a.webp)}
-.nbx-sp5{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@153e108ac5d76fd1ccded7e99e88eead6ccdf224/assets/747cf1ecba145ba77986fb27a97f1197.webp)}
-.nbx-sp6{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@153e108ac5d76fd1ccded7e99e88eead6ccdf224/assets/89eb04ff20ca5ecf25f589f343254b82.webp)}
+.nbx-sp0{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@bbff8da62646f50aeee238dfbac550ef052ffeb8/assets/a9f0e7deec5e93814f97583049c7c972.webp)}
+.nbx-sp1{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@bbff8da62646f50aeee238dfbac550ef052ffeb8/assets/2a0bdef1051029e9166ebedc5cef9204.webp)}
+.nbx-sp2{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@bbff8da62646f50aeee238dfbac550ef052ffeb8/assets/9846de36f935d670bbb87cac8e7b9393.webp)}
+.nbx-sp3{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@bbff8da62646f50aeee238dfbac550ef052ffeb8/assets/4779392895cda411846a54140e475dd9.webp)}
+.nbx-sp4{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@bbff8da62646f50aeee238dfbac550ef052ffeb8/assets/b2297d49528eb60bc073c731cce9099a.webp)}
+.nbx-sp5{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@bbff8da62646f50aeee238dfbac550ef052ffeb8/assets/747cf1ecba145ba77986fb27a97f1197.webp)}
+.nbx-sp6{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@bbff8da62646f50aeee238dfbac550ef052ffeb8/assets/89eb04ff20ca5ecf25f589f343254b82.webp)}
 .nbx-mctrl{width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 24px}
 .nbx-mdays{width:100%;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
 .nbx-mgrid{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
