@@ -101,7 +101,8 @@
         for (const type in n.__dcOn) if (!(o.__dcOn && o.__dcOn[type])) o.addEventListener(type, dispatch);
       }
       o.__dcOn = n.__dcOn;
-      morphChildren(o, Array.from(n.childNodes));
+      // data-dc-keep: content filled in from outside (e.g. the language switcher) stays
+      if (!o.hasAttribute('data-dc-keep')) morphChildren(o, Array.from(n.childNodes));
     });
     for (let i = next.length; i < cur.length; i++) cur[i].remove();
   }

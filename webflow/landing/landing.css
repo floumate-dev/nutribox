@@ -1,4 +1,4 @@
-/* Nutribox landing for Webflow. Built by tools/build_webflow.py from design/Main.dc.html. */
+/* Nutribox landing for Webflow. Built by tools/build_webflow.py from design/Main*.dc.html. */
 /* Webflow embeds that hold the page do not create boxes, so position: sticky
    (top bar) works against the whole page and sections stay full width. */
 .w-embed:has(> .nbx-part), .nbx-part, .nbx-part > div { display: contents; }
@@ -11,6 +11,24 @@
 }
 :where(.nbx-part) img { max-width: none; vertical-align: baseline; display: inline; }
 :where(.nbx-part) :is(button, input, select, textarea) { line-height: normal; }
+
+/* Locales: when the page has embeds for its own language, hide the other languages'
+   embeds (in case Webflow locale visibility was not set on them). */
+html[lang^="sr"]:has(.nbx-part[data-dc-lang="sr"]) .nbx-part[data-dc-lang]:not([data-dc-lang="sr"]),
+html[lang^="en"]:has(.nbx-part[data-dc-lang="en"]) .nbx-part[data-dc-lang]:not([data-dc-lang="en"]),
+html[lang^="ru"]:has(.nbx-part[data-dc-lang="ru"]) .nbx-part[data-dc-lang]:not([data-dc-lang="ru"]) { display: none; }
+
+/* Language switcher: the site-wide script builds .nb-jezik in a box floating over the
+   top of the page; landing.js puts a copy in the header (wide screens) or next to the
+   hero badge (narrow screens) and hides the floating one. */
+.nbx-lang-hdr, .nbx-lang-hero { display: none; }
+.nbx-lang-hdr:not(:empty) { display: flex; }
+.nbx-lang-hero { position: absolute; top: 2px; right: 0; }
+@media (max-width: 899px) {
+  .nbx-lang-hdr:not(:empty) { display: none; }
+  .nbx-lang-hero:not(:empty) { display: flex; }
+}
+.nbx-lang-hdr .nb-jezik, .nbx-lang-hero .nb-jezik { font-family: inherit; }
 
 /* Design CSS (design/Main.dc.html <helmet>) */
 body{margin:0}
@@ -37,13 +55,13 @@ a{color:#123c32}a:hover{color:#30563f}
 }
 @media (prefers-reduced-motion:reduce){#nbx-hero-food img{animation:none}}
 .nbx-spr{background-size:600% 300%;background-repeat:no-repeat;background-color:#e4efdc}
-.nbx-sp0{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@9264235d7094efa6fdfd5baf9b9aa876937273e3/assets/a9f0e7deec5e93814f97583049c7c972.webp)}
-.nbx-sp1{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@9264235d7094efa6fdfd5baf9b9aa876937273e3/assets/2a0bdef1051029e9166ebedc5cef9204.webp)}
-.nbx-sp2{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@9264235d7094efa6fdfd5baf9b9aa876937273e3/assets/9846de36f935d670bbb87cac8e7b9393.webp)}
-.nbx-sp3{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@9264235d7094efa6fdfd5baf9b9aa876937273e3/assets/4779392895cda411846a54140e475dd9.webp)}
-.nbx-sp4{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@9264235d7094efa6fdfd5baf9b9aa876937273e3/assets/b2297d49528eb60bc073c731cce9099a.webp)}
-.nbx-sp5{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@9264235d7094efa6fdfd5baf9b9aa876937273e3/assets/747cf1ecba145ba77986fb27a97f1197.webp)}
-.nbx-sp6{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@9264235d7094efa6fdfd5baf9b9aa876937273e3/assets/89eb04ff20ca5ecf25f589f343254b82.webp)}
+.nbx-sp0{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@3db2655f3288dca921683f5d24203670a58c991c/assets/a9f0e7deec5e93814f97583049c7c972.webp)}
+.nbx-sp1{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@3db2655f3288dca921683f5d24203670a58c991c/assets/2a0bdef1051029e9166ebedc5cef9204.webp)}
+.nbx-sp2{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@3db2655f3288dca921683f5d24203670a58c991c/assets/9846de36f935d670bbb87cac8e7b9393.webp)}
+.nbx-sp3{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@3db2655f3288dca921683f5d24203670a58c991c/assets/4779392895cda411846a54140e475dd9.webp)}
+.nbx-sp4{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@3db2655f3288dca921683f5d24203670a58c991c/assets/b2297d49528eb60bc073c731cce9099a.webp)}
+.nbx-sp5{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@3db2655f3288dca921683f5d24203670a58c991c/assets/747cf1ecba145ba77986fb27a97f1197.webp)}
+.nbx-sp6{background-image:url(https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@3db2655f3288dca921683f5d24203670a58c991c/assets/89eb04ff20ca5ecf25f589f343254b82.webp)}
 .nbx-mctrl{width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 24px}
 .nbx-mdays{width:100%;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
 .nbx-mgrid{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}

@@ -1,0 +1,1039 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nutribox sales page</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+html{scroll-behavior:smooth}
+p,li,span,a,h3,td,th,button{text-wrap:pretty}
+h1,h2{text-wrap:balance}
+section{scroll-margin-top:48px}
+a{color:#123c32}a:hover{color:#30563f}
+.btn{transition:transform .15s ease, box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(18,60,50,.18)}
+.pick{transition:box-shadow .15s ease, border-color .15s ease}
+.slider{scrollbar-width:thin}
+#nbx-hero-food{position:relative;width:100%;aspect-ratio:590/516}
+#nbx-hero-food img{position:absolute;height:auto;max-width:none;filter:drop-shadow(8px 16px 18px rgba(18,60,50,.22));animation:nbxFadeInRight 1s ease both}
+#nbx-hero-food .k{left:52.85%;top:0;width:47.15%;z-index:1;transform:rotate(3deg);animation-delay:.3s}
+#nbx-hero-food .r{left:0;top:45.29%;width:64.63%;z-index:4;transform:rotate(-3deg);animation-delay:.8s}
+#nbx-hero-food .v{left:47.15%;top:45.29%;width:38.01%;z-index:5;transform:rotate(-5deg);animation-delay:1.3s}
+#nbx-hero-food .u{left:58.54%;top:71.65%;width:41.06%;z-index:6;transform:rotate(-4deg);animation-delay:1.8s}
+#nbx-hero-food .d{left:5.69%;top:6.88%;width:50.2%;z-index:3;transform:rotate(4deg);animation-delay:2.3s}
+@keyframes nbxFadeInRight{from{opacity:0;translate:100% 0}to{opacity:1;translate:0 0}}
+@media (max-width:900px){
+.hero-txt,.hero-vis{flex:1 1 100% !important}
+#nbx-hero-food{max-width:520px;margin:0 auto}
+}
+@media (prefers-reduced-motion:reduce){#nbx-hero-food img{animation:none}}
+.spr{background-size:600% 300%;background-repeat:no-repeat;background-color:#e4efdc}
+.sp0{background-image:url(/_blob/a9f0e7deec5e93814f97583049c7c972)}
+.sp1{background-image:url(/_blob/2a0bdef1051029e9166ebedc5cef9204)}
+.sp2{background-image:url(/_blob/9846de36f935d670bbb87cac8e7b9393)}
+.sp3{background-image:url(/_blob/4779392895cda411846a54140e475dd9)}
+.sp4{background-image:url(/_blob/b2297d49528eb60bc073c731cce9099a)}
+.sp5{background-image:url(/_blob/747cf1ecba145ba77986fb27a97f1197)}
+.sp6{background-image:url(/_blob/89eb04ff20ca5ecf25f589f343254b82)}
+.mctrl{width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 24px}
+.mdays{width:100%;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.mgrid{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.mcard{display:flex;flex-direction:column;gap:12px;min-width:0}
+.mimg{position:relative;width:100%;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#e4efdc}
+.mslider{width:100%;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+.mslider .mcard{flex:0 0 250px;scroll-snap-align:start}
+@media (max-width:960px){.mgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.wall{display:flex;gap:16px;align-items:flex-start}
+.w-hide{display:none !important}
+.recap{width:100%;max-width:880px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.recap-i{flex:0 0 calc((100% - 30px) / 4)}
+@media (max-width:960px){.recap-i{flex-basis:calc((100% - 10px) / 2)}}
+@media (max-width:640px){.wall{gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}.wall-col{display:contents !important}.wall img{flex:0 0 270px;width:270px !important;margin:0 !important;scroll-snap-align:start}.wall .w-hide{display:block !important}.wall-more{display:none !important}}
+/* FAQ accordion: panel is always in the DOM and opens via grid rows 0fr -> 1fr */
+.faq-item{transition:background-color .35s ease,border-color .35s ease}
+.faq-t{transition:color .35s ease}
+.faq-ico{transition:background-color .35s ease,color .35s ease}
+.faq-ico-v{transform-origin:12px 12px;transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.faq-open .faq-ico-v{transform:rotate(90deg)}
+.faq-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1)}
+.faq-panel>div{min-height:0;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s ease,transform .3s ease,visibility 0s linear .4s}
+.faq-open .faq-panel{grid-template-rows:1fr}
+.faq-open .faq-panel>div{opacity:1;visibility:visible;transform:none;transition:opacity .35s ease .1s,transform .4s cubic-bezier(.4,0,.2,1) .05s,visibility 0s}
+@media (prefers-reduced-motion:reduce){.faq-item,.faq-t,.faq-ico,.faq-ico-v,.faq-panel,.faq-panel>div{transition:none !important}}
+@media (max-width:640px){
+.hdr-logo{height:28px !important}
+.hide-sm{display:none !important}
+.faq-a{padding-left:22px !important}
+.mdays{gap:5px}
+.mday-dt{font-size:13px !important}
+.msz-label{flex:0 0 100%}
+.mgrid{grid-template-columns:1fr;gap:12px}
+.mgrid .mcard{flex-direction:row;align-items:center;gap:14px}
+.mgrid .mimg{width:112px;flex:none;border-radius:14px}
+.mslider .mcard{flex-basis:220px}
+.recap{flex-direction:column;align-items:center}
+.recap-i{flex:0 0 auto !important;width:230px;justify-content:flex-start !important}
+.cta-menu{font-size:16px !important;padding:16px 18px !important}
+}
+</style>
+</helmet>
+<div style="width: 100%; background: #ffffff; color: #123c32; font-family: 'Outfit', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased">
+
+<sc-if value="{{ sec.s0 }}" hint-placeholder-val="{{ true }}">
+<!-- S0 Top bar -->
+<div style="position: sticky; top: 0; z-index: 30; background: #123c32; color: #ffffff; padding: 11px 20px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; line-height: 1.35; text-align: center">
+<span class="hide-sm" style="width: 8px; height: 8px; border-radius: 99px; background: #accb7d; flex: none"></span>
+<span>Delivery in <span style="color: #accb7d">Belgrade and Novi&nbsp;Sad</span> · Order today → first&nbsp;delivery <span style="color: #accb7d">as early as&nbsp;{{ dayAcc }}</span></span>
+</div>
+
+<!-- Header -->
+<header style="border-bottom: 1px solid #e3e8e2; padding: 16px 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<a href="https://www.nutribox.rs/en" aria-label="Nutribox home" style="display: flex; align-items: center; min-height: 44px">
+<img class="hdr-logo" src="/_blob/b41dcd431e5316d3de4b55d17165e771" alt="Nutribox" width="473" height="90" style="height: 34px; width: auto; display: block">
+</a>
+<div style="display: flex; align-items: center; gap: 20px">
+<a class="hide-sm" href="tel:0800001007" style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; text-decoration: none; color: #123c32">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>
+0800 001&nbsp;007
+</a>
+<a class="btn" href="https://www.nutribox.rs/en/order-form" style="display: inline-flex; align-items: center; justify-content: center; min-height: 52px; box-sizing: border-box; padding: 14px 26px; border-radius: 14px; background: #accb7d; color: #123c32; font-size: 17px; font-weight: 700; text-decoration: none">Choose a plan</a>
+</div>
+</div>
+</header>
+</sc-if>
+
+<sc-if value="{{ sec.s1 }}" hint-placeholder-val="{{ true }}">
+<!-- S1 Hero -->
+<section style="position: relative; overflow: hidden; padding: clamp(40px, 6vw, 72px) 20px clamp(56px, 7vw, 88px); background: #ffffff">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div class="hero-txt" style="position: relative; z-index: 2; flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 24px">
+<div style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 99px; background: #f0f6ec; font-size: 15px; font-weight: 600; color: #123c32">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5e8f3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+<span>Belgrade and Novi&nbsp;Sad</span>
+</div>
+<h1 style="margin: 0; font-size: clamp(36px, 4.6vw, 56px); line-height: 1.06; letter-spacing: -0.03em; font-weight: 700; color: #123c32">Breakfast, lunch, snack and&nbsp;dinner <span style="color: #5e8f3d">made for your goal and at your door every&nbsp;day.</span></h1>
+<p style="margin: 0; max-width: 600px; font-size: 19px; line-height: 1.55; color: #3d4a41">No grocery runs, no cooking, no dishes. You pick your goal, and every day our chefs cook breakfast, lunch, dinner and a snack from fresh ingredients and deliver them to your home or office. You just open and&nbsp;eat.</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px">
+<a class="btn" href="https://www.nutribox.rs/en/order-form" style="display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 30px; border-radius: 14px; background: #123c32; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none">Choose your&nbsp;plan
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+<div style="display: flex; flex-direction: column; gap: 4px; font-size: 14px; line-height: 1.35; color: #3d4a41">
+<span>Sign-up takes 2&nbsp;minutes</span>
+<span>First delivery the day after&nbsp;tomorrow</span>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="display: flex; align-items: center" aria-hidden="true">
+<img src="/_blob/5066c74cc7f05ef9561e0a9bca4597db" alt="" width="132" height="132" style="width: 38px; height: 38px; border-radius: 99px; border: 2px solid #ffffff; object-fit: cover; display: block; background: #ffffff">
+<img src="/_blob/8e6e0aaa197e83e1f2ad3f5267279274" alt="" width="132" height="132" style="width: 38px; height: 38px; margin-left: -10px; border-radius: 99px; border: 2px solid #ffffff; object-fit: cover; display: block; background: #ffffff">
+<img src="/_blob/8855b50abc3b108d818a6261241132cf" alt="" width="132" height="132" style="width: 38px; height: 38px; margin-left: -10px; border-radius: 99px; border: 2px solid #ffffff; object-fit: cover; display: block; background: #ffffff">
+<img src="/_blob/90f65000f4a5ada4525e1208fbf762e2" alt="" width="132" height="132" style="width: 38px; height: 38px; margin-left: -10px; border-radius: 99px; border: 2px solid #ffffff; object-fit: cover; display: block; background: #ffffff">
+<img src="/_blob/28e71372c3bd82dedd72b8abb368df78" alt="" width="132" height="132" style="width: 38px; height: 38px; margin-left: -10px; border-radius: 99px; border: 2px solid #ffffff; object-fit: cover; display: block; background: #ffffff">
+</div>
+<span style="font-size: 15px; font-weight: 600; color: #123c32">2,500+ people have tried&nbsp;Nutribox</span>
+</div>
+</div>
+</div>
+<div class="hero-vis" style="flex: 1 1 0; min-width: 0">
+<div id="nbx-hero-food" aria-hidden="true">
+<img class="k" src="/_blob/a966c1a16313282d9fbf501d3514d85c" alt="" width="587" height="1000">
+<img class="d" src="/_blob/b83e4c5fab90f169e70a6f77a0b79fd2" alt="" width="1000" height="670">
+<img class="r" src="/_blob/4edc28c3f13c6b48c6d4b24c7fdcccfa" alt="" width="1000" height="642">
+<img class="v" src="/_blob/2095fa56e72e757ae00a4c44640bc543" alt="" width="1000" height="986">
+<img class="u" src="/_blob/cfb56e985708ad92197336802ebe1a79" alt="" width="1000" height="603">
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s2 }}" hint-placeholder-val="{{ true }}">
+<!-- S2 Prepoznaješ li svoj dan -->
+<section style="background: #f6f8f3; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px">
+<h2 style="margin: 0; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Sound like <span style="color: #5e8f3d">your day?</span></h2>
+<div style="width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 20px">
+<div style="background: #ffffff; border: 1px solid #e3e8e2; border-radius: 20px; padding: 22px 24px; display: flex; align-items: center; gap: 18px">
+<span style="width: 52px; height: 52px; flex: none; border-radius: 14px; background: #f0f6ec; color: #123c32; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
+<span style="font-size: 18px; line-height: 1.4; font-weight: 500; color: #123c32">Every day at 1 p.m. you open Wolt and only then work out what to&nbsp;eat.</span>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e8e2; border-radius: 20px; padding: 22px 24px; display: flex; align-items: center; gap: 18px">
+<span style="width: 52px; height: 52px; flex: none; border-radius: 14px; background: #f0f6ec; color: #123c32; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"></rect><path d="M3 10h18"></path><path d="M15.5 14.5h2.5"></path></svg></span>
+<span style="font-size: 18px; line-height: 1.4; font-weight: 500; color: #123c32">A delivered lunch costs 3,000–3,500 RSD, and then the energy crash&nbsp;hits.</span>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e8e2; border-radius: 20px; padding: 22px 24px; display: flex; align-items: center; gap: 18px">
+<span style="width: 52px; height: 52px; flex: none; border-radius: 14px; background: #f0f6ec; color: #123c32; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16l-1.4 10.2a1.5 1.5 0 0 1-1.5 1.3H6.9a1.5 1.5 0 0 1-1.5-1.3L4 9z"></path><path d="M8.5 9V7a3.5 3.5 0 0 1 7 0v2"></path></svg></span>
+<span style="font-size: 18px; line-height: 1.4; font-weight: 500; color: #123c32">Sunday meal prep eats up half your day, and by Wednesday the food is&nbsp;tasteless.</span>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e8e2; border-radius: 20px; padding: 22px 24px; display: flex; align-items: center; gap: 18px">
+<span style="width: 52px; height: 52px; flex: none; border-radius: 14px; background: #f0f6ec; color: #123c32; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.2"></circle></svg></span>
+<span style="font-size: 18px; line-height: 1.4; font-weight: 500; color: #123c32">You know how many calories you need, but have no time to plan, shop and&nbsp;cook.</span>
+</div>
+</div>
+<p style="margin: 0; max-width: 960px; text-align: center; font-size: clamp(20px, 2vw, 24px); line-height: 1.4; font-weight: 600; color: #4d7a31; text-wrap: balance"><span style="display: block; color: #123c32">The problem isn’t&nbsp;discipline.</span>Every option you’ve tried either takes your time or isn’t built for your&nbsp;goal.</p>
+<a href="#poredjenje" style="display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #123c32">See what makes Nutribox&nbsp;different
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M6 13l6 6 6-6"></path></svg>
+</a>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s3 }}" hint-placeholder-val="{{ true }}">
+<!-- S3 Poređenje -->
+<section id="poredjenje" style="background: #ffffff; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px">
+<h2 style="margin: 0; max-width: 880px; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Same problem, four&nbsp;solutions. <span style="color: #5e8f3d">Only one doesn’t take your&nbsp;time.</span></h2>
+<div style="width: 100%; overflow-x: auto; border: 1px solid #e3e8e2; border-radius: 24px">
+<table style="width: 100%; min-width: 980px; border-collapse: collapse; font-size: 15px; line-height: 1.4; text-align: left">
+<thead>
+<tr>
+<th scope="col" style="width: 18%; padding: 20px 22px; background: #ffffff"></th>
+<th scope="col" style="width: 19%; padding: 20px 22px; background: #ffffff; font-size: 17px; font-weight: 700; color: #123c32">Wolt and&nbsp;Glovo</th>
+<th scope="col" style="width: 19%; padding: 20px 22px; background: #ffffff; font-size: 17px; font-weight: 700; color: #123c32">Cooking yourself</th>
+<th scope="col" style="width: 21%; padding: 20px 22px; background: #ffffff; font-size: 17px; font-weight: 700; color: #123c32">Typical meal-prep&nbsp;services</th>
+<th scope="col" style="width: 23%; padding: 20px 22px; background: #123c32; font-size: 17px; font-weight: 700; color: #accb7d">Nutribox</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #f6f8f3">
+<th scope="row" style="padding: 17px 22px; font-weight: 700; color: #123c32">Price</th>
+<td style="padding: 17px 22px; color: #3d4a41">~3,300 RSD per&nbsp;meal</td>
+<td style="padding: 17px 22px; color: #3d4a41">cheap, but 15–20 hrs a&nbsp;week</td>
+<td style="padding: 17px 22px; color: #3d4a41">~2,100–2,500 RSD/day</td>
+<td style="padding: 17px 22px; background: #30563f; color: #ffffff; font-weight: 600"><span style="display: inline-flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>from 2,800&nbsp;RSD/day</span></td>
+</tr>
+<tr style="background: #ffffff">
+<th scope="row" style="padding: 17px 22px; font-weight: 700; color: #123c32">Your time</th>
+<td style="padding: 17px 22px; color: #3d4a41">30+ min a&nbsp;day</td>
+<td style="padding: 17px 22px; color: #3d4a41">2–3 hrs a&nbsp;day</td>
+<td style="padding: 17px 22px; color: #3d4a41">0</td>
+<td style="padding: 17px 22px; background: #30563f; color: #ffffff; font-weight: 600"><span style="display: inline-flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>0</span></td>
+</tr>
+<tr style="background: #f6f8f3">
+<th scope="row" style="padding: 17px 22px; font-weight: 700; color: #123c32">Tailored to your goal</th>
+<td style="padding: 17px 22px; color: #3d4a41">no</td>
+<td style="padding: 17px 22px; color: #3d4a41">only if you know&nbsp;how</td>
+<td style="padding: 17px 22px; color: #3d4a41">fixed portions</td>
+<td style="padding: 17px 22px; background: #30563f; color: #ffffff; font-weight: 600"><span style="display: inline-flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>4 calorie packages, for women and&nbsp;men</span></td>
+</tr>
+<tr style="background: #ffffff">
+<th scope="row" style="padding: 17px 22px; font-weight: 700; color: #123c32">Quality</th>
+<td style="padding: 17px 22px; color: #3d4a41">hit or miss</td>
+<td style="padding: 17px 22px; color: #3d4a41">up to&nbsp;you</td>
+<td style="padding: 17px 22px; color: #3d4a41">mass-produced</td>
+<td style="padding: 17px 22px; background: #30563f; color: #ffffff; font-weight: 600"><span style="display: inline-flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>restaurant chefs, fresh every&nbsp;morning</span></td>
+</tr>
+<tr style="background: #f6f8f3">
+<th scope="row" style="padding: 17px 22px; font-weight: 700; color: #123c32">Variety</th>
+<td style="padding: 17px 22px; color: #3d4a41">endless, but&nbsp;unhealthy</td>
+<td style="padding: 17px 22px; color: #3d4a41">always the same</td>
+<td style="padding: 17px 22px; color: #3d4a41">limited menu</td>
+<td style="padding: 17px 22px; background: #30563f; color: #ffffff; font-weight: 600"><span style="display: inline-flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>112+ new dishes a&nbsp;week</span></td>
+</tr>
+<tr style="background: #ffffff">
+<th scope="row" style="padding: 17px 22px; font-weight: 700; color: #123c32">Flexibility</th>
+<td style="padding: 17px 22px; color: #3d4a41">–</td>
+<td style="padding: 17px 22px; color: #3d4a41">–</td>
+<td style="padding: 17px 22px; color: #3d4a41">mostly fixed</td>
+<td style="padding: 17px 22px; background: #30563f; color: #ffffff; font-weight: 600"><span style="display: inline-flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>pausing, address changes,&nbsp;app</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="margin: -16px 0 0; font-size: 12px; color: #6b766f">* Competitor prices are approximate, based on public price&nbsp;lists.</p>
+<a class="btn" href="https://www.nutribox.rs/en/order-form" style="display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 30px; border-radius: 14px; background: #123c32; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none">Choose your&nbsp;plan
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s4 }}" hint-placeholder-val="{{ true }}">
+<!-- S6 Meni -->
+
+</sc-if>
+
+<sc-if value="{{ sec.s5 }}" hint-placeholder-val="{{ true }}">
+<!-- S4 Mehanizam -->
+<section id="meni" style="background: #ffffff; padding: 0 20px clamp(64px, 8vw, 96px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 28px">
+<h2 style="margin: 0; max-width: 860px; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">112+ new dishes every&nbsp;week. <span style="color: #5e8f3d">Here’s what your week looks&nbsp;like.</span></h2>
+<p style="margin: -10px 0 0; text-align: center; font-size: 16px; color: #3d4a41; text-wrap: balance">Sample dishes from our menu. The menu changes every&nbsp;week.</p>
+<div aria-hidden="true" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"><div class="spr sp0" style="width: 1px; height: 1px"></div><div class="spr sp1" style="width: 1px; height: 1px"></div><div class="spr sp2" style="width: 1px; height: 1px"></div><div class="spr sp3" style="width: 1px; height: 1px"></div><div class="spr sp4" style="width: 1px; height: 1px"></div><div class="spr sp5" style="width: 1px; height: 1px"></div><div class="spr sp6" style="width: 1px; height: 1px"></div></div>
+<div role="group" aria-label="Filter by diet type" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px">
+<sc-for list="{{ filters }}" as="f" hint-placeholder-count="7">
+<button type="button" class="pick" aria-pressed="{{ f.on }}" onClick="{{ f.pick }}" style="min-height: 44px; padding: 9px 18px; border-radius: 12px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; {{ f.style }}">{{ f.label }}</button>
+</sc-for>
+</div>
+<div style="width: 100%; display: flex; flex-direction: column; gap: 10px">
+<div class="slider" style="width: 100%; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 2px 12px; box-sizing: border-box">
+<sc-for list="{{ meals }}" as="m" hint-placeholder-count="5">
+<article style="flex: 0 0 250px; min-width: 250px; scroll-snap-align: start; display: flex; flex-direction: column; gap: 10px">
+<div style="position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; overflow: hidden; background: #e4efdc">
+<div class="spr {{ m.sp }}" role="img" aria-label="{{ m.alt }}" style="position: absolute; inset: 0; background-position: {{ m.pos }}"></div>
+<span style="position: absolute; top: 12px; left: 12px; padding: 5px 10px; border-radius: 99px; background: #ffffff; font-size: 13px; font-weight: 700; color: #123c32">{{ m.kcal }}</span>
+<sc-if value="{{ m.posno }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 12px; right: 12px; padding: 5px 10px; border-radius: 99px; background: #123c32; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #accb7d">LENTEN</span></sc-if>
+</div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #4d7a31">{{ m.tag }}</span>
+<h3 style="margin: -4px 0 0; font-size: 18px; line-height: 1.25; font-weight: 700; color: #123c32">{{ m.name }}</h3>
+<sc-if value="{{ m.sejk }}" hint-placeholder-val="{{ false }}"><span style="margin-top: -4px; font-size: 13px; font-weight: 600; color: #5e8f3d">{{ m.sejkTxt }}</span></sc-if>
+<span style="font-size: 13px; font-weight: 500; color: #4d7a31">{{ m.macros }}</span>
+</article>
+</sc-for>
+</div>
+<span style="align-self: flex-end; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #3d4a41">Swipe for more&nbsp;dishes<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 16px">
+<a class="btn" href="https://www.nutribox.rs/en/order-form" style="display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 30px; border-radius: 14px; background: #123c32; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none">Choose your&nbsp;plan
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+<a class="btn cta-menu" href="Jelovnik.dc.html" style="display: inline-flex; align-items: center; min-height: 58px; box-sizing: border-box; padding: 16px 26px; border-radius: 14px; border: 2px solid #123c32; background: #ffffff; color: #123c32; font-size: 18px; font-weight: 700; text-decoration: none">See next week’s&nbsp;menu</a>
+</div>
+</div>
+</section><section style="background: #ffffff; padding: 0 20px clamp(64px, 8vw, 96px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px">
+<h2 style="margin: 0; max-width: 860px; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">The Nutribox system: <span style="color: #5e8f3d">three things others don’t do&nbsp;together.</span></h2>
+<div style="width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px">
+<div style="background: #f6f8f3; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">01</span>
+</div>
+<h3 style="margin: 4px 0 0; font-size: 21px; font-weight: 700; color: #123c32">A plan built for your&nbsp;goal</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">4 calorie packages, separate for women and men. 4 diet types: Balance, Fish, Vegetarian, Vegan. On the Balance menu you can exclude up to two of: gluten, fish, pork or&nbsp;lactose.</p>
+</div>
+<div style="background: #f6f8f3; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">02</span>
+</div>
+<h3 style="margin: 4px 0 0; font-size: 21px; font-weight: 700; color: #123c32">Restaurant chefs, not a&nbsp;canteen</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Fresh ingredients, cooked every morning, nothing frozen. It tastes like a restaurant, not a plastic&nbsp;box.</p>
+</div>
+<div style="background: #f6f8f3; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">03</span>
+</div>
+<h3 style="margin: 4px 0 0; font-size: 21px; font-weight: 700; color: #123c32">Logistics that do the work for&nbsp;you</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Breakfast, lunch, dinner and snack arrive together in one delivery, at home or at the office. Pause a day or change your address yourself in the&nbsp;app.</p>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s6 }}" hint-placeholder-val="{{ true }}">
+<!-- S5 Ko kuva -->
+<section style="background: #123c32; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<figure style="flex: 1 1 460px; min-width: 0; margin: 0; border-radius: 22px; overflow: hidden; background: #30563f">
+<img src="/_blob/74c9d50fac376876d1d52ab6c78c0e11" alt="Amer Hamza, Vuksan Vasić and Miloš Simić in chef’s whites" width="1608" height="1060" style="display: block; width: 100%; height: auto; aspect-ratio: 1608 / 1060; object-fit: cover">
+<figcaption style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 14px 12px 16px; text-align: center">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0">
+<span style="font-size: 15px; font-weight: 700; color: #ffffff">Amer Hamza</span>
+<span style="font-size: 13px; color: #accb7d">Head chef</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0">
+<span style="font-size: 15px; font-weight: 700; color: #ffffff">Vuksan Vasić</span>
+<span style="font-size: 13px; color: #accb7d">Nutribox founder</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0">
+<span style="font-size: 15px; font-weight: 700; color: #ffffff">Miloš Simić</span>
+<span style="font-size: 13px; color: #accb7d">Corporate chef</span>
+</div>
+</figcaption>
+</figure>
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; color: #accb7d">WHO COOKS YOUR&nbsp;FOOD</span>
+<h2 style="margin: 0; font-size: clamp(30px, 3.2vw, 40px); line-height: 1.14; letter-spacing: -0.02em; font-weight: 700; color: #ffffff">Behind every meal are chefs&nbsp;with <span style="color: #accb7d">years of experience in fine&nbsp;dining.</span></h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.75; color: #e6eee3">Nutribox was founded by Vuksan Vasić, with <mark style="background: #accb7d; color: #123c32; font-weight: 600; padding: 1px 6px; border-radius: 5px; -webkit-box-decoration-break: clone; box-decoration-break: clone">more than 15 years of experience</mark> in gastronomy and a place at the <mark style="background: #accb7d; color: #123c32; font-weight: 600; padding: 1px 6px; border-radius: 5px; -webkit-box-decoration-break: clone; box-decoration-break: clone">Best Chef Awards 2018</mark> in Milan. The kitchen is run by Miloš Simić, with <mark style="background: #accb7d; color: #123c32; font-weight: 600; padding: 1px 6px; border-radius: 5px; -webkit-box-decoration-break: clone; box-decoration-break: clone">14 years of experience</mark> in fine-dining restaurants, together with Amer Hamza, executive chef and <mark style="background: #accb7d; color: #123c32; font-weight: 600; padding: 1px 6px; border-radius: 5px; -webkit-box-decoration-break: clone; box-decoration-break: clone">MasterChef Serbia winner.</mark> The result: meals that arrive at your door every day, fresh, tasty and made to fine-dining&nbsp;standards.</p>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s7 }}" hint-placeholder-val="{{ true }}">
+<!-- S7 Benefiti -->
+<section style="background: #f6f8f3; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px">
+<h2 style="margin: 0; max-width: 860px; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">More than food&nbsp;delivery. <span style="color: #5e8f3d">A nutrition system that works for&nbsp;you.</span></h2>
+<div style="width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px">
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">01</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">2–3 hours a day&nbsp;back</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">That’s 70–90 hours a month. Time you can spend on yourself, your family or your&nbsp;work.</p>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">02</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">No more “what do we eat&nbsp;today?”</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">One less decision every day. Less mental fatigue, more&nbsp;focus.</p>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">03</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Steady afternoon&nbsp;energy</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Balanced meals through the day, with no crash after a heavy lunch or junk&nbsp;food.</p>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">04</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Hit your goal without counting&nbsp;calories</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">The calories are already built into your package. You just open the box and&nbsp;eat.</p>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">05</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">No shopping, no wasted&nbsp;food</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">An empty sink, no groceries going bad in the fridge and no time wasted standing in&nbsp;line.</p>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 28px; font-weight: 700; color: #5e8f3d">06</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Traveling? Just&nbsp;pause.</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Pause a day in the app by 4 p.m. the day before. A day paused this way doesn’t count as&nbsp;used.</p>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s8 }}" hint-placeholder-val="{{ true }}">
+<!-- S8 Socijalni dokaz -->
+<section style="background: #ffffff; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px">
+<h2 style="margin: 0; max-width: 860px; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Their days are full of&nbsp;commitments. <span style="color: #5e8f3d">Food is no longer one of&nbsp;them.</span></h2>
+<div style="width: 100%; display: flex; flex-direction: column; gap: 14px">
+<div class="slider" style="width: 100%; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px">
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="/_blob/ec1226f597c7dec757e4c995fe12450b" alt="Video review: Miloš Ludus" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO REVIEW</span>
+<button type="button" aria-label="Play video review: Miloš Ludus" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Miloš Ludus</span>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="/_blob/48dd7e9204b80dbb912c5dc9f125a63b" alt="Video review: Tamara" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO REVIEW</span>
+<button type="button" aria-label="Play video review: Tamara" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Tamara</span>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="/_blob/dd0cf92261036a266fe626f3dfb2d53d" alt="Video review: Tibor Čubrilo" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO REVIEW</span>
+<button type="button" aria-label="Play video review: Tibor Čubrilo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Tibor Čubrilo</span>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="/_blob/f0dad957612601a0a103f55ea9f4ba9c" alt="Video review: Miloš Bubaja" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO REVIEW</span>
+<button type="button" aria-label="Play video review: Miloš Bubaja" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Miloš Bubaja</span>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="/_blob/4ef02203b38c984aec205f4b38bb712a" alt="Video review: Dušan Kocić" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO REVIEW</span>
+<button type="button" aria-label="Play video review: Dušan Kocić" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Dušan Kocić</span>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="/_blob/f7f0842e439dafcbb5430078f75d7386" alt="Video review: Zoran" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO REVIEW</span>
+<button type="button" aria-label="Play video review: Zoran" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Zoran</span>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="/_blob/54901ea1b99eebd5263437b70dfe53c1" alt="Video review: customer" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO REVIEW</span>
+<button type="button" aria-label="Play video review: customer" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+</div>
+<div style="flex: 0 0 250px; scroll-snap-align: start; position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #123c32">
+<img src="/_blob/f560b51e0a765f5432501a85626fb5c2" alt="Video review: Sava" width="318" height="568" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+<span style="position: absolute; top: 14px; left: 14px; padding: 5px 10px; border-radius: 99px; background: rgba(18, 60, 50, 0.82); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #accb7d">VIDEO REVIEW</span>
+<button type="button" aria-label="Play video review: Sava" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 999px; border: 0; background: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="#123c32"></path></svg></button>
+<span style="position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; border-radius: 14px; background: rgba(18, 60, 50, 0.86); font-size: 15px; font-weight: 700; color: #ffffff">Sava</span>
+</div>
+</div>
+<span style="align-self: flex-end; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #3d4a41">Swipe for more&nbsp;reviews<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+<div style="max-width: 680px; width: 100%; box-sizing: border-box; border-radius: 24px; background: #f0f6ec; padding: 32px 36px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18v-5.5C4 8.4 6.2 6 9.5 5.5l.5 1.8C8.1 8 7.3 9.4 7.3 11.2H10V18H4zm10 0v-5.5c0-4.1 2.2-6.5 5.5-7l.5 1.8c-1.9.7-2.7 2.1-2.7 3.9H20V18h-6z" fill="#accb7d"></path></svg>
+<p style="margin: 0; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.25; font-weight: 700; color: #123c32">“It feels like I have a personal&nbsp;chef.”</p>
+<span style="font-size: 15px; font-weight: 500; color: #4d7a31">Nutribox customer,&nbsp;Belgrade</span>
+</div>
+<div class="wall" style="width: 100%">
+<sc-for list="{{ wallCols }}" as="col" hint-placeholder-count="3">
+<div class="wall-col" style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<sc-for list="{{ col.items }}" as="w" hint-placeholder-count="4">
+<img class="{{ w.cls }}" src="{{ w.src }}" alt="{{ w.alt }}" width="{{ w.w }}" height="{{ w.h }}" loading="lazy" style="display: block; width: 100%; height: auto; box-sizing: border-box; border: 1px solid #e3e8e2; border-radius: 16px; background: #ffffff">
+</sc-for>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ wallMore }}" hint-placeholder-val="{{ true }}">
+<button type="button" class="btn wall-more" onClick="{{ showWall }}" style="min-height: 52px; padding: 14px 24px; border-radius: 14px; border: 2px solid #123c32; background: #ffffff; color: #123c32; font-family: inherit; font-size: 17px; font-weight: 700; cursor: pointer">{{ wallMoreLabel }}</button>
+</sc-if>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s9 }}" hint-placeholder-val="{{ true }}">
+<!-- S9 Kako funkcioniše -->
+<section style="background: #f6f8f3; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 44px">
+<h2 style="margin: 0; max-width: 860px; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">How does it work? <span style="color: #5e8f3d">Four steps and your meals are&nbsp;handled.</span></h2>
+<ol style="list-style: none; margin: 0; padding: 0; width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 24px">
+<li style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 56px; height: 56px; flex: none; border-radius: 16px; background: #123c32; color: #accb7d; font-size: 22px; font-weight: 700; display: flex; align-items: center; justify-content: center">01</span><span style="flex: 1 1 auto; height: 2px; background: #d5dfd1"></span></div>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Today, 2&nbsp;minutes</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Fill out the form and choose your goal, diet type and package&nbsp;length.</p>
+</li>
+<li style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 56px; height: 56px; flex: none; border-radius: 16px; background: #123c32; color: #accb7d; font-size: 22px; font-weight: 700; display: flex; align-items: center; justify-content: center">02</span><span style="flex: 1 1 auto; height: 2px; background: #d5dfd1"></span></div>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Our team gets in&nbsp;touch</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">We confirm your plan and dietary restrictions before your first&nbsp;delivery.</p>
+</li>
+<li style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 56px; height: 56px; flex: none; border-radius: 16px; background: #123c32; color: #accb7d; font-size: 22px; font-weight: 700; display: flex; align-items: center; justify-content: center">03</span><span style="flex: 1 1 auto; height: 2px; background: #d5dfd1"></span></div>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">Our chefs&nbsp;cook</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">Your meals are cooked from fresh ingredients, to your&nbsp;plan.</p>
+</li>
+<li style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 56px; height: 56px; flex: none; border-radius: 16px; background: #accb7d; color: #123c32; font-size: 22px; font-weight: 700; display: flex; align-items: center; justify-content: center">04</span></div>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #123c32">First delivery the day after&nbsp;tomorrow</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d4a41">A full day of food at your door. You just open the box and&nbsp;eat.</p>
+</li>
+</ol>
+<a class="btn" href="https://www.nutribox.rs/en/order-form" style="display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 30px; border-radius: 14px; background: #123c32; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none">Choose your&nbsp;plan
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s10 }}" hint-placeholder-val="{{ true }}">
+<!-- S10 Ponuda -->
+<section id="ponuda" style="background: #ffffff; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 32px">
+<h2 style="margin: 0; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">Choose your&nbsp;package. <span style="color: #5e8f3d">We’ll handle the&nbsp;rest.</span></h2>
+<p style="margin: -12px 0 0; max-width: 720px; text-align: center; font-size: 18px; line-height: 1.5; color: #3d4a41; text-wrap: balance">Every package includes breakfast, snack, lunch and dinner, delivered every&nbsp;day. From just 700 RSD per&nbsp;meal.</p>
+<div role="radiogroup" aria-label="Package length" style="width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 20px">
+<sc-for list="{{ plans }}" as="p" hint-placeholder-count="4">
+<button type="button" role="radio" class="pick" aria-checked="{{ p.on }}" onClick="{{ p.pick }}" style="position: relative; text-align: left; font-family: inherit; cursor: pointer; border-radius: 22px; padding: 24px 24px 26px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; {{ p.cardStyle }}">
+<span style="position: absolute; top: 22px; right: 22px; width: 24px; height: 24px; box-sizing: border-box; border-radius: 99px; display: flex; align-items: center; justify-content: center; {{ p.radioStyle }}">
+<sc-if value="{{ p.selected }}" hint-placeholder-val="{{ false }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="{{ p.checkColor }}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>
+</span>
+<span style="min-height: 22px; display: flex; align-items: center">
+<sc-if value="{{ p.hasBadge }}" hint-placeholder-val="{{ false }}"><span style="padding: 4px 9px; border-radius: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; {{ p.badgeStyle }}">{{ p.badge }}</span></sc-if>
+</span>
+<span style="margin-top: 4px; font-size: 20px; font-weight: 700; color: {{ p.titleColor }}">{{ p.days }}</span>
+<span style="font-size: 34px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; color: {{ p.titleColor }}">{{ p.price }}</span>
+<span style="font-size: 14px; color: {{ p.subColor }}">{{ p.per }}</span>
+<span style="margin-top: 6px; font-size: 15px; font-weight: 600; color: {{ p.totalColor }}">{{ p.total }}</span>
+</button>
+</sc-for>
+</div>
+<p style="margin: 4px 0 0; text-align: center; font-size: 20px; font-weight: 600; color: #4d7a31; text-wrap: balance">For roughly the price of one Wolt lunch, you get a whole day of&nbsp;food.</p>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+<a class="btn" href="https://www.nutribox.rs/en/order-form" style="display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 32px; border-radius: 14px; background: #123c32; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none">Continue to&nbsp;order
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+<span style="font-size: 14px; color: #3d4a41">Selected: {{ selLabel }}</span>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s11 }}" hint-placeholder-val="{{ true }}">
+<!-- S11 Garancija -->
+<section style="background: #ffffff; padding: 0 20px clamp(64px, 8vw, 96px)">
+<div style="max-width: 1000px; margin: 0 auto; box-sizing: border-box; border-radius: 28px; background: #f0f6ec; padding: clamp(28px, 4vw, 40px); display: flex; flex-wrap: wrap; align-items: center; gap: 32px">
+<div style="width: 132px; height: 132px; flex: none; border-radius: 999px; background: #123c32; display: flex; align-items: center; justify-content: center">
+<div style="width: 112px; height: 112px; box-sizing: border-box; border-radius: 999px; border: 2px dashed #5e8f3d; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px">
+<span style="font-size: 30px; line-height: 1; font-weight: 800; color: #accb7d">100%</span>
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: #ffffff">GUARANTEE</span>
+</div>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 26px; line-height: 1.2; font-weight: 700; color: #123c32">Satisfaction guarantee on the 28-day&nbsp;package</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #3d4a41">If Nutribox isn’t right for you in the first 7 days, for any reason, we refund the remaining 3 weeks. No&nbsp;hassle.</p>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s12 }}" hint-placeholder-val="{{ true }}">
+<!-- S12 Zamerke -->
+<section style="background: #f6f8f3; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px">
+<h2 style="margin: 0; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">What’s probably <span style="color: #5e8f3d">still holding you&nbsp;back.</span></h2>
+<div style="width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 20px">
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; gap: 16px">
+<span style="width: 34px; height: 34px; flex: none; border-radius: 99px; background: #accb7d; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123c32" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #123c32">It’ll be&nbsp;enough.</h3><p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3d4a41">4 calorie levels, with NutriPump and NutriMax going up to 3,000 kcal. Need more? Add extra protein or a&nbsp;shake.</p></div>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; gap: 16px">
+<span style="width: 34px; height: 34px; flex: none; border-radius: 99px; background: #accb7d; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123c32" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #123c32">Dietary restrictions?&nbsp;Covered.</h3><p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3d4a41">Vegan, vegetarian or fish menu, plus up to 2 exclusions on Balance: gluten, fish, pork,&nbsp;lactose.</p></div>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; gap: 16px">
+<span style="width: 34px; height: 34px; flex: none; border-radius: 99px; background: #accb7d; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123c32" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #123c32">Traveling? Just&nbsp;pause.</h3><p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3d4a41">Pause days in the app, with no penalty. Food never goes to&nbsp;waste.</p></div>
+</div>
+<div style="background: #ffffff; border-radius: 22px; padding: 28px; display: flex; gap: 16px">
+<span style="width: 34px; height: 34px; flex: none; border-radius: 99px; background: #accb7d; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123c32" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-size: 22px; font-weight: 700; color: #123c32">Not expensive once you do the&nbsp;math.</h3><p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3d4a41">From 2,800 RSD for a whole day, less than one lunch on Wolt. And you can start with 5&nbsp;days.</p></div>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s13 }}" hint-placeholder-val="{{ true }}">
+<!-- S13 Zašto sada -->
+<section style="background: #123c32; padding: clamp(64px, 8vw, 88px) 20px">
+<div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center">
+<h2 style="margin: 0; font-size: clamp(28px, 3vw, 36px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; color: #ffffff">Every week without a plan is another 15 hours or so in the kitchen or on&nbsp;Wolt.</h2>
+<p style="margin: 0; font-size: 20px; line-height: 1.45; color: #accb7d">And another “I’ll start on Monday.” Order today and eat on plan from&nbsp;{{ dayGen }}.</p>
+<a class="btn" href="https://www.nutribox.rs/en/order-form" style="margin-top: 6px; display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 30px; border-radius: 14px; background: #accb7d; color: #123c32; font-size: 18px; font-weight: 700; text-decoration: none">Choose your&nbsp;plan
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s14 }}" hint-placeholder-val="{{ true }}">
+<!-- S15 FAQ -->
+<section id="faq" style="background: #f6f8f3; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 32px">
+<h2 style="margin: 0; text-align: center; font-size: clamp(30px, 3.4vw, 40px); line-height: 1.14; letter-spacing: -0.025em; font-weight: 700; color: #123c32">FAQ. <span style="color: #5e8f3d">Everything you need to know before your first&nbsp;delivery.</span></h2>
+<div style="width: 100%; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{ faqs }}" as="q" hint-placeholder-count="15">
+<div class="{{ q.cls }}" style="border-radius: 18px; overflow: hidden; {{ q.boxStyle }}">
+<button type="button" aria-expanded="{{ q.expanded }}" onClick="{{ q.toggle }}" style="width: 100%; min-height: 68px; box-sizing: border-box; padding: 18px 22px; border: 0; background: transparent; font-family: inherit; text-align: left; cursor: pointer; display: flex; align-items: center; gap: 18px">
+<span class="faq-t" style="width: 26px; flex: none; font-size: 15px; font-weight: 700; color: {{ q.numColor }}">{{ q.num }}</span>
+<span class="faq-t" style="flex: 1 1 auto; font-size: 18px; line-height: 1.35; font-weight: 700; color: {{ q.qColor }}">{{ q.q }}</span>
+<span class="faq-ico" style="width: 32px; height: 32px; flex: none; border-radius: 99px; display: flex; align-items: center; justify-content: center; {{ q.iconStyle }}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path><path class="faq-ico-v" d="M12 5v14"></path></svg>
+</span>
+</button>
+<div class="faq-panel" aria-hidden="{{ q.hidden }}">
+<div>
+<p class="faq-a" style="margin: 0; padding: 0 22px 22px 66px; font-size: 16px; line-height: 1.6; color: #e6eee3">{{ q.a }}</p>
+<sc-if value="{{ q.hasLink }}" hint-placeholder-val="{{ false }}">
+<div class="faq-a" style="padding: 0 22px 22px 66px; margin-top: -8px">
+<a href="{{ q.linkHref }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 16px; font-weight: 700; color: #accb7d">{{ q.linkLabel }}
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s15 }}" hint-placeholder-val="{{ true }}">
+<!-- S16 Završni CTA -->
+<section style="background: #ffffff; padding: clamp(64px, 8vw, 96px) 20px">
+<div style="max-width: 1000px; margin: 0 auto; box-sizing: border-box; border-radius: 32px; background: #123c32; padding: clamp(36px, 5vw, 56px) clamp(22px, 4vw, 56px); display: flex; flex-direction: column; align-items: center; gap: 26px; text-align: center">
+<h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 40px); line-height: 1.14; letter-spacing: -0.025em; font-weight: 700; color: #ffffff; text-wrap: balance">Your meals,&nbsp;handled <span style="display: block; color: #accb7d">as early as the day after&nbsp;tomorrow.</span></h2>
+<div class="recap">
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>4 meals a&nbsp;day</span>
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>from 2,800&nbsp;RSD/day</span>
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>4 goal-based&nbsp;packages</span>
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>daily&nbsp;delivery</span>
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Belgrade and Novi&nbsp;Sad</span>
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>pause in the&nbsp;app</span>
+<span class="recap-i" style="display: flex; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; padding: 11px 14px; border-radius: 12px; background: #30563f; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#accb7d" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>7-day&nbsp;guarantee</span>
+</div>
+<a class="btn" href="https://www.nutribox.rs/en/order-form" style="display: inline-flex; align-items: center; gap: 10px; min-height: 58px; box-sizing: border-box; padding: 18px 30px; border-radius: 14px; background: #accb7d; color: #123c32; font-size: 18px; font-weight: 700; text-decoration: none">Choose your&nbsp;plan
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #accb7d">Have a question? Call <a href="tel:0800001007" style="color: #ffffff; font-weight: 600; white-space: nowrap">0800 001 007</a>.</p>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ sec.s16 }}" hint-placeholder-val="{{ true }}">
+<!-- Footer -->
+<footer style="background: #ffffff; border-top: 1px solid #e3e8e2; padding: 56px 20px 0">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px 64px; padding-bottom: 44px">
+<div style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 26px">
+<img src="/_blob/b41dcd431e5316d3de4b55d17165e771" alt="Nutribox" width="473" height="90" style="height: 36px; width: auto; align-self: flex-start">
+<div style="display: flex; flex-wrap: wrap; gap: 22px 40px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #3d4a41">Card payments provided&nbsp;by</span>
+<a href="https://www.raiffeisenbank.rs" style="display: inline-flex; align-items: center; min-height: 28px"><img src="/_blob/cf80d99c77c3d97873c78b36c8afc8b6" alt="Raiffeisen Bank" style="height: 18px; width: auto; display: block"></a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #3d4a41">Transaction&nbsp;security</span>
+<div style="display: flex; align-items: center; gap: 14px">
+<img src="/_blob/bcaee31850f6f5e00e1613f0679eb160" alt="Mastercard ID Check" style="height: 18px; width: auto; display: block">
+<img src="/_blob/42f4b4ffb06152d2e6296906635d67aa" alt="Visa Secure" style="height: 34px; width: auto; display: block">
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; color: #3d4a41">We accept payment&nbsp;by</span>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<img src="/_blob/c93b87fa607f0ab5d7079cad2397c2a8" alt="Visa" style="height: 18px; width: auto; display: block">
+<img src="/_blob/e3d439cb8afcb7a30ca02939770f03a1" alt="Mastercard" style="height: 24px; width: auto; display: block">
+<img src="/_blob/687da14a05637618db33c10f145c9bb9" alt="Maestro" style="height: 30px; width: auto; display: block">
+<img src="/_blob/dbd319801dc101d1b2e6df614f132508" alt="DinaCard" style="height: 28px; width: auto; display: block">
+</div>
+</div>
+</div>
+<div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.5; color: #3d4a41">
+<h2 style="margin: 0 0 4px; font-size: 16px; font-weight: 600; color: #123c32">Company&nbsp;details</h2>
+<span>NUTRIBOX KETERING&nbsp;D.O.O.</span>
+<span>CARA DUŠANA 158, 11080 BEOGRAD (ZEMUN),&nbsp;Serbia</span>
+<span>MB:&nbsp;22320378</span>
+<span>PIB:&nbsp;115841962</span>
+<a href="mailto:kancelarija@nutribox.rs" style="color: #3d4a41">kancelarija@nutribox.rs</a>
+<a href="tel:0800001007" style="color: #3d4a41">0800 001&nbsp;007</a>
+</div>
+<div style="flex: 0 1 220px; min-width: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.5">
+<h2 style="margin: 0 0 4px; font-size: 16px; font-weight: 600; color: #123c32">More</h2>
+<a href="https://www.nutribox.rs/en/uslovi-koriscenja" style="color: #3d4a41">Terms of&nbsp;use</a>
+<a href="https://www.nutribox.rs/en/politika-privatnosti" style="color: #3d4a41">Privacy&nbsp;policy</a>
+<a href="https://www.nutribox.rs/en/politika-povracaja-sredstava" style="color: #3d4a41">Refund&nbsp;policy</a>
+<a href="https://www.nutribox.rs/en/brisanje-naloga" style="color: #3d4a41">Account&nbsp;deletion</a>
+</div>
+</div>
+<div style="max-width: 1200px; margin: 0 auto; border-top: 1px solid #e3e8e2; padding: 18px 0 22px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; font-size: 13px; color: #6b766f">
+<span>©2026 Nutribox. All rights&nbsp;reserved.</span>
+<span>powered by&nbsp;<a href="https://www.floumate.com?source=nutribox" target="_blank" rel="noopener" style="color: #123c32; font-weight: 600">Floumate</a></span>
+</div>
+</footer>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"partFrom":{"editor":"int","default":0,"min":0,"max":16,"section":"Prikaz"},"partTo":{"editor":"int","default":7,"min":0,"max":16,"section":"Prikaz"},"$preview":{"width":1440,"height":5350}}'>
+class Component extends DCLogic {
+  jelovnik() {
+    // po filteru: [jelo, meni, obrok, kcal, P, UH, M] za paket od 2.000 kcal, redom kao na slici-mapi
+    return {
+      "sve": [
+        ["Oat pie with carrot and chard, cheese mousse and turkey ham",0,0,500,37,42,20],
+        ["Lenten pumpkin cake with date cream",0,1,361,5,63,10],
+        ["Pork fillet in apple and thyme sauce",0,2,579,48,64,14],
+        ["Turkey in teriyaki sauce with jasmine rice",0,3,576,54,67,10],
+        ["Scrambled eggs with salmon mousse and chia bread",1,0,488,33,35,24],
+        ["Banana bread with cocoa cream",1,1,654,56,76,14],
+        ["Tuna on potato mash with green beans",1,2,419,33,46,11],
+        ["Edamame wok with rice noodles",1,3,441,18,76,7],
+        ["Oat porridge with banana, cocoa and Greek yogurt",2,0,252,17,31,7],
+        ["Chia pudding with vanilla and mixed berries",2,1,644,58,58,20],
+        ["Falafel on carrot purée with quinoa",2,2,530,21,76,16],
+        ["Tortilla with halloumi and tzatziki dip",2,3,556,28,65,21],
+        ["Breakfast burrito with tofu scramble and avocado",3,0,456,15,64,15],
+        ["Lenten blueberry muffin with coconut cream",3,1,838,81,79,22],
+        ["Soy medallions in roasted pepper sauce",3,2,325,19,37,11],
+        ["Lentil balls with bulgur and tahini dip",3,3,362,18,53,9],
+        ["Gluten-free sandwich with salmon mousse and boiled egg",4,0,571,38,67,17],
+        ["Gluten-free apple and cinnamon cake",4,1,326,4,55,10]
+      ],
+      "0": [
+        ["Oat pie with carrot and chard, cheese mousse and turkey ham",0,0,500,37,42,20],
+        ["Lenten pumpkin cake with date cream",0,1,361,5,63,10],
+        ["Pork fillet in apple and thyme sauce",0,2,579,48,64,14],
+        ["Turkey in teriyaki sauce with jasmine rice",0,3,576,54,67,10],
+        ["Scrambled eggs with chicken ham and chia bread",0,0,545,41,40,25],
+        ["Banana bread with cocoa cream",0,1,328,6,58,8],
+        ["Beef round with caramelized vegetable sauce",0,2,553,44,52,19],
+        ["Chicken wok with rice noodles",0,3,573,48,80,7],
+        ["Oat porridge with banana, cocoa and Greek yogurt",0,0,543,31,74,14],
+        ["Chia pudding with vanilla and mixed berries",0,1,318,8,40,14],
+        ["Sea bass on carrot purée with quinoa",0,2,529,41,53,17],
+        ["Tortilla with tuna and tzatziki dip",0,3,612,58,64,14],
+        ["Breakfast burrito with egg salad and turkey ham",0,0,537,35,64,16],
+        ["Blueberry muffin with vanilla cream",0,1,349,6,52,13],
+        ["Chicken fillet in roasted pepper sauce",0,2,536,53,44,17],
+        ["Beef meatballs with bulgur and tahini dip",0,3,567,45,60,16],
+        ["Sourdough sandwich with salmon mousse and boiled egg",0,0,571,38,67,17],
+        ["Apple and cinnamon cake with vanilla cream",0,1,326,4,55,10]
+      ],
+      "1": [
+        ["Oat pie with carrot and chard, with cheese mousse",1,0,244,14,21,12],
+        ["Lenten pumpkin cake with date cream",1,1,686,55,81,16],
+        ["Lemon salmon with sweet potato mash and bulgur",1,2,553,38,53,21],
+        ["Chickpea bowl in teriyaki sauce",1,3,523,27,81,10],
+        ["Scrambled eggs with salmon mousse and chia bread",1,0,488,33,35,24],
+        ["Banana bread with cocoa cream",1,1,654,56,76,14],
+        ["Tuna on potato mash with green beans",1,2,419,33,46,11],
+        ["Edamame wok with rice noodles",1,3,441,18,76,7],
+        ["Oat porridge with banana, cocoa and Greek yogurt",1,0,321,20,41,8],
+        ["Chia pudding with vanilla and mixed berries",1,1,644,58,58,20],
+        ["Sea bream on carrot purée with quinoa",1,2,453,31,53,13],
+        ["Tortilla with halloumi and tzatziki dip",1,3,560,28,65,21],
+        ["Breakfast burrito with egg mousse and tuna",1,0,510,32,62,15],
+        ["Blueberry muffin with vanilla cream",1,1,675,56,70,19],
+        ["Tuna in roasted pepper sauce",1,2,375,32,36,11],
+        ["Lentil balls with bulgur and tahini dip",1,3,440,22,63,11],
+        ["Sourdough sandwich with salmon mousse and boiled egg",1,0,474,29,61,13],
+        ["Apple and cinnamon cake with vanilla cream",1,1,652,54,73,16]
+      ],
+      "2": [
+        ["Oat pie with carrot and chard, with cheese mousse",2,0,372,21,32,18],
+        ["Lenten pumpkin cake with date cream",2,1,686,55,81,16],
+        ["Soy medallions in apple and thyme sauce",2,2,477,24,70,11],
+        ["Tofu bowl in teriyaki sauce",2,3,460,25,64,11],
+        ["Scrambled eggs with cheese mousse and chia bread",2,0,360,24,23,19],
+        ["Banana bread with cocoa cream",2,1,654,56,76,14],
+        ["Lentil balls in caramelized vegetable sauce",2,2,493,22,65,16],
+        ["Edamame wok with rice noodles",2,3,488,21,82,8],
+        ["Oat porridge with banana, cocoa and Greek yogurt",2,0,252,17,31,7],
+        ["Chia pudding with vanilla and mixed berries",2,1,644,58,58,20],
+        ["Falafel on carrot purée with quinoa",2,2,530,21,76,16],
+        ["Tortilla with halloumi and tzatziki dip",2,3,556,28,65,21],
+        ["Breakfast burrito with egg mousse and avocado",2,0,457,15,64,16],
+        ["Blueberry muffin with vanilla cream",2,1,675,56,70,19],
+        ["Soy medallions in roasted pepper sauce",2,2,415,31,42,14],
+        ["Lentil balls with bulgur and tahini dip",2,3,438,21,65,10],
+        ["Sourdough sandwich with cheese mousse and cucumber",2,0,461,24,61,14],
+        ["Apple and cinnamon cake with vanilla cream",2,1,652,54,73,16]
+      ],
+      "3": [
+        ["Lenten chickpea flour pie with carrot and chard",3,0,366,12,37,19],
+        ["Lenten pumpkin cake with date cream",3,1,849,80,90,19],
+        ["Soy medallions in apple and thyme sauce",3,2,410,20,61,10],
+        ["Chickpea bowl in teriyaki sauce",3,3,365,20,55,7],
+        ["Tofu scramble with roasted potatoes",3,0,283,20,28,10],
+        ["Lenten banana bread with cocoa cream",3,1,817,81,85,17],
+        ["Lentil balls in caramelized vegetable sauce",3,2,552,20,79,17],
+        ["Edamame wok with rice noodles",3,3,334,15,55,6],
+        ["Oat porridge with banana and cocoa, made with plant milk",3,0,219,10,31,6],
+        ["Chia pudding with vanilla and mixed berries",3,1,807,83,67,23],
+        ["Falafel on carrot purée with quinoa",3,2,444,17,59,15],
+        ["Tortilla with roasted chickpeas and plant-based tzatziki",3,3,534,19,82,14],
+        ["Breakfast burrito with tofu scramble and avocado",3,0,456,15,64,15],
+        ["Lenten blueberry muffin with coconut cream",3,1,838,81,79,22],
+        ["Soy medallions in roasted pepper sauce",3,2,325,19,37,11],
+        ["Lentil balls with bulgur and tahini dip",3,3,362,18,53,9],
+        ["Sourdough sandwich with tofu salad and cucumber",3,0,239,14,31,6],
+        ["Lenten apple and cinnamon cake",3,1,815,79,82,19]
+      ],
+      "posno": [
+        ["Lenten chickpea flour pie with carrot and chard",3,0,366,12,37,19],
+        ["Lenten pumpkin cake with date cream",0,1,361,5,63,10],
+        ["Lenten banana bread with cocoa cream",3,1,817,81,85,17],
+        ["Lenten blueberry muffin with coconut cream",3,1,838,81,79,22],
+        ["Lenten apple and cinnamon cake",3,1,815,79,82,19],
+        ["Lenten poppy seed and lemon cake",3,1,839,81,77,23],
+        ["Lenten cornmeal pie with zucchini and avocado cream",3,0,257,8,26,13],
+        ["Tortilla with lentil balls and Lenten Caesar dressing",3,3,566,22,81,17],
+        ["Breakfast burrito with avocado, seeds and Lenten mayonnaise",3,0,459,10,63,19],
+        ["Lenten carrot cake with date cream",3,1,825,80,79,21],
+        ["Lenten apple and cinnamon muffin",3,1,829,81,79,21],
+        ["Lenten oat pie with spinach and avocado cream",3,0,308,11,34,14],
+        ["Lenten brownie with raspberry cream",0,1,337,5,50,13],
+        ["Lenten gluten-free brownie with raspberry cream",4,1,337,5,50,13],
+        ["Lenten plum cake",3,1,819,80,82,19],
+        ["Lenten chocolate cake with sour cherry cream",0,1,336,5,52,12],
+        ["Lenten gluten-free chocolate cake",4,1,336,5,52,12],
+        ["Lenten banana and blueberry muffin",3,1,828,81,81,20]
+      ],
+      "4": [
+        ["Oat pie (gluten-free oats) with carrot and chard, cheese mousse and turkey ham",4,0,500,37,42,20],
+        ["Lenten pumpkin cake with date cream",4,1,361,5,63,10],
+        ["Pork fillet in apple and thyme sauce",4,2,579,48,64,14],
+        ["Turkey in teriyaki sauce with jasmine rice",4,3,576,54,67,10],
+        ["Scrambled eggs with chicken ham and gluten-free chia bread",4,0,545,41,40,25],
+        ["Gluten-free banana bread with cocoa cream",4,1,328,6,58,8],
+        ["Beef round with caramelized vegetable sauce",4,2,553,44,52,19],
+        ["Chicken wok with rice noodles",4,3,573,48,80,7],
+        ["Gluten-free oat porridge with banana, cocoa and Greek yogurt",4,0,543,31,74,14],
+        ["Chia pudding with vanilla and mixed berries",4,1,318,8,40,14],
+        ["Sea bass on carrot purée with quinoa",4,2,529,41,53,17],
+        ["Tortilla with tuna and tzatziki dip",4,3,612,58,64,14],
+        ["Breakfast burrito in a corn tortilla with egg salad and turkey ham",4,0,537,35,64,16],
+        ["Gluten-free blueberry muffin with vanilla cream",4,1,349,6,52,13],
+        ["Chicken fillet in roasted pepper sauce",4,2,536,53,44,17],
+        ["Beef meatballs with quinoa and tahini dip",4,3,567,45,60,16],
+        ["Gluten-free sandwich with salmon mousse and boiled egg",4,0,571,38,67,17],
+        ["Gluten-free apple and cinnamon cake",4,1,326,4,55,10]
+      ]
+    };
+  }
+  renderVals() {
+    const st = this.state || {};
+    // Prikaz po delovima: canvas ima limit od 8000 px po artboardu, pa se stranica deli na delove
+    const partFrom = Number(this.props.partFrom ?? 0);
+    const partTo = Number(this.props.partTo ?? 7);
+    const sec = {};
+    for (let i = 0; i <= 16; i++) sec['s' + i] = i >= partFrom && i <= partTo;
+    const plan = st.plan || '28';
+    const openFaq = st.faq === undefined ? 0 : st.faq;
+    // Bez usamljene reci u poslednjem redu: poslednje dve reci uvek zajedno
+    const nb = s => String(s).replace(/ (\S+)$/, ' $1');
+
+    // Jelovnik (Nutribox jelovnik.json): 18 primera jela po filteru, makroi za paket od 2.000 kcal
+    if (!this._jel) this._jel = this.jelovnik();
+    const J = this._jel;
+    const MENUS = ['Balance', 'Fish', 'Vegetarian', 'Vegan', 'Gluten-free'];
+    const MEALS = ['BREAKFAST', 'SNACK', 'LUNCH', 'DINNER'];
+    const fmt = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    const diet = st.diet || 'sve';
+    const dietDefs = [['sve', 'All'], ['0', 'Balance'], ['1', 'Fish'], ['2', 'Vegetarian'], ['3', 'Vegan'], ['posno', 'Lenten'], ['4', 'Gluten-free']];
+    const filters = dietDefs.map(([id, label]) => {
+      const on = id === diet;
+      return {
+        label,
+        on: on ? 'true' : 'false',
+        style: on ? 'background: #123c32; color: #ffffff; border: 1.5px solid #123c32' : 'background: #ffffff; color: #123c32; border: 1.5px solid #accb7d',
+        pick: () => this.setState({ diet: id })
+      };
+    });
+    const spIdx = { sve: 0, '0': 1, '1': 2, '2': 3, '3': 4, posno: 5, '4': 6 }[diet];
+    const meals = (J[diet] || []).map((c, i) => ({
+      sp: 'sp' + spIdx,
+      pos: (i % 6) * 20 + '% ' + Math.floor(i / 6) * 50 + '%',
+      alt: c[0],
+      tag: MENUS[c[1]].toUpperCase() + ' · ' + MEALS[c[2]],
+      name: nb(c[0]),
+      posno: /lenten/i.test(c[0]),
+      kcal: fmt(c[3]) + ' kcal',
+      macros: c[4] + 'g protein · ' + c[5] + 'g carbs · ' + c[6] + 'g fat',
+      // uz užinu ide proteinski šejk (paket 2.000 kcal: Fish, Vegetarijanski i Vegan); makroi ga već uključuju
+      sejk: c[2] === 1 && [0, 1, 1, 1.5, 0][c[1]] > 0,
+      sejkTxt: c[1] === 3 ? '+ plant-based protein shake' : '+ protein shake'
+    }));
+
+    const planDefs = [
+      { id: '5', days: '5 days', price: '3,200 RSD', per: 'per day · 800 RSD per meal', total: 'Total 16,000 RSD', sum: '16,000 RSD', badge: 'START SMALL', featured: false },
+      { id: '7', days: '7 days', price: '3,000 RSD', per: 'per day · 750 RSD per meal', total: 'Total 21,000 RSD', sum: '21,000 RSD', badge: '', featured: false },
+      { id: '20', days: '20 days', price: '2,950 RSD', per: 'per day · ~740 RSD per meal', total: 'Total 59,000 RSD', sum: '59,000 RSD', badge: '', featured: false },
+      { id: '28', days: '28 days', price: '2,800 RSD', per: 'per day · 700 RSD per meal', total: 'Total 78,400 RSD · you save 5,600 RSD', sum: '78,400 RSD', badge: 'BEST VALUE', featured: true }
+    ];
+    let selLabel = '';
+    const plans = planDefs.map(p => {
+      const selected = p.id === plan;
+      if (selected) selLabel = p.days + ' · ' + p.sum;
+      const f = p.featured;
+      const ring = selected ? (f ? '; box-shadow: 0 0 0 4px #accb7d' : '; box-shadow: 0 0 0 4px #dfeccf') : '';
+      return Object.assign({}, p, {
+        selected,
+        per: nb(p.per),
+        total: nb(p.total),
+        on: selected ? 'true' : 'false',
+        hasBadge: !!p.badge,
+        cardStyle: (f ? 'background: #123c32; border: 2px solid #123c32' : 'background: #ffffff; border: 2px solid ' + (selected ? '#123c32' : '#e3e8e2')) + ring,
+        radioStyle: selected ? (f ? 'background: #accb7d; border: 0' : 'background: #123c32; border: 0') : (f ? 'border: 2px solid #5e8f3d' : 'border: 2px solid #c9d3c6'),
+        checkColor: f ? '#123c32' : '#ffffff',
+        badgeStyle: f ? 'background: #accb7d; color: #123c32' : 'background: #f0f6ec; color: #4d7a31',
+        titleColor: f ? '#ffffff' : '#123c32',
+        subColor: f ? '#d7e4d2' : '#3d4a41',
+        totalColor: f ? '#accb7d' : '#4d7a31',
+        pick: () => this.setState({ plan: p.id })
+      });
+    });
+
+    // FAQ od Vuksana (7. 11. 2026); treca kolona je opcioni link ispod odgovora
+    const faqDefs = [
+      ['Which package should I choose?', 'Choose your package based on your goal. NutriSlim (1,300 kcal for women, 1,600 kcal for men) is for weight loss, NutriBalance (1,600/2,000 kcal) for maintaining your weight, and NutriPump (2,000/2,600 kcal) for active people and muscle building. NutriMax (3,000 kcal) is only for very active men. The Vegetarian and Vegan menus are available up to 2,000 kcal. Calories are exact, while macronutrients can vary slightly from meal to meal. Not sure? Call customer support at 0800 001 007 and we’ll help you choose.'],
+      ['Where do you deliver?', 'We deliver in Belgrade and Novi Sad. In Belgrade we don’t currently deliver to Železnik, Borča, Kaluđerica or the suburban municipalities. To check your address, call customer support at 0800 001 007.'],
+      ['When does my first delivery arrive?', 'Your first delivery arrives two days after the day you order, at the earliest. All meals for that day arrive in a single delivery to your address.'],
+      ['Can I try it first?', 'You can. Start with the 5-day plan, which covers weekdays only, or the 7-day plan. For sizes XS–M the price is 17,400 RSD for 5 days and 22,400 RSD for 7 days. If you like it, pay the difference to move up to the 20-day or 28-day plan respectively, and get bonus days free.'],
+      ['What if Nutribox isn’t right for me?', 'The 28-day plan comes with a satisfaction guarantee. If something isn’t right in the first 7 days, contact customer support at 0800 001 007 and we’ll try to fix it first. If you’re still not happy and have a valid reason, we refund the remaining 3 weeks. You’ll find all the terms in our refund policy.', ['Refund policy', 'https://www.nutribox.rs/en/politika-povracaja-sredstava']],
+      ['What can I exclude from the menu?', 'That depends on the menu you choose. On the Balance menu you can exclude up to two of the following: gluten, fish, pork and lactose, but not lactose and gluten together. On the Fish menu you can exclude gluten or lactose, but not both; on the Vegetarian menu, only gluten; and the Vegan menu has no changes. Instead of meals with what you excluded, you get a suitable replacement. We can’t remove other individual ingredients.'],
+      ['Do you have a Lenten or gluten-free menu?', 'We have both. The Lenten (Orthodox fasting) menu comes in three sizes, 1,300, 1,600 and 2,200 kcal, and may include fish. You can exclude gluten from the Balance, Fish and Vegetarian menus, and you get a suitable replacement for meals with gluten. Meals are prepared in a kitchen that also uses gluten, so if you have celiac disease, call customer support at 0800 001 007 first.'],
+      ['Does the food need reheating?', 'The food arrives cold, so put it in the fridge right away. Most meals can be reheated in the microwave, oven or air fryer, and some are eaten cold. Short video lessons on our platform show you how to prepare each meal.'],
+      ['Can I pause or change my address?', 'Of course, just contact customer support at 0800 001 007. If you let us know at least 24 hours before delivery, that day is saved. If you get in touch later, say at night for the next morning, the meal is already made, so the day counts as used.'],
+      ['How do I pay?', 'You can pay by card online when you order, cash on delivery (to the driver at your first delivery), or by invoice.'],
+      ['Can two of us order together?', 'You can. Order your plan, and we’ll add your partner on a call with customer support after you order. Your partner’s plan is cheaper: 8,400 RSD with the 28-day plan, 6,000 RSD with 20 days, 2,100 RSD with 7 days and 1,500 RSD with 5 days. Each of you picks your own menu and package size, and both packages arrive at the same address.', ['Book a free call for families', 'https://app.iclosed.io/e/nutribox/besplatan-poziv-za-porodice']],
+      ['I have insulin resistance. Is this for me?', 'It can be a good choice. Our meals are healthy and rich in protein, healthy fats and fiber, and every package has set calories and macronutrients. NutriSlim has the fewest carbs, but the meals aren’t designed specifically for insulin resistance and we don’t adjust them individually. So check your package choice with your doctor or nutritionist, and for details about the meals, call customer support at 0800 001 007.'],
+      ['Are there add-ons?', 'There are. You can add cakes, protein shakes and other extras to your plan for 450 RSD each, plus an extra 30 g of protein with breakfast, lunch or dinner for 440 RSD. When ordering, you can also add a daily soup or potage and an extra snack; the price depends on the plan length.'],
+      ['Is there a multi-month offer?', 'There is. You can sign a 3-, 6- or 12-month contract and pay month by month. A 3-month contract unlocks extra snacks, and with a 6-month contract your package lasts 30 days instead of 28. A 12-month contract unlocks all bonuses. If you pay several months in advance, we work out the discount and extra bonuses on a call. For more information, call customer support at 0800 001 007.'],
+      ['Meals for your company?', 'We have a special offer for companies. Through the Nutribox app, employees choose lunch and a snack from over 20 dishes a day, delivered to the company address. The package costs 1,700 RSD per employee per day. The cost can be covered by the company, split between the company and employees, or paid by the employees themselves, and we set this out in the contract. Book a call and we’ll prepare an offer for your company.', ['Book a free call for companies', 'https://app.iclosed.io/e/nutribox/besplatan-poziv-za-firme']]
+    ];
+    // telefon i brojevi sa jedinicom se ne lome u dva reda
+    const tidy = t => t.replace(/0800 001 007/g, '0800\u00a0001\u00a0007').replace(/(\d) (kcal|RSD|g)(?=[\s,.):])/g, '$1\u00a0$2');
+    const faqs = faqDefs.map(([q, a, link], i) => {
+      const open = i === openFaq;
+      return {
+        num: String(i + 1).padStart(2, '0'),
+        q: nb(q), a: nb(tidy(a)), open, closed: !open,
+        hasLink: !!link,
+        cls: open ? 'faq-item faq-open' : 'faq-item',
+        hidden: open ? 'false' : 'true',
+        linkLabel: link ? link[0] : '',
+        linkHref: link ? link[1] : '#',
+        expanded: open ? 'true' : 'false',
+        boxStyle: open ? 'background: #123c32; border: 1px solid #123c32' : 'background: #ffffff; border: 1px solid #e3e8e2',
+        numColor: open ? '#accb7d' : '#5e8f3d',
+        qColor: open ? '#ffffff' : '#123c32',
+        iconStyle: open ? 'background: #accb7d; color: #123c32' : 'background: #f0f6ec; color: #123c32',
+        toggle: () => this.setState({ faq: open ? -1 : i })
+      };
+    });
+
+
+    // Prva dostava: uvek prekosutra od danasnjeg dana
+    const firstDelivery = new Date();
+    firstDelivery.setDate(firstDelivery.getDate() + 2);
+    const wd = firstDelivery.getDay();
+    const dayAcc = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][wd];
+    const dayGen = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][wd];
+
+    // Zid sa porukama korisnika: 33 screenshota u 3 kolone (svaka slika ide u trenutno najnižu kolonu, isti raspored i kad se prikaže sve); na desktopu prvo 9, ostalo na dugme
+    const WALL = [
+      ["75b6d4bafa74232849bf3a26077e81ba", 600, 357, "Customer message: you’re great at cooking"],
+      ["f5b9d2b32fd752a5c435eb1b2fbf009f", 600, 557, "Customer message: what you create is pure art"],
+      ["4b10b7ef757c098b305193ebd4d6237f", 600, 323, "Customer message: every meal is pure bliss"],
+      ["0480a8ad3128a11d4079342c64faaeae", 600, 467, "Customer message: the meals are really excellent now"],
+      ["9ffaa60ef65f1254f41e54af26999f34", 600, 275, "Customer message: the food is a dream"],
+      ["f2e04407235ecc08b70f4b1e1e47bb93", 600, 356, "Customer message: the food is so tasty, I can’t tell which meal is better"],
+      ["943985ac3e62784b716c1bba1122bd8e", 469, 464, "Message from a happy customer"],
+      ["124a06d6741f52a3e5e993d98606fe5a", 600, 250, "Customer message: the salmon burger on Mediterranean salad is perfection"],
+      ["4d884f145ff01de41a1995ad53e8d315", 468, 368, "Message from a happy customer"],
+      ["878da8b0404b8bc5922b2c8d8fa0618d", 600, 764, "Customer message: it feels like eating at a good restaurant"],
+      ["fd853823cbe331aaddec381474f78bb2", 600, 644, "Customer message: it feels like having my meals at a luxury restaurant"],
+      ["2bdfe54ce589181697d56b06a93406d7", 600, 338, "Customer message: this pie is lovely"],
+      ["48e197bbabf1994e62dca2c20e3bb8ef", 600, 451, "Customer message in English: the salmon was perfect, the snacks lovely"],
+      ["b1b4e6e1cd0ef54976785d35770e1c7d", 469, 563, "Message from a happy customer"],
+      ["1a51dd099b3d79bab0e51f328f54999a", 600, 633, "Customer message: everything was lovely, the snack was amazing"],
+      ["91f69bdfc39db5c0e9bd383f857b2398", 600, 422, "Customer message: we’re delighted, everything is really excellent"],
+      ["a2a2b53527f88d220559b084062c135b", 600, 352, "Customer message: breakfast was top, the meals are nutrient-rich"],
+      ["665bab034c6c59c3fb7745bb6c1a6629", 600, 568, "Customer message: the cheesecake is perfect"],
+      ["cd548ad4ad26ac8e83b09c4744081a33", 600, 302, "Customer message: everything is so tasty, really quality ingredients"],
+      ["0ae5e1b281c4c11423df8e6da103105f", 600, 740, "Customer message: yesterday’s meals were excellent"],
+      ["d4e8a9ddf26316f87738462d19aff1db", 600, 238, "Customer message: I’d never had good savory polenta until now"],
+      ["95339833000aa2de703600f805736dcb", 600, 513, "Customer message: your skill was proven long ago"],
+      ["9ea3a9f9bde7806a1a770fd801d569fa", 600, 561, "Customer message: everything is great, especially the granola and potages"],
+      ["7714d9c4eeab69daf6f9b5c44695d0c8", 600, 372, "Customer message: lunch was excellent"],
+      ["e32a9d8b5d80a1cfbcfe9b6175354bd6", 600, 212, "Customer message: the best investment I could have made"],
+      ["646a71e7c6d8011373aebdf6de732393", 600, 231, "Customer message: the eggs are excellent, I wish I knew how you make them"],
+      ["df96e8d6730f1ca842b83ea1f89b1a6a", 600, 373, "Customer message: today’s food was even better than yesterday’s"],
+      ["2d84f2d819ced9430341e6ef3f4045b1", 468, 167, "Message from a happy customer"],
+      ["6939c0e1fb3abccbe8d2cffeb41f3bcf", 469, 133, "Message from a happy customer"],
+      ["5e4e66659da7f24ab802fa2ded5ba6f8", 469, 277, "Message from a happy customer"],
+      ["28f4114881093ab6bc0b621bb3d365b8", 469, 179, "Message from a happy customer"],
+      ["0581996be5ea55f522657e0e8d859593", 468, 284, "Message from a happy customer"],
+      ["fcb7ef5c674e13aa0c03b0d790bc548c", 469, 117, "Message from a happy customer"]
+    ];
+    const WALL_FIRST = 9;
+    const wallAll = !!st.wallAll;
+    const cols = [{ items: [], h: 0 }, { items: [], h: 0 }, { items: [], h: 0 }];
+    WALL.forEach((x, i) => {
+      const c = cols.reduce((m, k) => (k.h < m.h ? k : m), cols[0]);
+      c.items.push({ src: '/_blob/' + x[0], w: x[1], h: x[2], alt: x[3], cls: i >= WALL_FIRST && !wallAll ? 'w-hide' : '' });
+      c.h += x[2] / x[1];
+    });
+    const wallCols = cols.map(c => ({ items: c.items }));
+    const nMore = WALL.length - WALL_FIRST;
+    const utis = n => (n === 1 ? 'review' : 'reviews');
+    const wallMore = !wallAll;
+    const wallMoreLabel = 'Show ' + nMore + ' more\u00a0' + utis(nMore);
+    const showWall = () => this.setState({ wallAll: true });
+
+    return { sec, filters, meals, plans, selLabel, faqs, dayAcc, dayGen, wallCols, wallMore, wallMoreLabel, showWall };
+  }
+}
+</script>
+</body>
+</html>
