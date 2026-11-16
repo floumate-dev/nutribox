@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nutribox: koliko te košta tvoj dan hrane?</title>
+<meta name="description" content="Upiši kako rešavaš doručak, užinu, ručak i večeru i vidi koliko bi uštedeo sa Nutriboxom.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;display=swap">
+<style>body{margin:0;background:#f6f8f3}</style>
+</head>
+<body>
+
+<!-- Nutribox kalkulator. Everything below (style + markup + script) is self-contained and
+     scoped to #nbx-calc, so it can later go into one Webflow Embed as is. -->
+<style>
+#nbx-calc{--dark:#123c32;--green:#5e8f3d;--green2:#4d7a31;--lime:#accb7d;--mint:#f0f6ec;--bg:#f6f8f3;--text:#3d4a41;--line:#e3e8e2;
+  font-family:'Outfit',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--dark);background:var(--bg);
+  -webkit-font-smoothing:antialiased;line-height:1.4;min-height:100vh;box-sizing:border-box;padding:0 0 56px}
+#nbx-calc *,#nbx-calc *::before,#nbx-calc *::after{box-sizing:border-box}
+#nbx-calc h1,#nbx-calc h2,#nbx-calc h3,#nbx-calc p{margin:0}
+#nbx-calc button,#nbx-calc input{font-family:inherit}
+#nbx-calc [hidden]{display:none !important}
+#nbx-calc .c-top{background:#fff;border-bottom:1px solid var(--line);padding:14px 20px}
+#nbx-calc .c-top img{display:block;height:30px;width:auto;margin:0 auto}
+#nbx-calc .c-wrap{max-width:640px;margin:0 auto;padding:28px 20px 0}
+#nbx-calc .c-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px 24px;box-shadow:0 10px 30px rgba(18,60,50,.06)}
+#nbx-calc .c-kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:99px;background:var(--mint);font-size:14px;font-weight:600}
+#nbx-calc .c-h1{font-size:clamp(30px,6.4vw,44px);line-height:1.08;letter-spacing:-.03em;font-weight:700;margin-top:16px}
+#nbx-calc .c-h1 span{color:var(--green)}
+#nbx-calc .c-lead{font-size:18px;line-height:1.55;color:var(--text);margin-top:14px}
+#nbx-calc .c-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:15px 28px;border:0;border-radius:14px;
+  background:var(--dark);color:#fff;font-size:17px;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .15s ease,opacity .15s ease}
+#nbx-calc .c-btn:hover{transform:translateY(-1px)}
+#nbx-calc .c-btn:disabled{opacity:.35;cursor:not-allowed;transform:none}
+#nbx-calc .c-btn-lime{background:var(--lime);color:var(--dark)}
+#nbx-calc .c-btn-block{width:100%}
+#nbx-calc .c-link{border:0;background:none;padding:10px 0;font-size:15px;font-weight:600;color:var(--green2);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+#nbx-calc .c-points{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:14px;color:var(--text)}
+#nbx-calc .c-points span{display:inline-flex;align-items:center;gap:6px}
+#nbx-calc .c-points span::before{content:"";width:7px;height:7px;border-radius:99px;background:var(--lime)}
+/* progress */
+#nbx-calc .c-prog{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;font-size:14px;font-weight:600;color:var(--text)}
+#nbx-calc .c-bar{flex:1;height:6px;border-radius:99px;background:var(--mint);overflow:hidden}
+#nbx-calc .c-bar i{display:block;height:100%;width:0;background:var(--green);border-radius:99px;transition:width .35s ease}
+#nbx-calc .c-meal{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--green)}
+#nbx-calc .c-q{font-size:clamp(24px,5vw,30px);line-height:1.15;letter-spacing:-.02em;font-weight:700;margin-top:6px}
+#nbx-calc .c-opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px}
+#nbx-calc .c-opt{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:78px;padding:14px 16px;border-radius:16px;border:1.5px solid var(--line);
+  background:#fff;color:var(--dark);text-align:left;cursor:pointer;transition:border-color .15s ease,box-shadow .15s ease,background .15s ease}
+#nbx-calc .c-opt b{font-size:16px;font-weight:700;line-height:1.25}
+#nbx-calc .c-opt small{font-size:13px;color:var(--text)}
+#nbx-calc .c-opt:hover{border-color:var(--lime)}
+#nbx-calc .c-opt[aria-pressed="true"]{border-color:var(--dark);background:var(--mint);box-shadow:0 0 0 1.5px var(--dark) inset}
+#nbx-calc .c-opt:focus-visible,#nbx-calc .c-btn:focus-visible,#nbx-calc .c-link:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+#nbx-calc .c-amount{margin-top:22px}
+#nbx-calc .c-label{display:block;font-size:16px;font-weight:700}
+#nbx-calc .c-hint{font-size:14px;color:var(--text);margin-top:4px}
+#nbx-calc .c-field{display:flex;align-items:center;margin-top:10px;border:1.5px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;transition:border-color .15s ease}
+#nbx-calc .c-field:focus-within{border-color:var(--dark)}
+#nbx-calc .c-field input{flex:1;min-width:0;border:0;outline:0;padding:15px 16px;font-size:20px;font-weight:700;color:var(--dark);background:transparent}
+#nbx-calc .c-field span{padding:0 16px;font-size:16px;font-weight:600;color:var(--text)}
+#nbx-calc .c-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:26px}
+/* result */
+#nbx-calc .c-res-h{font-size:clamp(26px,5.6vw,36px);line-height:1.1;letter-spacing:-.025em;font-weight:700}
+#nbx-calc .c-res-h span{color:var(--green)}
+#nbx-calc .c-vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px}
+#nbx-calc .c-vs > div{border-radius:18px;padding:16px;border:1px solid var(--line)}
+#nbx-calc .c-vs .c-nb{background:var(--dark);border-color:var(--dark);color:#fff}
+#nbx-calc .c-vs small{display:block;font-size:13px;font-weight:600;color:var(--text)}
+#nbx-calc .c-vs .c-nb small{color:var(--lime)}
+#nbx-calc .c-vs strong{display:block;font-size:clamp(24px,5.4vw,30px);font-weight:800;letter-spacing:-.02em;margin-top:4px;white-space:nowrap}
+#nbx-calc .c-vs em{display:block;font-style:normal;font-size:13px;margin-top:4px;color:var(--text)}
+#nbx-calc .c-vs .c-nb em{color:#e6eee3}
+#nbx-calc .c-save{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+#nbx-calc .c-save > div{border-radius:18px;padding:18px 16px;background:var(--lime)}
+#nbx-calc .c-save small{display:block;font-size:14px;font-weight:700}
+#nbx-calc .c-save strong{display:block;font-size:clamp(28px,6.4vw,38px);font-weight:800;letter-spacing:-.025em;margin-top:2px;white-space:nowrap}
+#nbx-calc .c-save em{display:block;font-style:normal;font-size:13px;margin-top:2px}
+#nbx-calc .c-cur{font-size:.5em;font-weight:700;margin-left:.25em;letter-spacing:0}
+#nbx-calc .c-list{margin-top:18px;border-top:1px solid var(--line)}
+#nbx-calc .c-list div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+#nbx-calc .c-list span{color:var(--text)}
+#nbx-calc .c-list b{white-space:nowrap}
+#nbx-calc .c-note{font-size:15px;line-height:1.55;color:var(--text);margin-top:14px}
+#nbx-calc .c-time{margin-top:20px;padding:20px;border-radius:18px;background:var(--mint)}
+#nbx-calc .c-time h3{font-size:20px;line-height:1.25;font-weight:700}
+#nbx-calc .c-time .c-row{display:flex;gap:10px;margin-top:12px}
+#nbx-calc .c-time .c-field{flex:1;margin-top:0}
+#nbx-calc .c-time .c-btn{min-height:auto;padding:0 18px;font-size:16px}
+#nbx-calc .c-hours{margin-top:14px;font-size:15px;line-height:1.5;color:var(--text)}
+#nbx-calc .c-hours b{color:var(--dark)}
+/* discount */
+#nbx-calc .c-promo{margin-top:16px;border-radius:24px;padding:28px 24px;background:var(--dark);color:#fff}
+#nbx-calc .c-promo .c-tag{display:inline-block;padding:5px 11px;border-radius:99px;background:var(--lime);color:var(--dark);font-size:13px;font-weight:800;letter-spacing:.08em}
+#nbx-calc .c-promo h2{font-size:clamp(24px,5.2vw,32px);line-height:1.12;letter-spacing:-.02em;font-weight:700;margin-top:12px}
+#nbx-calc .c-promo p{font-size:16px;line-height:1.5;color:#e6eee3;margin-top:8px}
+#nbx-calc .c-promo form{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+#nbx-calc .c-promo input{width:100%;min-height:56px;padding:0 16px;border-radius:14px;border:1.5px solid transparent;font-size:17px;color:var(--dark);background:#fff;outline:0}
+#nbx-calc .c-promo input:focus{border-color:var(--lime)}
+#nbx-calc .c-promo input[aria-invalid="true"]{border-color:#e8a1a1}
+#nbx-calc .c-err{font-size:14px;color:#ffc9c9}
+#nbx-calc .c-promo small{display:block;font-size:13px;color:#bcd0c4;margin-top:10px}
+#nbx-calc .c-fade{animation:nbxCalcIn .35s ease both}
+@keyframes nbxCalcIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (max-width:420px){
+  #nbx-calc .c-card{padding:22px 18px;border-radius:20px}
+  #nbx-calc .c-opt{min-height:70px;padding:12px 13px}
+  #nbx-calc .c-opt b{font-size:15px}
+  #nbx-calc .c-promo{padding:24px 18px}
+}
+@media (prefers-reduced-motion:reduce){#nbx-calc *{transition:none !important;animation:none !important}}
+</style>
+
+<div id="nbx-calc">
+  <div class="c-top"><img src="https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@531f0ea74208138680db137448e216b1a41a3969/assets/b41dcd431e5316d3de4b55d17165e771.svg" alt="Nutribox" width="473" height="90"></div>
+  <div class="c-wrap">
+
+    <!-- Intro -->
+    <section class="c-card c-fade" data-screen="intro">
+      <span class="c-kicker">Kalkulator · 30 sekundi</span>
+      <h1 class="c-h1">Koliko te zapravo košta <span>jedan dan&nbsp;hrane?</span></h1>
+      <p class="c-lead">Upiši kako rešavaš doručak, užinu, ručak i večeru i koliko te to košta. Odmah vidiš koliko bi uštedeo dnevno i mesečno sa&nbsp;Nutriboxom.</p>
+      <div style="margin-top:24px"><button type="button" class="c-btn c-btn-block" data-act="start">Izračunaj svoj dan <span aria-hidden="true">→</span></button></div>
+      <div class="c-points"><span>4 pitanja</span><span>Bez registracije</span><span>Rezultat odmah</span></div>
+    </section>
+
+    <!-- One step per meal (filled by the script) -->
+    <section class="c-card" data-screen="meal" hidden>
+      <div class="c-prog"><span data-ref="step">1 / 4</span><div class="c-bar" aria-hidden="true"><i data-ref="bar"></i></div></div>
+      <div class="c-meal" data-ref="meal">DORUČAK</div>
+      <h2 class="c-q" data-ref="q">Kako obično rešavaš doručak?</h2>
+      <div class="c-opts" role="group" data-ref="opts"></div>
+      <div class="c-amount" data-ref="amount" hidden>
+        <label class="c-label" for="nbx-calc-amount" data-ref="amountLabel">Koliko te otprilike košta?</label>
+        <p class="c-hint" data-ref="amountHint"></p>
+        <div class="c-field"><input id="nbx-calc-amount" type="text" inputmode="numeric" autocomplete="off" placeholder="npr. 900" data-ref="input"><span>RSD</span></div>
+      </div>
+      <div class="c-nav">
+        <button type="button" class="c-link" data-act="back">← Nazad</button>
+        <button type="button" class="c-btn" data-act="next" data-ref="next" disabled>Dalje <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <!-- Result -->
+    <section data-screen="result" hidden>
+      <div class="c-card c-fade">
+        <h2 class="c-res-h" data-ref="resTitle"></h2>
+        <div class="c-vs">
+          <div><small>Tvoj dan hrane</small><strong data-ref="userDay"></strong><em>4 obroka, kako ih sada rešavaš</em></div>
+          <div class="c-nb"><small>Nutribox</small><strong>2.800<span class="c-cur">RSD</span></strong><em>4 obroka dnevno, dostava na vrata</em></div>
+        </div>
+        <div class="c-save" data-ref="save" hidden>
+          <div><small>Dnevna ušteda</small><strong data-ref="saveDay"></strong><em data-ref="saveDayNote">svakog dana</em></div>
+          <div><small>Mesečna ušteda</small><strong data-ref="saveMonth"></strong><em>za 28 dana</em></div>
+        </div>
+        <p class="c-note" data-ref="note"></p>
+
+        <!-- Only when the user's day is not more expensive than Nutribox -->
+        <div class="c-time" data-ref="time" hidden>
+          <h3>Ali novac nije ceo račun.</h3>
+          <p class="c-hours">Nabavka, kuvanje i pranje sudova uzimaju <b>2–3 sata dnevno</b>. Koliko zarađuješ po&nbsp;satu?</p>
+          <form class="c-row" data-ref="timeForm" novalidate>
+            <div class="c-field"><input type="text" inputmode="numeric" autocomplete="off" placeholder="npr. 800" aria-label="Zarada po satu u dinarima" data-ref="rate"><span>RSD/h</span></div>
+            <button type="submit" class="c-btn">Uračunaj</button>
+          </form>
+        </div>
+        <p class="c-hours" data-ref="hours"></p>
+
+        <div class="c-list" data-ref="list"></div>
+        <div style="margin-top:10px"><button type="button" class="c-link" data-act="restart">Izmeni odgovore</button></div>
+      </div>
+
+      <div class="c-promo c-fade">
+        <span class="c-tag">−10%</span>
+        <h2>Uzmi 10% popusta na prvi&nbsp;paket</h2>
+        <p>Ostavi email i odmah te vodimo na porudžbinu sa uračunatim&nbsp;popustom.</p>
+        <form data-ref="promo" novalidate>
+          <label for="nbx-calc-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email adresa</label>
+          <input id="nbx-calc-email" type="email" inputmode="email" autocomplete="email" placeholder="tvoj@email.com" data-ref="email">
+          <p class="c-err" data-ref="emailErr" hidden>Upiši ispravnu email adresu.</p>
+          <button type="submit" class="c-btn c-btn-lime c-btn-block" data-ref="promoBtn">Preuzmi kod za 10% <span aria-hidden="true">→</span></button>
+        </form>
+        <small>Bez spama. Šaljemo samo kod i korisne informacije o Nutriboxu.</small>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- Settings ---------- */
+  var CONFIG = {
+    nutriboxDay: 2800,       // RSD per day, 28-day plan (4 meals)
+    monthDays: 28,           // "monthly" = the 28-day plan
+    hoursPerDay: 2.5,        // time spent on shopping, cooking and dishes (landing: 2-3 h, we count the middle)
+    webhookUrl: '',          // GoHighLevel inbound webhook (POST JSON); empty = not sent yet
+    redirectUrl: 'https://www.nutribox.rs/order-form'  // page with the 10% discount (to be confirmed)
+  };
+
+  var MEALS = [
+    { key: 'dorucak', label: 'DORUČAK', name: 'doručak', q: 'Kako obično rešavaš doručak?' },
+    { key: 'uzina', label: 'UŽINA', name: 'užina', q: 'Kako obično rešavaš užinu?' },
+    { key: 'rucak', label: 'RUČAK', name: 'ručak', q: 'Kako obično rešavaš ručak?' },
+    { key: 'vecera', label: 'VEČERA', name: 'večera', q: 'Kako obično rešavaš večeru?' }
+  ];
+  var SOURCES = [
+    { key: 'dostava', title: 'Poručujem', sub: 'Wolt, Glovo, dostava' },
+    { key: 'restoran', title: 'Restoran', sub: 'ili kafić' },
+    { key: 'pekara', title: 'Pekara', sub: 'ili brza hrana' },
+    { key: 'prodavnica', title: 'Prodavnica', sub: 'gotova hrana, sendviči' },
+    { key: 'kuvam', title: 'Kuvam sam', sub: 'kod kuće' },
+    { key: 'preskacem', title: 'Preskačem', sub: 'ne jedem tada' }
+  ];
+  var HINTS = {
+    dostava: 'Ukupno sa dostavom, kao na računu.',
+    restoran: 'Koliko platiš obrok, sa pićem ako ga uzimaš.',
+    pekara: 'Sve što uzmeš za taj obrok.',
+    prodavnica: 'Sve što uzmeš za taj obrok.',
+    kuvam: 'Procena namirnica za taj obrok.'
+  };
+
+  /* ---------- Helpers ---------- */
+  var root = document.getElementById('nbx-calc');
+  var $ = function (sel) { return root.querySelector(sel); };
+  var ref = function (name) { return root.querySelector('[data-ref="' + name + '"]'); };
+  var fmt = function (n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' RSD'; };
+  // big figures: the number with a smaller RSD, so it fits the cards on phones
+  var big = function (el, n) { el.textContent = Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); var c = document.createElement('span'); c.className = 'c-cur'; c.textContent = 'RSD'; el.appendChild(c); };
+  var hrs = function (h) { return String(h).replace('.', ','); };
+  var num = function (s) { var n = parseInt(String(s).replace(/[^\d]/g, ''), 10); return isNaN(n) ? 0 : n; };
+
+  // Tracking hook: pushes to dataLayer and to the Meta pixel if one is on the page.
+  // Conversions API events will be sent server-side from the form submission.
+  function track(name, data) {
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({ event: 'nbx_calc_' + name }, data || {}));
+      if (typeof window.fbq === 'function') window.fbq('trackCustom', 'NutriboxCalc_' + name, data || {});
+    } catch (e) { /* tracking must never break the calculator */ }
+  }
+
+  /* ---------- State ---------- */
+  var answers = {};   // mealKey -> { source, amount }
+  var step = 0;
+  var rate = 0;
+
+  function show(name) {
+    root.querySelectorAll('[data-screen]').forEach(function (s) { s.hidden = s.getAttribute('data-screen') !== name; });
+    var el = root.querySelector('[data-screen="' + name + '"]');
+    el.classList.remove('c-fade'); void el.offsetWidth; el.classList.add('c-fade');
+    var top = root.getBoundingClientRect().top + window.scrollY;
+    if (window.scrollY > top) window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+
+  /* ---------- Meal steps ---------- */
+  function renderStep() {
+    var meal = MEALS[step];
+    var a = answers[meal.key] || {};
+    ref('step').textContent = (step + 1) + ' / ' + MEALS.length;
+    ref('bar').style.width = ((step + 1) / MEALS.length * 100) + '%';
+    ref('meal').textContent = meal.label;
+    ref('q').textContent = meal.q;
+    ref('opts').setAttribute('aria-label', meal.q);
+    ref('opts').innerHTML = '';
+    SOURCES.forEach(function (s) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'c-opt';
+      b.setAttribute('aria-pressed', a.source === s.key ? 'true' : 'false');
+      b.innerHTML = '<b></b><small></small>';
+      b.firstChild.textContent = s.title;
+      b.lastChild.textContent = s.sub;
+      b.addEventListener('click', function () { pick(s.key); });
+      ref('opts').appendChild(b);
+    });
+    ref('input').value = a.amount ? String(a.amount).replace(/\B(?=(\d{3})+(?!\d))/g, '.') : '';
+    ref('next').innerHTML = (step === MEALS.length - 1 ? 'Izračunaj' : 'Dalje') + ' <span aria-hidden="true">→</span>';
+    updateAmount();
+  }
+
+  function pick(source) {
+    var meal = MEALS[step];
+    var prev = answers[meal.key] || {};
+    answers[meal.key] = { source: source, amount: source === 'preskacem' ? 0 : prev.amount || 0 };
+    ref('opts').querySelectorAll('.c-opt').forEach(function (b, i) {
+      b.setAttribute('aria-pressed', SOURCES[i].key === source ? 'true' : 'false');
+    });
+    updateAmount();
+    if (source !== 'preskacem') ref('input').focus({ preventScroll: true });
+  }
+
+  function updateAmount() {
+    var meal = MEALS[step];
+    var a = answers[meal.key] || {};
+    var needs = a.source && a.source !== 'preskacem';
+    ref('amount').hidden = !needs;
+    if (needs) {
+      ref('amountLabel').textContent = 'Koliko te otprilike košta ' + meal.name + '?';
+      ref('amountHint').textContent = HINTS[a.source] || '';
+    }
+    ref('next').disabled = !a.source || (needs && !(a.amount > 0));
+  }
+
+  ref('input').addEventListener('input', function (e) {
+    var meal = MEALS[step];
+    var v = Math.min(num(e.target.value), 50000);
+    if (!answers[meal.key]) return;
+    answers[meal.key].amount = v;
+    e.target.value = v ? String(v).replace(/\B(?=(\d{3})+(?!\d))/g, '.') : '';
+    updateAmount();
+  });
+  ref('input').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !ref('next').disabled) ref('next').click();
+  });
+
+  /* ---------- Result ---------- */
+  function total() {
+    return MEALS.reduce(function (s, m) { return s + ((answers[m.key] || {}).amount || 0); }, 0);
+  }
+
+  function renderResult() {
+    var day = total();
+    var diff = day - CONFIG.nutriboxDay;
+    big(ref('userDay'), day);
+
+    // breakdown
+    ref('list').innerHTML = '';
+    MEALS.forEach(function (m) {
+      var a = answers[m.key];
+      var src = SOURCES.filter(function (s) { return s.key === a.source; })[0];
+      var row = document.createElement('div');
+      row.innerHTML = '<span></span><b></b>';
+      row.firstChild.textContent = m.label.charAt(0) + m.label.slice(1).toLowerCase() + ' · ' + src.title.toLowerCase();
+      row.lastChild.textContent = a.source === 'preskacem' ? '—' : fmt(a.amount);
+      ref('list').appendChild(row);
+    });
+
+    ref('time').hidden = true;
+    ref('hours').textContent = '';
+    if (diff > 0) {
+      ref('resTitle').innerHTML = 'Sa Nutriboxom <span>uštediš ' + fmt(diff * CONFIG.monthDays) + ' mesečno.</span>';
+      setSavings(diff, false);
+      ref('note').textContent = 'Za ' + fmt(CONFIG.nutriboxDay) + ' dnevno dobijaš doručak, užinu, ručak i večeru, spremljene od strane kuvara i dostavljene na vrata. Bez kuvanja i pranja sudova.';
+      ref('hours').innerHTML = 'Plus oko <b>' + hrs(CONFIG.hoursPerDay) + ' sata dnevno</b> koje ne trošiš na nabavku, kuvanje i pranje sudova, to je <b>' + hrs(CONFIG.hoursPerDay * CONFIG.monthDays) + ' sati mesečno</b>.';
+    } else {
+      ref('resTitle').innerHTML = 'Tvoj dan je jeftiniji <span>za ' + fmt(-diff) + '.</span>';
+      ref('save').hidden = true;
+      ref('note').textContent = 'Svaka čast, dobro ti ide. Ali ovaj račun ne uključuje tvoje vreme.';
+      ref('time').hidden = false;
+      if (rate) applyRate();
+    }
+  }
+
+  function setSavings(perDay, withTime) {
+    ref('save').hidden = false;
+    big(ref('saveDay'), perDay);
+    big(ref('saveMonth'), perDay * CONFIG.monthDays);
+    ref('saveDayNote').textContent = withTime ? 'sa uračunatim vremenom' : 'svakog dana';
+  }
+
+  function applyRate() {
+    var day = total();
+    var timeValue = rate * CONFIG.hoursPerDay;
+    var real = day + timeValue;
+    var diff = real - CONFIG.nutriboxDay;
+    var hoursTxt = 'Računamo <b>' + hrs(CONFIG.hoursPerDay) + ' sata dnevno</b> (' + hrs(CONFIG.hoursPerDay * CONFIG.monthDays) + ' sati mesečno). Toliko tvog vremena vredi <b>' + fmt(timeValue) + ' dnevno</b>. ';
+    if (diff > 0) {
+      ref('resTitle').innerHTML = 'Kad uračunaš vreme, <span>uštediš ' + fmt(diff * CONFIG.monthDays) + ' mesečno.</span>';
+      setSavings(diff, true);
+      ref('hours').innerHTML = hoursTxt + 'Tvoj stvarni dan košta <b>' + fmt(real) + '</b>, a Nutribox ' + fmt(CONFIG.nutriboxDay) + '.';
+    } else {
+      ref('save').hidden = true;
+      ref('hours').innerHTML = hoursTxt + 'I dalje si jeftiniji, ali sa Nutriboxom dobijaš nazad <b>' + hrs(CONFIG.hoursPerDay * CONFIG.monthDays) + ' sati mesečno</b> i ne razmišljaš šta ćeš da jedeš.';
+    }
+    track('time_value', { hourly_rate: rate, day_total: day, real_day: real });
+  }
+
+  ref('timeForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    rate = Math.min(num(ref('rate').value), 100000);
+    if (!rate) { ref('rate').focus(); return; }
+    applyRate();
+  });
+  ref('rate').addEventListener('input', function (e) {
+    var v = num(e.target.value);
+    e.target.value = v ? String(v).replace(/\B(?=(\d{3})+(?!\d))/g, '.') : '';
+  });
+
+  /* ---------- Discount form ---------- */
+  ref('promo').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = ref('email').value.trim();
+    var ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    ref('email').setAttribute('aria-invalid', ok ? 'false' : 'true');
+    ref('emailErr').hidden = ok;
+    if (!ok) { ref('email').focus(); return; }
+
+    var day = total();
+    var payload = {
+      email: email,
+      source: 'nutribox-kalkulator',
+      day_total: day,
+      nutribox_day: CONFIG.nutriboxDay,
+      daily_saving: Math.max(0, day - CONFIG.nutriboxDay),
+      monthly_saving: Math.max(0, day - CONFIG.nutriboxDay) * CONFIG.monthDays,
+      hourly_rate: rate || null,
+      meals: MEALS.map(function (m) { return { meal: m.key, source: answers[m.key].source, amount: answers[m.key].amount }; })
+    };
+    track('lead', { day_total: payload.day_total, daily_saving: payload.daily_saving });
+    ref('promoBtn').disabled = true;
+    ref('promoBtn').textContent = 'Šaljem…';
+
+    var go = function () { window.location.href = CONFIG.redirectUrl; };
+    if (!CONFIG.webhookUrl) { go(); return; }
+    var done = false;
+    var finish = function () { if (!done) { done = true; go(); } };
+    fetch(CONFIG.webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), keepalive: true })
+      .then(finish, finish);
+    setTimeout(finish, 2500); // never keep people waiting on the webhook
+  });
+
+  /* ---------- Navigation ---------- */
+  root.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-act]');
+    if (!btn || !root.contains(btn)) return;
+    var act = btn.getAttribute('data-act');
+    if (act === 'start') { step = 0; show('meal'); renderStep(); track('start'); }
+    if (act === 'back') {
+      if (step === 0) { show('intro'); return; }
+      step--; renderStep();
+    }
+    if (act === 'next') {
+      if (step < MEALS.length - 1) { step++; renderStep(); return; }
+      renderResult(); show('result');
+      track('complete', { day_total: total(), daily_saving: Math.max(0, total() - CONFIG.nutriboxDay) });
+    }
+    if (act === 'restart') { step = 0; show('meal'); renderStep(); }
+  });
+})();
+</script>
+</body>
+</html>
