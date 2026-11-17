@@ -22,7 +22,7 @@ LIMIT = 48000
 LANDING_CSS = 'https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@85508c1caae585168981cfb3f672861edf30fc65/webflow/landing/landing.css'
 ASSETS = 'https://cdn.jsdelivr.net/gh/floumate-dev/nutribox@117e74093543da6c7d40e235bee5ada4216f4da1/assets/'
 CTA = 'https://app.iclosed.io/e/nutribox/besplatan-poziv-za-porodice'
-CTA_LABEL = 'Izaberite plan za&nbsp;vas'
+CTA_LABEL = 'Zakažite besplatan&nbsp;poziv'   # every CTA books a call (iClosed)
 G = '#5e8f3d'      # green accent in headings
 LIME = '#accb7d'
 
@@ -34,7 +34,7 @@ HERO = {
     'p': 'Stres oko gužve u kuhinji, kuvanja, pranja sudova i nabavke zamenjuješ zdravim obrocima koje spremaju vrhunski kuvari, a pritom vratiš preko 15 sati vremena sa&nbsp;porodicom.',
     'photo': '[Foto: par ujutru otvara Nutribox kutije]',
     'anchor': 'na oba paketa kad poručujete u&nbsp;dvoje',
-    'micro': 'Prijava 2 minuta · Prva dostava već&nbsp;prekosutra',
+    'micro': 'Besplatno i bez obaveze · Zajedno biramo plan za svakog&nbsp;člana',
 }
 PAINS_H2 = f'Prepoznajete li <span style="color: {G}">ovo&nbsp;veče?</span>'
 PAINS = [
@@ -80,7 +80,7 @@ FAQ = [
 ]
 FIN_H2 = f'Od prekosutra <span style="display: block; color: {LIME}">niko u kući ne&nbsp;kuva.</span>'
 FIN_RECAP = ['−10% za&nbsp;dvoje', 'svako svoj&nbsp;plan', 'dostava do&nbsp;9:30', 'pauza po&nbsp;članu', 'Beograd i Novi&nbsp;Sad']
-STICKY = ('−10% za dvoje', 'od 2.520 RSD po osobi/dan', 'Izaberite plan')
+STICKY = ('−10% za dvoje', 'od 2.520 RSD po osobi/dan', 'Zakažite poziv')
 
 # ---------------------------------------------------------------- landing markup
 land = ''.join((repo / f'webflow/landing/embed-sr-0{i}.html').read_text() for i in (1, 2, 3))
@@ -253,7 +253,7 @@ def menu():
             '<div class="nbx-slider nbp-mlist" style="width: 100%; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 2px 12px; box-sizing: border-box">')
     data = json.dumps(menu_data(), ensure_ascii=False).replace('</', '<\\/')
     s = s.replace('\n</section>', f'\n<script type="application/json" class="nbp-mdata">{data}</script>\n</section>', 1)
-    return cta(s, 'Izaberite plan za&nbsp;vas')
+    return cta(s)
 
 
 def videos():
@@ -296,7 +296,7 @@ def fin():
     chip = re.sub(r'(</svg>).*?(</span>\n)$', r'\1{T}\2', chips[0].group(0), flags=re.S)
     s = s[:chips[0].start()] + ''.join(chip.replace('{T}', t) for t in FIN_RECAP) + s[chips[-1].end():]
     s = one(s, '<div class="nbx-recap">', '<div class="nbx-recap nbp-recap3">')
-    return cta(s)   # keeps the landing's "Imaš pitanje? Pozovi 0800 001 007."
+    return one(cta(s), '<a class="nbx-btn" data-cta', '<a class="nbx-btn nbp-finbtn" data-cta')   # keeps the landing's "Imaš pitanje? Pozovi 0800 001 007."
 
 
 def sticky():
@@ -335,6 +335,7 @@ CSS = '''<style>
 }
 @media (max-width:640px){
 .nbp-desk{display:none}.nbp-mob{display:inline}
+.nbp-finbtn{padding:18px 20px!important;font-size:17px!important;white-space:nowrap}
 .nbp-stk{display:flex}
 header .nbp-tag{font-size:9px!important;padding:4px 7px!important}
 .nbp-ctarow .nbx-btn{width:100%}
