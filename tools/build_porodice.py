@@ -12,6 +12,7 @@ Output: porodice/embed-NN.html (Webflow Embeds, each under 48,000 characters) an
 porodice/index.html (preview). The texts are in the constants below.
 """
 import html
+import json
 import re
 from pathlib import Path
 
@@ -60,22 +61,7 @@ PRICES_LEAD = 'Na oba paketa, ista adresa, nedeljni i mesečni paketi. Paketi mo
 PRICES = [dict(featured=True, badge='NAJISPLATIVIJE', title='Mesečno za dvoje', old='156.800 RSD', new='141.120 RSD', per='2.520 RSD po osobi dnevno', save='Uštedite 15.680 RSD'),
           dict(featured=False, badge='', title='Nedeljno za dvoje', old='44.800 RSD', new='40.320 RSD', per='2.880 RSD po osobi dnevno', save='Uštedite 4.480 RSD')]
 PRICES_VAL = 'Jedan Wolt obrok za dvoje: 6.000–7.000 RSD. Ceo dan Nutriboxa za dvoje: 5.040&nbsp;RSD.'
-MENU_H2 = f'Hrana koju bi i sami kuvali, <span style="color: {LIME}">da imate vremena i kuvara iz&nbsp;restorana.</span>'
-MENU_LEAD = 'Chef Vuksan Vasić i tim spremaju sveže svako jutro. 112+ novih jela svake&nbsp;nedelje.'
-# [name, kcal, P, UH, M] in the order of the "Sve" sprite (landing menu slider)
-DISHES = [
-    ['Ovsena pita sa šargarepom i blitvom, mus od sira i ćureća šunka', 500, 37, 42, 20], ['Posni kolač od bundeve sa kremom od urmi', 361, 5, 63, 10],
-    ['Svinjski file u sosu od jabuke i timijana', 579, 48, 64, 14], ['Ćuretina u teriyaki sosu sa jasmin pirinčem', 576, 54, 67, 10],
-    ['Kajgana sa musom od lososa i chia hlebom', 488, 33, 35, 24], ['Banana bread sa kakao kremom', 654, 56, 76, 14],
-    ['Tuna na pireu od krompira sa boranijom', 419, 33, 46, 11], ['Wok sa edamameom i pirinčanim nudlama', 441, 18, 76, 7],
-    ['Ovsena kaša sa bananom, kakaom i grčkim jogurtom', 252, 17, 31, 7], ['Chia puding sa vanilom i šumskim voćem', 644, 58, 58, 20],
-    ['Falafel na pireu od šargarepe sa kinoom', 530, 21, 76, 16], ['Tortilja sa halumijem i caciki dipom', 556, 28, 65, 21],
-    ['Doručak burito sa kajganom od tofua i avokadom', 456, 15, 64, 15], ['Posni mafin od borovnice sa kokosovim kremom', 838, 81, 79, 22],
-    ['Sojini medaljoni u sosu od pečene paprike', 325, 19, 37, 11], ['Kuglice od sočiva sa bulgurom i tahini dipom', 362, 18, 53, 9],
-    ['Bezglutenski sendvič sa musom od lososa i kuvanim jajetom', 571, 38, 67, 17], ['Kolač od jabuke i cimeta od bezglutenskog brašna', 326, 4, 55, 10],
-]
 VIDEOS_H2 = f'Kuće u kojima se više ne pita <span style="color: {G}">„šta ćemo&nbsp;danas“.</span>'
-VIDEOS_RATING = '4,7 na Google-u · 144&nbsp;recenzije'
 OBJS_H2 = f'Ono što vas&nbsp;verovatno <span style="color: {G}">još koči.</span>'
 OBJS = [('Različiti&nbsp;ukusi?', 'Svako svoj paket, tip ishrane i do 2&nbsp;isključenja.'),
         ('Jedno često&nbsp;putuje?', 'Pauzirate samo njegove dane, drugi&nbsp;nastavlja.'),
@@ -100,7 +86,7 @@ STICKY = ('−10% za dvoje', 'od 2.520 RSD po osobi/dan', 'Izaberite plan')
 # ---------------------------------------------------------------- landing markup
 land = ''.join((repo / f'webflow/landing/embed-sr-0{i}.html').read_text() for i in (1, 2, 3))
 secs = [m.group(0) for m in re.finditer(r'<(section|footer|header)\b[^>]*>.*?</\1>', land, re.S)]
-SEC = {'header': 0, 'pains': 2, 'videos': 8, 'steps': 9, 'guar': 11, 'objs': 12, 'faq': 14, 'fin': 15, 'footer': 16}
+SEC = {'header': 0, 'pains': 2, 'menu': 4, 'videos': 8, 'steps': 9, 'guar': 11, 'objs': 12, 'faq': 14, 'fin': 15, 'footer': 16}
 ROOT = re.search(r'<div class="nbx-root"[^>]*>', land).group(0)
 
 
@@ -231,30 +217,32 @@ def prices():
     return section('#ffffff', inner)
 
 
+def menu_data():
+    """The landing's menu data: {diet: [[name, menu, meal, kcal, P, UH, M], ...]} from design/Main.dc.html."""
+    src = (repo / 'design' / 'Main.dc.html').read_text()
+    body = src[src.index('jelovnik() {'):]
+    body = body[body.index('return {') + len('return '):body.index('};') + 1]
+    return json.loads(body)
+
+
 def menu():
-    cards = []
-    for i, (name, kcal, p, uh, m) in enumerate(DISHES):
-        k = f'{kcal:,}'.replace(',', '.')
-        title = re.sub(r' (\S+)$', r'&nbsp;\1', name)
-        label = html.escape(name, quote=True)
-        dot = '<span style="width: 8px; height: 8px; border-radius: 99px; background: #accb7d; display: inline-block"></span>'
-        cards.append(f'''<article style="flex: 0 0 250px; min-width: 250px; scroll-snap-align: start; display: flex; flex-direction: column; gap: 10px">
-<div style="position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; overflow: hidden; background: #bbe2ab"><div class="nbx-spr nbx-sp0" role="img" aria-label="{label}" style="position: absolute; inset: 0; background-position: {(i % 6) * 20}% {(i // 6) * 50}%"></div>
-<span style="position: absolute; top: 12px; left: 12px; padding: 5px 10px; border-radius: 99px; background: #ffffff; font-size: 13px; font-weight: 700; color: #123c32">{k}&nbsp;kcal</span></div>
-<h3 style="margin: 0; font-size: 18px; line-height: 1.25; font-weight: 700; color: #ffffff">{title}</h3>
-<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 13px; font-weight: 600; color: #accb7d"><span style="display: inline-flex; align-items: center; gap: 5px">{dot}{p}g P</span><span style="display: inline-flex; align-items: center; gap: 5px">{dot}{uh}g UH</span><span style="display: inline-flex; align-items: center; gap: 5px">{dot}{m}g M</span></span>
-</article>''')
-    slider = f'<div class="nbx-slider nbp-drag" style="width: 100%; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 2px 12px; box-sizing: border-box">\n' + '\n'.join(cards) + '\n</div>'
-    inner = h2(MENU_H2, '#ffffff') + '\n' + lead(MENU_LEAD, '#e6eee3') + '\n' + slider
-    return section('#123c32', inner)
+    """The landing's menu slider section; the filters re-render the cards with the same markup (JS below)."""
+    s = secs[SEC['menu']]
+    s = one(s, '<section ', '<section data-nbp-menu ')
+    for diet, label in [('sve', 'Sve'), ('0', 'Balance'), ('1', 'Fish'), ('2', 'Vegetarijanski'), ('3', 'Vegan'), ('posno', 'Posno'), ('4', 'Bez glutena')]:
+        s = re.sub(r'(<button type="button" class="nbx-pick")( aria-pressed="(?:true|false)"[^>]*>' + re.escape(label) + '</button>)',
+                   lambda m: m.group(1) + f' data-diet="{diet}"' + m.group(2), s, count=1)
+    assert s.count('data-diet=') == 7
+    s = one(s, '<div class="nbx-slider" style="width: 100%; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 2px 12px; box-sizing: border-box">',
+            '<div class="nbx-slider nbp-mlist" style="width: 100%; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 2px 12px; box-sizing: border-box">')
+    data = json.dumps(menu_data(), ensure_ascii=False).replace('</', '<\\/')
+    s = s.replace('\n</section>', f'\n<script type="application/json" class="nbp-mdata">{data}</script>\n</section>', 1)
+    return cta(s, 'Izaberite plan za&nbsp;vas')
 
 
 def videos():
-    s = secs[SEC['videos']]
-    sl = re.search(r'<div class="nbx-slider".*?\n</div>\n(?=<span style="align-self: flex-end)', s, re.S).group(0)
-    inner = (h2(VIDEOS_H2) + '\n' + sl.replace('<div class="nbx-slider"', '<div class="nbx-slider nbp-drag"', 1)
-             + f'<p style="margin: -16px 0 0; font-size: 16px; font-weight: 600; color: #123c32">{STARS} {VIDEOS_RATING}</p>')
-    return section('#ffffff', inner)
+    """The landing's testimonial section (videos, quote, message wall), with the family heading."""
+    return sub_h2(secs[SEC['videos']], VIDEOS_H2)
 
 
 def objs():
@@ -350,6 +338,50 @@ JS = r'''<script>(function () {
       var item = b.parentElement, on = !item.classList.contains("nbx-faq-open");
       $$(".nbx-faq-item.nbx-faq-open").forEach(function (o) { set(o, false); });
       if (on) set(item, true);
+    });
+  });
+  // menu filters: same cards as the landing (markup copied from its card template)
+  var MENUS = ["Balance", "Fish", "Vegetarijanski", "Vegan", "Bez glutena"], MEALS = ["DORUČAK", "UŽINA", "RUČAK", "VEČERA"];
+  var SP = { sve: 0, "0": 1, "1": 2, "2": 3, "3": 4, posno: 5, "4": 6 }, NB = "\u00a0";
+  var esc = function (s) { return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;"); };
+  var nb = function (s) { return String(s).replace(/ (\S+)$/, NB + "$1"); };
+  var fmt = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); };
+  var card = function (c, i, sp) {
+    var sejk = c[2] === 1 && [0, 1, 1, 1.5, 0][c[1]] > 0;
+    return '<article style="flex: 0 0 250px; min-width: 250px; scroll-snap-align: start; display: flex; flex-direction: column; gap: 10px">' +
+      '<div style="position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; overflow: hidden; background: #e4efdc">' +
+      '<div class="nbx-spr nbx-sp' + sp + '" role="img" aria-label="' + esc(c[0]) + '" style="position: absolute; inset: 0; background-position: ' + (i % 6) * 20 + "% " + Math.floor(i / 6) * 50 + '%"></div>' +
+      '<span style="position: absolute; top: 12px; left: 12px; padding: 5px 10px; border-radius: 99px; background: #ffffff; font-size: 13px; font-weight: 700; color: #123c32">' + fmt(c[3]) + NB + "kcal</span>" +
+      (/posn/i.test(c[0]) ? '<span style="position: absolute; top: 12px; right: 12px; padding: 5px 10px; border-radius: 99px; background: #123c32; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #accb7d">POSNO</span>' : "") +
+      "</div>" +
+      '<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #4d7a31">' + MENUS[c[1]].toUpperCase() + " · " + MEALS[c[2]] + "</span>" +
+      '<h3 style="margin: -4px 0 0; font-size: 18px; line-height: 1.25; font-weight: 700; color: #123c32">' + esc(nb(c[0])) + "</h3>" +
+      (sejk ? '<span style="margin-top: -4px; font-size: 13px; font-weight: 600; color: #5e8f3d">' + (c[1] === 3 ? "+ biljni proteinski" : "+ proteinski") + NB + "šejk</span>" : "") +
+      '<span style="font-size: 13px; font-weight: 500; color: #4d7a31">' + c[4] + "g proteina · " + c[5] + "g UH · " + c[6] + "g" + NB + "masti</span>" +
+      "</article>";
+  };
+  $$("[data-nbp-menu]").forEach(function (sec) {
+    var J = JSON.parse(sec.querySelector(".nbp-mdata").textContent), list = sec.querySelector(".nbp-mlist");
+    sec.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-diet]");
+      if (!b) return;
+      var d = b.getAttribute("data-diet");
+      list.innerHTML = (J[d] || []).map(function (c, i) { return card(c, i, SP[d]); }).join("");
+      list.scrollLeft = 0;
+      sec.querySelectorAll("button[data-diet]").forEach(function (x) {
+        var on = x === b;
+        x.setAttribute("aria-pressed", on ? "true" : "false");
+        x.style.background = on ? "#123c32" : "#ffffff"; x.style.color = on ? "#ffffff" : "#123c32";
+        x.style.border = "1.5px solid " + (on ? "#123c32" : "#accb7d");
+      });
+    });
+  });
+  // message wall: "Prikaži još utisaka" shows the rest (on phones the wall scrolls sideways instead)
+  $$(".nbx-wall-more").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var wall = b.parentElement.querySelector(".nbx-wall");
+      if (wall) wall.querySelectorAll(".nbx-w-hide").forEach(function (img) { img.classList.remove("nbx-w-hide"); });
+      b.hidden = true;
     });
   });
   // sliders can be dragged with the mouse
