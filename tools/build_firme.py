@@ -49,8 +49,9 @@ def hero_food():
 CSS = '''<style>
 /* firme: hero visual from the landing (instead of the form) */
 .nbl .hero{overflow-x:clip}
-.nbl .bh.nbf-bh{grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.nbl .bh.nbf-bh{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:start}
 .nbl .nbf-vis{min-width:0}
+.nbl .nbf-bh .sub{max-width:none;text-wrap:pretty}
 .nbl #nbx-hero-food{position:relative;width:100%;aspect-ratio:590/516}
 .nbl #nbx-hero-food img{position:absolute;height:auto;max-width:none;filter:drop-shadow(8px 16px 18px rgba(18,60,50,.22));animation:nbxFadeInRight 1s ease both}
 .nbl #nbx-hero-food .nbx-k{left:52.85%;top:0;width:47.15%;z-index:1;transform:rotate(3deg);animation-delay:.3s}
