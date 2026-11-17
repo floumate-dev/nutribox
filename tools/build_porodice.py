@@ -47,9 +47,11 @@ PAINS = [
 ]
 PAINS_BRIDGE = 'U svakoj kući postoji „onaj koji kuva“. I taj neko je&nbsp;umoran.'
 HOUSE_H2 = f'Jedna kuća. <span style="color: {G}">Različiti ciljevi. Jedna&nbsp;dostava.</span>'
-HOUSE = [('ONA', 'NutriSlim', 'Ž 1.300 kcal · bez glutena', 'Želi da skine par kilograma'),
+HOUSE_LEAD = 'Svako bira svoj paket, tip ishrane i do dva isključenja. Mi sve spakujemo u jednu jutarnju&nbsp;dostavu.'   # desktop only
+HOUSE = [('ONA', 'NutriSlim', 'Ž 1.300 kcal · Balance bez glutena', 'Želi da skine par kilograma'),
          ('ON', 'NutriPump', 'M 2.600 kcal · Balance', 'Trenira 4 puta nedeljno')]
-HOUSE_RESULT = '📦 1 dostava do 9:30 · 8 obroka · 0&nbsp;kuvanja'
+HOUSE_RESULT = ('1 dostava do 9:30', '8 obroka · 2 plana · 0 kuvanja', '8 obroka · 0 kuvanja')   # title, desktop line, phone line
+HOUSE_FINE = 'Primer domaćinstva. Paketi: NutriSlim, NutriBalance, NutriPump, NutriMax · Tipovi: Balance, Fish, Vegetarijanski, Vegan.'   # desktop only
 STEPS_H2 = f'Kako funkcioniše <span style="color: {G}">za dvoje i&nbsp;više?</span>'
 STEPS = [('Svako izabere svoj&nbsp;plan', 'Svako ima svoj nalog u&nbsp;aplikaciji.'),
          ('Jedan plaća za&nbsp;sve', '10% popusta za par, zajednički&nbsp;poeni.'),
@@ -80,7 +82,6 @@ FAQ = [
 ]
 FIN_H2 = f'Od prekosutra <span style="display: block; color: {LIME}">niko u kući ne&nbsp;kuva.</span>'
 FIN_RECAP = ['−10% za&nbsp;dvoje', 'svako svoj&nbsp;plan', 'dostava do&nbsp;9:30', 'pauza po&nbsp;članu', 'Beograd i Novi&nbsp;Sad']
-FIN_NOTE = '📞 <a href="tel:0800001007" style="color: #ffffff; font-weight: 600; white-space: nowrap">0800 001 007</a> · WhatsApp'
 STICKY = ('−10% za dvoje', 'od 2.520 RSD po osobi/dan', 'Izaberite plan')
 
 # ---------------------------------------------------------------- landing markup
@@ -179,14 +180,26 @@ def pains():
 
 
 def house():
-    cards = ''.join(f'''<div style="flex: 1 1 300px; min-width: 0; display: flex; align-items: center; gap: 12px">
-<span style="flex: none; width: 54px; box-sizing: border-box; padding: 6px 0; text-align: center; border-radius: 99px; background: #123c32; color: #accb7d; font-size: 12px; font-weight: 800; letter-spacing: 0.08em">{tag}</span>
-<div style="flex: 1 1 auto; min-width: 0; background: #ffffff; border: 1.5px solid #e3e8e2; border-radius: 18px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px">
-<b style="font-size: 20px; font-weight: 700; color: #123c32">{pkg}</b><span style="font-size: 14px; font-weight: 600; color: #4d7a31">{kcal}</span><span style="font-size: 14px; color: #3d4a41">{who}</span>
-</div></div>''' for tag, pkg, kcal, who in HOUSE)
-    inner = (h2(HOUSE_H2) + '\n'
-             + f'<div style="width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 14px">\n<div style="display: flex; flex-wrap: wrap; gap: 14px">{cards}</div>\n'
-             + f'<div style="border-radius: 16px; background: #123c32; color: #ffffff; padding: 16px 20px; text-align: center; font-size: 16px; font-weight: 700">{HOUSE_RESULT}</div>\n</div>')
+    """Desktop (Figma Desktop 1440): ONA card + ON card = delivery card, tags above the cards.
+    Phones (Figma Mobile 390): tag left of each card, the delivery as one bar; no lead or fine print."""
+    (t1, p1, k1, w1), (t2, p2, k2, w2) = HOUSE
+
+    def tag(txt, cls):
+        return f'<span class="nbp-hh-tag {cls}" style="box-sizing: border-box; width: 54px; padding: 6px 0; text-align: center; border-radius: 99px; background: #123c32; color: #accb7d; font-size: 12px; font-weight: 800; letter-spacing: 0.08em">{txt}</span>'
+
+    def card(pkg, kcal, who, cls):
+        return (f'<div class="nbp-hh-card {cls}" style="min-width: 0; box-sizing: border-box; background: #ffffff; border: 1.5px solid #e3e8e2; border-radius: 18px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px">'
+                f'<b style="font-size: 20px; font-weight: 700; color: #123c32">{pkg}</b><span style="font-size: 14px; font-weight: 600; color: #4d7a31">{kcal}</span><span style="font-size: 14px; color: #3d4a41">{who}</span></div>')
+
+    op = '<span class="nbp-hh-op {cls}" aria-hidden="true" style="font-size: 30px; font-weight: 700; color: #5e8f3d; text-align: center">{s}</span>'
+    title, sub_d, sub_m = HOUSE_RESULT
+    result = (f'<div class="nbp-hh-r" style="box-sizing: border-box; border-radius: 18px; background: #123c32; color: #ffffff; padding: 18px 20px; text-align: center">'
+              f'<span class="nbp-hh-ico" aria-hidden="true">📦</span> <b style="font-size: 16px; font-weight: 700">{title}</b>'
+              f'<span class="nbp-desk-b" style="font-size: 13px; color: #accb7d">{sub_d}</span><span class="nbp-mob-i" style="font-weight: 700"> · {sub_m}</span></div>')
+    grid = ('<div class="nbp-hh" style="width: 100%; max-width: 1000px">'
+            + tag(t1, 'a1') + card(p1, k1, w1, 'a2') + op.format(cls='a3', s='+') + tag(t2, 'b1') + card(p2, k2, w2, 'b2') + op.format(cls='b3', s='=') + result + '</div>')
+    inner = (h2(HOUSE_H2) + '\n' + lead(HOUSE_LEAD).replace('<p style=', '<p class="nbp-desk-b" style=', 1) + '\n' + grid + '\n'
+             + f'<p class="nbp-desk-b" style="margin: -16px 0 0; text-align: center; font-size: 12px; color: #9aa39d">{HOUSE_FINE}</p>')
     return section('#ffffff', inner)
 
 
@@ -279,8 +292,8 @@ def fin():
     chips = list(re.finditer(r'<span class="nbx-recap-i"[^>]*><svg .*?</svg>.*?</span>\n', s, re.S))
     chip = re.sub(r'(</svg>).*?(</span>\n)$', r'\1{T}\2', chips[0].group(0), flags=re.S)
     s = s[:chips[0].start()] + ''.join(chip.replace('{T}', t) for t in FIN_RECAP) + s[chips[-1].end():]
-    s = cta(s)
-    return re.sub(r'(<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #accb7d">).*?(</p>)', lambda m: m.group(1) + FIN_NOTE + m.group(2), s, count=1, flags=re.S)
+    s = one(s, '<div class="nbx-recap">', '<div class="nbx-recap nbp-recap3">')
+    return cta(s)   # keeps the landing's "Imaš pitanje? Pozovi 0800 001 007."
 
 
 def sticky():
@@ -298,6 +311,10 @@ CSS = '''<style>
 .nbp-photo{min-height:460px}
 .nbp-stk{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;box-shadow:0 -4px 16px rgba(0,0,0,.12);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));display:none;align-items:center;gap:12px;transform:translateY(110%);transition:transform .3s ease;font-family:'Outfit',ui-sans-serif,system-ui,sans-serif}
 .nbp-stk.show{transform:none}
+.nbp-hh{display:grid;grid-template-columns:minmax(0,270px) 40px minmax(0,270px) 40px 220px;column-gap:14px;row-gap:12px;justify-content:center;align-items:center}
+.nbp-hh .a1{grid-area:1/1;justify-self:center}.nbp-hh .a2{grid-area:2/1}.nbp-hh .a3{grid-area:2/2}.nbp-hh .b1{grid-area:1/3;justify-self:center}.nbp-hh .b2{grid-area:2/3}.nbp-hh .b3{grid-area:2/4}.nbp-hh-r{grid-area:1/5/3/6;display:flex;flex-direction:column;align-items:center;gap:6px}.nbp-hh-ico{font-size:24px}
+.nbp-desk-b{display:block}.nbp-mob-i{display:none}
+@media (min-width:961px){.nbp-recap3{max-width:720px;margin:0 auto}.nbp-recap3 .nbx-recap-i{flex-basis:calc((100% - 20px) / 3)!important}}
 .nbp-drag{cursor:grab}.nbp-drag.dragging{cursor:grabbing;scroll-snap-type:none;user-select:none}
 @media (max-width:899px){
 .nbp-hero{display:flex;flex-direction:column;align-items:stretch;gap:20px}
@@ -306,6 +323,12 @@ CSS = '''<style>
 .nbp-photo{min-height:230px;border-radius:20px!important}
 .nbp-o5{align-self:stretch!important}
 .nbp-ctarow{align-items:stretch!important;text-align:center}
+}
+@media (max-width:767px){
+.nbp-desk-b{display:none!important}.nbp-mob-i{display:inline}
+.nbp-hh{grid-template-columns:54px minmax(0,1fr);column-gap:12px;row-gap:14px;max-width:none!important}
+.nbp-hh .a1{grid-area:1/1}.nbp-hh .a2{grid-area:1/2}.nbp-hh .b1{grid-area:2/1}.nbp-hh .b2{grid-area:2/2}.nbp-hh-op{display:none}
+.nbp-hh-r{grid-area:3/1/4/3;display:block;padding:16px 20px!important}.nbp-hh-ico{font-size:16px}
 }
 @media (max-width:640px){
 .nbp-desk{display:none}.nbp-mob{display:inline}
