@@ -64,9 +64,10 @@ CSS = '''<style>
 @media (max-width:767px){.nbl .nbf-vis{margin-top:28px}}
 @media (prefers-reduced-motion:reduce){.nbl #nbx-hero-food img{animation:none}}
 /* firme: final CTA without the form, everything centred */
-.nbl .fs-g.nbf-fin{grid-template-columns:1fr;max-width:760px;margin:0 auto;justify-items:center}
+.nbl .fs-g.nbf-fin{grid-template-columns:1fr;max-width:920px;margin:0 auto;justify-items:center}
+.nbl .nbf-fin .fs-t>p:not([class]){max-width:600px}
 .nbl .nbf-fin .fs-t{align-items:center;text-align:center}
-.nbl .nbf-chks{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 28px}
+.nbl .nbf-chks{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 24px}
 .nbl .nbf-fin .fs-ph{text-align:center!important}
 @media (max-width:767px){.nbl .nbf-chks{flex-direction:column;align-items:center}}
 </style>'''
@@ -86,7 +87,7 @@ def build_markup(s):
     # final CTA: one centred column, button instead of the form
     fin = block(s, '<section class="sec bg-dk fsec">', 'section')
     new = one(fin, '<div class="fs-g">', '<div class="fs-g nbf-fin">')
-    new = new.replace(block(new, '<form class="lf" id="ponuda"', 'form'), '')
+    new = new.replace('\n    ' + block(new, '<form class="lf" id="ponuda"', 'form'), '')
     new = one(new, '<p>Ostavi kontakt, a mi ti za 24h šaljemo ponudu',
               '<p>Zakaži kratak razgovor, a mi ti za 24h šaljemo ponudu')
     checks = re.findall(r'\s*<p class="chk">.*?</p>', new)
