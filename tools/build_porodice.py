@@ -35,8 +35,6 @@ HERO = {
     'photo': '[Foto: par ujutru otvara Nutribox kutije]',
     'anchor': 'na oba paketa kad poručujete u&nbsp;dvoje',
     'micro': 'Prijava 2 minuta · Prva dostava već&nbsp;prekosutra',
-    'checks': ['Svako svoj nalog i plan u&nbsp;aplikaciji', 'Pauza za jednog ili celo&nbsp;domaćinstvo', 'Jedan plaća, poeni se skupljaju&nbsp;zajedno'],
-    'rating': '4,7 Google (144) · 2.500+&nbsp;korisnika',
 }
 PAINS_H2 = f'Prepoznajete li <span style="color: {G}">ovo&nbsp;veče?</span>'
 PAINS = [
@@ -151,7 +149,13 @@ def topbar_header():
 
 
 def hero():
-    checks = ''.join(f'<li style="display: flex; align-items: center; gap: 10px; font-size: 15px; line-height: 1.35; color: #3d4a41"><span style="width: 20px; height: 20px; flex: none; border-radius: 99px; background: #accb7d; display: flex; align-items: center; justify-content: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#123c32" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>{c}</li>' for c in HERO['checks'])
+    # the landing hero's social proof (avatars + "2.500+ korisnika ..."), copied as is
+    land_hero = next(s for s in secs if 'margin-left: -10px' in s)
+    a = land_hero.index('<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px">')
+    b = land_hero.index('<div class="nbx-hero-vis"')
+    proof = land_hero[a:land_hero.rindex('</div>', a, land_hero.rindex('</div>', a, b)) + len('</div>')]
+    assert proof.count('<img ') == 5 and proof.count('<div') == proof.count('</div>')
+    proof = proof.replace('<div style="display: flex; flex-wrap: wrap;', '<div class="nbp-o7" style="display: flex; flex-wrap: wrap;', 1)
     return f'''<section style="position: relative; overflow: hidden; padding: clamp(32px, 5vw, 64px) 20px clamp(48px, 6vw, 80px); background: #ffffff">
 <div class="nbp-hero" style="max-width: 1200px; margin: 0 auto">
 <div class="nbp-hero-copy">
@@ -161,8 +165,7 @@ def hero():
 <div class="nbp-o5" style="align-self: flex-start; display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 16px; background: #f6f8f3; font-size: 15px; line-height: 1.35; font-weight: 500; color: #3d4a41"><b style="flex: none; padding: 6px 10px; border-radius: 10px; background: #123c32; color: #accb7d; font-size: 22px; font-weight: 800; line-height: 1.2">−10%</b><span>{HERO['anchor']}</span></div>
 <div class="nbp-o6 nbp-ctarow" style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px">{btn()}
 <span style="font-size: 14px; line-height: 1.4; color: #3d4a41">{HERO['micro']}</span></div>
-<ul class="nbp-o7" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">{checks}</ul>
-<p class="nbp-o8" style="margin: 0; font-size: 14px; font-weight: 600; color: #123c32">{STARS} {HERO['rating']}</p>
+{proof}
 </div>
 <div class="nbp-o4 nbp-photo" style="border-radius: 28px; background: #bbe2ab; padding: 20px; display: flex; align-items: flex-end"><div style="width: 100%; background: #ffffff; border-radius: 14px; padding: 12px 14px; font-size: 13px; font-weight: 500; color: #123c32">{HERO['photo']}</div></div>
 </div>
