@@ -663,7 +663,6 @@ a{color:#123c32}a:hover{color:#30563f}
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 28px">
 <h2 style="margin: 0; max-width: 860px; text-align: center; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.025em; font-weight: 700; color: #123c32">112+ novih jela svake&nbsp;nedelje. <span style="color: #5e8f3d">Ovako izgleda tvoja&nbsp;nedelja.</span></h2>
 <p style="margin: -10px 0 0; text-align: center; font-size: 16px; color: #3d4a41; text-wrap: balance">Primeri jela iz jelovnika. Jelovnik se menja svake&nbsp;nedelje.</p>
-<div aria-hidden="true" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"><div class="spr sp0" style="width: 1px; height: 1px"></div><div class="spr sp1" style="width: 1px; height: 1px"></div><div class="spr sp2" style="width: 1px; height: 1px"></div><div class="spr sp3" style="width: 1px; height: 1px"></div><div class="spr sp4" style="width: 1px; height: 1px"></div><div class="spr sp5" style="width: 1px; height: 1px"></div><div class="spr sp6" style="width: 1px; height: 1px"></div></div>
 <div role="group" aria-label="Filter po tipu ishrane" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px">
 <sc-for list="{{ filters }}" as="f" hint-placeholder-count="7">
 <button type="button" class="pick" aria-pressed="{{ f.on }}" onClick="{{ f.pick }}" style="min-height: 44px; padding: 9px 18px; border-radius: 12px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; {{ f.style }}">{{ f.label }}</button>
@@ -672,16 +671,15 @@ a{color:#123c32}a:hover{color:#30563f}
 <div style="width: 100%; display: flex; flex-direction: column; gap: 10px">
 <div class="slider" style="width: 100%; display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 2px 12px; box-sizing: border-box">
 <sc-for list="{{ meals }}" as="m" hint-placeholder-count="5">
-<article style="flex: 0 0 250px; min-width: 250px; scroll-snap-align: start; display: flex; flex-direction: column; gap: 10px">
-<div style="position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; overflow: hidden; background: #e4efdc">
-<div class="spr {{ m.sp }}" role="img" aria-label="{{ m.alt }}" style="position: absolute; inset: 0; background-position: {{ m.pos }}"></div>
+<article style="flex: 0 0 250px; min-width: 250px; scroll-snap-align: start; display: flex; flex-direction: column">
+<div style="position: relative; flex: 1 0 auto; width: 100%; aspect-ratio: 1 / 1; box-sizing: border-box; border-radius: 20px; background: #e4efdc; padding: 58px 20px 20px; display: flex; flex-direction: column; gap: 8px">
 <span style="position: absolute; top: 12px; left: 12px; padding: 5px 10px; border-radius: 99px; background: #ffffff; font-size: 13px; font-weight: 700; color: #123c32">{{ m.kcal }}</span>
 <sc-if value="{{ m.posno }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 12px; right: 12px; padding: 5px 10px; border-radius: 99px; background: #123c32; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #accb7d">POSNO</span></sc-if>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #30563f">{{ m.tag }}</span>
+<h3 style="margin: 0; font-size: 20px; line-height: 1.25; font-weight: 700; color: #123c32">{{ m.name }}</h3>
+<sc-if value="{{ m.sejk }}" hint-placeholder-val="{{ false }}"><span style="margin-top: -2px; font-size: 13px; font-weight: 600; color: #30563f">{{ m.sejkTxt }}</span></sc-if>
+<span style="margin-top: auto; padding-top: 10px; font-size: 13px; font-weight: 500; color: #30563f">{{ m.macros }}</span>
 </div>
-<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #4d7a31">{{ m.tag }}</span>
-<h3 style="margin: -4px 0 0; font-size: 18px; line-height: 1.25; font-weight: 700; color: #123c32">{{ m.name }}</h3>
-<sc-if value="{{ m.sejk }}" hint-placeholder-val="{{ false }}"><span style="margin-top: -4px; font-size: 13px; font-weight: 600; color: #5e8f3d">{{ m.sejkTxt }}</span></sc-if>
-<span style="font-size: 13px; font-weight: 500; color: #4d7a31">{{ m.macros }}</span>
 </article>
 </sc-for>
 </div>
